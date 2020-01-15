@@ -8,13 +8,21 @@ public class PlayerController : MonoBehaviour
 {
     PlayerControlScheme controlScheme;
     private Movement movement;
+    private Bark bark;
+    private Bite bite;
+    private Interactor interactor;
     private Vector3 currentMove;
 
     void Awake()
     {
         controlScheme = new PlayerControlScheme();
+        bark = GetComponent<Bark>();
+        bite = GetComponent<Bite>();
+        interactor = GetComponent<Interactor>();
         movement = GetComponent<Movement>();
+
         controlScheme.Player.Bark.performed += context => Bark();
+        controlScheme.Player.Bite.performed += context => Bite();
         controlScheme.Player.Move.performed += HandleMove;
         controlScheme.Player.Move.canceled += CancelMove;
     }
@@ -36,8 +44,12 @@ public class PlayerController : MonoBehaviour
 
     public void Bark()
     {
-        // Replace with proper script later. currently only being used for testing the new Input Unity System
-        Debug.Log("woof");
+       bark.BarkEvent();
+    }
+
+    public void Bite()
+    {
+        if (interactor.CurrentTarget != null) bite.BiteEvent(interactor.CurrentTarget.GetComponent<Biteable>());
     }
 
     public void HandleMove(InputAction.CallbackContext context)
