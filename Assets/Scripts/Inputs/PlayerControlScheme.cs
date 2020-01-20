@@ -155,6 +155,118 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""PlayerBiting"",
+            ""id"": ""246dec50-e351-453a-93ba-5bcb117fab8e"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""4d1d5c71-ed88-411d-9a88-f115f88e9b14"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Bite"",
+                    ""type"": ""Button"",
+                    ""id"": ""5e6d748c-eca1-40bd-a029-d01ba53a040b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""e6bbf7ba-c0a7-4b02-8154-c6dd462aaa93"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Player"",
+                    ""action"": ""Bite"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3d6f8459-9be6-45f1-883c-6553a97f7510"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Player"",
+                    ""action"": ""Bite"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""85667314-3c76-44d8-aee1-a0f16f206bb0"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""40dc95ae-2a86-4864-8649-1645ca8900f4"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Player"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""547b147d-4be8-4692-9b2f-76ea3dcd54c2"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Player"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""fb9e7167-25ad-41db-908a-60cff3a25b65"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Player"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""6abbfd3f-7929-4467-b7b8-e6d9ac2cf5f0"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Player"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""586a4d7c-f0ff-410f-872c-9608b582a652"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": ""InvertVector2"",
+                    ""groups"": ""Player"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -170,6 +282,10 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Bark = m_Player.FindAction("Bark", throwIfNotFound: true);
         m_Player_Bite = m_Player.FindAction("Bite", throwIfNotFound: true);
+        // PlayerBiting
+        m_PlayerBiting = asset.FindActionMap("PlayerBiting", throwIfNotFound: true);
+        m_PlayerBiting_Move = m_PlayerBiting.FindAction("Move", throwIfNotFound: true);
+        m_PlayerBiting_Bite = m_PlayerBiting.FindAction("Bite", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -264,6 +380,47 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // PlayerBiting
+    private readonly InputActionMap m_PlayerBiting;
+    private IPlayerBitingActions m_PlayerBitingActionsCallbackInterface;
+    private readonly InputAction m_PlayerBiting_Move;
+    private readonly InputAction m_PlayerBiting_Bite;
+    public struct PlayerBitingActions
+    {
+        private @PlayerControlScheme m_Wrapper;
+        public PlayerBitingActions(@PlayerControlScheme wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_PlayerBiting_Move;
+        public InputAction @Bite => m_Wrapper.m_PlayerBiting_Bite;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerBiting; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerBitingActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerBitingActions instance)
+        {
+            if (m_Wrapper.m_PlayerBitingActionsCallbackInterface != null)
+            {
+                @Move.started -= m_Wrapper.m_PlayerBitingActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_PlayerBitingActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_PlayerBitingActionsCallbackInterface.OnMove;
+                @Bite.started -= m_Wrapper.m_PlayerBitingActionsCallbackInterface.OnBite;
+                @Bite.performed -= m_Wrapper.m_PlayerBitingActionsCallbackInterface.OnBite;
+                @Bite.canceled -= m_Wrapper.m_PlayerBitingActionsCallbackInterface.OnBite;
+            }
+            m_Wrapper.m_PlayerBitingActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+                @Bite.started += instance.OnBite;
+                @Bite.performed += instance.OnBite;
+                @Bite.canceled += instance.OnBite;
+            }
+        }
+    }
+    public PlayerBitingActions @PlayerBiting => new PlayerBitingActions(this);
     private int m_PlayerSchemeIndex = -1;
     public InputControlScheme PlayerScheme
     {
@@ -277,6 +434,11 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnBark(InputAction.CallbackContext context);
+        void OnBite(InputAction.CallbackContext context);
+    }
+    public interface IPlayerBitingActions
+    {
+        void OnMove(InputAction.CallbackContext context);
         void OnBite(InputAction.CallbackContext context);
     }
 }
