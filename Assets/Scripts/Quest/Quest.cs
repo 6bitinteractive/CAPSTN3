@@ -1,11 +1,12 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
 public class Quest
 {
-    [SerializeField] private List<QuestEvent> questEvents = new List<QuestEvent>();
+    // [SerializeField] private
+    public List<QuestEvent> questEvents = new List<QuestEvent>();
 
     // TODO: same as QuestEvent?
 
@@ -82,7 +83,7 @@ public class Quest
 
     public void ActivateQuest()
     {
-        questEvents[0].CurrentStatus = QuestEvent.Status.Active;
+        questEvents[0].SwitchStatus(QuestEvent.Status.Active);
     }
 
     // For debugging

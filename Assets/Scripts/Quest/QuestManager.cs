@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,11 +24,36 @@ public class QuestManager : MonoBehaviour
         quest.DefineOrder(a.Id);
 
         // TEST
+        // Listen when a quest event ends
+        foreach (var questEvent in quest.questEvents)
+        {
+            questEvent.OnDone.AddListener(UpdateOnQuestEventDone);
+        }
+
+        // TEST
         // Begin quest
         quest.ActivateQuest();
 
         // TEST
         // Check path/order
         quest.PrintPath();
+
+        // TEST
+        quest.questEvents[0].SwitchStatus(QuestEvent.Status.Done);
+
+        quest.PrintPath();
+    }
+
+    private void UpdateOnQuestEventDone(QuestEvent doneQuestEvent)
+    {
+        foreach (var questEvent in quest.questEvents)
+        {
+            // If this event is next in order
+            if (questEvent.order == doneQuestEvent.order + 1)
+            {
+                // Start the next quest event in line
+                questEvent.SwitchStatus(QuestEvent.Status.Active);
+            }
+        }
     }
 }
