@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,12 +21,14 @@ public class QuestManager : MonoBehaviour
         // TEST
         // Define the paths, i.e. the order of the events
         quest.DefinePath();
+        quest.DefineOrder(a.Id);
 
         // TEST
         // Begin quest
         quest.ActivateQuest();
 
-        // Debug
+        // TEST
+        // Check path/order
         quest.PrintPath();
     }
 }

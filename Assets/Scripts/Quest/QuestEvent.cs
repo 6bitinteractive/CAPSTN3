@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
@@ -13,7 +13,9 @@ public class QuestEvent
     public string DisplayName { get; protected set; }
     public string Description { get; protected set; }
     public Status CurrentStatus { get; set; }
-    public List<QuestPath> pathList = new List<QuestPath>();
+
+    [HideInInspector] public int order = -1; // We start with -1 to easily determine that the order has not yet been set
+    [HideInInspector] public List<QuestPath> pathList = new List<QuestPath>();
 
     // TODO: Add Condition (a condition is similar to CAPSTN2 in architecture?)
     // TODO: Add Result/Reward associated with this event
