@@ -142,6 +142,118 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "PlayerBiting",
+            "id": "246dec50-e351-453a-93ba-5bcb117fab8e",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "4d1d5c71-ed88-411d-9a88-f115f88e9b14",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Bite",
+                    "type": "Button",
+                    "id": "5e6d748c-eca1-40bd-a029-d01ba53a040b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press"
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e6bbf7ba-c0a7-4b02-8154-c6dd462aaa93",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Player",
+                    "action": "Bite",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3d6f8459-9be6-45f1-883c-6553a97f7510",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Player",
+                    "action": "Bite",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "WASD",
+                    "id": "85667314-3c76-44d8-aee1-a0f16f206bb0",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "40dc95ae-2a86-4864-8649-1645ca8900f4",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Player",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "547b147d-4be8-4692-9b2f-76ea3dcd54c2",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Player",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "fb9e7167-25ad-41db-908a-60cff3a25b65",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Player",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "6abbfd3f-7929-4467-b7b8-e6d9ac2cf5f0",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Player",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "586a4d7c-f0ff-410f-872c-9608b582a652",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "InvertVector2",
+                    "groups": "Player",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

@@ -117,6 +117,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1038197435578827563}
+  - {fileID: 5965216443988192363}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -245,6 +246,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 7e38ef6b-0048-4144-9c2e-21d86a6ffde1
     m_ActionName: Player/Bite
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4d1d5c71-ed88-411d-9a88-f115f88e9b14
+    m_ActionName: PlayerBiting/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/XInputControllerWindows/leftStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5e6d748c-eca1-40bd-a029-d01ba53a040b
+    m_ActionName: PlayerBiting/Bite[/XInputControllerWindows/buttonNorth,/Keyboard/i]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Player
   m_DefaultActionMap: Player
@@ -314,3 +323,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a1119ec53f4e7409c80724cdbf9fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouth: {fileID: 8389151800467003267}
+--- !u!1 &8389151800467003267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5965216443988192363}
+  m_Layer: 0
+  m_Name: Mouth
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5965216443988192363
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8389151800467003267}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.66, z: 1.125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1038197436724218278}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -13,16 +13,15 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    public void Move(Vector3 direction)
+    public void Move(Vector3 direction, int modifier)
     {
         direction = camera.TransformDirection(direction); // Face Camera
         direction.y = 0f; // prevent player from moving vertically
         direction.Normalize();
-        rb.MovePosition(rb.position + (direction * speed) * Time.deltaTime);
+        rb.MovePosition(rb.position + (direction * speed * modifier) * Time.deltaTime);
         Rotate(direction);
     }
-
-    void Rotate(Vector3 direction)
+    public void Rotate(Vector3 direction)
     {
         if (direction != Vector3.zero)
         {

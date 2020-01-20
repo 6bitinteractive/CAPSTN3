@@ -2,22 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.AI;
 
-[RequireComponent(typeof(SphereCollider))]
+[RequireComponent(typeof(Collider))]
 
 public class Barkable : MonoBehaviour, IInteractable
 {
-    public Vector3 position => transform.position;
     public UnityEvent OnBark;
+    private NavMeshAgent navMeshAgent;
 
-    public void Interact()
+    private void Start()
     {
-        Debug.Log("Woof");
+        navMeshAgent = GetComponent<NavMeshAgent>();
+    }
+
+    public void Interact(Interactor source, IInteractable target)
+    {
+        MoveAway(source);
         OnBark.Invoke();
     }
 
     public void DisplayInteractability()
     {
        
+    }
+
+    private void MoveAway(Interactor source)
+    {
+        Vector3 directionToSource = transform.position - source.transform.position;
+        Vector3 newPos = transform.position + directionToSource;
+        navMeshAgent.SetDestination(newPos * 2);
     }
 }

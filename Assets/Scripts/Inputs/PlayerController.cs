@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     PlayerControlScheme controlScheme;
+    PlayerInput playerInput;
     private Movement movement;
     private Bark bark;
     private Bite bite;
@@ -16,15 +17,13 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         controlScheme = new PlayerControlScheme();
+        playerInput = GetComponent<PlayerInput>();
         bark = GetComponent<Bark>();
         bite = GetComponent<Bite>();
         interactor = GetComponent<Interactor>();
         movement = GetComponent<Movement>();
 
-        controlScheme.Player.Bark.performed += context => Bark();
-        controlScheme.Player.Bite.performed += context => Bite();
-        controlScheme.Player.Move.performed += HandleMove;
-        controlScheme.Player.Move.canceled += CancelMove;
+        SetupPlayerConrtolScheme();    
     }
 
     void OnEnable()
@@ -34,25 +33,67 @@ public class PlayerController : MonoBehaviour
 
     void OnDisable()
     {
-        controlScheme.Player.Disable();
+       controlScheme.Player.Disable();
+       controlScheme.PlayerBiting.Disable();
     }
 
     private void FixedUpdate()
     {
-        movement.Move(currentMove);
+        // If can move
+        if (!movement.enabled) return;
+        {
+            if (controlScheme.Player.enabled)
+            {
+                movement.Move(currentMove, 1);
+            }
+            else if (controlScheme.PlayerBiting.enabled)
+            {
+                movement.Move(currentMove, -1);
+            }
+        }
     }
 
     public void Bark()
     {
-       bark.BarkEvent();
+         bark.BarkEvent(interactor);
     }
 
     public void Bite()
-    {
-        if (interactor.CurrentTarget != null) bite.BiteEvent(interactor.CurrentTarget.GetComponent<Biteable>());
+    {       
+        // Makes sure there is always a target and that the player is no longer biting
+        if (interactor.CurrentTarget != null && !bite.IsBiting)
+        {
+            // Turn off interaction with other objects
+            interactor.CanInteract = false;
+
+            // If player is not biting anything and the target is pullable
+            if (!bite.IsBiting && interactor.CurrentTarget.GetComponent<Pullable>())
+            {
+                if (!controlScheme.PlayerBiting.enabled) SwitchToBitingControlScheme(); // Switch control scheme to reversed controls
+                bite.BiteEvent(interactor, interactor.CurrentTarget.GetComponent<Biteable>());
+                return;
+            }
+
+            // If player is not biting anything and the target is pullable
+            else if (!bite.IsBiting)
+            {
+                bite.BiteEvent(interactor, interactor.CurrentTarget.GetComponent<Biteable>());
+                return;
+            }
+        }
+
+        // Check if bite target exists and if player is still biting
+        if (interactor.CurrentTarget != null && bite.IsBiting)
+        {
+            bite.Release(interactor, interactor.CurrentTarget.GetComponent<Biteable>());
+            SwitchToDefaultControlScheme(); // If no longer biting switch to default control scheme
+            interactor.CurrentTarget = null;
+            interactor.CanInteract = true;
+            return;
+        }
     }
 
-    public void HandleMove(InputAction.CallbackContext context)
+    private void HandleMove(InputAction.CallbackContext context)
     {
         currentMove = context.ReadValue<Vector2>();
         // Play Moving Animation
@@ -63,5 +104,33 @@ public class PlayerController : MonoBehaviour
         currentMove = Vector2.zero;
         //Play Idle Animation
         return;
+    }
+
+    public void SwitchToBitingControlScheme()
+    {
+        controlScheme.Player.Disable();
+        controlScheme.PlayerBiting.Enable();
+        playerInput.SwitchCurrentActionMap("PlayerBiting");
+    }
+
+    public void SwitchToDefaultControlScheme()
+    {
+        controlScheme.PlayerBiting.Disable();
+        controlScheme.Player.Enable();       
+        playerInput.SwitchCurrentActionMap("Player");
+    }
+
+    private void SetupPlayerConrtolScheme()
+    {
+        //Default Player Control Scheme
+        controlScheme.Player.Bark.performed += context => Bark();
+        controlScheme.Player.Bite.performed += context => Bite();
+        controlScheme.Player.Move.performed += HandleMove;
+        controlScheme.Player.Move.canceled += CancelMove;
+
+        //Player Biting Control Scheme
+        controlScheme.PlayerBiting.Bite.performed += context => Bite();
+        controlScheme.PlayerBiting.Move.performed += HandleMove;
+        controlScheme.PlayerBiting.Move.canceled += CancelMove; 
     }
 }
