@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private Movement movement;
     private Bark bark;
     private Bite bite;
+    private Dig dig;
     private Interactor interactor;
     private Vector3 currentMove;
 
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         bark = GetComponent<Bark>();
         bite = GetComponent<Bite>();
+        dig = GetComponent<Dig>();
         interactor = GetComponent<Interactor>();
         movement = GetComponent<Movement>();
 
@@ -42,10 +44,12 @@ public class PlayerController : MonoBehaviour
         // If can move
         if (!movement.enabled) return;
         {
+            // Default movement
             if (controlScheme.Player.enabled)
             {
                 movement.Move(currentMove, 1);
             }
+            // If biting reverse controls
             else if (controlScheme.PlayerBiting.enabled)
             {
                 movement.Move(currentMove, -1);
@@ -59,10 +63,13 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Bite()
-    {       
-        // Makes sure there is always a target and that the player is no longer biting
+    {
+        // Makes sure the target exists and has the component biteable otherwise return
+        if (interactor.CurrentTarget != null && !interactor.CurrentTarget.GetComponent<Biteable>()) return;
+
+        // If the player is no longer biting
         if (interactor.CurrentTarget != null && !bite.IsBiting)
-        {
+        {          
             // Turn off interaction with other objects
             interactor.CanInteract = false;
 
@@ -90,6 +97,22 @@ public class PlayerController : MonoBehaviour
             interactor.CurrentTarget = null;
             interactor.CanInteract = true;
             return;
+        }
+    }
+
+    public void Dig()
+    {
+        // Makes sure the target exists and has the component digable otherwise return
+        if (interactor.CurrentTarget != null)
+        {
+            Digable digable = interactor.CurrentTarget.GetComponent<Digable>();
+            DigableTerrain digableTerrain = interactor.CurrentTarget.GetComponent<DigableTerrain>();
+
+            // Check if target is digable
+            if (digable != null) dig.DigEvent(interactor, interactor.CurrentTarget.GetComponent<Digable>());
+
+            // Check if target is a digable terrain
+            if (digableTerrain != null) dig.DigTerrainEvent(interactor, interactor.CurrentTarget.GetComponent<DigableTerrain>());       
         }
     }
 
@@ -125,6 +148,7 @@ public class PlayerController : MonoBehaviour
         //Default Player Control Scheme
         controlScheme.Player.Bark.performed += context => Bark();
         controlScheme.Player.Bite.performed += context => Bite();
+        controlScheme.Player.Dig.performed += context => Dig();
         controlScheme.Player.Move.performed += HandleMove;
         controlScheme.Player.Move.canceled += CancelMove;
 

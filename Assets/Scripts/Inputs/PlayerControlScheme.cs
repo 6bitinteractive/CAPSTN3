@@ -41,6 +41,14 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Dig"",
+                    ""type"": ""Button"",
+                    ""id"": ""3af24f66-1e77-455f-977e-21075774ac20"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -151,6 +159,28 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Player"",
                     ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4d51b127-7106-4faa-9e30-b9d39fa99339"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Player"",
+                    ""action"": ""Dig"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8b90b587-4f2b-4399-9d76-60c7e2853dbb"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Player"",
+                    ""action"": ""Dig"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -282,6 +312,7 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Bark = m_Player.FindAction("Bark", throwIfNotFound: true);
         m_Player_Bite = m_Player.FindAction("Bite", throwIfNotFound: true);
+        m_Player_Dig = m_Player.FindAction("Dig", throwIfNotFound: true);
         // PlayerBiting
         m_PlayerBiting = asset.FindActionMap("PlayerBiting", throwIfNotFound: true);
         m_PlayerBiting_Move = m_PlayerBiting.FindAction("Move", throwIfNotFound: true);
@@ -338,6 +369,7 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Bark;
     private readonly InputAction m_Player_Bite;
+    private readonly InputAction m_Player_Dig;
     public struct PlayerActions
     {
         private @PlayerControlScheme m_Wrapper;
@@ -345,6 +377,7 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Bark => m_Wrapper.m_Player_Bark;
         public InputAction @Bite => m_Wrapper.m_Player_Bite;
+        public InputAction @Dig => m_Wrapper.m_Player_Dig;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -363,6 +396,9 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
                 @Bite.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBite;
                 @Bite.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBite;
                 @Bite.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBite;
+                @Dig.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDig;
+                @Dig.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDig;
+                @Dig.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDig;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -376,6 +412,9 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
                 @Bite.started += instance.OnBite;
                 @Bite.performed += instance.OnBite;
                 @Bite.canceled += instance.OnBite;
+                @Dig.started += instance.OnDig;
+                @Dig.performed += instance.OnDig;
+                @Dig.canceled += instance.OnDig;
             }
         }
     }
@@ -435,6 +474,7 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnBark(InputAction.CallbackContext context);
         void OnBite(InputAction.CallbackContext context);
+        void OnDig(InputAction.CallbackContext context);
     }
     public interface IPlayerBitingActions
     {
