@@ -17,9 +17,12 @@ public class Interactor : MonoBehaviour
     {
         if (canInteract)
         {
-            InteractableTargets = collider.gameObject.GetComponents<IInteractable>();
-            InteractableTargets = null;
-            CurrentTarget = null;
+            InteractableTargets = collider.gameObject.GetComponents<IInteractable>();           
+            if (interactableTargets != null)
+            {
+                InteractableTargets = null;
+                CurrentTarget = null;
+            }
         }    
         //Debug.Log("No longer interacting with " + collider.name);
     }
@@ -29,9 +32,12 @@ public class Interactor : MonoBehaviour
         if (canInteract)
         {
             InteractableTargets = collider.gameObject.GetComponents<IInteractable>();
-            if (InteractableTargets.Length == 0) return;
-            foreach (var targets in InteractableTargets) targets.DisplayInteractability();
-            currentTarget = collider.gameObject;
+            if (interactableTargets != null)
+            {
+                if (InteractableTargets.Length == 0) return;
+                foreach (var targets in InteractableTargets) targets.DisplayInteractability();
+                currentTarget = collider.gameObject;
+            }
         }
         //Debug.Log(currentTarget);
     }

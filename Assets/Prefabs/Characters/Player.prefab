@@ -98,7 +98,8 @@ GameObject:
   - component: {fileID: 1331823813}
   - component: {fileID: 1331823805}
   - component: {fileID: 3050639643293823743}
-  m_Layer: 0
+  - component: {fileID: 1675410337}
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -243,7 +244,18 @@ MonoBehaviour:
     m_ActionId: 147f17a4-b408-4210-b663-9b0076d3302b
     m_ActionName: Player/Bark[/Mouse/leftButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1038197436724218282}
+        m_MethodName: SwitchCurrentActionMap
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: PlayerBiting
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 7e38ef6b-0048-4144-9c2e-21d86a6ffde1
     m_ActionName: Player/Bite
   - m_PersistentCalls:
@@ -254,6 +266,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 5e6d748c-eca1-40bd-a029-d01ba53a040b
     m_ActionName: PlayerBiting/Bite[/XInputControllerWindows/buttonNorth,/Keyboard/i]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3af24f66-1e77-455f-977e-21075774ac20
+    m_ActionName: Player/Dig[/Keyboard/i,/XInputControllerWindows/buttonNorth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Player
   m_DefaultActionMap: Player
@@ -324,6 +340,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouth: {fileID: 8389151800467003267}
+--- !u!114 &1675410337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038197436724218274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a50321c85696d54eb3bbf7a76d418c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  digPower: 1
 --- !u!1 &8389151800467003267
 GameObject:
   m_ObjectHideFlags: 0
