@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 1331823805}
   - component: {fileID: 3050639643293823743}
   - component: {fileID: 1675410337}
+  - component: {fileID: 475478298}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -270,6 +271,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 3af24f66-1e77-455f-977e-21075774ac20
     m_ActionName: Player/Dig[/Keyboard/i,/XInputControllerWindows/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 73d93f39-af71-41c3-a24d-25d03a706ab1
+    m_ActionName: Player/Talk[/Keyboard/k,/XInputControllerWindows/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Player
   m_DefaultActionMap: Player
@@ -353,6 +358,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   digPower: 1
+--- !u!114 &475478298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038197436724218274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5f58bb057dbe646ad0d1655fb8dac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8389151800467003267
 GameObject:
   m_ObjectHideFlags: 0
