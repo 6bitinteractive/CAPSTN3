@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private Bark bark;
     private Bite bite;
     private Dig dig;
+    private Talk talk;
     private Interactor interactor;
     private Vector3 currentMove;
 
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
         bite = GetComponent<Bite>();
         dig = GetComponent<Dig>();
         interactor = GetComponent<Interactor>();
+        talk = GetComponent<Talk>();
         movement = GetComponent<Movement>();
 
         SetupPlayerConrtolScheme();    
@@ -109,10 +111,22 @@ public class PlayerController : MonoBehaviour
             DigableTerrain digableTerrain = interactor.CurrentTarget.GetComponent<DigableTerrain>();
 
             // Check if target is digable
-            if (digable != null) dig.DigEvent(interactor, interactor.CurrentTarget.GetComponent<Digable>());
+            if (digable != null) dig.DigEvent(interactor, digable);
 
             // Check if target is a digable terrain
-            if (digableTerrain != null) dig.DigTerrainEvent(interactor, interactor.CurrentTarget.GetComponent<DigableTerrain>());       
+            if (digableTerrain != null) dig.DigTerrainEvent(interactor, digableTerrain);       
+        }
+    }
+
+    public void Talk()
+    {
+        // Makes sure the target exists and has the component digable otherwise return
+        if (interactor.CurrentTarget != null)
+        {
+            Talkable talkable = interactor.CurrentTarget.GetComponent<Talkable>();
+
+            // Check if target is talkable
+            if (talkable != null) talk.TalkEvent(interactor, talkable);
         }
     }
 
@@ -149,6 +163,7 @@ public class PlayerController : MonoBehaviour
         controlScheme.Player.Bark.performed += context => Bark();
         controlScheme.Player.Bite.performed += context => Bite();
         controlScheme.Player.Dig.performed += context => Dig();
+        controlScheme.Player.Talk.performed += context => Talk();
         controlScheme.Player.Move.performed += HandleMove;
         controlScheme.Player.Move.canceled += CancelMove;
 

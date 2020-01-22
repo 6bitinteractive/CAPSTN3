@@ -49,6 +49,14 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Talk"",
+                    ""type"": ""Button"",
+                    ""id"": ""73d93f39-af71-41c3-a24d-25d03a706ab1"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -183,6 +191,28 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
                     ""action"": ""Dig"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d38d2a2d-4054-40ae-b201-26df72964626"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Player"",
+                    ""action"": ""Talk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bb507cdb-432c-45a6-abf8-f049b5877876"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Player"",
+                    ""action"": ""Talk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -313,6 +343,7 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
         m_Player_Bark = m_Player.FindAction("Bark", throwIfNotFound: true);
         m_Player_Bite = m_Player.FindAction("Bite", throwIfNotFound: true);
         m_Player_Dig = m_Player.FindAction("Dig", throwIfNotFound: true);
+        m_Player_Talk = m_Player.FindAction("Talk", throwIfNotFound: true);
         // PlayerBiting
         m_PlayerBiting = asset.FindActionMap("PlayerBiting", throwIfNotFound: true);
         m_PlayerBiting_Move = m_PlayerBiting.FindAction("Move", throwIfNotFound: true);
@@ -370,6 +401,7 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Bark;
     private readonly InputAction m_Player_Bite;
     private readonly InputAction m_Player_Dig;
+    private readonly InputAction m_Player_Talk;
     public struct PlayerActions
     {
         private @PlayerControlScheme m_Wrapper;
@@ -378,6 +410,7 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
         public InputAction @Bark => m_Wrapper.m_Player_Bark;
         public InputAction @Bite => m_Wrapper.m_Player_Bite;
         public InputAction @Dig => m_Wrapper.m_Player_Dig;
+        public InputAction @Talk => m_Wrapper.m_Player_Talk;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -399,6 +432,9 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
                 @Dig.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDig;
                 @Dig.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDig;
                 @Dig.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDig;
+                @Talk.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTalk;
+                @Talk.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTalk;
+                @Talk.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTalk;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -415,6 +451,9 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
                 @Dig.started += instance.OnDig;
                 @Dig.performed += instance.OnDig;
                 @Dig.canceled += instance.OnDig;
+                @Talk.started += instance.OnTalk;
+                @Talk.performed += instance.OnTalk;
+                @Talk.canceled += instance.OnTalk;
             }
         }
     }
@@ -475,6 +514,7 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
         void OnBark(InputAction.CallbackContext context);
         void OnBite(InputAction.CallbackContext context);
         void OnDig(InputAction.CallbackContext context);
+        void OnTalk(InputAction.CallbackContext context);
     }
     public interface IPlayerBitingActions
     {
