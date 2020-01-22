@@ -57,6 +57,14 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""8453b1c9-1314-487b-85fb-4d3258717604"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -211,6 +219,28 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Player"",
                     ""action"": ""Talk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c3159f76-11c6-4b76-a13e-b4e38264b026"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6427532e-7232-4abf-bdea-0b311c7aaf88"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -902,6 +932,7 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
         m_Player_Bite = m_Player.FindAction("Bite", throwIfNotFound: true);
         m_Player_Dig = m_Player.FindAction("Dig", throwIfNotFound: true);
         m_Player_Talk = m_Player.FindAction("Talk", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         // PlayerBiting
         m_PlayerBiting = asset.FindActionMap("PlayerBiting", throwIfNotFound: true);
         m_PlayerBiting_Move = m_PlayerBiting.FindAction("Move", throwIfNotFound: true);
@@ -973,6 +1004,7 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Bite;
     private readonly InputAction m_Player_Dig;
     private readonly InputAction m_Player_Talk;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @PlayerControlScheme m_Wrapper;
@@ -982,6 +1014,7 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
         public InputAction @Bite => m_Wrapper.m_Player_Bite;
         public InputAction @Dig => m_Wrapper.m_Player_Dig;
         public InputAction @Talk => m_Wrapper.m_Player_Talk;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1006,6 +1039,9 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
                 @Talk.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTalk;
                 @Talk.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTalk;
                 @Talk.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTalk;
+                @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1025,6 +1061,9 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
                 @Talk.started += instance.OnTalk;
                 @Talk.performed += instance.OnTalk;
                 @Talk.canceled += instance.OnTalk;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -1235,6 +1274,7 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
         void OnBite(InputAction.CallbackContext context);
         void OnDig(InputAction.CallbackContext context);
         void OnTalk(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IPlayerBitingActions
     {

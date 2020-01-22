@@ -1,5 +1,5 @@
 {
-    "name": "DefaultInputActions",
+    "name": "PlayerControlScheme",
     "maps": [
         {
             "name": "Player",
@@ -41,6 +41,14 @@
                     "name": "Talk",
                     "type": "Button",
                     "id": "2b2c1154-89ed-47a8-883c-25ca87aec435",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "8453b1c9-1314-487b-85fb-4d3258717604",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "Press"
@@ -198,6 +206,28 @@
                     "processors": "",
                     "groups": "Player",
                     "action": "Talk",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c3159f76-11c6-4b76-a13e-b4e38264b026",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6427532e-7232-4abf-bdea-0b311c7aaf88",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
