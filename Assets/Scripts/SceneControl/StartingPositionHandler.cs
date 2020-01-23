@@ -16,6 +16,12 @@ public class StartingPositionHandler : MonoBehaviour
 
     private void SetStartingPosition()
     {
+        if (sceneController.playerStartingPoint == null)
+        {
+            Debug.LogError("No starting point indicated in scene data.");
+            return;
+        }
+
         Transform startingPosition = StartingPosition.FindStartingPosition(sceneController.playerStartingPoint.StartingPointName);
         transform.position = startingPosition.position;
     }
