@@ -14,6 +14,9 @@ public class Digable : MonoBehaviour, IInteractable
    
     private Collider collider;
     private int currentHp;
+
+    public GameObject ObjectToSpawn { get => objectToSpawn; set => objectToSpawn = value; }
+
     public void DisplayInteractability()
     {
       
@@ -28,11 +31,17 @@ public class Digable : MonoBehaviour, IInteractable
         }
     }
 
-    void Start()
+    void Awake()
     {
-        currentHp = maxHealth;
         collider = gameObject.GetComponent<Collider>();
     }
+
+    void OnEnable()
+    {
+        currentHp = maxHealth;
+        collider.enabled = true;   
+    }
+
 
     private void OnTriggerEnter(Collider collider)
     {
@@ -40,7 +49,6 @@ public class Digable : MonoBehaviour, IInteractable
 
         // Player ignores digable  terrain collisions
         if (digSource != null) Physics.IgnoreLayerCollision(8, 9, true);
-
     }
 
     private void OnTriggerExit(Collider collider)
@@ -76,9 +84,9 @@ public class Digable : MonoBehaviour, IInteractable
 
     public void SpawnObject()
     {
-        if (objectToSpawn != null)
+        if (ObjectToSpawn != null)
         {
-            GameObject newObjectToSpawn = Instantiate(objectToSpawn, transform.position, Quaternion.identity);
+            GameObject newObjectToSpawn = Instantiate(ObjectToSpawn, transform.position, Quaternion.identity);
             newObjectToSpawn.GetComponent<Rigidbody>().AddForce(Vector3.up * ObjectToSpawnJumpSpeed); // Make newly spawned object jump up
         }
         else
@@ -90,6 +98,6 @@ public class Digable : MonoBehaviour, IInteractable
     public IEnumerator DespawnDigable()
     { 
         yield return new WaitForSeconds(DespawnTimer);
-        Destroy(gameObject);       
+        gameObject.SetActive(false);    
     }
 }
