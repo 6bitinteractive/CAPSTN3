@@ -449,6 +449,7 @@ GameObject:
   - component: {fileID: 1280509758}
   - component: {fileID: 1280509759}
   - component: {fileID: 1280509760}
+  - component: {fileID: 1280509761}
   m_Layer: 0
   m_Name: QuestEvent (1)
   m_TagString: Untagged
@@ -502,19 +503,7 @@ MonoBehaviour:
       m_Calls: []
   OnDone:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1280509760}
-        m_MethodName: LoadScene
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 1e3affe59c0b33e4fa4cf333776f9bfb,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: SceneData, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   order: -1
   pathList: []
 --- !u!114 &1280509760
@@ -529,6 +518,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac265c4e13f9eef4caaf3a59f2171f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1280509761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280509757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98bbc2c1e63e98543830eec78d976795, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializedGuid: c9995099c8175b4e9ec1e6cf37553f3c
 --- !u!1 &1426697830
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,6 +541,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1426697831}
   - component: {fileID: 1426697832}
+  - component: {fileID: 1426697833}
   m_Layer: 0
   m_Name: QuestEvent
   m_TagString: Untagged
@@ -593,6 +596,19 @@ MonoBehaviour:
       m_Calls: []
   order: -1
   pathList: []
+--- !u!114 &1426697833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426697830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98bbc2c1e63e98543830eec78d976795, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializedGuid: 19fe1be6f19e5b4fb5fcb55f80abf89b
 --- !u!114 &1457443191 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8474518452565125627, guid: ff2c98024ae25ff4aac04e566a4d6d05,
@@ -724,6 +740,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1593814100}
   - component: {fileID: 1593814101}
+  - component: {fileID: 1593814102}
   m_Layer: 0
   m_Name: Quest - Day 1
   m_TagString: Untagged
@@ -762,6 +779,19 @@ MonoBehaviour:
   OnQuestEnd:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1593814102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593814099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98bbc2c1e63e98543830eec78d976795, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializedGuid: a882a5356c8d08419847b4a21d54c68f
 --- !u!1 &1607699527
 GameObject:
   m_ObjectHideFlags: 0

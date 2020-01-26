@@ -7,6 +7,8 @@ using UnityEngine.Events;
 [Serializable]
 public class QuestGameEvent : UnityEvent<QuestEvent> { }
 
+[RequireComponent(typeof(GuidComponent))]
+
 [Serializable]
 public class QuestEvent : MonoBehaviour
 {
@@ -72,7 +74,7 @@ public class QuestEvent : MonoBehaviour
         }
     }
 
-    // Override for inpector use
+    // Override for inspector use
     public void SwitchStatus(int status)
     {
         SwitchStatus((Status)status);

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(GuidComponent))]
+
 [System.Serializable]
 public class Quest : MonoBehaviour // Only a MonoBehaviour to make it available in the inspector
 {
@@ -42,7 +44,7 @@ public class Quest : MonoBehaviour // Only a MonoBehaviour to make it available 
         // ... so once we finish the last quest event, we can then end the Quest.
         if (doneQuestEvent == questEvents[questEvents.Count - 1])
         {
-            Debug.Log("We can now end the quest; i.e. end the day.");
+            Debug.Log("All quest events have been completed.");
             EndQuest();
         }
     }
