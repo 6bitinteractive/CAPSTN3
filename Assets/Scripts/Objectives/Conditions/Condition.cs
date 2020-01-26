@@ -7,7 +7,7 @@ using UnityEngine.Events;
 [System.Serializable]
 public class ConditionEvent : UnityEvent<Condition> { }
 
-public class Condition : MonoBehaviour
+public abstract class Condition : MonoBehaviour
 {
     public Status CurrentStatus { get; protected set; } // Fix: it's possible to bypass using the SwitchStatus method and simply set this property
     public bool Satisfied { get; protected set; }
@@ -19,6 +19,8 @@ public class Condition : MonoBehaviour
     {
         if (status == CurrentStatus)
             return;
+
+        CurrentStatus = status;
 
         switch (status)
         {
@@ -36,8 +38,12 @@ public class Condition : MonoBehaviour
                 OnDone.Invoke(this);
                 break;
         }
+    }
 
-        CurrentStatus = status;
+    // Override for inpector use
+    public void SwitchStatus(int status)
+    {
+        SwitchStatus((Status)status);
     }
 
     protected virtual void InitializeCondition()

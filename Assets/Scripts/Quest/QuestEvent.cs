@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class QuestGameEvent : UnityEvent<QuestEvent> { }
 
 [Serializable]
-public class QuestEvent
+public class QuestEvent : MonoBehaviour
 {
     [SerializeField] private string displayName;
     [SerializeField] private string description;
@@ -21,31 +21,23 @@ public class QuestEvent
     public string Id { get; private set; }
     public string DisplayName { get; private set; }
     public string Description { get; private set; }
-    public Status CurrentStatus { get; private set; }
+    public Status CurrentStatus { get; private set; } // Fix: Can bypass using SwitchStatus method
 
     [HideInInspector] public int order = -1; // We start with -1 to easily determine that the order has not yet been set
     [HideInInspector] public List<QuestPath> pathList = new List<QuestPath>();
 
-    public QuestEvent()
+    public void Initialize()
     {
         Id = Guid.NewGuid().ToString();
         DisplayName = displayName;
         Description = description;
         CurrentStatus = Status.Inactive;
-    }
 
-    /// <summary>
-    /// The class constructor.
-    /// </summary>
-    /// <param name="name">The name of the event. The name defined in the inspector takes precedence over what is defined here in the constructor.</param>
-    /// <param name="description">The description of the event. The description defined in the inspector takes precedence over what is defined here in the constructor.</param>
-    //public QuestEvent(string name, string description)
-    //{
-    //    Id = Guid.NewGuid().ToString();
-    //    DisplayName = string.IsNullOrWhiteSpace(displayName) ? name : displayName;
-    //    Description = string.IsNullOrWhiteSpace(this.description) ? description : this.description;
-    //    CurrentStatus = Status.Inactive;
-    //}
+        foreach (var objective in objectives)
+        {
+            objective.OnDone.AddListener(EvaluateQuestEvent);
+        }
+    }
 
     public void SwitchStatus(Status status)
     {
@@ -54,18 +46,36 @@ public class QuestEvent
         switch (status)
         {
             case Status.Inactive:
-                break;
+                {
+                    break;
+                }
+
             case Status.Active:
-                Debug.LogFormat("Activating QuestEvent \"{0}\".", displayName);
-                ActivateConditions();
-                OnActive.Invoke(this);
-                break;
+                {
+                    Debug.LogFormat("Activating QuestEvent \"{0}\".", displayName);
+                    ActivateConditions();
+                    OnActive.Invoke(this);
+                    break;
+                }
+
             case Status.Done:
-                OnDone.Invoke(this);
-                break;
+                {
+                    Debug.LogFormat("QuestEvent \"{0}\" complete.", displayName);
+                    OnDone.Invoke(this);
+                    break;
+                }
+
             default:
-                break;
+                {
+                    break;
+                }
         }
+    }
+
+    // Override for inpector use
+    public void SwitchStatus(int status)
+    {
+        SwitchStatus((Status)status);
     }
 
     private void ActivateConditions()
@@ -74,6 +84,21 @@ public class QuestEvent
         {
             objective.Activate();
         }
+    }
+
+    private void EvaluateQuestEvent(Objective objective)
+    {
+        if (objectives.Exists((x) => !x.Complete))
+        {
+            return;
+        }
+
+        foreach (var o in objectives)
+        {
+            o.OnDone.AddListener(EvaluateQuestEvent);
+        }
+
+        SwitchStatus(Status.Done);
     }
 
     public enum Status

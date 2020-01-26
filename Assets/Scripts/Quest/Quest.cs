@@ -1,18 +1,50 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public class Quest : MonoBehaviour // Only a MonoBehaviour to make it available in the inspector
 {
-    // [SerializeField] private
-    public List<QuestEvent> questEvents = new List<QuestEvent>();
+    private List<QuestEvent> questEvents = new List<QuestEvent>();
+
+    public UnityEvent OnQuestEnd = new UnityEvent();
 
     public void Initialize()
     {
+        questEvents.AddRange(GetComponentsInChildren<QuestEvent>());
+
+        foreach (var questEvent in questEvents)
+        {
+            questEvent.Initialize();
+            questEvent.OnDone.AddListener(EvaluateQuestState);
+        }
+
         DefinePath();
         DefineOrder(questEvents[0].Id);
         PrintPath();
+    }
+
+    private void EvaluateQuestState(QuestEvent doneQuestEvent)
+    {
+        foreach (var questEvent in questEvents)
+        {
+            // If this event is next in order
+            if (questEvent.order == doneQuestEvent.order + 1)
+            {
+                // Start the next quest event in line
+                questEvent.SwitchStatus(QuestEvent.Status.Active);
+            }
+        }
+
+        // Note: For now, we assume that all quest events will be done
+        // ... so once we finish the last quest event, we can then end the Quest.
+        if (doneQuestEvent == questEvents[questEvents.Count - 1])
+        {
+            Debug.Log("We can now end the quest; i.e. end the day.");
+            EndQuest();
+        }
     }
 
     public void ActivateQuest()
@@ -20,12 +52,18 @@ public class Quest : MonoBehaviour // Only a MonoBehaviour to make it available 
         questEvents[0].SwitchStatus(QuestEvent.Status.Active);
     }
 
+    public void EndQuest()
+    {
+        OnQuestEnd.Invoke();
+        gameObject.SetActive(false);
+    }
+
     // For debugging
     public void PrintPath()
     {
         Debug.Log("Quest Path:");
         for (int i = 0; i < questEvents.Count; i++)
-            Debug.LogFormat("({0} | Depth {3}): {1} - {2}", i, questEvents[i].DisplayName, questEvents[i].CurrentStatus, questEvents[i].order);
+            Debug.LogFormat("|- ({0} | Depth {3}): {1} - {2}", i, questEvents[i].DisplayName, questEvents[i].CurrentStatus, questEvents[i].order);
     }
 
     //public QuestEvent AddQuestEvent(string name, string description)
@@ -64,6 +102,9 @@ public class Quest : MonoBehaviour // Only a MonoBehaviour to make it available 
         return null;
     }
 
+    /// <summary>
+    /// Define the path/connection between two quest events.
+    /// </summary>
     private void DefinePath()
     {
         // This is a simple linear progression, i.e. quests are done sequentially

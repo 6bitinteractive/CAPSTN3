@@ -43,6 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e279f64e35c27489f37dd3e2d62338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentStatus: 0
-  requiredSceneToEnter: {fileID: 11400000, guid: 9ace3bbac74a77d48b908e1b0514126b,
-    type: 2}
+  OnActive:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDone:
+    m_PersistentCalls:
+      m_Calls: []
+  requiredSceneToEnter: {fileID: 0}
