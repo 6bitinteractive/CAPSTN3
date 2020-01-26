@@ -3,22 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Quest
+public class Quest : MonoBehaviour // Only a MonoBehaviour to make it available in the inspector
 {
     // [SerializeField] private
     public List<QuestEvent> questEvents = new List<QuestEvent>();
 
-    // TODO: same as QuestEvent?
-
-    public Quest() { }
-
-    public QuestEvent AddQuestEvent(string name, string description)
+    public void Initialize()
     {
-        QuestEvent questEvent = new QuestEvent(name, description);
-        questEvents.Add(questEvent);
-
-        return questEvent;
+        DefinePath();
+        DefineOrder(questEvents[0].Id);
+        PrintPath();
     }
+
+    public void ActivateQuest()
+    {
+        questEvents[0].SwitchStatus(QuestEvent.Status.Active);
+    }
+
+    // For debugging
+    public void PrintPath()
+    {
+        Debug.Log("Quest Path:");
+        for (int i = 0; i < questEvents.Count; i++)
+            Debug.LogFormat("({0} | Depth {3}): {1} - {2}", i, questEvents[i].DisplayName, questEvents[i].CurrentStatus, questEvents[i].order);
+    }
+
+    //public QuestEvent AddQuestEvent(string name, string description)
+    //{
+    //    QuestEvent questEvent = new QuestEvent(name, description);
+    //    questEvents.Add(questEvent);
+
+    //    return questEvent;
+    //}
 
     /// <summary>
     /// Add to list of paths.
@@ -48,7 +64,7 @@ public class Quest
         return null;
     }
 
-    public void DefinePath()
+    private void DefinePath()
     {
         // This is a simple linear progression, i.e. quests are done sequentially
         for (int i = 0; i < questEvents.Count; i++)
@@ -65,7 +81,7 @@ public class Quest
     /// </summary>
     /// <param name="id">The Id of the quest event. Typically, the root (i.e. very first startEvent) quest event is first passed to the function.</param>
     /// <param name="orderNumber">The order of the quest event.</param>
-    public void DefineOrder(string id, int orderNumber = 1)
+    private void DefineOrder(string id, int orderNumber = 1)
     {
         // Use Breadth-First Search to traverse the paths and indicate the order
         // BFS allows us to traverse all the nodes
@@ -79,18 +95,5 @@ public class Quest
                 DefineOrder(pathNode.endEvent.Id, orderNumber + 1); // Recursively call the function;
                                                                     // The endEvent of the current quest then becomes the startEvent and subsequently increases the order number.
         }
-    }
-
-    public void ActivateQuest()
-    {
-        questEvents[0].SwitchStatus(QuestEvent.Status.Active);
-    }
-
-    // For debugging
-    public void PrintPath()
-    {
-        Debug.Log("Quest Path:");
-        for (int i = 0; i < questEvents.Count; i++)
-            Debug.LogFormat("({0} | Depth {3}): {1} - {2}", i, questEvents[i].DisplayName, questEvents[i].CurrentStatus, questEvents[i].order);
     }
 }
