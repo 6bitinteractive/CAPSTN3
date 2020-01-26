@@ -56,9 +56,9 @@ public class QuestEvent
             case Status.Inactive:
                 break;
             case Status.Active:
+                Debug.LogFormat("Activating QuestEvent \"{0}\".", displayName);
                 ActivateConditions();
                 OnActive.Invoke(this);
-                Debug.LogFormat("QuestEvent \"{0}\" is now active.", displayName);
                 break;
             case Status.Done:
                 OnDone.Invoke(this);
