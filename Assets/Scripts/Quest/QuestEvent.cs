@@ -22,7 +22,9 @@ public class QuestEvent : MonoBehaviour
     public string Id { get; private set; }
     public string DisplayName { get; private set; }
     public string Description { get; private set; }
-    public Status CurrentStatus { get; private set; } // Fix: Can bypass using SwitchStatus method
+    public Status CurrentStatus => currentStatus;
+
+    private Status currentStatus;
 
     [HideInInspector] public int order = -1; // We start with -1 to easily determine that the order has not yet been set
     [HideInInspector] public List<QuestPath> pathList = new List<QuestPath>();
@@ -32,7 +34,7 @@ public class QuestEvent : MonoBehaviour
         Id = Guid.NewGuid().ToString();
         DisplayName = displayName;
         Description = description;
-        CurrentStatus = Status.Inactive;
+        currentStatus = Status.Inactive;
 
         foreach (var objective in objectives)
             objective.OnDone.AddListener(EvaluateQuestEvent);
@@ -40,7 +42,7 @@ public class QuestEvent : MonoBehaviour
 
     public void SwitchStatus(Status status)
     {
-        CurrentStatus = status;
+        currentStatus = status;
 
         switch (status)
         {

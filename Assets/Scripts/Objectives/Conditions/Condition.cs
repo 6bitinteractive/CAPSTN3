@@ -9,18 +9,20 @@ public class ConditionEvent : UnityEvent<Condition> { }
 
 public abstract class Condition : MonoBehaviour
 {
-    public Status CurrentStatus { get; protected set; } // Fix: it's possible to bypass using the SwitchStatus method and simply set this property
+    public Status CurrentStatus => currentStatus;
     public bool Satisfied { get; protected set; }
 
     public ConditionEvent OnActive = new ConditionEvent();
     public ConditionEvent OnDone = new ConditionEvent();
 
+    private Status currentStatus;
+
     public void SwitchStatus(Status status)
     {
-        if (status == CurrentStatus)
+        if (status == currentStatus)
             return;
 
-        CurrentStatus = status;
+        currentStatus = status;
 
         switch (status)
         {
