@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -55,6 +55,9 @@ public class Quest : MonoBehaviour // Only a MonoBehaviour to make it available 
 
     public void EndQuest()
     {
+        foreach (var questEvent in questEvents)
+            questEvent.OnDone.RemoveListener(EvaluateQuestState);
+
         OnQuestEnd.Invoke();
         gameObject.SetActive(false);
     }

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
@@ -89,10 +89,9 @@ public class QuestEvent : MonoBehaviour
         if (objectives.Exists((x) => !x.Complete))
             return;
 
+        // Remove listeners
         foreach (var o in objectives)
-        {
-            o.OnDone.AddListener(EvaluateQuestEvent);
-        }
+            o.OnDone.RemoveListener(EvaluateQuestEvent);
 
         SwitchStatus(Status.Done);
     }
