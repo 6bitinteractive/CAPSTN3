@@ -19,7 +19,7 @@ public class DayProgression : MonoBehaviour
 
         foreach (var quest in questManager.quests)
         {
-            quest.OnQuestEnd.AddListener(EndDay); // Test
+            quest.OnQuestEnd.AddListener(EndDay); // Test only; EndDay() will most probably be manually called
         }
 
         BeginDay();
@@ -28,7 +28,8 @@ public class DayProgression : MonoBehaviour
     public void BeginDay()
     {
         Debug.LogFormat("Beginning Day {0}", CurrentDayCount);
-        // Start the quest to be tackled for the day
+
+        // Start the quest to be tackled for the day; assumes that the day shares the same index number as the quest
         questManager.ActivateQuest(currentDay);
     }
 

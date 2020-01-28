@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +6,6 @@ using UnityEngine.Events;
 
 [RequireComponent(typeof(GuidComponent))]
 
-[System.Serializable]
 public class Quest : MonoBehaviour // Only a MonoBehaviour to make it available in the inspector
 {
     private List<QuestEvent> questEvents = new List<QuestEvent>();

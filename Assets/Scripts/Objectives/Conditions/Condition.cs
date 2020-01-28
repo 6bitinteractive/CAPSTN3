@@ -25,18 +25,29 @@ public abstract class Condition : MonoBehaviour
         switch (status)
         {
             case Status.Inactive:
-                break;
+                {
+                    break;
+                }
+
             case Status.Active:
-                InitializeCondition();
-                OnActive.Invoke(this);
-                break;
+                {
+                    InitializeCondition();
+                    OnActive.Invoke(this);
+                    break;
+                }
+
             case Status.Evaluating:
-                EvaluateCondition();
-                break;
+                {
+                    EvaluateCondition();
+                    break;
+                }
+
             case Status.Done:
-                FinalizeCondition();
-                OnDone.Invoke(this);
-                break;
+                {
+                    FinalizeCondition();
+                    OnDone.Invoke(this);
+                    break;
+                }
         }
     }
 

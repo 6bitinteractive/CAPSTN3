@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
@@ -9,7 +9,6 @@ public class QuestGameEvent : UnityEvent<QuestEvent> { }
 
 [RequireComponent(typeof(GuidComponent))]
 
-[Serializable]
 public class QuestEvent : MonoBehaviour
 {
     [SerializeField] private string displayName;
@@ -36,9 +35,7 @@ public class QuestEvent : MonoBehaviour
         CurrentStatus = Status.Inactive;
 
         foreach (var objective in objectives)
-        {
             objective.OnDone.AddListener(EvaluateQuestEvent);
-        }
     }
 
     public void SwitchStatus(Status status)
@@ -83,17 +80,14 @@ public class QuestEvent : MonoBehaviour
     private void ActivateConditions()
     {
         foreach (var objective in objectives)
-        {
             objective.Activate();
-        }
     }
 
     private void EvaluateQuestEvent(Objective objective)
     {
+        // If there's any objective that has not yet been completed...
         if (objectives.Exists((x) => !x.Complete))
-        {
             return;
-        }
 
         foreach (var o in objectives)
         {
