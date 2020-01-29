@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [Serializable]
-public class QuestGameEvent : UnityEvent<QuestEvent> { }
+public class GameQuestEvent : UnityEvent<QuestEvent> { }
 
 [RequireComponent(typeof(GuidComponent))]
 
@@ -16,8 +16,8 @@ public class QuestEvent : MonoBehaviour
 
     public List<Objective> objectives = new List<Objective>();
 
-    public QuestGameEvent OnActive = new QuestGameEvent();
-    public QuestGameEvent OnDone = new QuestGameEvent();
+    public GameQuestEvent OnActive = new GameQuestEvent();
+    public GameQuestEvent OnDone = new GameQuestEvent();
 
     public string Id { get; private set; }
     public string DisplayName { get; private set; }
