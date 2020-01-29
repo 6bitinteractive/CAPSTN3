@@ -65,6 +65,14 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""ScentMode"",
+                    ""type"": ""Button"",
+                    ""id"": ""1ed1e7ea-634a-407c-88fb-fb1747df6a53"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -241,6 +249,28 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b3ab0e84-dba4-4fc4-aaca-b196de063ed3"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScentMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9a8a6c0b-1aa2-4e3e-a82a-ee4974455823"",
+                    ""path"": ""<Keyboard>/o"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScentMode"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -933,6 +963,7 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
         m_Player_Dig = m_Player.FindAction("Dig", throwIfNotFound: true);
         m_Player_Talk = m_Player.FindAction("Talk", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_ScentMode = m_Player.FindAction("ScentMode", throwIfNotFound: true);
         // PlayerBiting
         m_PlayerBiting = asset.FindActionMap("PlayerBiting", throwIfNotFound: true);
         m_PlayerBiting_Move = m_PlayerBiting.FindAction("Move", throwIfNotFound: true);
@@ -1005,6 +1036,7 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Dig;
     private readonly InputAction m_Player_Talk;
     private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_ScentMode;
     public struct PlayerActions
     {
         private @PlayerControlScheme m_Wrapper;
@@ -1015,6 +1047,7 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
         public InputAction @Dig => m_Wrapper.m_Player_Dig;
         public InputAction @Talk => m_Wrapper.m_Player_Talk;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @ScentMode => m_Wrapper.m_Player_ScentMode;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1042,6 +1075,9 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
                 @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @ScentMode.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScentMode;
+                @ScentMode.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScentMode;
+                @ScentMode.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScentMode;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1064,6 +1100,9 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @ScentMode.started += instance.OnScentMode;
+                @ScentMode.performed += instance.OnScentMode;
+                @ScentMode.canceled += instance.OnScentMode;
             }
         }
     }
@@ -1275,6 +1314,7 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
         void OnDig(InputAction.CallbackContext context);
         void OnTalk(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnScentMode(InputAction.CallbackContext context);
     }
     public interface IPlayerBitingActions
     {
