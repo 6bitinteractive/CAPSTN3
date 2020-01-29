@@ -1769,6 +1769,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1591285506
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1591285508}
+  - component: {fileID: 1591285507}
+  m_Layer: 0
+  m_Name: Sniffable Test Objective Quest Event 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1591285507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591285506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8364c862bb7c40b4fa784907b2212c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crossSceneReferenceQuestEvent:
+    serializedGuid: 19fe1be6f19e5b4fb5fcb55f80abf89b
+    cachedName: QuestEvent
+    cachedScene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+--- !u!4 &1591285508
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591285506}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.0000000037252903, y: -0.734, z: -9.83}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1708283502
 GameObject:
   m_ObjectHideFlags: 0
@@ -2004,6 +2051,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 455601640, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1038197436724218274, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
         type: 3}
       propertyPath: m_Name
@@ -2074,6 +2125,192 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 113796372}
+    - target: {fileID: 2645402448455825881, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: crossSceneReference.serializedGuid.Array.data[0]
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645402448455825881, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: crossSceneReference.serializedGuid.Array.data[1]
+      value: 254
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645402448455825881, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: crossSceneReference.serializedGuid.Array.data[2]
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645402448455825881, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: crossSceneReference.serializedGuid.Array.data[3]
+      value: 230
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645402448455825881, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: crossSceneReference.serializedGuid.Array.data[4]
+      value: 241
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645402448455825881, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: crossSceneReference.serializedGuid.Array.data[5]
+      value: 158
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645402448455825881, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: crossSceneReference.serializedGuid.Array.data[6]
+      value: 91
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645402448455825881, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: crossSceneReference.serializedGuid.Array.data[7]
+      value: 79
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645402448455825881, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: crossSceneReference.serializedGuid.Array.data[8]
+      value: 181
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645402448455825881, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: crossSceneReference.serializedGuid.Array.data[9]
+      value: 252
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645402448455825881, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: crossSceneReference.serializedGuid.Array.data[10]
+      value: 181
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645402448455825881, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: crossSceneReference.serializedGuid.Array.data[11]
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645402448455825881, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: crossSceneReference.serializedGuid.Array.data[12]
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645402448455825881, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: crossSceneReference.serializedGuid.Array.data[13]
+      value: 171
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645402448455825881, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: crossSceneReference.serializedGuid.Array.data[14]
+      value: 248
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645402448455825881, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: crossSceneReference.serializedGuid.Array.data[15]
+      value: 155
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645402448455825881, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: crossSceneReference.cachedName
+      value: QuestEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645402448455825881, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: crossSceneReference.cachedScene
+      value: 
+      objectReference: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab,
+        type: 3}
+    - target: {fileID: 2645402448455825881, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: StartPos
+      value: 
+      objectReference: {fileID: 74675474}
+    - target: {fileID: 2645402448455825881, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: startPos
+      value: 
+      objectReference: {fileID: 74675474}
+    - target: {fileID: 7814968136900766981, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: serializedGuid.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7814968136900766981, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: serializedGuid.Array.data[0]
+      value: 237
+      objectReference: {fileID: 0}
+    - target: {fileID: 7814968136900766981, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: serializedGuid.Array.data[1]
+      value: 62
+      objectReference: {fileID: 0}
+    - target: {fileID: 7814968136900766981, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: serializedGuid.Array.data[2]
+      value: 251
+      objectReference: {fileID: 0}
+    - target: {fileID: 7814968136900766981, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: serializedGuid.Array.data[3]
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 7814968136900766981, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: serializedGuid.Array.data[4]
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 7814968136900766981, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: serializedGuid.Array.data[5]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7814968136900766981, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: serializedGuid.Array.data[6]
+      value: 141
+      objectReference: {fileID: 0}
+    - target: {fileID: 7814968136900766981, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: serializedGuid.Array.data[7]
+      value: 76
+      objectReference: {fileID: 0}
+    - target: {fileID: 7814968136900766981, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: serializedGuid.Array.data[8]
+      value: 185
+      objectReference: {fileID: 0}
+    - target: {fileID: 7814968136900766981, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: serializedGuid.Array.data[9]
+      value: 98
+      objectReference: {fileID: 0}
+    - target: {fileID: 7814968136900766981, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: serializedGuid.Array.data[10]
+      value: 41
+      objectReference: {fileID: 0}
+    - target: {fileID: 7814968136900766981, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: serializedGuid.Array.data[11]
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 7814968136900766981, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: serializedGuid.Array.data[12]
+      value: 181
+      objectReference: {fileID: 0}
+    - target: {fileID: 7814968136900766981, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: serializedGuid.Array.data[13]
+      value: 229
+      objectReference: {fileID: 0}
+    - target: {fileID: 7814968136900766981, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: serializedGuid.Array.data[14]
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: 7814968136900766981, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: serializedGuid.Array.data[15]
+      value: 206
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf, type: 3}
 --- !u!1001 &3472253083127123948
