@@ -4,9 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[System.Serializable]
-public class ConditionEvent : UnityEvent<Condition> { }
-
 public abstract class Condition : MonoBehaviour
 {
     public Status CurrentStatus => currentStatus;
@@ -16,6 +13,10 @@ public abstract class Condition : MonoBehaviour
     public ConditionEvent OnDone = new ConditionEvent();
 
     private Status currentStatus;
+
+    // TEST
+    public ConditionEventType conditionUpdate;
+    // ----
 
     public void SwitchStatus(Status status)
     {
@@ -35,6 +36,11 @@ public abstract class Condition : MonoBehaviour
                 {
                     InitializeCondition();
                     OnActive.Invoke(this);
+
+                    // TEST
+                    SingletonManager.GetInstance<EventManager>().Trigger<ConditionEvent, Condition>(conditionUpdate, this);
+                    // ----
+
                     break;
                 }
 

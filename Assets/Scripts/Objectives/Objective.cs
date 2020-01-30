@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[Serializable]
-public class ObjectiveEvent : UnityEvent<Objective> { }
 
 [Serializable]
 public class Objective
@@ -19,8 +17,22 @@ public class Objective
 
     //private SequenceType sequenceType = SequenceType.Parallel;
 
+    // TEST
+     public void Test(Condition condition)
+    {
+        if (conditions.Exists(x => condition))
+            Debug.Log("Found matching condition. " + condition);
+        else
+            Debug.Log("No matching condition found. " + condition);
+    }
+    // ----
+
     public void Activate()
     {
+        // TEST
+        SingletonManager.GetInstance<EventManager>().Subscribe<ConditionEvent, Condition>(Test);
+        // ----
+
         foreach (var condition in conditions)
         {
             //switch (sequenceType)
@@ -63,6 +75,10 @@ public class Objective
         OnDone.Invoke(this);
 
         condition.OnDone.RemoveListener(EvaluateObjective);
+
+        // TEST
+        SingletonManager.GetInstance<EventManager>().Unsubscribe<ConditionEvent, Condition>(Test);
+        // ----
     }
 
     public enum SequenceType

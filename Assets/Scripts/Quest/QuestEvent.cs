@@ -4,9 +4,6 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-[Serializable]
-public class GameQuestEvent : UnityEvent<QuestEvent> { }
-
 [RequireComponent(typeof(GuidComponent))]
 
 public class QuestEvent : MonoBehaviour
