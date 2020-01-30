@@ -50,20 +50,26 @@ public class EventManager : Singleton<EventManager> // This acts as the mediator
         }
     }
 
-    // We do this so that whenever we trigger a certain event, we also get to broadcast that that event type has been invoked.
-    // This avoids forgetting to tell the EventManager that an event has been invoked.
-    public void Trigger<T, U>(EventType<T, U> passedEvent, U argument) where T : UnityEvent<U>
+    public void Trigger<T, U>(U argument) where T : UnityEvent<U>
     {
-        passedEvent.gameEvent.Invoke(argument); // Broadcast to any listener of this specific event; basically a wrapper?
-
         var eventType = typeof(T);
         if (subscribers.ContainsKey(eventType))
         {
             subscribers[eventType].DynamicInvoke(argument); // Broadcast to any listener of this event type
         }
     }
+
+    // We do this so that whenever we trigger a certain event, we also get to broadcast that that event type has been invoked.
+    // This avoids forgetting to tell the EventManager that an event has been invoked.
+    public void Trigger<T, U>(EventType<T, U> passedEvent, U argument) where T : UnityEvent<U>
+    {
+        passedEvent.gameEvent.Invoke(argument); // Broadcast to any listener of this specific event; basically a wrapper?
+
+        Trigger<T, U>(argument);
+    }
 }
 
+#region Event Types
 public class EventType<T, U> where T : UnityEvent<U> // We do this to still have access to setting up events via the inspector
 {
     public T gameEvent;
@@ -74,7 +80,9 @@ public class ConditionEventType : EventType<ConditionEvent, Condition> { } // Th
 
 [Serializable]
 public class InteractionEventType : EventType<InteractionEvent, InteractionData> { }
+#endregion
 
+#region UnityEvent<T>
 [Serializable]
 public class GameQuestEvent : UnityEvent<QuestEvent> { }
 
@@ -99,6 +107,7 @@ public enum InteractionType
     Bark,
     Talk
 }
+#endregion
 
 // Reference
 // https://forum.unity.com/threads/looking-for-tips-about-implementation-of-mediator-design-pattern-in-c.299863/

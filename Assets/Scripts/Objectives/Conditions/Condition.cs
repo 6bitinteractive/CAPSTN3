@@ -59,7 +59,7 @@ public abstract class Condition : MonoBehaviour
         }
     }
 
-    // Override for inspector use
+    // Overload for inspector use
     public void SwitchStatus(int status)
     {
         SwitchStatus((Status)status);
