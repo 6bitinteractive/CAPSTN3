@@ -52,6 +52,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "Press"
+                },
+                {
+                    "name": "ScentMode",
+                    "type": "Button",
+                    "id": "1ed1e7ea-634a-407c-88fb-fb1747df6a53",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -228,6 +236,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b3ab0e84-dba4-4fc4-aaca-b196de063ed3",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ScentMode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9a8a6c0b-1aa2-4e3e-a82a-ee4974455823",
+                    "path": "<Keyboard>/o",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ScentMode",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

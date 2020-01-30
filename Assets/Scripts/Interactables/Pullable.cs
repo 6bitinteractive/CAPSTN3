@@ -4,6 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(FixedJoint))]
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Biteable))]
 public class Pullable : MonoBehaviour
 {
     Rigidbody rb;

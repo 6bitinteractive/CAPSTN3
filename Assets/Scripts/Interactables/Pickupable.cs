@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Biteable))]
 public class Pickupable : MonoBehaviour
 {
     Rigidbody rb;

@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private Bite bite;
     private Dig dig;
     private Talk talk;
+    private Sniff sniff;
     private Interactor interactor;
     private Vector3 currentMove;
 
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
         interactor = GetComponent<Interactor>();
         talk = GetComponent<Talk>();
         movement = GetComponent<Movement>();
+        sniff = GetComponent<Sniff>();
 
         SetupPlayerConrtolScheme();    
     }
@@ -130,6 +132,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void ActivateScentMode()
+    {
+        sniff.ActivateScentMode();
+    }
+
+    public void DeactivateScentMode(InputAction.CallbackContext context)
+    {
+        sniff.DeactivateScentMode();
+    }
+
     private void HandleMove(InputAction.CallbackContext context)
     {
         currentMove = context.ReadValue<Vector2>();
@@ -164,6 +176,8 @@ public class PlayerController : MonoBehaviour
         controlScheme.Player.Bite.performed += context => Bite();
         controlScheme.Player.Dig.performed += context => Dig();
         controlScheme.Player.Talk.performed += context => Talk();
+        controlScheme.Player.ScentMode.started += context => ActivateScentMode();
+        controlScheme.Player.ScentMode.canceled += DeactivateScentMode;
         controlScheme.Player.Move.performed += HandleMove;
         controlScheme.Player.Move.canceled += CancelMove;
 
