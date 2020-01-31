@@ -4,28 +4,32 @@ using UnityEngine;
 
 public class Sniff : MonoBehaviour
 {
+    [SerializeField] private Camera mainCamera;
     [SerializeField] private float scentSpeed = 0.9f;
     [SerializeField] private LineRenderer line;
     [SerializeField] private Transform startPos;
     private Transform currentDestination;
+    private GrayscaleFilter grayScaleFilter;
 
     public Transform CurrentDestination { get => currentDestination; set => currentDestination = value; }
 
     void Start()
     {
-        line = gameObject.GetComponent<LineRenderer>();
+        if (mainCamera == null) Debug.LogError("main camera is null please set main camera");
+
+        grayScaleFilter = mainCamera.GetComponent<GrayscaleFilter>();
     }
 
     public void ActivateScentMode()
     {
-        Debug.Log("Enable Scent Mode");
         line.enabled = true;
+        grayScaleFilter.enabled = true;
     }
 
     public void DeactivateScentMode()
     {
-        Debug.Log("Decativated");
         line.enabled = false;
+        grayScaleFilter.enabled = false;
     }
 
     void Update()
