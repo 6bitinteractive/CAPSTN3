@@ -10,6 +10,9 @@ public class Quest : MonoBehaviour // Only a MonoBehaviour to make it available 
 {
     private List<QuestEvent> questEvents = new List<QuestEvent>();
 
+    // Assumes there's only one active quest event which is true for current implementation
+    public QuestEvent CurrentQuestEvent => questEvents.Find(x => x.CurrentStatus == QuestEvent.Status.Active);
+
     public UnityEvent OnQuestEnd = new UnityEvent();
 
     public void Initialize()

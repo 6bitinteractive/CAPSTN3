@@ -9,14 +9,15 @@ public abstract class Condition : MonoBehaviour
     public Status CurrentStatus => currentStatus;
     public bool Satisfied { get; protected set; }
 
+    // TODO: Change to EventType<>
     public ConditionEvent OnActive = new ConditionEvent();
     public ConditionEvent OnDone = new ConditionEvent();
-
-    private Status currentStatus;
 
     // TEST
     public ConditionEventType conditionUpdate;
     // ----
+
+    private Status currentStatus;
 
     public void SwitchStatus(Status status)
     {

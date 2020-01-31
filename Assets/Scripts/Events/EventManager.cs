@@ -10,6 +10,12 @@ public class EventManager : Singleton<EventManager> // This acts as the mediator
 {
     private Dictionary<Type, Delegate> subscribers = new Dictionary<Type, Delegate>();
 
+    /// <summary>
+    /// Subscribe to a type of event.
+    /// </summary>
+    /// <typeparam name="T">The UnityEvent<T></typeparam>
+    /// <typeparam name="U">The parameter of the UnityEvent; what is being passed when the event is invoked.</typeparam>
+    /// <param name="unityAction">The listener/callback (i.e. the function/method)</param>
     public void Subscribe<T, U>(UnityAction<U> unityAction) where T : UnityEvent<U>
     {
         if (unityAction == null)
@@ -75,14 +81,19 @@ public class EventType<T, U> where T : UnityEvent<U> // We do this to still have
     public T gameEvent;
 }
 
+// These are necessary for EventType to show up in the inspector
+
 [Serializable]
-public class ConditionEventType : EventType<ConditionEvent, Condition> { } // This is necessary for EventType to show up in the inspector
+public class QuestEventType : EventType<GameQuestEvent, QuestEvent> { }
+
+[Serializable]
+public class ConditionEventType : EventType<ConditionEvent, Condition> { }
 
 [Serializable]
 public class InteractionEventType : EventType<InteractionEvent, InteractionData> { }
 #endregion
 
-#region UnityEvent<T>
+#region UnityEvent<T>s
 [Serializable]
 public class GameQuestEvent : UnityEvent<QuestEvent> { }
 

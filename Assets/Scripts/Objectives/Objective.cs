@@ -13,6 +13,7 @@ public class Objective
     public List<Reaction> reactions;
     public bool Complete { get; private set; }
 
+    // TODO: Change to EventType<>
     public ObjectiveEvent OnDone = new ObjectiveEvent();
 
     //private SequenceType sequenceType = SequenceType.Parallel;

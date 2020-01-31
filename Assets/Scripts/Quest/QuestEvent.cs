@@ -13,14 +13,19 @@ public class QuestEvent : MonoBehaviour
 
     public List<Objective> objectives = new List<Objective>();
 
+    // TODO: Change to EventType<>
     public GameQuestEvent OnActive = new GameQuestEvent();
     public GameQuestEvent OnDone = new GameQuestEvent();
+
+    public QuestEventType OnQuestEventActive;
+    public QuestEventType OnQuestEventDone;
 
     public string Id { get; private set; }
     public string DisplayName { get; private set; }
     public string Description { get; private set; }
     public Status CurrentStatus => currentStatus;
 
+    private static EventManager eventManager;
     private Status currentStatus;
 
     [HideInInspector] public int order = -1; // We start with -1 to easily determine that the order has not yet been set
@@ -28,6 +33,8 @@ public class QuestEvent : MonoBehaviour
 
     public void Initialize()
     {
+        eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
+
         Id = Guid.NewGuid().ToString();
         DisplayName = displayName;
         Description = description;
@@ -53,6 +60,8 @@ public class QuestEvent : MonoBehaviour
                     Debug.LogFormat("Activating QuestEvent \"{0}\".", displayName);
                     ActivateConditions();
                     OnActive.Invoke(this);
+
+                    eventManager.Trigger<GameQuestEvent, QuestEvent>(OnQuestEventActive, this);
                     break;
                 }
 
@@ -60,6 +69,8 @@ public class QuestEvent : MonoBehaviour
                 {
                     Debug.LogFormat("QuestEvent \"{0}\" complete.", displayName);
                     OnDone.Invoke(this);
+
+                    eventManager.Trigger<GameQuestEvent, QuestEvent>(OnQuestEventDone, this);
                     break;
                 }
 
@@ -92,7 +103,7 @@ public class QuestEvent : MonoBehaviour
         foreach (var o in objectives)
             o.OnDone.RemoveListener(EvaluateQuestEvent);
 
-        SwitchStatus(Status.Done);
+        //SwitchStatus(Status.Done);
     }
 
     public enum Status
