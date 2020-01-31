@@ -103,7 +103,7 @@ public class QuestEvent : MonoBehaviour
         foreach (var o in objectives)
             o.OnDone.RemoveListener(EvaluateQuestEvent);
 
-        //SwitchStatus(Status.Done);
+        SwitchStatus(Status.Done);
     }
 
     public enum Status

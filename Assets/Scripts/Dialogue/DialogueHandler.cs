@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// NOTE: Be careful when setting up QuestEvents that are in succession
+// Ex. When QuestEvent A is done, it would mean that QuestEventB will start next right away...
+// This means that the dialogue set for QuestEventA for a done status will not be used unless QuestEventB is started
+// at a much later time (e.g. manually activating it instead of switching it to active soon after the previous QuestEvent has been done)
+
 public class DialogueHandler : MonoBehaviour
 {
     [SerializeField] private Conversation defaultConversation;

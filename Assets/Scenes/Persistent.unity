@@ -120,6 +120,49 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &229896202
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 229896203}
+  - component: {fileID: 229896204}
+  m_Layer: 0
+  m_Name: BaseReaction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &229896203
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229896202}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 475270250}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &229896204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229896202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6362147e96335c347b207e4dd9e1e20f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &273879772
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -278,6 +321,105 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &475270249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 475270250}
+  - component: {fileID: 475270253}
+  - component: {fileID: 475270252}
+  - component: {fileID: 475270251}
+  m_Layer: 0
+  m_Name: QuestEvent (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &475270250
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475270249}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 675512429}
+  - {fileID: 229896203}
+  m_Father: {fileID: 1593814100}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &475270251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475270249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98bbc2c1e63e98543830eec78d976795, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializedGuid: d91ad2e9b09f454dabb414f0176e8c8b
+--- !u!114 &475270252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475270249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac265c4e13f9eef4caaf3a59f2171f8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &475270253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475270249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a4ffd324dd62a42947797d8d6f427a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Go to the Markets 2
+  description: 
+  objectives:
+  - description: Player must enter the Markets (Scene) 222
+    conditions:
+    - {fileID: 675512430}
+    reactions:
+    - {fileID: 229896204}
+    OnDone:
+      m_PersistentCalls:
+        m_Calls: []
+  OnActive:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDone:
+    m_PersistentCalls:
+      m_Calls: []
+  OnQuestEventActive:
+    gameEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  OnQuestEventDone:
+    gameEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  order: -1
+  pathList: []
 --- !u!1 &618776229
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,6 +450,134 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &675512428
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 475270250}
+    m_Modifications:
+    - target: {fileID: 8474518452565125626, guid: ff2c98024ae25ff4aac04e566a4d6d05,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474518452565125626, guid: ff2c98024ae25ff4aac04e566a4d6d05,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474518452565125626, guid: ff2c98024ae25ff4aac04e566a4d6d05,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474518452565125626, guid: ff2c98024ae25ff4aac04e566a4d6d05,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474518452565125626, guid: ff2c98024ae25ff4aac04e566a4d6d05,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474518452565125626, guid: ff2c98024ae25ff4aac04e566a4d6d05,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474518452565125626, guid: ff2c98024ae25ff4aac04e566a4d6d05,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474518452565125626, guid: ff2c98024ae25ff4aac04e566a4d6d05,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474518452565125626, guid: ff2c98024ae25ff4aac04e566a4d6d05,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474518452565125626, guid: ff2c98024ae25ff4aac04e566a4d6d05,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474518452565125626, guid: ff2c98024ae25ff4aac04e566a4d6d05,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474518452565125627, guid: ff2c98024ae25ff4aac04e566a4d6d05,
+        type: 3}
+      propertyPath: OnDone.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474518452565125627, guid: ff2c98024ae25ff4aac04e566a4d6d05,
+        type: 3}
+      propertyPath: OnDone.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474518452565125627, guid: ff2c98024ae25ff4aac04e566a4d6d05,
+        type: 3}
+      propertyPath: OnDone.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474518452565125627, guid: ff2c98024ae25ff4aac04e566a4d6d05,
+        type: 3}
+      propertyPath: OnDone.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1593814099}
+    - target: {fileID: 8474518452565125627, guid: ff2c98024ae25ff4aac04e566a4d6d05,
+        type: 3}
+      propertyPath: OnDone.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474518452565125627, guid: ff2c98024ae25ff4aac04e566a4d6d05,
+        type: 3}
+      propertyPath: OnDone.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474518452565125627, guid: ff2c98024ae25ff4aac04e566a4d6d05,
+        type: 3}
+      propertyPath: OnDone.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474518452565125627, guid: ff2c98024ae25ff4aac04e566a4d6d05,
+        type: 3}
+      propertyPath: requiredSceneToEnter
+      value: 
+      objectReference: {fileID: 11400000, guid: b379017c8f113aa45a735dad078a71b0,
+        type: 2}
+    - target: {fileID: 8474518452565125629, guid: ff2c98024ae25ff4aac04e566a4d6d05,
+        type: 3}
+      propertyPath: m_Name
+      value: SceneEnterCondition
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ff2c98024ae25ff4aac04e566a4d6d05, type: 3}
+--- !u!4 &675512429 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8474518452565125626, guid: ff2c98024ae25ff4aac04e566a4d6d05,
+    type: 3}
+  m_PrefabInstance: {fileID: 675512428}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &675512430 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8474518452565125627, guid: ff2c98024ae25ff4aac04e566a4d6d05,
+    type: 3}
+  m_PrefabInstance: {fileID: 675512428}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e279f64e35c27489f37dd3e2d62338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &811380721
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -848,6 +1118,7 @@ Transform:
   - {fileID: 1426697831}
   - {fileID: 1280509758}
   - {fileID: 1747580677}
+  - {fileID: 475270250}
   m_Father: {fileID: 1900297896}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1021,95 +1292,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6362147e96335c347b207e4dd9e1e20f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1858625739
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1858625741}
-  - component: {fileID: 1858625740}
-  m_Layer: 0
-  m_Name: DialogueHandlerTest
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1858625740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858625739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54e38b52fd4adee4e9b3c349b264c693, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultConversation:
-    dialogue:
-    - speaker: {fileID: 11400000, guid: ae1136a1e433e3946a82d25089a316e7, type: 2}
-      dialogueLines:
-      - Nice weather, huh.
-  questRelatedConversations:
-  - questEventReference:
-      serializedGuid: 19fe1be6f19e5b4fb5fcb55f80abf89b
-      cachedName: QuestEvent
-      cachedScene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
-    requiredQuestEventStatus: 1
-    conversation:
-      dialogue:
-      - speaker: {fileID: 11400000, guid: ae1136a1e433e3946a82d25089a316e7, type: 2}
-        dialogueLines:
-        - Try going to the Open Park...
-  - questEventReference:
-      serializedGuid: 19fe1be6f19e5b4fb5fcb55f80abf89b
-      cachedName: QuestEvent
-      cachedScene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
-    requiredQuestEventStatus: 2
-    conversation:
-      dialogue:
-      - speaker: {fileID: 11400000, guid: ae1136a1e433e3946a82d25089a316e7, type: 2}
-        dialogueLines:
-        - You went to the Open Park
-  - questEventReference:
-      serializedGuid: 19ffa00bbac05146845b57a9d2d93067
-      cachedName: QuestEvent (2)
-      cachedScene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
-    requiredQuestEventStatus: 1
-    conversation:
-      dialogue:
-      - speaker: {fileID: 11400000, guid: ae1136a1e433e3946a82d25089a316e7, type: 2}
-        dialogueLines:
-        - Head back to the Open Park
-  - questEventReference:
-      serializedGuid: 19ffa00bbac05146845b57a9d2d93067
-      cachedName: QuestEvent (2)
-      cachedScene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
-    requiredQuestEventStatus: 2
-    conversation:
-      dialogue:
-      - speaker: {fileID: 11400000, guid: ae1136a1e433e3946a82d25089a316e7, type: 2}
-        dialogueLines:
-        - Welcome back.
---- !u!4 &1858625741
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858625739}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1900297894
 GameObject:
   m_ObjectHideFlags: 0
