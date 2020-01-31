@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 // NOTE: Be careful when setting up QuestEvents that are in succession
 // Ex. When QuestEvent A is done, it would mean that QuestEventB will start next right away...
@@ -15,16 +16,21 @@ public class DialogueHandler : MonoBehaviour
     public Conversation CurrentConversation { get; private set; }
 
     private static EventManager eventManager;
+    private static DialogueDisplayManager dialogueDisplayManager;
     private bool isDirty;
+
+    public static UnityEvent OnConversationEnd = new UnityEvent();
 
     private IEnumerator Start()
     {
-        yield return new WaitForEndOfFrame();
+        dialogueDisplayManager = dialogueDisplayManager ?? SingletonManager.GetInstance<DialogueDisplayManager>();
 
-        Debug.LogFormat("DialogueHandler for {0} started listening to QuestEventUpdates.", gameObject.name);
         // Listen to quest event status update
         eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
         eventManager.Subscribe<GameQuestEvent, QuestEvent>(DetermineCurrentConversation);
+        Debug.LogFormat("DialogueHandler for {0} started listening to QuestEventUpdates.", gameObject.name);
+
+        yield return new WaitForEndOfFrame();
 
         // TODO: Load a saved data
 
@@ -44,6 +50,48 @@ public class DialogueHandler : MonoBehaviour
         eventManager.Unsubscribe<GameQuestEvent, QuestEvent>(DetermineCurrentConversation);
     }
 
+    private bool startingNewConversation = true;
+    private bool closeConversation;
+    private Dialogue dialogue;
+
+    public void DisplayCurrentConversation()
+    {
+        // When we're done going through the conversation but not yet ready to start a new one (i.e. we haven't been able to hide the dialogue display)
+        if (closeConversation && !startingNewConversation)
+        {
+            OnConversationEnd.Invoke(); // The display should be listening to this event and hide itself once the event has been invoked
+            startingNewConversation = true; // Now, we can let the player start a new conversation
+            return;
+        }
+
+        if (startingNewConversation)
+        {
+            startingNewConversation = false; // We make sure we keep continuing...
+            closeConversation = false; // ...and not yet end the conversation
+
+            CurrentConversation.ResetConversation(); // We make sure that if the conversation is still the same, we loop back to the first dialogue
+            dialogue = CurrentConversation.GetNextDialogue();
+        }
+
+        string nextLine = dialogue.GetNextLine();
+        var display = dialogueDisplayManager.GetDialogueDisplay(dialogue.speaker);
+        display.Display();
+        display.displayText.text = nextLine;
+
+        if (dialogue.NextIsEnd()) // Check if we're at the end of the current speaker's dialogue
+        {
+            if (!CurrentConversation.NextIsEnd()) // Check if we're not yet at the end of the conversation
+            {
+                dialogue = CurrentConversation.GetNextDialogue();
+            }
+            else
+            {
+                closeConversation = true;
+                return; // Conversation has ended
+            }
+        }
+    }
+
     private void DetermineCurrentConversation(QuestEvent questEvent)
     {
         isDirty = true;
@@ -61,11 +109,8 @@ public class DialogueHandler : MonoBehaviour
             CurrentConversation = cs.conversation;
             Debug.LogFormat("Dialogue updated by {0}", questEvent);
         }
-        else
-        {
-        }
 
-        Debug.LogFormat("Current Dialogue: {0}", CurrentConversation.dialogue[0].dialogueLines[0]);
+        Debug.LogFormat("{1} Current Dialogue: {0}", CurrentConversation.dialogue[0].dialogueLines[0], gameObject.name);
     }
 
     [System.Serializable]
