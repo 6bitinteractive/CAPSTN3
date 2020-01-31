@@ -2043,7 +2043,8 @@ MonoBehaviour:
       dialogue:
       - speaker: {fileID: 11400000, guid: ae1136a1e433e3946a82d25089a316e7, type: 2}
         dialogueLines:
-        - Welcome back.
+        - Welcome back. This doesn't print because by the time we return to this scene,
+          we're already past QuestEvent2
 --- !u!4 &1858625741
 Transform:
   m_ObjectHideFlags: 0
