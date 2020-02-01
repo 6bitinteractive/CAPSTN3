@@ -1295,8 +1295,8 @@ MonoBehaviour:
     dialogue:
     - speaker: {fileID: 11400000, guid: ae1136a1e433e3946a82d25089a316e7, type: 2}
       dialogueLines:
-      - This is the first line.
-      - A new line from the same speaker.
+      - Did you just...
+      - Nevermind.
     - speaker: {fileID: 11400000, guid: 2cdb60320808ecd43ba300813b6f1046, type: 2}
       dialogueLines:
       - A new speaker
@@ -1315,6 +1315,16 @@ MonoBehaviour:
       - speaker: {fileID: 11400000, guid: ae1136a1e433e3946a82d25089a316e7, type: 2}
         dialogueLines:
         - The Open Park is just south of here.
+  - questEventReference:
+      serializedGuid: 19ffa00bbac05146845b57a9d2d93067
+      cachedName: QuestEvent (2)
+      cachedScene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+    requiredQuestEventStatus: 1
+    conversation:
+      dialogue:
+      - speaker: {fileID: 11400000, guid: 2cdb60320808ecd43ba300813b6f1046, type: 2}
+        dialogueLines:
+        - Have you tried interacting with the objects around here?
 --- !u!195 &893496298
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1983,7 +1993,7 @@ PrefabInstance:
     - target: {fileID: 1733122024059840178, guid: e1bc8db3357849c47aa3a5eb811afa0e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.31672525
+      value: 0.38268343
       objectReference: {fileID: 0}
     - target: {fileID: 1733122024059840178, guid: e1bc8db3357849c47aa3a5eb811afa0e,
         type: 3}
@@ -1993,7 +2003,7 @@ PrefabInstance:
     - target: {fileID: 1733122024059840178, guid: e1bc8db3357849c47aa3a5eb811afa0e,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9485173
+      value: 0.92387956
       objectReference: {fileID: 0}
     - target: {fileID: 1733122024059840178, guid: e1bc8db3357849c47aa3a5eb811afa0e,
         type: 3}
@@ -2008,7 +2018,7 @@ PrefabInstance:
     - target: {fileID: 1733122024059840178, guid: e1bc8db3357849c47aa3a5eb811afa0e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 36.93
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 1733122024059840178, guid: e1bc8db3357849c47aa3a5eb811afa0e,
         type: 3}
@@ -2153,7 +2163,7 @@ Transform:
   m_Children:
   - {fileID: 107908684}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1708283502
 GameObject:
@@ -2396,7 +2406,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1986381705
 PrefabInstance:
@@ -2678,7 +2688,7 @@ PrefabInstance:
     - target: {fileID: 1733122024059840178, guid: e1bc8db3357849c47aa3a5eb811afa0e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.5735764
+      value: 0.38268343
       objectReference: {fileID: 0}
     - target: {fileID: 1733122024059840178, guid: e1bc8db3357849c47aa3a5eb811afa0e,
         type: 3}
@@ -2688,7 +2698,7 @@ PrefabInstance:
     - target: {fileID: 1733122024059840178, guid: e1bc8db3357849c47aa3a5eb811afa0e,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8191521
+      value: 0.92387956
       objectReference: {fileID: 0}
     - target: {fileID: 1733122024059840178, guid: e1bc8db3357849c47aa3a5eb811afa0e,
         type: 3}
@@ -2703,7 +2713,7 @@ PrefabInstance:
     - target: {fileID: 1733122024059840178, guid: e1bc8db3357849c47aa3a5eb811afa0e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 70
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 1733122024059840178, guid: e1bc8db3357849c47aa3a5eb811afa0e,
         type: 3}
