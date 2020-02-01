@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Sniffable : MonoBehaviour
 {
-    [SerializeField] private GuidReference crossSceneReferenceQuestEvent = new GuidReference();
+    [SerializeField] private GuidReference crossSceneReferenceQuestEvent;
 
     private QuestEvent questEvent;
     private Sniff sniff;
-    void Start()
+    void Awake()
     {
         sniff = FindObjectOfType<Sniff>();
         questEvent = crossSceneReferenceQuestEvent.gameObject.GetComponent<QuestEvent>();
@@ -17,7 +17,7 @@ public class Sniffable : MonoBehaviour
     }
 
     public void SetCurrentTarget(QuestEvent questEvent)
-    {       
+    {
         sniff.CurrentDestination = gameObject.transform;
     }
 

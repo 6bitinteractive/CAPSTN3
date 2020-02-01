@@ -36,6 +36,6 @@ public class Sniff : MonoBehaviour
     {
         if (CurrentDestination == null || !line.enabled) return;
         line.SetPosition(0, startPos.position);
-        line.SetPosition(1, Vector3.MoveTowards(startPos.position, CurrentDestination.position, scentSpeed * Time.time));     
+        line.SetPosition(1, Vector3.MoveTowards(startPos.position, CurrentDestination.position, scentSpeed * Time.time));
     }
 }
