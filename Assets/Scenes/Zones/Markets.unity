@@ -219,6 +219,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1038197435234457363}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &101449156 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5965216443988192363, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+    type: 3}
+  m_PrefabInstance: {fileID: 1038197435234457363}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &107908683
 GameObject:
   m_ObjectHideFlags: 0
@@ -2565,6 +2571,16 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 113796372}
+    - target: {fileID: 2645402448455825881, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: startPos
+      value: 
+      objectReference: {fileID: 101449156}
+    - target: {fileID: 2709157198461750949, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7a3217360c805f44db8c0b84b497c7ef, type: 2}
     - target: {fileID: 7814968136900766981, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
         type: 3}
       propertyPath: serializedGuid.Array.size
