@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -120,6 +120,68 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &5665288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5665289}
+  - component: {fileID: 5665290}
+  m_Layer: 0
+  m_Name: InteractionCondition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5665289
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5665288}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1930963606}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5665290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5665288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45c9b24172469184da146775909487b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnActive:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDone:
+    m_PersistentCalls:
+      m_Calls: []
+  conditionUpdate:
+    gameEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  interactionSource:
+    serializedGuid: ed3efb80b4648d4cb9622913b5e525ce
+    cachedName: Player
+    cachedScene: {fileID: 102900000, guid: b42835fa3cc95164f8a58bd11d8500ab, type: 3}
+  interactionTarget:
+    serializedGuid: 6f21872fdbe25c44a9ef7a46eb0ac9be
+    cachedName: bully_boy
+    cachedScene: {fileID: 102900000, guid: b42835fa3cc95164f8a58bd11d8500ab, type: 3}
+  interactionType: 0
 --- !u!1 &229896202
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,7 +416,7 @@ Transform:
   - {fileID: 675512429}
   - {fileID: 229896203}
   m_Father: {fileID: 1593814100}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &475270251
 MonoBehaviour:
@@ -813,7 +875,7 @@ Transform:
   - {fileID: 811380722}
   - {fileID: 1039151914}
   m_Father: {fileID: 1593814100}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1280509759
 MonoBehaviour:
@@ -1116,6 +1178,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1426697831}
+  - {fileID: 1930963606}
   - {fileID: 1280509758}
   - {fileID: 1747580677}
   - {fileID: 475270250}
@@ -1183,7 +1246,7 @@ Transform:
   - {fileID: 273879773}
   - {fileID: 1762131231}
   m_Father: {fileID: 1593814100}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1747580678
 MonoBehaviour:
@@ -1380,6 +1443,90 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d8b88eb67c753446909b17257c08d05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1930963605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1930963606}
+  - component: {fileID: 1930963608}
+  - component: {fileID: 1930963607}
+  m_Layer: 0
+  m_Name: QuestEvent - InteractionBark
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1930963606
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930963605}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5665289}
+  m_Father: {fileID: 1593814100}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1930963607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930963605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a4ffd324dd62a42947797d8d6f427a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Bark at NPC
+  description: 
+  objectives:
+  - description: 
+    conditions:
+    - {fileID: 5665290}
+    reactions: []
+    OnDone:
+      m_PersistentCalls:
+        m_Calls: []
+  OnActive:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDone:
+    m_PersistentCalls:
+      m_Calls: []
+  OnQuestEventActive:
+    gameEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  OnQuestEventDone:
+    gameEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  order: -1
+  pathList: []
+--- !u!114 &1930963608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930963605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98bbc2c1e63e98543830eec78d976795, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializedGuid: bba103daa7153142b4459cc52c454db8
 --- !u!114 &435628486839303994
 MonoBehaviour:
   m_ObjectHideFlags: 0

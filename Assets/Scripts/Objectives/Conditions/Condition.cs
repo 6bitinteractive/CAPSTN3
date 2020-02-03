@@ -17,6 +17,8 @@ public abstract class Condition : MonoBehaviour
     public ConditionEventType conditionUpdate;
     // ----
 
+    protected static EventManager eventManager;
+    private bool initialized;
     private Status currentStatus;
 
     public void SwitchStatus(Status status)
@@ -35,7 +37,9 @@ public abstract class Condition : MonoBehaviour
 
             case Status.Active:
                 {
-                    InitializeCondition();
+                    if (!initialized)
+                        InitializeCondition();
+
                     OnActive.Invoke(this);
 
                     // TEST
@@ -66,8 +70,12 @@ public abstract class Condition : MonoBehaviour
         SwitchStatus((Status)status);
     }
 
+    // NOTE: Only called once
     protected virtual void InitializeCondition()
     {
+        eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
+
+        initialized = true;
         Debug.LogFormat("{0} - Condition initialized.", gameObject.name);
     }
 

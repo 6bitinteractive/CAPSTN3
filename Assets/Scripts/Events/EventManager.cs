@@ -75,6 +75,7 @@ public class EventManager : Singleton<EventManager> // This acts as the mediator
     }
 }
 
+// When you want to create event types that can still show up in the inspector:
 #region Event Types
 public class EventType<T, U> where T : UnityEvent<U> // We do this to still have access to setting up events via the inspector
 {
@@ -93,6 +94,7 @@ public class ConditionEventType : EventType<ConditionEvent, Condition> { }
 public class InteractionEventType : EventType<InteractionEvent, InteractionData> { }
 #endregion
 
+// When you want to know which events are available for <T, U>:
 #region UnityEvent<T>s
 [Serializable]
 public class GameQuestEvent : UnityEvent<QuestEvent> { }
