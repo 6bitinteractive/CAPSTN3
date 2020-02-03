@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -13,7 +14,7 @@ public class SceneController : Singleton<SceneController>
     [Header("Starting Point")]
     public SceneData playerStartingPoint;
 
-    public static UnityEvent BeforeSceneLoad = new UnityEvent();
+    public static UnityEvent BeforeSceneUnload = new UnityEvent();
     public static UnityEvent AfterSceneLoad = new UnityEvent();
 
     protected override void Awake()
@@ -39,6 +40,7 @@ public class SceneController : Singleton<SceneController>
         StartCoroutine(LoadAndSetActive(sceneData.SceneName));
     }
 
+    // This assumes there's only one additively loaded scene
     private IEnumerator LoadAndSetActive(string sceneName)
     {
 #if UNITY_EDITOR // Avoid loading the same scene twice in the Unity Editor
@@ -55,10 +57,14 @@ public class SceneController : Singleton<SceneController>
         // ...
 
         // Let any listener to this event do their thing
-        BeforeSceneLoad.Invoke();
+        BeforeSceneUnload.Invoke();
 
-        // Unload the current active scene
-        yield return SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        // Get a reference to scene to be unloaded, which is the current active scene
+        Scene sceneToBeUnloaded = SceneManager.GetActiveScene();
+
+        // Unload the scene now, unless it's the persistent scene
+        if (sceneToBeUnloaded.name != persistentSceneData.name)
+            yield return SceneManager.UnloadSceneAsync(sceneToBeUnloaded);
 
         // Allow the given scene to load over several frames and add it to the already loaded scenes
         yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
