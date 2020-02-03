@@ -6,10 +6,13 @@ public class Bark : MonoBehaviour
 {
     [SerializeField] private float radius = 5;
     [SerializeField] private AudioClip barkSfx;
+
+    private static EventManager eventManager;
     private AudioSource audioSource;
 
     private void Start()
     {
+        eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -27,6 +30,12 @@ public class Bark : MonoBehaviour
                 {
                     barkable.Interact(source, interactableTarget);
                     //Debug.Log("Barking at " + target.gameObject.name);
+
+                    InteractionData interactionData = new InteractionData();
+                    interactionData.source = source;
+                    interactionData.target = interactableTarget;
+                    interactionData.interactionType = InteractionType.Bark;
+                    eventManager.Trigger<InteractionEvent, InteractionData>(interactionData);
                 }
             }
         }
