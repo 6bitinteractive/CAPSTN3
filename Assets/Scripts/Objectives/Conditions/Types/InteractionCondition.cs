@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,12 +13,7 @@ public class InteractionCondition : Condition
     private InteractionData condition = new InteractionData();
     private InteractionData interactionToBeEvaluated = new InteractionData();
 
-    private void Start()
-    {
-        condition.source = interactionSource.gameObject.GetComponent<Interactor>();
-        condition.target = interactionTarget.gameObject.GetComponent<IInteractable>();
-        condition.interactionType = interactionType;
-    }
+    private string requiredScene = string.Empty;
 
     protected override bool RequireSceneLoad => true;
 
@@ -54,11 +49,27 @@ public class InteractionCondition : Condition
 
     private bool SameInteractionData(InteractionData a, InteractionData b)
     {
+        //Debug.LogFormat("Source: {0} | {1}\nTarget: {2} | {3}\nType: {4} | {5}", a.source, b.source, a.target, b.target, a.interactionType, b.interactionType);
         return a.source == b.source
             && a.target == b.target
             && a.interactionType == b.interactionType;
     }
+
     protected override void OnSceneLoad(Scene scene, LoadSceneMode loadSceneMode)
     {
+        if (interactionTarget.gameObject != null) // If we have the scene where the target is located
+        {
+            requiredScene = interactionTarget.gameObject.scene.name;
+            Debug.Log("Required scene acquired - " + requiredScene);
+        }
+        else
+        {
+            return;
+        }
+
+        //Debug.Log("Getting references for GuidReference");
+        condition.source = interactionSource.gameObject.GetComponent<Interactor>();
+        condition.target = interactionTarget.gameObject.GetComponent<IInteractable>();
+        condition.interactionType = interactionType;
     }
 }
