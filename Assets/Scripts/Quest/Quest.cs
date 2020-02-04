@@ -42,6 +42,9 @@ public class Quest : MonoBehaviour // Only a MonoBehaviour to make it available 
             }
         }
 
+        // Turn off questEvent
+        doneQuestEvent.gameObject.SetActive(false);
+
         // Note: For now, we assume that all quest events will be done
         // ... so once we finish the last quest event, we can then end the Quest.
         if (doneQuestEvent == questEvents[questEvents.Count - 1])
@@ -62,7 +65,6 @@ public class Quest : MonoBehaviour // Only a MonoBehaviour to make it available 
             questEvent.OnDone.RemoveListener(EvaluateQuestState);
 
         OnQuestEnd.Invoke();
-        gameObject.SetActive(false);
     }
 
     // For debugging
