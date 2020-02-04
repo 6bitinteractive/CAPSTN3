@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public abstract class Condition : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public abstract class Condition : MonoBehaviour
     // ----
 
     protected static EventManager eventManager;
+    protected abstract bool RequireSceneLoad { get; }
     private bool initialized;
     private Status currentStatus;
 
@@ -38,7 +40,13 @@ public abstract class Condition : MonoBehaviour
             case Status.Active:
                 {
                     if (!initialized)
+                    {
+                        if (RequireSceneLoad)
+                            SceneManager.sceneLoaded += OnSceneLoad;
+
                         InitializeCondition();
+                        initialized = true;
+                    }
 
                     OnActive.Invoke(this);
 
@@ -57,6 +65,11 @@ public abstract class Condition : MonoBehaviour
 
             case Status.Done:
                 {
+                    if (RequireSceneLoad)
+                    {
+                        SceneManager.sceneLoaded -= OnSceneLoad;
+                    }
+
                     FinalizeCondition();
                     OnDone.Invoke(this);
                     break;
@@ -88,6 +101,9 @@ public abstract class Condition : MonoBehaviour
     {
         Debug.LogFormat("{0} - Finalizing condition.", gameObject.name);
     }
+
+    protected virtual void OnSceneLoad(Scene scene, LoadSceneMode loadSceneMode)
+    { }
 
     public enum Status
     {

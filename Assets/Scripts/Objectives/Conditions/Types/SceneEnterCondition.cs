@@ -8,12 +8,7 @@ public class SceneEnterCondition : Condition
     [Header("Condition Requirements")]
     public SceneData requiredSceneToEnter;
 
-    protected override void InitializeCondition()
-    {
-        base.InitializeCondition();
-        SceneManager.sceneLoaded += OnSceneLoad;
-        Debug.Log("Required scene entered: " + Satisfied);
-    }
+    protected override bool RequireSceneLoad => true;
 
     protected override void EvaluateCondition()
     {
@@ -25,13 +20,7 @@ public class SceneEnterCondition : Condition
             SwitchStatus(Status.Done);
     }
 
-    protected override void FinalizeCondition()
-    {
-        base.FinalizeCondition();
-        SceneManager.sceneLoaded -= OnSceneLoad;
-    }
-
-    private void OnSceneLoad(Scene scene, LoadSceneMode loadSceneMode)
+    protected override void OnSceneLoad(Scene scene, LoadSceneMode loadSceneMode)
     {
         if (scene.name == requiredSceneToEnter.SceneName)
         {

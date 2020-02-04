@@ -1,6 +1,7 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InteractionCondition : Condition
 {
@@ -18,6 +19,8 @@ public class InteractionCondition : Condition
         condition.target = interactionTarget.gameObject.GetComponent<IInteractable>();
         condition.interactionType = interactionType;
     }
+
+    protected override bool RequireSceneLoad => true;
 
     protected override void InitializeCondition()
     {
@@ -54,5 +57,8 @@ public class InteractionCondition : Condition
         return a.source == b.source
             && a.target == b.target
             && a.interactionType == b.interactionType;
+    }
+    protected override void OnSceneLoad(Scene scene, LoadSceneMode loadSceneMode)
+    {
     }
 }
