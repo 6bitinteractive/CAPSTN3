@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -441,16 +441,10 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   OnActive:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDone:
-    m_PersistentCalls:
-      m_Calls: []
-  OnQuestEventActive:
     gameEvent:
       m_PersistentCalls:
         m_Calls: []
-  OnQuestEventDone:
+  OnDone:
     gameEvent:
       m_PersistentCalls:
         m_Calls: []
@@ -875,16 +869,10 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   OnActive:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDone:
-    m_PersistentCalls:
-      m_Calls: []
-  OnQuestEventActive:
     gameEvent:
       m_PersistentCalls:
         m_Calls: []
-  OnQuestEventDone:
+  OnDone:
     gameEvent:
       m_PersistentCalls:
         m_Calls: []
@@ -973,16 +961,10 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   OnActive:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDone:
-    m_PersistentCalls:
-      m_Calls: []
-  OnQuestEventActive:
     gameEvent:
       m_PersistentCalls:
         m_Calls: []
-  OnQuestEventDone:
+  OnDone:
     gameEvent:
       m_PersistentCalls:
         m_Calls: []
@@ -1272,16 +1254,10 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   OnActive:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDone:
-    m_PersistentCalls:
-      m_Calls: []
-  OnQuestEventActive:
     gameEvent:
       m_PersistentCalls:
         m_Calls: []
-  OnQuestEventDone:
+  OnDone:
     gameEvent:
       m_PersistentCalls:
         m_Calls: []
@@ -1386,16 +1362,10 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   OnActive:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDone:
-    m_PersistentCalls:
-      m_Calls: []
-  OnQuestEventActive:
     gameEvent:
       m_PersistentCalls:
         m_Calls: []
-  OnQuestEventDone:
+  OnDone:
     gameEvent:
       m_PersistentCalls:
         m_Calls: []
@@ -1547,10 +1517,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a4ffd324dd62a42947797d8d6f427a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayName: Bark at NPC
+  displayName: A child needs help
   description: 
   objectives:
-  - description: 
+  - description: Bark at NPC
     conditions:
     - {fileID: 5665290}
     reactions: []
@@ -1558,16 +1528,10 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   OnActive:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDone:
-    m_PersistentCalls:
-      m_Calls: []
-  OnQuestEventActive:
     gameEvent:
       m_PersistentCalls:
         m_Calls: []
-  OnQuestEventDone:
+  OnDone:
     gameEvent:
       m_PersistentCalls:
         m_Calls: []
@@ -1854,80 +1818,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8474518452565125627, guid: ff2c98024ae25ff4aac04e566a4d6d05,
         type: 3}
-      propertyPath: OnDone.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8474518452565125627, guid: ff2c98024ae25ff4aac04e566a4d6d05,
-        type: 3}
-      propertyPath: OnActive.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8474518452565125627, guid: ff2c98024ae25ff4aac04e566a4d6d05,
-        type: 3}
-      propertyPath: OnDone.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8474518452565125627, guid: ff2c98024ae25ff4aac04e566a4d6d05,
-        type: 3}
-      propertyPath: OnDone.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8474518452565125627, guid: ff2c98024ae25ff4aac04e566a4d6d05,
-        type: 3}
-      propertyPath: OnDone.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1593814099}
-    - target: {fileID: 8474518452565125627, guid: ff2c98024ae25ff4aac04e566a4d6d05,
-        type: 3}
-      propertyPath: OnDone.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 8474518452565125627, guid: ff2c98024ae25ff4aac04e566a4d6d05,
-        type: 3}
-      propertyPath: OnDone.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8474518452565125627, guid: ff2c98024ae25ff4aac04e566a4d6d05,
-        type: 3}
-      propertyPath: OnDone.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8474518452565125627, guid: ff2c98024ae25ff4aac04e566a4d6d05,
-        type: 3}
       propertyPath: requiredSceneToEnter
       value: 
       objectReference: {fileID: 11400000, guid: 07cae12b5a2a7df4082150230b8e7ef3,
         type: 2}
-    - target: {fileID: 8474518452565125627, guid: ff2c98024ae25ff4aac04e566a4d6d05,
-        type: 3}
-      propertyPath: OnActive.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8474518452565125627, guid: ff2c98024ae25ff4aac04e566a4d6d05,
-        type: 3}
-      propertyPath: OnActive.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8474518452565125627, guid: ff2c98024ae25ff4aac04e566a4d6d05,
-        type: 3}
-      propertyPath: OnActive.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1280509757}
-    - target: {fileID: 8474518452565125627, guid: ff2c98024ae25ff4aac04e566a4d6d05,
-        type: 3}
-      propertyPath: OnActive.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 8474518452565125627, guid: ff2c98024ae25ff4aac04e566a4d6d05,
-        type: 3}
-      propertyPath: OnActive.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8474518452565125627, guid: ff2c98024ae25ff4aac04e566a4d6d05,
-        type: 3}
-      propertyPath: OnActive.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8474518452565125629, guid: ff2c98024ae25ff4aac04e566a4d6d05,
         type: 3}
       propertyPath: m_Name
