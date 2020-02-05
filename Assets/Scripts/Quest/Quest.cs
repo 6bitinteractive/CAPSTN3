@@ -22,7 +22,7 @@ public class Quest : MonoBehaviour // Only a MonoBehaviour to make it available 
         foreach (var questEvent in questEvents)
         {
             questEvent.Initialize();
-            questEvent.OnDone.AddListener(EvaluateQuestState);
+            questEvent.OnDone.gameEvent.AddListener(EvaluateQuestState);
         }
 
         DefinePath();
@@ -62,7 +62,7 @@ public class Quest : MonoBehaviour // Only a MonoBehaviour to make it available 
     public void EndQuest()
     {
         foreach (var questEvent in questEvents)
-            questEvent.OnDone.RemoveListener(EvaluateQuestState);
+            questEvent.OnDone.gameEvent.RemoveListener(EvaluateQuestState);
 
         OnQuestEnd.Invoke();
     }

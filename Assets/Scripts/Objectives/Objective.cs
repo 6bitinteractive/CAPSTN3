@@ -13,26 +13,12 @@ public class Objective
     public List<Reaction> reactions;
     public bool Complete { get; private set; }
 
-    // TODO: Change to EventType<>
     public ObjectiveEvent OnDone = new ObjectiveEvent();
 
     //private SequenceType sequenceType = SequenceType.Parallel;
 
-    // TEST
-     public void Test(Condition condition)
-    {
-        if (conditions.Exists(x => condition))
-            Debug.Log("Found matching condition. " + condition);
-        else
-            Debug.Log("No matching condition found. " + condition);
-    }
-    // ----
-
     public void Activate()
     {
-        // TEST
-        SingletonManager.GetInstance<EventManager>().Subscribe<ConditionEvent, Condition>(Test);
-        // ----
 
         foreach (var condition in conditions)
         {
@@ -51,7 +37,8 @@ public class Objective
             //        }
             //}
 
-            condition.OnDone.AddListener(EvaluateObjective);
+            // Listen to condition updates
+            condition.OnDone.gameEvent.AddListener(EvaluateObjective);
         }
     }
 
@@ -73,13 +60,11 @@ public class Objective
             reaction.Execute();
         }
 
+        // Broadcast that this objective is done
         OnDone.Invoke(this);
 
-        condition.OnDone.RemoveListener(EvaluateObjective);
-
-        // TEST
-        SingletonManager.GetInstance<EventManager>().Unsubscribe<ConditionEvent, Condition>(Test);
-        // ----
+        // Stop listening to the condition's event
+        condition.OnDone.gameEvent.RemoveListener(EvaluateObjective);
     }
 
     public enum SequenceType

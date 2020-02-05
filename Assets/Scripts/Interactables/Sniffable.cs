@@ -12,8 +12,8 @@ public class Sniffable : MonoBehaviour
     {
         sniff = FindObjectOfType<Sniff>();
         questEvent = crossSceneReferenceQuestEvent.gameObject.GetComponent<QuestEvent>();
-        questEvent.OnActive.AddListener(SetCurrentTarget);
-        questEvent.OnDone.AddListener(RemoveCurrentTargetSniffable);
+        questEvent.OnActive.gameEvent.AddListener(SetCurrentTarget);
+        questEvent.OnDone.gameEvent.AddListener(RemoveCurrentTargetSniffable);
     }
 
     public void SetCurrentTarget(QuestEvent questEvent)
