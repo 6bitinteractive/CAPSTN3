@@ -13,6 +13,8 @@ public class Objective : MonoBehaviour
 
     public ObjectiveEvent OnDone = new ObjectiveEvent();
 
+    // NOTE: For now, we assume all conditions are part of one objective.
+    // Ideally, each Objective is it's own object with its own conditions as children.
     private List<Condition> conditions = new List<Condition>();
     //private List<Reaction> reactions = new List<Reaction>();
     //private SequenceType sequenceType = SequenceType.Parallel;
