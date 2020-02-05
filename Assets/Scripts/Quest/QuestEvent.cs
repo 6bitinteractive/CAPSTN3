@@ -5,20 +5,17 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(GuidComponent))]
+[RequireComponent(typeof(Objective))]
 
 public class QuestEvent : MonoBehaviour
 {
     [SerializeField] private string displayName;
     [SerializeField] private string description;
 
-    public List<Objective> objectives = new List<Objective>();
+    private List<Objective> objectives = new List<Objective>();
 
-    // TODO: Change to EventType<>
-    public GameQuestEvent OnActive = new GameQuestEvent();
-    public GameQuestEvent OnDone = new GameQuestEvent();
-
-    public QuestEventType OnQuestEventActive;
-    public QuestEventType OnQuestEventDone;
+    public QuestEventType OnActive;
+    public QuestEventType OnDone;
 
     public string Id { get; private set; }
     public string DisplayName { get; private set; }
@@ -40,6 +37,9 @@ public class QuestEvent : MonoBehaviour
         Description = description;
         currentStatus = Status.Inactive;
 
+        // Get all the attached Objective componenets
+        objectives.AddRange(GetComponents<Objective>());
+
         foreach (var objective in objectives)
             objective.OnDone.AddListener(EvaluateQuestEvent);
     }
@@ -59,23 +59,16 @@ public class QuestEvent : MonoBehaviour
                 {
                     Debug.LogFormat("Activating QuestEvent \"{0}\".", displayName);
                     ActivateConditions();
-                    OnActive.Invoke(this);
 
-                    eventManager.Trigger<GameQuestEvent, QuestEvent>(OnQuestEventActive, this);
+                    eventManager.Trigger<GameQuestEvent, QuestEvent>(OnActive, this);
                     break;
                 }
 
             case Status.Done:
                 {
                     Debug.LogFormat("QuestEvent \"{0}\" complete.", displayName);
-                    OnDone.Invoke(this);
 
-                    eventManager.Trigger<GameQuestEvent, QuestEvent>(OnQuestEventDone, this);
-                    break;
-                }
-
-            default:
-                {
+                    eventManager.Trigger<GameQuestEvent, QuestEvent>(OnDone, this);
                     break;
                 }
         }

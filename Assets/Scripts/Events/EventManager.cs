@@ -56,6 +56,12 @@ public class EventManager : Singleton<EventManager> // This acts as the mediator
         }
     }
 
+    /// <summary>
+    /// Broadcast T event
+    /// </summary>
+    /// <typeparam name="T">The UnityEvent<T></typeparam>
+    /// <typeparam name="U">The parameter of the UnityEvent; what is being passed when the event is invoked.</typeparam>
+    /// <param name="argument">What is passed when the event is invoked.</param>
     public void Trigger<T, U>(U argument) where T : UnityEvent<U>
     {
         var eventType = typeof(T);
@@ -128,6 +134,13 @@ public class PickupData
 {
     public Interactor source;
     public Pickupable pickupable;
+    public Type type;
+
+    public enum Type
+    {
+        Pickup,
+        Drop
+    }
 }
 #endregion
 

@@ -4,35 +4,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-
-[Serializable]
-public class Objective
+public class Objective : MonoBehaviour
 {
+    [Tooltip("Optional. Describe what is expected in this objective.")]
     public string description;
-    public List<Condition> conditions;
-    public List<Reaction> reactions;
+
     public bool Complete { get; private set; }
 
-    // TODO: Change to EventType<>
     public ObjectiveEvent OnDone = new ObjectiveEvent();
 
+    private List<Condition> conditions = new List<Condition>();
+    //private List<Reaction> reactions = new List<Reaction>();
     //private SequenceType sequenceType = SequenceType.Parallel;
-
-    // TEST
-     public void Test(Condition condition)
-    {
-        if (conditions.Exists(x => condition))
-            Debug.Log("Found matching condition. " + condition);
-        else
-            Debug.Log("No matching condition found. " + condition);
-    }
-    // ----
 
     public void Activate()
     {
-        // TEST
-        SingletonManager.GetInstance<EventManager>().Subscribe<ConditionEvent, Condition>(Test);
-        // ----
+        conditions.AddRange(GetComponentsInChildren<Condition>());
 
         foreach (var condition in conditions)
         {
@@ -51,7 +38,8 @@ public class Objective
             //        }
             //}
 
-            condition.OnDone.AddListener(EvaluateObjective);
+            // Listen to condition updates
+            condition.OnDone.gameEvent.AddListener(EvaluateObjective);
         }
     }
 
@@ -68,18 +56,16 @@ public class Objective
     private void ProcessReactions(Condition condition)
     {
         Debug.LogFormat("Processing reaction/s for {0}", description);
-        foreach (var reaction in reactions)
-        {
-            reaction.Execute();
-        }
+        //foreach (var reaction in reactions)
+        //{
+        //    reaction.Execute();
+        //}
 
+        // Broadcast that this objective is done
         OnDone.Invoke(this);
 
-        condition.OnDone.RemoveListener(EvaluateObjective);
-
-        // TEST
-        SingletonManager.GetInstance<EventManager>().Unsubscribe<ConditionEvent, Condition>(Test);
-        // ----
+        // Stop listening to the condition's event
+        condition.OnDone.gameEvent.RemoveListener(EvaluateObjective);
     }
 
     public enum SequenceType

@@ -34,14 +34,12 @@ public class DialogueHandler : MonoBehaviour
 
         // TODO: Load a saved data
 
-        // TEST
         QuestEvent currentQuestEvent = SingletonManager.GetInstance<QuestManager>().CurrentQuest.CurrentQuestEvent;
         if (!isDirty) // We only set a conversation at Start() if no QuestEvent has changed it yet.
         {
             Debug.Log("Set default conversation");
             DetermineCurrentConversation(currentQuestEvent);
         }
-        // ----
     }
 
     private void OnDisable()
@@ -117,7 +115,7 @@ public class DialogueHandler : MonoBehaviour
     public class ConversationSet
     {
         public GuidReference questEventReference;
-        public QuestEvent.Status requiredQuestEventStatus;
+        public QuestEvent.Status requiredQuestEventStatus = QuestEvent.Status.Active;
         public Conversation conversation;
     }
 }

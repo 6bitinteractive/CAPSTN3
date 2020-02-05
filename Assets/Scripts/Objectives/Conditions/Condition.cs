@@ -10,18 +10,13 @@ public abstract class Condition : MonoBehaviour
     public Status CurrentStatus => currentStatus;
     public bool Satisfied { get; protected set; }
 
-    // TODO: Change to EventType<>
-    public ConditionEvent OnActive = new ConditionEvent();
-    public ConditionEvent OnDone = new ConditionEvent();
-
-    // TEST
-    public ConditionEventType conditionUpdate;
-    // ----
+    public ConditionEventType OnActive;
+    public ConditionEventType OnDone;
 
     protected static EventManager eventManager;
     protected abstract bool RequireSceneLoad { get; }
-    private bool initialized;
     private Status currentStatus;
+    private bool initialized;
 
     public void SwitchStatus(Status status)
     {
@@ -47,12 +42,7 @@ public abstract class Condition : MonoBehaviour
                         InitializeCondition();
                     }
 
-                    OnActive.Invoke(this);
-
-                    // TEST
-                    SingletonManager.GetInstance<EventManager>().Trigger<ConditionEvent, Condition>(conditionUpdate, this);
-                    // ----
-
+                    eventManager.Trigger<ConditionEvent, Condition>(OnActive, this);
                     break;
                 }
 
@@ -70,7 +60,7 @@ public abstract class Condition : MonoBehaviour
                     }
 
                     FinalizeCondition();
-                    OnDone.Invoke(this);
+                    eventManager.Trigger<ConditionEvent, Condition>(OnDone, this);
                     break;
                 }
         }
@@ -82,18 +72,29 @@ public abstract class Condition : MonoBehaviour
         SwitchStatus((Status)status);
     }
 
+    protected abstract bool IsSatisfied();
+
     // NOTE: Only called once
     protected virtual void InitializeCondition()
     {
-        eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
-
-        initialized = true;
         Debug.LogFormat("{0} - Condition initialized.", gameObject.name);
+        eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
+        initialized = true;
     }
 
     protected virtual void EvaluateCondition()
     {
         Debug.LogFormat("{0} - Evaluating condition.", gameObject.name);
+
+        if (IsSatisfied())
+        {
+            Satisfied = true;
+            SwitchStatus(Status.Done);
+        }
+        else
+        {
+            SwitchStatus(Status.Active);
+        }
     }
 
     protected virtual void FinalizeCondition()
@@ -103,7 +104,10 @@ public abstract class Condition : MonoBehaviour
 
     // For cases when a GuidReference can lose its reference when player moves to another scene
     protected virtual void OnSceneLoad(Scene scene, LoadSceneMode loadSceneMode)
-    { }
+    {
+        if (Satisfied)
+            return;
+    }
 
     public enum Status
     {

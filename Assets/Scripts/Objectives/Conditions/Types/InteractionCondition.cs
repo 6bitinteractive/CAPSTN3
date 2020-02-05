@@ -22,22 +22,15 @@ public class InteractionCondition : Condition
         GetConditionRequirements(); // We also do this at Initialize for cases where the object is already available at the scene when the QuestEvent activates
     }
 
-    protected override void EvaluateCondition()
-    {
-        base.EvaluateCondition();
-
-        if (SameInteractionData(condition, interactionToBeEvaluated))
-        {
-            Debug.Log("Interaction condition satisfied.");
-            Satisfied = true;
-            SwitchStatus(Status.Done);
-        }
-    }
-
     protected override void FinalizeCondition()
     {
         base.FinalizeCondition();
         eventManager.Unsubscribe<InteractionEvent, InteractionData>(GetInteractionData);
+    }
+
+    protected override bool IsSatisfied()
+    {
+        return SameInteractionData(condition, interactionToBeEvaluated);
     }
 
     private void GetInteractionData(InteractionData interactionData)

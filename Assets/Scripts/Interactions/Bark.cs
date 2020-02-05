@@ -31,10 +31,12 @@ public class Bark : MonoBehaviour
                     barkable.Interact(source, interactableTarget);
                     //Debug.Log("Barking at " + target.gameObject.name);
 
-                    InteractionData interactionData = new InteractionData();
-                    interactionData.source = source;
-                    interactionData.target = interactableTarget;
-                    interactionData.interactionType = InteractionType.Bark;
+                    InteractionData interactionData = new InteractionData
+                    {
+                        source = source,
+                        target = interactableTarget,
+                        interactionType = InteractionType.Bark
+                    };
                     eventManager.Trigger<InteractionEvent, InteractionData>(interactionData);
                 }
             }

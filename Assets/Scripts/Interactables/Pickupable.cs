@@ -27,7 +27,7 @@ public class Pickupable : MonoBehaviour
         rb.isKinematic = true;
         rb.useGravity = false;
 
-        eventManager.Trigger<PickupEvent, PickupData>(new PickupData() { source = source, pickupable = this });
+        eventManager.Trigger<PickupEvent, PickupData>(new PickupData() { source = source, pickupable = this, type = PickupData.Type.Pickup });
     }
 
     public void DropObject(Interactor source)
@@ -37,5 +37,7 @@ public class Pickupable : MonoBehaviour
         collider.enabled = true;
         rb.isKinematic = false;
         rb.useGravity = true;
+
+        eventManager.Trigger<PickupEvent, PickupData>(new PickupData() { source = source, pickupable = this, type = PickupData.Type.Drop });
     }
 }
