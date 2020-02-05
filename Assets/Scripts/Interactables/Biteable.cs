@@ -17,7 +17,7 @@ public class Biteable : MonoBehaviour, IInteractable
     }
     public void DisplayInteractability()
     {
-      
+
     }
 
     public void Release(Interactor source)
@@ -60,5 +60,10 @@ public class Biteable : MonoBehaviour, IInteractable
         }
 
         OnBite.Invoke();
+    }
+
+    public void HideInteractability()
+    {
+       
     }
 }

@@ -20,8 +20,10 @@ public class Interactor : MonoBehaviour
             InteractableTargets = collider.gameObject.GetComponents<IInteractable>();           
             if (interactableTargets != null)
             {
-                InteractableTargets = null;
+                if (InteractableTargets.Length == 0) return;
+                foreach (var targets in InteractableTargets) targets.HideInteractability();
                 CurrentTarget = null;
+                InteractableTargets = null;
             }
         }    
         //Debug.Log("No longer interacting with " + collider.name);

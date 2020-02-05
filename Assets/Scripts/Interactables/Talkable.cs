@@ -28,4 +28,9 @@ public class Talkable : MonoBehaviour, IInteractable
         OnTalk.Invoke();
         dialogueHandler.DisplayCurrentConversation();
     }
+
+    public void HideInteractability()
+    {
+     
+    }
 }

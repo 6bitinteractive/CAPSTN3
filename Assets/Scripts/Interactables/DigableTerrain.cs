@@ -30,4 +30,9 @@ public class DigableTerrain : MonoBehaviour, IInteractable
             poolHandler.PooledObjectPrefab = emptyDigableSpotToSpawnPrefab;
         }
     }
+
+    public void HideInteractability()
+    {
+     
+    }
 }

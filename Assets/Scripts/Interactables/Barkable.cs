@@ -33,4 +33,9 @@ public class Barkable : MonoBehaviour, IInteractable
         Vector3 newPos = transform.position + directionToSource;
         navMeshAgent.SetDestination(newPos * 2);
     }
+
+    public void HideInteractability()
+    {
+        
+    }
 }
