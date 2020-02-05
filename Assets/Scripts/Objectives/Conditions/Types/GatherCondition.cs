@@ -23,9 +23,18 @@ public class GatherCondition : Condition
     protected override void EvaluateCondition()
     {
         base.EvaluateCondition();
-        Debug.LogFormat("PICKED UP: {0} | REQUIRED: {1}", objectPickedUp, objectToBePickedUp);
+
+        //Debug.LogFormat("PICKED UP: {0} | REQUIRED: {1}", objectPickedUp, objectToBePickedUp);
+
         if (objectToBePickedUp == objectPickedUp)
+        {
+            // NOTE: For now, it's automatically flagged as Done the moment the object is picked up; it won't care if it was dropped soon after
             SwitchStatus(Status.Done);
+        }
+        else
+        {
+            SwitchStatus(Status.Active);
+        }
     }
 
     protected override void FinalizeCondition()
@@ -36,9 +45,14 @@ public class GatherCondition : Condition
 
     private void GetPickedUpItem(PickupData pickupData)
     {
-        objectPickedUp = pickupData.pickupable;
+        if (pickupData.type == PickupData.Type.Pickup)
+            objectPickedUp = pickupData.pickupable;
+        else
+            objectPickedUp = null;
+
+        //Debug.Log("Picked up: " + objectPickedUp);
+
         SwitchStatus(Status.Evaluating);
-        Debug.Log("Picked up: " + objectPickedUp);
     }
 
     protected override void OnSceneLoad(Scene scene, LoadSceneMode loadSceneMode)
