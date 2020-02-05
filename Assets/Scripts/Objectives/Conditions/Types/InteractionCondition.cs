@@ -28,9 +28,12 @@ public class InteractionCondition : Condition
 
         if (SameInteractionData(condition, interactionToBeEvaluated))
         {
-            Debug.Log("Interaction condition satisfied.");
-            Satisfied = true;
+            //Debug.Log("Interaction condition satisfied.");
             SwitchStatus(Status.Done);
+        }
+        else
+        {
+            SwitchStatus(Status.Active);
         }
     }
 
