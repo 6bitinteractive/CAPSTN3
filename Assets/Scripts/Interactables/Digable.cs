@@ -100,4 +100,9 @@ public class Digable : MonoBehaviour, IInteractable
         yield return new WaitForSeconds(DespawnTimer);
         gameObject.SetActive(false);    
     }
+
+    public void HideInteractability()
+    {
+      
+    }
 }
