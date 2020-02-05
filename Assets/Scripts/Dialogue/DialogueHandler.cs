@@ -28,7 +28,7 @@ public class DialogueHandler : MonoBehaviour
         // Listen to quest event status update
         eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
         eventManager.Subscribe<GameQuestEvent, QuestEvent>(DetermineCurrentConversation);
-        Debug.LogFormat("DialogueHandler for {0} started listening to QuestEventUpdates.", gameObject.name);
+        //Debug.LogFormat("DialogueHandler for {0} started listening to QuestEventUpdates.", gameObject.name);
 
         yield return new WaitForEndOfFrame();
 
@@ -38,14 +38,14 @@ public class DialogueHandler : MonoBehaviour
         QuestEvent currentQuestEvent = SingletonManager.GetInstance<QuestManager>().CurrentQuest.CurrentQuestEvent;
         if (!isDirty) // We only set a conversation at Start() if no QuestEvent has changed it yet.
         {
-            Debug.Log("Set default conversation");
+            //Debug.LogFormat("Set default conversation for {0}", gameObject.name);
             DetermineCurrentConversation(currentQuestEvent);
         }
     }
 
     private void OnDisable()
     {
-        Debug.LogFormat("DialogueHandler for {0} stopped listening to QuestEventUpdates.", gameObject.name);
+        //Debug.LogFormat("DialogueHandler for {0} stopped listening to QuestEventUpdates.", gameObject.name);
         eventManager.Unsubscribe<GameQuestEvent, QuestEvent>(DetermineCurrentConversation);
     }
 
@@ -99,7 +99,7 @@ public class DialogueHandler : MonoBehaviour
         // If there's no related conversation to the questEvent, we set current conversation to default
         // TODO: Cache QuestEvent component instead of always calling it every evaluation
 
-        Debug.Log("QUESTEVENT: " + questEvent.DisplayName + " - " + questEvent.CurrentStatus);
+        //Debug.Log("QUESTEVENT: " + questEvent.DisplayName + " - " + questEvent.CurrentStatus);
         ConversationSet cs = questRelatedConversations.Find(x => questEvent == x.questEventReference.gameObject.GetComponent<QuestEvent>()
                                                           && questEvent.CurrentStatus == x.requiredQuestEventStatus);
 

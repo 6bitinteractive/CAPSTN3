@@ -47,7 +47,7 @@ public class Objective : MonoBehaviour
 
     private void EvaluateObjective(Condition condition)
     {
-        Debug.Log("Condition : " + condition.name);
+        //Debug.Log("Condition : " + condition.name);
         if (conditions.Exists((x) => x.CurrentStatus != Condition.Status.Done))
             return;
 
@@ -57,7 +57,7 @@ public class Objective : MonoBehaviour
 
     private void ProcessReactions(Condition condition)
     {
-        Debug.LogFormat("Processing reaction/s for {0}", description);
+        //Debug.LogFormat("Processing reaction/s for {0}", description);
         //foreach (var reaction in reactions)
         //{
         //    reaction.Execute();
