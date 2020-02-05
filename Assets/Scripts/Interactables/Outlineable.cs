@@ -5,7 +5,7 @@ using UnityEngine;
 public class Outlineable : MonoBehaviour, IInteractable
 {
     [SerializeField] private List<MeshRenderer> meshRendersToOutline;
-    [SerializeField] private Shader outLineShader;
+    [SerializeField] private Shader outlineShader;
 
     private Shader defaultShader;
 
@@ -21,7 +21,7 @@ public class Outlineable : MonoBehaviour, IInteractable
     {
         for (int i = 0; i < meshRendersToOutline.Count; i++)
         {
-            meshRendersToOutline[i].materials[1].shader = outLineShader;
+            meshRendersToOutline[i].materials[1].shader = outlineShader;
         }
     }
 
