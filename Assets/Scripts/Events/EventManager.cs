@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -128,6 +128,13 @@ public class PickupData
 {
     public Interactor source;
     public Pickupable pickupable;
+    public Type type;
+
+    public enum Type
+    {
+        Pickup,
+        Drop
+    }
 }
 #endregion
 
