@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 
 public abstract class Condition : MonoBehaviour
 {
+    [Tooltip("Most likely for conditions used to listen for QuestEvent updates, not by QuestEvents themselves, e.g. for switching dialogue")]
+    [SerializeField] private bool activeAtStart;
+
     public Status CurrentStatus => currentStatus;
     public bool Satisfied { get; protected set; }
 
@@ -16,6 +19,12 @@ public abstract class Condition : MonoBehaviour
     protected static EventManager eventManager;
     private Status currentStatus;
     private bool initialized;
+
+    private void OnEnable()
+    {
+        if (activeAtStart && CurrentStatus != Status.Done)
+            SwitchStatus(Status.Active);
+    }
 
     public void SwitchStatus(Status status)
     {
