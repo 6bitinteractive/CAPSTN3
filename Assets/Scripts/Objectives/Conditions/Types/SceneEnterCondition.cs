@@ -9,16 +9,15 @@ public class SceneEnterCondition : Condition
     public SceneData requiredSceneToEnter;
     private string sceneLoaded;
 
-    protected override bool RequireSceneLoad => true;
-
     protected override bool IsSatisfied()
     {
-        Debug.Log("SCENE: " + sceneLoaded + " || " + requiredSceneToEnter.SceneName);
+        //Debug.Log("SCENE: " + sceneLoaded + " || " + requiredSceneToEnter.SceneName);
         return sceneLoaded == requiredSceneToEnter.SceneName;
     }
 
     protected override void OnSceneLoad(Scene scene, LoadSceneMode loadSceneMode)
     {
+        base.OnSceneLoad(scene, loadSceneMode);
         sceneLoaded = scene.name;
         SwitchStatus(Status.Evaluating);
     }

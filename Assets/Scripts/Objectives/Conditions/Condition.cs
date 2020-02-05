@@ -14,7 +14,6 @@ public abstract class Condition : MonoBehaviour
     public ConditionEventType OnDone;
 
     protected static EventManager eventManager;
-    protected abstract bool RequireSceneLoad { get; }
     private Status currentStatus;
     private bool initialized;
 
@@ -36,9 +35,6 @@ public abstract class Condition : MonoBehaviour
                 {
                     if (!initialized)
                     {
-                        if (RequireSceneLoad)
-                            SceneManager.sceneLoaded += OnSceneLoad;
-
                         InitializeCondition();
                     }
 
@@ -54,11 +50,6 @@ public abstract class Condition : MonoBehaviour
 
             case Status.Done:
                 {
-                    if (RequireSceneLoad)
-                    {
-                        SceneManager.sceneLoaded -= OnSceneLoad;
-                    }
-
                     FinalizeCondition();
                     eventManager.Trigger<ConditionEvent, Condition>(OnDone, this);
                     break;
@@ -79,6 +70,8 @@ public abstract class Condition : MonoBehaviour
     {
         Debug.LogFormat("{0} - Condition initialized.", gameObject.name);
         eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
+        SceneManager.sceneLoaded += OnSceneLoad;
+
         initialized = true;
     }
 
@@ -100,6 +93,7 @@ public abstract class Condition : MonoBehaviour
     protected virtual void FinalizeCondition()
     {
         Debug.LogFormat("{0} - Finalizing condition.", gameObject.name);
+        SceneManager.sceneLoaded -= OnSceneLoad;
     }
 
     // For cases when a GuidReference can lose its reference when player moves to another scene

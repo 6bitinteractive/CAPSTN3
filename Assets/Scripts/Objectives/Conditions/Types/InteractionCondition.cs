@@ -13,8 +13,6 @@ public class InteractionCondition : Condition
     private InteractionData condition = new InteractionData();
     private InteractionData interactionToBeEvaluated = new InteractionData();
 
-    protected override bool RequireSceneLoad => true;
-
     protected override void InitializeCondition()
     {
         base.InitializeCondition();
@@ -49,6 +47,7 @@ public class InteractionCondition : Condition
 
     protected override void OnSceneLoad(Scene scene, LoadSceneMode loadSceneMode)
     {
+        base.OnSceneLoad(scene, loadSceneMode);
         GetConditionRequirements();
     }
 

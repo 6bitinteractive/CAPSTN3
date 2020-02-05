@@ -11,8 +11,6 @@ public class GatherCondition : Condition
     private Pickupable objectToBePickedUp;
     private Pickupable objectPickedUp;
 
-    protected override bool RequireSceneLoad => true;
-
     protected override void InitializeCondition()
     {
         base.InitializeCondition();
@@ -47,6 +45,7 @@ public class GatherCondition : Condition
 
     protected override void OnSceneLoad(Scene scene, LoadSceneMode loadSceneMode)
     {
+        base.OnSceneLoad(scene, loadSceneMode);
         GetConditionRequirements();
     }
 
