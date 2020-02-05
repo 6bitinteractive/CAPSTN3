@@ -10,18 +10,13 @@ public abstract class Condition : MonoBehaviour
     public Status CurrentStatus => currentStatus;
     public bool Satisfied { get; protected set; }
 
-    // TODO: Change to EventType<>
-    public ConditionEvent OnActive = new ConditionEvent();
-    public ConditionEvent OnDone = new ConditionEvent();
-
-    // TEST
-    public ConditionEventType conditionUpdate;
-    // ----
+    public ConditionEventType OnActive;
+    public ConditionEventType OnDone;
 
     protected static EventManager eventManager;
     protected abstract bool RequireSceneLoad { get; }
-    private bool initialized;
     private Status currentStatus;
+    private bool initialized;
 
     public void SwitchStatus(Status status)
     {
@@ -47,12 +42,7 @@ public abstract class Condition : MonoBehaviour
                         InitializeCondition();
                     }
 
-                    OnActive.Invoke(this);
-
-                    // TEST
-                    SingletonManager.GetInstance<EventManager>().Trigger<ConditionEvent, Condition>(conditionUpdate, this);
-                    // ----
-
+                    eventManager.Trigger<ConditionEvent, Condition>(OnActive, this);
                     break;
                 }
 
@@ -70,7 +60,7 @@ public abstract class Condition : MonoBehaviour
                     }
 
                     FinalizeCondition();
-                    OnDone.Invoke(this);
+                    eventManager.Trigger<ConditionEvent, Condition>(OnDone, this);
                     break;
                 }
         }
@@ -99,11 +89,15 @@ public abstract class Condition : MonoBehaviour
     protected virtual void FinalizeCondition()
     {
         Debug.LogFormat("{0} - Finalizing condition.", gameObject.name);
+        Satisfied = true; // Note: For now, it's assumed that a condition flagged as Done means it also has been satisfied, i.e. no Fail
     }
 
     // For cases when a GuidReference can lose its reference when player moves to another scene
     protected virtual void OnSceneLoad(Scene scene, LoadSceneMode loadSceneMode)
-    { }
+    {
+        if (Satisfied)
+            return;
+    }
 
     public enum Status
     {
