@@ -34,6 +34,7 @@ public class DialogueHandler : MonoBehaviour
 
         // TODO: Load a saved data
 
+        CurrentConversation = defaultConversation;
         QuestEvent currentQuestEvent = SingletonManager.GetInstance<QuestManager>().CurrentQuest.CurrentQuestEvent;
         if (!isDirty) // We only set a conversation at Start() if no QuestEvent has changed it yet.
         {
@@ -98,7 +99,7 @@ public class DialogueHandler : MonoBehaviour
         // If there's no related conversation to the questEvent, we set current conversation to default
         // TODO: Cache QuestEvent component instead of always calling it every evaluation
 
-        CurrentConversation = defaultConversation;
+        Debug.Log("QUESTEVENT: " + questEvent.DisplayName + " - " + questEvent.CurrentStatus);
         ConversationSet cs = questRelatedConversations.Find(x => questEvent == x.questEventReference.gameObject.GetComponent<QuestEvent>()
                                                           && questEvent.CurrentStatus == x.requiredQuestEventStatus);
 
