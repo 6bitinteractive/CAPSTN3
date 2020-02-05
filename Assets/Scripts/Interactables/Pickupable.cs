@@ -8,10 +8,14 @@ public class Pickupable : MonoBehaviour
 {
     Rigidbody rb;
     Collider collider;
+
+    static EventManager eventManager;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
+        eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
     }
 
     public void Pickup(Interactor source, Transform mouth)
@@ -22,6 +26,8 @@ public class Pickupable : MonoBehaviour
         collider.enabled = false;
         rb.isKinematic = true;
         rb.useGravity = false;
+
+        eventManager.Trigger<PickupEvent, PickupData>(new PickupData() { source = source, pickupable = this });
     }
 
     public void DropObject(Interactor source)

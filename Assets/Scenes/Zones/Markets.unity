@@ -427,6 +427,7 @@ GameObject:
   - component: {fileID: 345078473}
   - component: {fileID: 345078474}
   - component: {fileID: 345078475}
+  - component: {fileID: 345078477}
   m_Layer: 0
   m_Name: Sphere (3)
   m_TagString: Untagged
@@ -566,6 +567,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &345078477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345078468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98bbc2c1e63e98543830eec78d976795, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializedGuid: 611924e89e51c642b969c9403a8baaf3
 --- !u!1 &372375684
 GameObject:
   m_ObjectHideFlags: 0
@@ -2694,6 +2708,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 7a3217360c805f44db8c0b84b497c7ef, type: 2}
+    - target: {fileID: 5409632253730498632, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7814968136900766981, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
         type: 3}
       propertyPath: serializedGuid.Array.size

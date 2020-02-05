@@ -120,6 +120,15 @@ public enum InteractionType
     Bark,
     Talk
 }
+
+[Serializable]
+public class PickupEvent : UnityEvent<PickupData> { }
+
+public class PickupData
+{
+    public Interactor source;
+    public Pickupable pickupable;
+}
 #endregion
 
 // Reference

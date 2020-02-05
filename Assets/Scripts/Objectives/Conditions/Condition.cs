@@ -45,7 +45,6 @@ public abstract class Condition : MonoBehaviour
                             SceneManager.sceneLoaded += OnSceneLoad;
 
                         InitializeCondition();
-                        initialized = true;
                     }
 
                     OnActive.Invoke(this);
@@ -102,6 +101,7 @@ public abstract class Condition : MonoBehaviour
         Debug.LogFormat("{0} - Finalizing condition.", gameObject.name);
     }
 
+    // For cases when a GuidReference can lose its reference when player moves to another scene
     protected virtual void OnSceneLoad(Scene scene, LoadSceneMode loadSceneMode)
     { }
 

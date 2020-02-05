@@ -13,14 +13,13 @@ public class InteractionCondition : Condition
     private InteractionData condition = new InteractionData();
     private InteractionData interactionToBeEvaluated = new InteractionData();
 
-    private string requiredScene = string.Empty;
-
     protected override bool RequireSceneLoad => true;
 
     protected override void InitializeCondition()
     {
         base.InitializeCondition();
         eventManager.Subscribe<InteractionEvent, InteractionData>(GetInteractionData);
+        GetConditionRequirements(); // We also do this at Initialize for cases where the object is already available at the scene when the QuestEvent activates
     }
 
     protected override void EvaluateCondition()
@@ -57,19 +56,17 @@ public class InteractionCondition : Condition
 
     protected override void OnSceneLoad(Scene scene, LoadSceneMode loadSceneMode)
     {
+        GetConditionRequirements();
+    }
+
+    private void GetConditionRequirements()
+    {
         if (interactionTarget.gameObject != null) // If we have the scene where the target is located
         {
-            requiredScene = interactionTarget.gameObject.scene.name;
-            Debug.Log("Required scene acquired - " + requiredScene);
+            //Debug.Log("Getting references for GuidReference");
+            condition.source = interactionSource.gameObject.GetComponent<Interactor>();
+            condition.target = interactionTarget.gameObject.GetComponent<IInteractable>();
+            condition.interactionType = interactionType;
         }
-        else
-        {
-            return;
-        }
-
-        //Debug.Log("Getting references for GuidReference");
-        condition.source = interactionSource.gameObject.GetComponent<Interactor>();
-        condition.target = interactionTarget.gameObject.GetComponent<IInteractable>();
-        condition.interactionType = interactionType;
     }
 }
