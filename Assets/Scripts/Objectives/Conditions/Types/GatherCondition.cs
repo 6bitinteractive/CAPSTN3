@@ -20,27 +20,17 @@ public class GatherCondition : Condition
         GetConditionRequirements();
     }
 
-    protected override void EvaluateCondition()
-    {
-        base.EvaluateCondition();
-
-        //Debug.LogFormat("PICKED UP: {0} | REQUIRED: {1}", objectPickedUp, objectToBePickedUp);
-
-        if (objectToBePickedUp == objectPickedUp)
-        {
-            // NOTE: For now, it's automatically flagged as Done the moment the object is picked up; it won't care if it was dropped soon after
-            SwitchStatus(Status.Done);
-        }
-        else
-        {
-            SwitchStatus(Status.Active);
-        }
-    }
-
     protected override void FinalizeCondition()
     {
         base.FinalizeCondition();
         eventManager.Unsubscribe<PickupEvent, PickupData>(GetPickedUpItem);
+    }
+
+    protected override bool IsSatisfied()
+    {
+        //Debug.LogFormat("PICKED UP: {0} | REQUIRED: {1}", objectPickedUp, objectToBePickedUp);
+        // NOTE: For now, it's automatically flagged as Done the moment the object is picked up; it won't care if it was dropped soon after
+        return objectToBePickedUp == objectPickedUp;
     }
 
     private void GetPickedUpItem(PickupData pickupData)

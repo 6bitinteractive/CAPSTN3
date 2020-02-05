@@ -72,24 +72,34 @@ public abstract class Condition : MonoBehaviour
         SwitchStatus((Status)status);
     }
 
+    protected abstract bool IsSatisfied();
+
     // NOTE: Only called once
     protected virtual void InitializeCondition()
     {
-        eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
-
-        initialized = true;
         Debug.LogFormat("{0} - Condition initialized.", gameObject.name);
+        eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
+        initialized = true;
     }
 
     protected virtual void EvaluateCondition()
     {
         Debug.LogFormat("{0} - Evaluating condition.", gameObject.name);
+
+        if (IsSatisfied())
+        {
+            Satisfied = true;
+            SwitchStatus(Status.Done);
+        }
+        else
+        {
+            SwitchStatus(Status.Active);
+        }
     }
 
     protected virtual void FinalizeCondition()
     {
         Debug.LogFormat("{0} - Finalizing condition.", gameObject.name);
-        Satisfied = true; // Note: For now, it's assumed that a condition flagged as Done means it also has been satisfied, i.e. no Fail
     }
 
     // For cases when a GuidReference can lose its reference when player moves to another scene
