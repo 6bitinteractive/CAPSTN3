@@ -8,28 +8,26 @@ public class Sniff : MonoBehaviour
     [SerializeField] private float scentSpeed = 0.9f;
     [SerializeField] private LineRenderer line;
     [SerializeField] private Transform startPos;
+    [SerializeField] private GameObject grayScalePostProcessingVolume;
     private Transform currentDestination;
-    private GrayscaleFilter grayScaleFilter;
 
     public Transform CurrentDestination { get => currentDestination; set => currentDestination = value; }
 
     void Start()
     {
         if (mainCamera == null) Debug.LogError("main camera is null please set main camera");
-
-        grayScaleFilter = mainCamera.GetComponent<GrayscaleFilter>();
     }
 
     public void ActivateScentMode()
     {
         line.enabled = true;
-        grayScaleFilter.enabled = true;
+        grayScalePostProcessingVolume.SetActive(true);
     }
 
     public void DeactivateScentMode()
     {
         line.enabled = false;
-        grayScaleFilter.enabled = false;
+        grayScalePostProcessingVolume.SetActive(false);
     }
 
     void Update()
