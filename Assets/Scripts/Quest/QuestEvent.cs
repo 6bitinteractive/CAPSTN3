@@ -5,13 +5,14 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(GuidComponent))]
+[RequireComponent(typeof(Objective))]
 
 public class QuestEvent : MonoBehaviour
 {
     [SerializeField] private string displayName;
     [SerializeField] private string description;
 
-    public List<Objective> objectives = new List<Objective>();
+    private List<Objective> objectives = new List<Objective>();
 
     public QuestEventType OnActive;
     public QuestEventType OnDone;
@@ -35,6 +36,9 @@ public class QuestEvent : MonoBehaviour
         DisplayName = displayName;
         Description = description;
         currentStatus = Status.Inactive;
+
+        // Get all the attached Objective componenets
+        objectives.AddRange(GetComponents<Objective>());
 
         foreach (var objective in objectives)
             objective.OnDone.AddListener(EvaluateQuestEvent);

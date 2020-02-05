@@ -1400,8 +1400,8 @@ MonoBehaviour:
       - Another line
   questRelatedConversations:
   - questEventReference:
-      serializedGuid: 19fe1be6f19e5b4fb5fcb55f80abf89b
-      cachedName: QuestEvent
+      serializedGuid: c16915a704eb1e43830f8c7c1ee966a0
+      cachedName: QuestEvent -  Go to Open Park
       cachedScene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
     requiredQuestEventStatus: 1
     conversation:
@@ -1410,8 +1410,18 @@ MonoBehaviour:
         dialogueLines:
         - The Open Park is just south of here.
   - questEventReference:
-      serializedGuid: 19ffa00bbac05146845b57a9d2d93067
-      cachedName: QuestEvent (2)
+      serializedGuid: 5ec467963668f946878ec5f3260fc53c
+      cachedName: QuestEvent - Bark at NPC
+      cachedScene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+    requiredQuestEventStatus: 1
+    conversation:
+      dialogue:
+      - speaker: {fileID: 11400000, guid: 2cdb60320808ecd43ba300813b6f1046, type: 2}
+        dialogueLines:
+        - Bark at me!
+  - questEventReference:
+      serializedGuid: 5fcaa63a0aee3c408b768f09b7b523ed
+      cachedName: QuestEvent - Pick-up an item
       cachedScene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
     requiredQuestEventStatus: 1
     conversation:
@@ -2224,8 +2234,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crossSceneReferenceQuestEvent:
-    serializedGuid: 19fe1be6f19e5b4fb5fcb55f80abf89b
-    cachedName: QuestEvent
+    serializedGuid: c16915a704eb1e43830f8c7c1ee966a0
+    cachedName: QuestEvent -  Go to Open Park
     cachedScene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
 --- !u!4 &1591285508
 Transform:
@@ -2450,96 +2460,6 @@ Transform:
   - {fileID: 1011636938}
   m_Father: {fileID: 1402324701}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1858625739
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1858625741}
-  - component: {fileID: 1858625740}
-  m_Layer: 0
-  m_Name: DialogueHandlerTest
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1858625740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858625739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54e38b52fd4adee4e9b3c349b264c693, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultConversation:
-    dialogue:
-    - speaker: {fileID: 11400000, guid: ae1136a1e433e3946a82d25089a316e7, type: 2}
-      dialogueLines:
-      - Nice weather, huh.
-  questRelatedConversations:
-  - questEventReference:
-      serializedGuid: 19fe1be6f19e5b4fb5fcb55f80abf89b
-      cachedName: QuestEvent
-      cachedScene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
-    requiredQuestEventStatus: 1
-    conversation:
-      dialogue:
-      - speaker: {fileID: 11400000, guid: ae1136a1e433e3946a82d25089a316e7, type: 2}
-        dialogueLines:
-        - Try going to the Open Park...
-  - questEventReference:
-      serializedGuid: 19fe1be6f19e5b4fb5fcb55f80abf89b
-      cachedName: QuestEvent
-      cachedScene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
-    requiredQuestEventStatus: 2
-    conversation:
-      dialogue:
-      - speaker: {fileID: 11400000, guid: ae1136a1e433e3946a82d25089a316e7, type: 2}
-        dialogueLines:
-        - You went to the Open Park
-  - questEventReference:
-      serializedGuid: 19ffa00bbac05146845b57a9d2d93067
-      cachedName: QuestEvent (2)
-      cachedScene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
-    requiredQuestEventStatus: 1
-    conversation:
-      dialogue:
-      - speaker: {fileID: 11400000, guid: ae1136a1e433e3946a82d25089a316e7, type: 2}
-        dialogueLines:
-        - Head back to the Open Park
-  - questEventReference:
-      serializedGuid: 19ffa00bbac05146845b57a9d2d93067
-      cachedName: QuestEvent (2)
-      cachedScene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
-    requiredQuestEventStatus: 2
-    conversation:
-      dialogue:
-      - speaker: {fileID: 11400000, guid: ae1136a1e433e3946a82d25089a316e7, type: 2}
-        dialogueLines:
-        - Welcome back. This doesn't print because by the time we return to this scene,
-          we're already past QuestEvent2
---- !u!4 &1858625741
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858625739}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1986381705
 PrefabInstance:
@@ -3063,7 +2983,7 @@ PrefabInstance:
     - target: {fileID: 4849326744715648716, guid: b4b66223741bd6b48abccc4a3d025bf5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.61
+      value: -9.8
       objectReference: {fileID: 0}
     - target: {fileID: 4849326744715648716, guid: b4b66223741bd6b48abccc4a3d025bf5,
         type: 3}

@@ -115,7 +115,7 @@ public class DialogueHandler : MonoBehaviour
     public class ConversationSet
     {
         public GuidReference questEventReference;
-        public QuestEvent.Status requiredQuestEventStatus;
+        public QuestEvent.Status requiredQuestEventStatus = QuestEvent.Status.Active;
         public Conversation conversation;
     }
 }
