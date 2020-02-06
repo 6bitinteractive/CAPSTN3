@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+[RequireComponent(typeof(CanvasGroupController))]
+
 public class DialogueDisplay : MonoBehaviour
 {
     public DialogueSpeaker dialogueSpeaker;
@@ -11,21 +13,26 @@ public class DialogueDisplay : MonoBehaviour
     private CanvasGroupController canvasGroup;
     private static DialogueDisplayManager dialogueDisplayManager;
 
-    private void Start()
+    private void Awake()
     {
         canvasGroup = GetComponent<CanvasGroupController>();
-        Display(false);
+        displayText.text = string.Empty;
+    }
 
+    private void OnEnable()
+    {
         dialogueDisplayManager = dialogueDisplayManager ?? SingletonManager.GetInstance<DialogueDisplayManager>();
-        dialogueDisplayManager.dialogueDisplays.Add(this);
-
-        DialogueHandler.OnConversationEnd.AddListener(Hide);
+        dialogueDisplayManager.dialogueDisplays.Add(dialogueSpeaker, this);
     }
 
     private void OnDisable()
     {
-        DialogueHandler.OnConversationEnd.RemoveListener(Hide);
-        dialogueDisplayManager.dialogueDisplays.Remove(this);
+        dialogueDisplayManager.dialogueDisplays.Remove(dialogueSpeaker);
+    }
+
+    private void Start()
+    {
+        Display(false);
     }
 
     public void Display(bool value = true)

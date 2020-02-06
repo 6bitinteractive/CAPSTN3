@@ -258,7 +258,7 @@ PrefabInstance:
     - target: {fileID: 2450247697165829232, guid: d880a1abe26c97143bcc1e45d152c083,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2450247697165829232, guid: d880a1abe26c97143bcc1e45d152c083,
         type: 3}
@@ -279,11 +279,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: QuestEventStateCondition (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2450247697165829235, guid: d880a1abe26c97143bcc1e45d152c083,
-        type: 3}
-      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2450247697165829235, guid: d880a1abe26c97143bcc1e45d152c083,
         type: 3}
@@ -380,31 +375,6 @@ PrefabInstance:
         type: 3}
       propertyPath: requiredStatus
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2450247697165829235, guid: d880a1abe26c97143bcc1e45d152c083,
-        type: 3}
-      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2450247697165829235, guid: d880a1abe26c97143bcc1e45d152c083,
-        type: 3}
-      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2450247697165829235, guid: d880a1abe26c97143bcc1e45d152c083,
-        type: 3}
-      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 372375684}
-    - target: {fileID: 2450247697165829235, guid: d880a1abe26c97143bcc1e45d152c083,
-        type: 3}
-      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 2450247697165829235, guid: d880a1abe26c97143bcc1e45d152c083,
-        type: 3}
-      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d880a1abe26c97143bcc1e45d152c083, type: 3}
@@ -521,18 +491,18 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 107908683}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10.21}
-  m_LocalScale: {x: 0.0020833334, y: 0.002083333, z: 0.002083333}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.003, y: 0.003, z: 0.003}
   m_Children:
   - {fileID: 686671004}
   - {fileID: 875789521}
   m_Father: {fileID: 1636408853}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -9, y: 4}
-  m_SizeDelta: {x: 2115, y: 1080}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &107908685
 MonoBehaviour:
@@ -804,6 +774,7 @@ Transform:
   m_Children:
   - {fileID: 750036255}
   - {fileID: 893496296}
+  - {fileID: 1636408853}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1596,14 +1567,14 @@ MonoBehaviour:
   questRelatedConversations:
   - questEventReference:
       serializedGuid: c16915a704eb1e43830f8c7c1ee966a0
-      cachedName: QuestEvent -  Go to Open Park
+      cachedName: QuestEvent - Go to Open Park
       cachedScene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
     requiredQuestEventStatus: 1
     conversation:
       dialogue:
       - speaker: {fileID: 11400000, guid: ae1136a1e433e3946a82d25089a316e7, type: 2}
         dialogueLines:
-        - The Open Park is just south of here.
+        - The Open Park is just south of here... How silly of me to talk with a dog.
   - questEventReference:
       serializedGuid: 5ec467963668f946878ec5f3260fc53c
       cachedName: QuestEvent - Bark at NPC
@@ -2469,13 +2440,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1636408852}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.31, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 107908684}
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_Father: {fileID: 372375685}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1708283502
 GameObject:
@@ -3064,7 +3035,7 @@ PrefabInstance:
     - target: {fileID: 2450247697165829232, guid: d880a1abe26c97143bcc1e45d152c083,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2450247697165829232, guid: d880a1abe26c97143bcc1e45d152c083,
         type: 3}

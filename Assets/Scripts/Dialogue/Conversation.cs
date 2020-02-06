@@ -23,7 +23,7 @@ public class Conversation
         }
     }
 
-    public bool NextIsEnd()
+    public bool HasEnded()
     {
         return currentIndex + 1 >= dialogue.Length;
     }

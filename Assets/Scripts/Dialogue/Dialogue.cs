@@ -24,7 +24,7 @@ public class Dialogue
     }
 
     // Check if the dialogue will be ending
-    public bool NextIsEnd()
+    public bool HasEnded()
     {
         return currentIndex + 1 >= dialogueLines.Length;
     }

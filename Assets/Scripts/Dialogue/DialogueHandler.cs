@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 // NOTE: Be careful when setting up QuestEvents that are in succession
 // Ex. When QuestEvent A is done, it would mean that QuestEventB will start next right away (given current implentation)...
@@ -10,16 +9,16 @@ using UnityEngine.Events;
 
 public class DialogueHandler : MonoBehaviour
 {
+    public Conversation CurrentConversation { get; private set; }
+
     [SerializeField] private Conversation defaultConversation;
     [SerializeField] private List<ConversationSet> questRelatedConversations;
-
-    public Conversation CurrentConversation { get; private set; }
 
     private static EventManager eventManager;
     private static DialogueDisplayManager dialogueDisplayManager;
     private bool isDirty;
 
-    public static UnityEvent OnConversationEnd = new UnityEvent();
+
 
     private IEnumerator Start()
     {
@@ -49,47 +48,23 @@ public class DialogueHandler : MonoBehaviour
         eventManager.Unsubscribe<GameQuestEvent, QuestEvent>(DetermineCurrentConversation);
     }
 
-    private bool startingNewConversation = true;
-    private bool closeConversation;
-    private Dialogue dialogue;
-
-    public void DisplayCurrentConversation()
+    public void StartConversation()
     {
-        // When we're done going through the conversation but not yet ready to start a new one (i.e. we haven't been able to hide the dialogue display)
-        if (closeConversation && !startingNewConversation)
-        {
-            OnConversationEnd.Invoke(); // The display should be listening to this event and hide itself once the event has been invoked
-            startingNewConversation = true; // Now, we can let the player start a new conversation
-            return;
-        }
-
-        if (startingNewConversation)
-        {
-            startingNewConversation = false; // We make sure we keep continuing...
-            closeConversation = false; // ...and not yet end the conversation
-
-            CurrentConversation.ResetConversation(); // We make sure that if the conversation is still the same, we loop back to the first dialogue
-            dialogue = CurrentConversation.GetNextDialogue();
-        }
-
-        string nextLine = dialogue.GetNextLine();
-        var display = dialogueDisplayManager.GetDialogueDisplay(dialogue.speaker);
-        display.Display();
-        display.displayText.text = nextLine;
-
-        if (dialogue.NextIsEnd()) // Check if we're at the end of the current speaker's dialogue
-        {
-            if (!CurrentConversation.NextIsEnd()) // Check if we're not yet at the end of the conversation
-            {
-                dialogue = CurrentConversation.GetNextDialogue();
-            }
-            else
-            {
-                closeConversation = true;
-                return; // Conversation has ended
-            }
-        }
+        // Feed current conversation to DialogueDisplayManager
+        dialogueDisplayManager.DisplayConversation(CurrentConversation);
     }
+
+    public void SwitchConversation(Conversation conversation)
+    {
+        CurrentConversation = conversation;
+    }
+
+
+
+
+
+
+
 
     private void DetermineCurrentConversation(QuestEvent questEvent)
     {

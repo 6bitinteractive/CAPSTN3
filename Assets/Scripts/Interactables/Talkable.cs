@@ -26,11 +26,11 @@ public class Talkable : MonoBehaviour, IInteractable
         //Call dialogue function here
         //Debug.Log(source + "Is talking to " + target);
         OnTalk.Invoke();
-        dialogueHandler.DisplayCurrentConversation();
+        dialogueHandler.StartConversation();
     }
 
     public void HideInteractability()
     {
-     
+
     }
 }
