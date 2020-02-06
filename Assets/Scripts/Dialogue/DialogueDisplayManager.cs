@@ -93,6 +93,7 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
         previousSpeaker = null;
 
         // Broadcast that the conversation has ended
+        conversationToDisplay.OnConversationEnd.Invoke(); // Invoke the event specific to the conversation
         OnConversationEnd.Invoke();
     }
 

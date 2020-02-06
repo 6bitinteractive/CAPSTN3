@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public class Conversation
 {
     public Dialogue[] dialogue;
+    public UnityEvent OnConversationEnd = new UnityEvent();
 
     private int currentIndex = -1;
 
