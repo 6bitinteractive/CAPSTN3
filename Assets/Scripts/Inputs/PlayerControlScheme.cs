@@ -890,6 +890,52 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""DialogueInteraction"",
+            ""id"": ""12282295-2de0-4c44-b34c-6ab4a48289b8"",
+            ""actions"": [
+                {
+                    ""name"": ""Confirm"",
+                    ""type"": ""Button"",
+                    ""id"": ""3fe0c8ef-4c45-445c-ae16-6476bd97be2c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Skip"",
+                    ""type"": ""Button"",
+                    ""id"": ""f56f61f5-0de4-41fc-9270-afde7deb5a3c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""497318b8-c539-4d7a-af6a-4b7f0cd5b9c9"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Confirm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0004f20c-dabf-47ab-a97e-3004493a970f"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -981,6 +1027,10 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         m_UI_TrackedDeviceSelect = m_UI.FindAction("TrackedDeviceSelect", throwIfNotFound: true);
+        // DialogueInteraction
+        m_DialogueInteraction = asset.FindActionMap("DialogueInteraction", throwIfNotFound: true);
+        m_DialogueInteraction_Confirm = m_DialogueInteraction.FindAction("Confirm", throwIfNotFound: true);
+        m_DialogueInteraction_Skip = m_DialogueInteraction.FindAction("Skip", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1261,6 +1311,47 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // DialogueInteraction
+    private readonly InputActionMap m_DialogueInteraction;
+    private IDialogueInteractionActions m_DialogueInteractionActionsCallbackInterface;
+    private readonly InputAction m_DialogueInteraction_Confirm;
+    private readonly InputAction m_DialogueInteraction_Skip;
+    public struct DialogueInteractionActions
+    {
+        private @PlayerControlScheme m_Wrapper;
+        public DialogueInteractionActions(@PlayerControlScheme wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Confirm => m_Wrapper.m_DialogueInteraction_Confirm;
+        public InputAction @Skip => m_Wrapper.m_DialogueInteraction_Skip;
+        public InputActionMap Get() { return m_Wrapper.m_DialogueInteraction; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DialogueInteractionActions set) { return set.Get(); }
+        public void SetCallbacks(IDialogueInteractionActions instance)
+        {
+            if (m_Wrapper.m_DialogueInteractionActionsCallbackInterface != null)
+            {
+                @Confirm.started -= m_Wrapper.m_DialogueInteractionActionsCallbackInterface.OnConfirm;
+                @Confirm.performed -= m_Wrapper.m_DialogueInteractionActionsCallbackInterface.OnConfirm;
+                @Confirm.canceled -= m_Wrapper.m_DialogueInteractionActionsCallbackInterface.OnConfirm;
+                @Skip.started -= m_Wrapper.m_DialogueInteractionActionsCallbackInterface.OnSkip;
+                @Skip.performed -= m_Wrapper.m_DialogueInteractionActionsCallbackInterface.OnSkip;
+                @Skip.canceled -= m_Wrapper.m_DialogueInteractionActionsCallbackInterface.OnSkip;
+            }
+            m_Wrapper.m_DialogueInteractionActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Confirm.started += instance.OnConfirm;
+                @Confirm.performed += instance.OnConfirm;
+                @Confirm.canceled += instance.OnConfirm;
+                @Skip.started += instance.OnSkip;
+                @Skip.performed += instance.OnSkip;
+                @Skip.canceled += instance.OnSkip;
+            }
+        }
+    }
+    public DialogueInteractionActions @DialogueInteraction => new DialogueInteractionActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -1334,5 +1425,10 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
         void OnTrackedDeviceSelect(InputAction.CallbackContext context);
+    }
+    public interface IDialogueInteractionActions
+    {
+        void OnConfirm(InputAction.CallbackContext context);
+        void OnSkip(InputAction.CallbackContext context);
     }
 }

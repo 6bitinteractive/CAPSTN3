@@ -877,6 +877,52 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "DialogueInteraction",
+            "id": "12282295-2de0-4c44-b34c-6ab4a48289b8",
+            "actions": [
+                {
+                    "name": "Confirm",
+                    "type": "Button",
+                    "id": "3fe0c8ef-4c45-445c-ae16-6476bd97be2c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "Skip",
+                    "type": "Button",
+                    "id": "f56f61f5-0de4-41fc-9270-afde7deb5a3c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press"
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "497318b8-c539-4d7a-af6a-4b7f0cd5b9c9",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0004f20c-dabf-47ab-a97e-3004493a970f",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

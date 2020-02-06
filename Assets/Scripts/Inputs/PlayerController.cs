@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     private Interactor interactor;
     private Vector3 currentMove;
 
+    private DialogueDisplayManager dialogueDisplayManager;
+
     void Awake()
     {
         controlScheme = new PlayerControlScheme();
@@ -29,18 +31,26 @@ public class PlayerController : MonoBehaviour
         movement = GetComponent<Movement>();
         sniff = GetComponent<Sniff>();
 
-        SetupPlayerConrtolScheme();    
+        dialogueDisplayManager = dialogueDisplayManager ?? SingletonManager.GetInstance<DialogueDisplayManager>();
+
+        SetupPlayerConrtolScheme();
     }
 
     void OnEnable()
     {
+        // Fix: Other controls might be better disabled at start of conversation then enabled after conversation ends
+        // Also, need to set up the proper settings (currently using arbitrary keys)
+        dialogueDisplayManager.OnConversationBegin.AddListener(() => controlScheme.DialogueInteraction.Enable());
+        dialogueDisplayManager.OnConversationEnd.AddListener(() => controlScheme.DialogueInteraction.Disable());
+        //----
+
         controlScheme.Player.Enable();
     }
 
     void OnDisable()
     {
-       controlScheme.Player.Disable();
-       controlScheme.PlayerBiting.Disable();
+        controlScheme.Player.Disable();
+        controlScheme.PlayerBiting.Disable();
     }
 
     private void FixedUpdate()
@@ -63,7 +73,7 @@ public class PlayerController : MonoBehaviour
 
     public void Bark()
     {
-         bark.BarkEvent(interactor);
+        bark.BarkEvent(interactor);
     }
 
     public void Bite()
@@ -73,7 +83,7 @@ public class PlayerController : MonoBehaviour
 
         // If the player is no longer biting
         if (interactor.CurrentTarget != null && !bite.IsBiting)
-        {          
+        {
             // Turn off interaction with other objects
             interactor.CanInteract = false;
 
@@ -116,7 +126,7 @@ public class PlayerController : MonoBehaviour
             if (digable != null) dig.DigEvent(interactor, digable);
 
             // Check if target is a digable terrain
-            if (digableTerrain != null) dig.DigTerrainEvent(interactor, digableTerrain);       
+            if (digableTerrain != null) dig.DigTerrainEvent(interactor, digableTerrain);
         }
     }
 
@@ -146,7 +156,7 @@ public class PlayerController : MonoBehaviour
     {
         currentMove = context.ReadValue<Vector2>();
         // Play Moving Animation
-        //Debug.Log(currentMove);  
+        //Debug.Log(currentMove);
     }
     private void CancelMove(InputAction.CallbackContext context)
     {
@@ -165,7 +175,7 @@ public class PlayerController : MonoBehaviour
     public void SwitchToDefaultControlScheme()
     {
         controlScheme.PlayerBiting.Disable();
-        controlScheme.Player.Enable();       
+        controlScheme.Player.Enable();
         playerInput.SwitchCurrentActionMap("Player");
     }
 
@@ -184,6 +194,10 @@ public class PlayerController : MonoBehaviour
         //Player Biting Control Scheme
         controlScheme.PlayerBiting.Bite.performed += context => Bite();
         controlScheme.PlayerBiting.Move.performed += HandleMove;
-        controlScheme.PlayerBiting.Move.canceled += CancelMove; 
+        controlScheme.PlayerBiting.Move.canceled += CancelMove;
+
+        // Dialogue Interaction Control Scheme
+        controlScheme.DialogueInteraction.Confirm.performed += context => dialogueDisplayManager.ContinueConversation();
+        controlScheme.DialogueInteraction.Skip.performed += context => dialogueDisplayManager.EndConversation();
     }
 }

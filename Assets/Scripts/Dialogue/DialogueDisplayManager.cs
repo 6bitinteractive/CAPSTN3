@@ -21,22 +21,11 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
     private DialogueDisplay currentDisplay;
     private string nextLine;
     private WaitForSeconds waitTime;
-
-    private bool startingNewConversation = true;
-    private bool closeConversation;
+    private State currentState;
 
     private void Start()
     {
         waitTime = new WaitForSeconds(characterDisplayWaitTime);
-    }
-
-    private void Update()
-    {
-        // Test
-        if (Input.GetMouseButton(0))
-        {
-            waitTime = new WaitForSeconds(characterDisplayWaitTime * characterDisplayWaitTimeMultiplier);
-        }
     }
 
     public void DisplayConversation(Conversation conversation)
@@ -44,17 +33,11 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
         // Set the conversation
         conversationToDisplay = conversation;
 
-        //if (startingNewConversation)
-        //{
-        //    startingNewConversation = false; // We make sure we keep continuing...
-        //    closeConversation = false; // ...and not yet end the conversation
-
         // We make sure that if the conversation is still the same, we loop back to the beginning
         conversationToDisplay.ResetConversation();
 
         // Take the first dialogue
         currentDialogue = conversationToDisplay.GetNextDialogue();
-        //}
 
         // Broadcast that a conversation has begun
         OnConversationBegin.Invoke();
@@ -63,19 +46,51 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
         StartCoroutine(DetermineLine());
     }
 
+    public void ContinueConversation()
+    {
+        switch (currentState)
+        {
+            case State.DisplayingLine:
+                {
+                    // Make the text display faster
+                    waitTime = new WaitForSeconds(characterDisplayWaitTime * characterDisplayWaitTimeMultiplier);
+                    break;
+                }
+
+            case State.LineEnded:
+                {
+                    StopAllCoroutines();
+                    StartCoroutine(DetermineLine());
+                    break;
+                }
+
+            case State.ConversationEnded:
+                {
+                    EndConversation();
+                    break;
+                }
+
+            default:
+                {
+                    break;
+                }
+        }
+    }
+
     public void EndConversation()
     {
+        currentState = State.ReadyForConversation;
+
+        // Make sure no coroutines are running
+        StopAllCoroutines();
+
         // Close the display
-        //currentDisplay.Display(false);
+        currentDisplay?.Display(false);
 
         // Clear references to avoid null ref errors
         currentDialogue = null;
         currentDisplay = null;
         previousSpeaker = null;
-        //startingNewConversation = true;
-
-        // Make sure no coroutines are running
-        StopAllCoroutines();
 
         // Broadcast that the conversation has ended
         OnConversationEnd.Invoke();
@@ -83,12 +98,7 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
 
     private IEnumerator DetermineLine()
     {
-        //// When we're done going through the conversation but not yet ready to start a new one (i.e. we haven't been able to hide the dialogue display)
-        //if (closeConversation && !startingNewConversation)
-        //{
-        //    startingNewConversation = true; // Now, we can let the player start a new conversation
-        //    yield break;
-        //}
+        currentState = State.DeterminingLine;
 
         // Start by taking the line to be displayed
         nextLine = currentDialogue.GetNextLine();
@@ -106,20 +116,16 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
         // Do the typewriter effect
         yield return StartCoroutine(DisplayLine());
 
+        // Displaying the line is now done
+        currentState = State.LineEnded;
         OnDialogueLineEnd.Invoke();
 
         if (currentDialogue.HasEnded()) // Check if we're at the end of the current speaker's dialogue
         {
             if (!conversationToDisplay.HasEnded()) // Check if we're not yet at the end of the conversation
-            {
                 currentDialogue = conversationToDisplay.GetNextDialogue();
-            }
             else
-            {
-                //closeConversation = true;
-                EndConversation();
-                yield break; // Conversation has ended
-            }
+                currentState = State.ConversationEnded;
         }
     }
 
@@ -136,7 +142,8 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
         }
 
         // Display the line
-        currentDisplay.Display();
+        currentDisplay?.Display();
+        currentState = State.DisplayingLine;
 
         while (textToDisplay.Count > 0)
         {
@@ -152,5 +159,14 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
             return dialogueDisplay;
 
         return null;
+    }
+
+    public enum State
+    {
+        ReadyForConversation,
+        DeterminingLine,
+        DisplayingLine,
+        LineEnded,
+        ConversationEnded
     }
 }
