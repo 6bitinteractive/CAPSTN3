@@ -282,6 +282,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "Press"
+                },
+                {
+                    "name": "Talk",
+                    "type": "Button",
+                    "id": "e2f63ac7-358b-4881-9286-e817bb673df5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -370,6 +378,28 @@
                     "processors": "InvertVector2",
                     "groups": "Player",
                     "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b63795a1-9f04-4ce5-bc47-8c90a906b064",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Player",
+                    "action": "Talk",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "853f4d03-53d2-49d1-909f-ad6eb2caafe5",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Player",
+                    "action": "Talk",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -195,6 +195,7 @@ public class PlayerController : MonoBehaviour
         controlScheme.PlayerBiting.Bite.performed += context => Bite();
         controlScheme.PlayerBiting.Move.performed += HandleMove;
         controlScheme.PlayerBiting.Move.canceled += CancelMove;
+        controlScheme.PlayerBiting.Talk.performed += context => Talk();
 
         // Dialogue Interaction Control Scheme
         controlScheme.DialogueInteraction.Confirm.performed += context => dialogueDisplayManager.ContinueConversation();

@@ -295,6 +295,14 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Talk"",
+                    ""type"": ""Button"",
+                    ""id"": ""e2f63ac7-358b-4881-9286-e817bb673df5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -383,6 +391,28 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
                     ""processors"": ""InvertVector2"",
                     ""groups"": ""Player"",
                     ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b63795a1-9f04-4ce5-bc47-8c90a906b064"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Player"",
+                    ""action"": ""Talk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""853f4d03-53d2-49d1-909f-ad6eb2caafe5"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Player"",
+                    ""action"": ""Talk"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1014,6 +1044,7 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
         m_PlayerBiting = asset.FindActionMap("PlayerBiting", throwIfNotFound: true);
         m_PlayerBiting_Move = m_PlayerBiting.FindAction("Move", throwIfNotFound: true);
         m_PlayerBiting_Bite = m_PlayerBiting.FindAction("Bite", throwIfNotFound: true);
+        m_PlayerBiting_Talk = m_PlayerBiting.FindAction("Talk", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1163,12 +1194,14 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
     private IPlayerBitingActions m_PlayerBitingActionsCallbackInterface;
     private readonly InputAction m_PlayerBiting_Move;
     private readonly InputAction m_PlayerBiting_Bite;
+    private readonly InputAction m_PlayerBiting_Talk;
     public struct PlayerBitingActions
     {
         private @PlayerControlScheme m_Wrapper;
         public PlayerBitingActions(@PlayerControlScheme wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_PlayerBiting_Move;
         public InputAction @Bite => m_Wrapper.m_PlayerBiting_Bite;
+        public InputAction @Talk => m_Wrapper.m_PlayerBiting_Talk;
         public InputActionMap Get() { return m_Wrapper.m_PlayerBiting; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1184,6 +1217,9 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
                 @Bite.started -= m_Wrapper.m_PlayerBitingActionsCallbackInterface.OnBite;
                 @Bite.performed -= m_Wrapper.m_PlayerBitingActionsCallbackInterface.OnBite;
                 @Bite.canceled -= m_Wrapper.m_PlayerBitingActionsCallbackInterface.OnBite;
+                @Talk.started -= m_Wrapper.m_PlayerBitingActionsCallbackInterface.OnTalk;
+                @Talk.performed -= m_Wrapper.m_PlayerBitingActionsCallbackInterface.OnTalk;
+                @Talk.canceled -= m_Wrapper.m_PlayerBitingActionsCallbackInterface.OnTalk;
             }
             m_Wrapper.m_PlayerBitingActionsCallbackInterface = instance;
             if (instance != null)
@@ -1194,6 +1230,9 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
                 @Bite.started += instance.OnBite;
                 @Bite.performed += instance.OnBite;
                 @Bite.canceled += instance.OnBite;
+                @Talk.started += instance.OnTalk;
+                @Talk.performed += instance.OnTalk;
+                @Talk.canceled += instance.OnTalk;
             }
         }
     }
@@ -1411,6 +1450,7 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnBite(InputAction.CallbackContext context);
+        void OnTalk(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
