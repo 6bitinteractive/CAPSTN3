@@ -40,6 +40,7 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
         currentDialogue = conversationToDisplay.GetNextDialogue();
 
         // Broadcast that a conversation has begun
+        conversationToDisplay.OnConversationBegin.Invoke(); // Invoke the event specific to the conversation
         OnConversationBegin.Invoke();
 
         // Begin displaying

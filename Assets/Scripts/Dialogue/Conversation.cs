@@ -7,6 +7,8 @@ using UnityEngine.Events;
 public class Conversation
 {
     public Dialogue[] dialogue;
+
+    public UnityEvent OnConversationBegin = new UnityEvent();
     public UnityEvent OnConversationEnd = new UnityEvent();
 
     private int currentIndex = -1;
