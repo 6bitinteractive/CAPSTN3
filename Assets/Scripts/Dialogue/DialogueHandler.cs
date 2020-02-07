@@ -54,6 +54,12 @@ public class DialogueHandler : MonoBehaviour
         dialogueDisplayManager.DisplayConversation(CurrentConversation);
     }
 
+    // For times when you want to pass a conversation
+    public void StartConversation(Conversation conversation)
+    {
+        dialogueDisplayManager.DisplayConversation(conversation);
+    }
+
     public void SwitchConversation(Conversation conversation)
     {
         CurrentConversation = conversation;

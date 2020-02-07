@@ -142,6 +142,9 @@ public class PickupData
         Drop
     }
 }
+
+[Serializable]
+public class DeliveryEvent : UnityEvent<Deliverable> { }
 #endregion
 
 // Reference
