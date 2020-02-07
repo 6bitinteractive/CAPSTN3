@@ -667,6 +667,12 @@ MonoBehaviour:
     type: 2}
   playerStartingPoint: {fileID: 11400000, guid: 0f5056b1a3051a7489798b3f26026f01,
     type: 2}
+  BeforeSceneUnload:
+    m_PersistentCalls:
+      m_Calls: []
+  AfterSceneLoad:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1539852846
 Transform:
   m_ObjectHideFlags: 0

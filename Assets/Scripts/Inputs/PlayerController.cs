@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private Interactor interactor;
     private Vector3 currentMove;
 
+    private SceneController sceneController;
     private DialogueDisplayManager dialogueDisplayManager;
 
     void Awake()
@@ -38,6 +39,9 @@ public class PlayerController : MonoBehaviour
 
     void OnEnable()
     {
+        sceneController = sceneController ?? SingletonManager.GetInstance<SceneController>();
+        sceneController.BeforeSceneUnload.AddListener(() => enabled = false);
+        sceneController.AfterSceneLoad.AddListener(() => enabled = true);
         // Fix: Other controls might be better disabled at start of conversation then enabled after conversation ends
         // Also, need to set up the proper settings (currently using arbitrary keys)
         dialogueDisplayManager.OnConversationBegin.AddListener(() => controlScheme.DialogueInteraction.Enable());

@@ -14,8 +14,8 @@ public class SceneController : Singleton<SceneController>
     [Header("Starting Point")]
     public SceneData playerStartingPoint;
 
-    public static UnityEvent BeforeSceneUnload = new UnityEvent();
-    public static UnityEvent AfterSceneLoad = new UnityEvent();
+    public UnityEvent BeforeSceneUnload = new UnityEvent();
+    public UnityEvent AfterSceneLoad = new UnityEvent();
 
     protected override void Awake()
     {
