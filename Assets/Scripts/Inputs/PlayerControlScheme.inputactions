@@ -915,8 +915,8 @@
                 {
                     "name": "Confirm",
                     "type": "Button",
-                    "id": "3fe0c8ef-4c45-445c-ae16-6476bd97be2c",
-                    "expectedControlType": "Button",
+                    "id": "2e33d105-31ed-4d6b-a4bc-18d4d2f381b6",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "Press"
                 },
@@ -932,23 +932,34 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "497318b8-c539-4d7a-af6a-4b7f0cd5b9c9",
-                    "path": "<Keyboard>/space",
+                    "id": "0004f20c-dabf-47ab-a97e-3004493a970f",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard&Mouse",
+                    "groups": "",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3ab05306-39a2-4812-9130-fa1a8391ec24",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Player",
                     "action": "Confirm",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "0004f20c-dabf-47ab-a97e-3004493a970f",
-                    "path": "<Keyboard>/tab",
+                    "id": "2361b1d5-0d91-46e1-9846-1979c8747c0c",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Skip",
+                    "groups": "Player",
+                    "action": "Confirm",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

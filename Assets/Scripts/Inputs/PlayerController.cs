@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,8 +32,6 @@ public class PlayerController : MonoBehaviour
         movement = GetComponent<Movement>();
         sniff = GetComponent<Sniff>();
 
-        dialogueDisplayManager = dialogueDisplayManager ?? SingletonManager.GetInstance<DialogueDisplayManager>();
-
         SetupPlayerConrtolScheme();
     }
 
@@ -42,11 +40,10 @@ public class PlayerController : MonoBehaviour
         sceneController = sceneController ?? SingletonManager.GetInstance<SceneController>();
         sceneController.BeforeSceneUnload.AddListener(() => enabled = false);
         sceneController.AfterSceneLoad.AddListener(() => enabled = true);
-        // Fix: Other controls might be better disabled at start of conversation then enabled after conversation ends
-        // Also, need to set up the proper settings (currently using arbitrary keys)
-        dialogueDisplayManager.OnConversationBegin.AddListener(() => controlScheme.DialogueInteraction.Enable());
-        dialogueDisplayManager.OnConversationEnd.AddListener(() => controlScheme.DialogueInteraction.Disable());
-        //----
+        // Fix: need to set up the proper settings (currently using arbitrary keys)
+        dialogueDisplayManager = dialogueDisplayManager ?? SingletonManager.GetInstance<DialogueDisplayManager>();
+        dialogueDisplayManager.OnConversationBegin.AddListener(() => { controlScheme.Player.Disable(); controlScheme.DialogueInteraction.Enable(); });
+        dialogueDisplayManager.OnConversationEnd.AddListener(() => { controlScheme.DialogueInteraction.Disable(); controlScheme.Player.Enable(); });
 
         controlScheme.Player.Enable();
     }
