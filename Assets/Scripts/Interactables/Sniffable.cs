@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class Sniffable : MonoBehaviour
 {
-    [SerializeField] private GuidReference crossSceneReferenceQuestEvent;
+    //[SerializeField] private GuidReference crossSceneReferenceQuestEvent;
 
-    private QuestEvent questEvent;
+    //private QuestEvent questEvent;
     private Sniff sniff;
-    void Awake()
+    private void Start()
     {
-        sniff = FindObjectOfType<Sniff>();
-        questEvent = crossSceneReferenceQuestEvent.gameObject.GetComponent<QuestEvent>();
-        questEvent.OnActive.gameEvent.AddListener(SetCurrentTarget);
-        questEvent.OnDone.gameEvent.AddListener(RemoveCurrentTargetSniffable);
+        //questEvent = crossSceneReferenceQuestEvent.gameObject.GetComponent<QuestEvent>();
+        //questEvent.OnActive.gameEvent.AddListener(SetCurrentTarget);
+        //questEvent.OnDone.gameEvent.AddListener(RemoveCurrentTargetSniffable);
     }
 
-    public void SetCurrentTarget(QuestEvent questEvent)
+    public void SetCurrentTarget()
     {
+        sniff = FindObjectOfType<Sniff>();
         sniff.CurrentDestination = gameObject.transform;
     }
 
-    public void RemoveCurrentTargetSniffable(QuestEvent questEvent)
+    public void RemoveCurrentTargetSniffable()
     {
         sniff.CurrentDestination = null;
     }
