@@ -8,6 +8,7 @@ using UnityEngine.AI;
 
 public class Barkable : MonoBehaviour, IInteractable
 {
+    [SerializeField] private float speed = 2f;
     public UnityEvent OnBark;
     private NavMeshAgent navMeshAgent;
 
@@ -24,18 +25,21 @@ public class Barkable : MonoBehaviour, IInteractable
 
     public void DisplayInteractability()
     {
-       
+
     }
 
     private void MoveAway(Interactor source)
     {
-        Vector3 directionToSource = transform.position - source.transform.position;
-        Vector3 newPos = transform.position + directionToSource;
-        navMeshAgent.SetDestination(newPos * 2);
+        Vector3 displacement = transform.position - source.transform.position;
+        displacement.Normalize(); // Get direction
+        displacement *= speed; // speed * direction = new velocity
+        displacement += transform.position; // new + old?
+
+        navMeshAgent.SetDestination(displacement);
     }
 
     public void HideInteractability()
     {
-        
+
     }
 }
