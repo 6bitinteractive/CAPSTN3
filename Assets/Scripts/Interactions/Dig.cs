@@ -6,9 +6,11 @@ public class Dig : MonoBehaviour
 {
     [SerializeField] private int digPower = 1;
     [SerializeField] private AudioClip digSfx;
+    [SerializeField] private GameObject digOffset;
     private AudioSource audioSource;
 
     public int DigPower { get => digPower; set => digPower = value; }
+    public GameObject DigOffset { get => digOffset; set => digOffset = value; }
 
     private void Start()
     {

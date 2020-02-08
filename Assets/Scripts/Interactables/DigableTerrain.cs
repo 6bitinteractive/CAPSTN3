@@ -12,12 +12,12 @@ public class DigableTerrain : MonoBehaviour, IInteractable
     }
     public void DisplayInteractability()
     {
-       
+
     }
 
     public void Interact(Interactor source, IInteractable target)
-    {    
-        poolHandler.SpawnPooledObject(source.gameObject);
+    {
+        poolHandler.SpawnPooledObject(source.GetComponent<Dig>().DigOffset);
     }
 
     public void ChangeDigableSpotToSpawn()
@@ -33,6 +33,6 @@ public class DigableTerrain : MonoBehaviour, IInteractable
 
     public void HideInteractability()
     {
-     
+
     }
 }
