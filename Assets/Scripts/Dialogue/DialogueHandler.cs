@@ -89,10 +89,10 @@ public class DialogueHandler : MonoBehaviour
             CurrentConversation = cs.conversation;
             Debug.LogFormat("Dialogue updated by {0}", questEvent);
         }
-        else
-        {
-            CurrentConversation = defaultConversation;
-        }
+        //else
+        //{
+        //    CurrentConversation = defaultConversation;
+        //}
 
         Debug.LogFormat("{1} Current Dialogue: {0}", CurrentConversation.dialogue[0].dialogueLines[0], gameObject.name);
     }

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// NOTE: The particulars of the request are defined by the Requester
+
 public class DeliverCondition : Condition
 {
     [SerializeField] private GuidReference requesterGuid;
