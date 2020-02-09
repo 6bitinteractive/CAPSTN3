@@ -145,6 +145,9 @@ public class PickupData
 
 [Serializable]
 public class DeliveryEvent : UnityEvent<Deliverable> { }
+
+[Serializable]
+public class ScentModeEvent : UnityEvent<Sniffable> { }
 #endregion
 
 // Reference
