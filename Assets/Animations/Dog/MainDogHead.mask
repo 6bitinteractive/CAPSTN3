@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MainDogHead
+  m_Mask: 00000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: dog
+    m_Weight: 0
+  - m_Path: dog/dog_face
+    m_Weight: 1
+  - m_Path: dog/dog_face/pasted__dog
+    m_Weight: 1
+  - m_Path: dog/dog_face/pasted__dog/main_dog1:pCube7
+    m_Weight: 1
+  - m_Path: dog/dog_face/pasted__dog/main_dog1:pCube10
+    m_Weight: 1
+  - m_Path: dog/dog_face/pasted__dog/main_dog1:pCube11
+    m_Weight: 1
+  - m_Path: dog/dog_face/pasted__dog/main_dog1:pCube12
+    m_Weight: 1
+  - m_Path: dog/dog_face/pasted__dog/main_dog1:pCube13
+    m_Weight: 1
+  - m_Path: dog/dog_face/pasted__dog/main_dog1:pCube14
+    m_Weight: 1
+  - m_Path: dog/dog_face/pasted__dog/pasted__pPipe1
+    m_Weight: 1
+  - m_Path: dog/main_dog:polySurface1
+    m_Weight: 0
+  - m_Path: root
+    m_Weight: 0
+  - m_Path: root/chest
+    m_Weight: 0
+  - m_Path: root/chest/neck
+    m_Weight: 1
+  - m_Path: root/chest/neck/head
+    m_Weight: 1
+  - m_Path: root/chest/neck/head/jaw
+    m_Weight: 1
+  - m_Path: root/chest/neck/head/snout
+    m_Weight: 1
+  - m_Path: root/chest/neck/l_front_thigh
+    m_Weight: 0
+  - m_Path: root/chest/neck/l_front_thigh/l_front_leg
+    m_Weight: 1
+  - m_Path: root/chest/neck/l_front_thigh/l_front_leg/l_front_ankle
+    m_Weight: 1
+  - m_Path: root/chest/neck/l_front_thigh/l_front_leg/l_front_ankle/l_front_foot
+    m_Weight: 1
+  - m_Path: root/chest/neck/r_front_thigh
+    m_Weight: 0
+  - m_Path: root/chest/neck/r_front_thigh/r_front_leg
+    m_Weight: 1
+  - m_Path: root/chest/neck/r_front_thigh/r_front_leg/r_front_ankle
+    m_Weight: 1
+  - m_Path: root/chest/neck/r_front_thigh/r_front_leg/r_front_ankle/r_front_foot
+    m_Weight: 1
+  - m_Path: root/l_back_thigh
+    m_Weight: 0
+  - m_Path: root/l_back_thigh/l_back_leg
+    m_Weight: 1
+  - m_Path: root/l_back_thigh/l_back_leg/l_back_ankle
+    m_Weight: 1
+  - m_Path: root/l_back_thigh/l_back_leg/l_back_ankle/l_back_foot
+    m_Weight: 1
+  - m_Path: root/r_back_thigh
+    m_Weight: 0
+  - m_Path: root/r_back_thigh/r_back_leg
+    m_Weight: 1
+  - m_Path: root/r_back_thigh/r_back_leg/r_back_ankle
+    m_Weight: 1
+  - m_Path: root/r_back_thigh/r_back_leg/r_back_ankle/r_back_foot
+    m_Weight: 1
+  - m_Path: root/tail
+    m_Weight: 0
+  - m_Path: root/tail/joint8
+    m_Weight: 1
+  - m_Path: root/tail/joint8/joint9
+    m_Weight: 1
+  - m_Path: root/tail/joint8/joint9/joint10
+    m_Weight: 1
+  - m_Path: root/tail/joint8/joint9/joint10/joint11
+    m_Weight: 1

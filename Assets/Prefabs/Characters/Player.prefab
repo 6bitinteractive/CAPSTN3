@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 74675474}
+  - component: {fileID: 1100849355168016705}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -32,6 +33,46 @@ Transform:
   m_Father: {fileID: 1038197436724218278}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &1100849355168016705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74675473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5077b6c9d9d2e4a850ee18beb0e6de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnAnimStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1038197436724218277}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnAnimEnded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1038197436724218277}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &1038197436724218274
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,6 +298,7 @@ MonoBehaviour:
   speed: 3
   rotationSpeed: 15
   camera: {fileID: 0}
+  animator: {fileID: 2709157198328399154}
 --- !u!114 &1331823813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,6 +325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 1.5
   barkSfx: {fileID: 8300000, guid: f652584efbaa1e04fae5a64c4862628b, type: 3}
+  animator: {fileID: 2709157198328399154}
 --- !u!114 &3050639643293823743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,6 +340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouth: {fileID: 8389151800467003267}
   biteSfx: {fileID: 8300000, guid: 72b339b60f7c1aa4dbfb6bb1654b6fdf, type: 3}
+  animator: {fileID: 2709157198328399154}
 --- !u!114 &1675410337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,7 +355,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   digPower: 1
   digSfx: {fileID: 8300000, guid: 4705ecad89153f14ebe4bdf33a9a810d, type: 3}
-  digOffset: {fileID: 0}
+  digOffset: {fileID: 4622838353565398091}
+  animator: {fileID: 2709157198328399154}
 --- !u!114 &475478298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -910,6 +955,12 @@ PrefabInstance:
 --- !u!4 &5409632253730498632 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: ccf3b2875113a6945bdd40ff9d6da749,
+    type: 3}
+  m_PrefabInstance: {fileID: 1038197435144569682}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2709157198328399154 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: ccf3b2875113a6945bdd40ff9d6da749,
     type: 3}
   m_PrefabInstance: {fileID: 1038197435144569682}
   m_PrefabAsset: {fileID: 0}

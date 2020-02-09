@@ -56,10 +56,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 1675410337, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf, type: 3}
-      propertyPath: digOffset
-      value: 
-      objectReference: {fileID: 5910046348985235120}
     - target: {fileID: 89272783082768662, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
         type: 3}
       propertyPath: m_Layer
@@ -707,12 +703,6 @@ Transform:
 --- !u!4 &1306937976075958249 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 74675474, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
-    type: 3}
-  m_PrefabInstance: {fileID: 1306937976001577723}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5910046348985235120 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4622838353565398091, guid: 11d31a0b7a5d9694fb5b6c7571cdafaf,
     type: 3}
   m_PrefabInstance: {fileID: 1306937976001577723}
   m_PrefabAsset: {fileID: 0}
