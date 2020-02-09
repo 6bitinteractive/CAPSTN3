@@ -10,18 +10,24 @@ public class Sniff : MonoBehaviour
     [SerializeField] private Transform startPos;
     [SerializeField] private GameObject grayScalePostProcessingVolume;
     private Transform currentDestination;
+    private static EventManager eventManager;
 
     public Transform CurrentDestination { get => currentDestination; set => currentDestination = value; }
 
     void Start()
     {
         if (mainCamera == null) Debug.LogError("main camera is null please set main camera");
+        eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
     }
 
     public void ActivateScentMode()
     {
         line.enabled = true;
         grayScalePostProcessingVolume.SetActive(true);
+
+        Sniffable sniffable = CurrentDestination.GetComponent<Sniffable>();
+        if (sniffable != null)
+            eventManager.Trigger<ScentModeEvent, Sniffable>(sniffable);
     }
 
     public void DeactivateScentMode()
