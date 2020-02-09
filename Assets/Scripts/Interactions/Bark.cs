@@ -6,6 +6,7 @@ public class Bark : MonoBehaviour
 {
     [SerializeField] private float radius = 5;
     [SerializeField] private AudioClip barkSfx;
+    [SerializeField] private Animator animator;
 
     private static EventManager eventManager;
     private AudioSource audioSource;
@@ -44,11 +45,19 @@ public class Bark : MonoBehaviour
 
         audioSource.clip = barkSfx;
         audioSource.Play();
+
+        if (animator == null) return;
+        Animate();
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radius);
+    }
+
+    public void Animate()
+    {
+        animator.SetTrigger("Bark");
     }
 }
