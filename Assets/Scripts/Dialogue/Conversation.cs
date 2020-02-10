@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[System.Serializable]
-public class Conversation
+public class Conversation : MonoBehaviour
 {
     public Dialogue[] dialogue;
 
