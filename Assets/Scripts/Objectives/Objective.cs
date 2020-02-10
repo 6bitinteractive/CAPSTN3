@@ -9,6 +9,10 @@ public class Objective : MonoBehaviour
     [Tooltip("Optional. Describe what is expected in this objective.")]
     public string description;
 
+    [Header("Objective Sequence Type")]
+    [Tooltip("Sequential = one condition is active at a time.\nParallel = all conditions are active at once.")]
+    [SerializeField] private SequenceType sequenceType = SequenceType.Sequential;
+
     public bool Complete { get; private set; }
 
     public ObjectiveEvent OnDone = new ObjectiveEvent();
@@ -17,28 +21,30 @@ public class Objective : MonoBehaviour
     // Ideally, each Objective is it's own object with its own conditions as children.
     private List<Condition> conditions = new List<Condition>();
     //private List<Reaction> reactions = new List<Reaction>();
-    //private SequenceType sequenceType = SequenceType.Parallel;
 
     public void Activate()
     {
         conditions.AddRange(GetComponentsInChildren<Condition>());
 
+        if (conditions.Count == 0)
+            Debug.LogWarningFormat("Conditions are expected to be child objects of {0}", gameObject.name);
+
         foreach (var condition in conditions)
         {
-            //switch (sequenceType)
-            //{
-            //    case SequenceType.Parallel:
-            //        {
-            condition.SwitchStatus(Condition.Status.Active); // For now, we assume conditions are being checked all at once
-            //            break;
-            //        }
+            switch (sequenceType)
+            {
+                case SequenceType.Sequential:
+                    {
+                        conditions[0].SwitchStatus(Condition.Status.Active);
+                        break;
+                    }
 
-            //    case SequenceType.Sequential:
-            //        {
-            //            conditions[0].SwitchStatus(Condition.Status.Active);
-            //            break;
-            //        }
-            //}
+                case SequenceType.Parallel:
+                    {
+                        condition.SwitchStatus(Condition.Status.Active);
+                        break;
+                    }
+            }
 
             // Listen to condition updates
             condition.OnDone.gameEvent.AddListener(EvaluateObjective);
@@ -49,7 +55,21 @@ public class Objective : MonoBehaviour
     {
         //Debug.Log("Condition : " + condition.name);
         if (conditions.Exists((x) => x.CurrentStatus != Condition.Status.Done))
-            return;
+        {
+            switch (sequenceType)
+            {
+                case SequenceType.Sequential:
+                    int previousConditionIndex = conditions.FindIndex((x) => x == condition);
+                    condition.enabled = false;
+                    previousConditionIndex++; // Move to next condition
+                    if (previousConditionIndex < conditions.Count)
+                        conditions[previousConditionIndex].SwitchStatus(Condition.Status.Active);
+                    return;
+
+                case SequenceType.Parallel:
+                    return;
+            }
+        }
 
         Complete = true;
         ProcessReactions(condition);
@@ -72,7 +92,7 @@ public class Objective : MonoBehaviour
 
     public enum SequenceType
     {
-        Parallel,   // All conditions are active at once
         Sequential, // Only one condition is active at a time
+        Parallel,   // All conditions are active at once
     }
 }
