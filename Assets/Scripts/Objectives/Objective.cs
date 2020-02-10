@@ -33,11 +33,14 @@ public class Objective : MonoBehaviour
 
         foreach (var condition in conditions)
         {
+            // Listen to condition updates
+            condition.OnDone.gameEvent.AddListener(EvaluateObjective);
+
             switch (sequenceType)
             {
                 case SequenceType.Sequential:
                     {
-                        conditions[0].SwitchStatus(Condition.Status.Active);
+                        conditions[0].SwitchStatus(Condition.Status.Active); // FIX: This is called more than once?
                         break;
                     }
 
@@ -47,9 +50,6 @@ public class Objective : MonoBehaviour
                         break;
                     }
             }
-
-            // Listen to condition updates
-            condition.OnDone.gameEvent.AddListener(EvaluateObjective);
         }
     }
 
