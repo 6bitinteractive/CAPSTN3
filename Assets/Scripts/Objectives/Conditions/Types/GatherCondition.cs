@@ -15,7 +15,6 @@ public class GatherCondition : Condition
     {
         base.InitializeCondition();
         eventManager.Subscribe<PickupEvent, PickupData>(GetPickedUpItem);
-        GetConditionRequirements();
     }
 
     protected override void FinalizeCondition()
@@ -43,13 +42,7 @@ public class GatherCondition : Condition
         SwitchStatus(Status.Evaluating);
     }
 
-    protected override void OnSceneLoad(Scene scene, LoadSceneMode loadSceneMode)
-    {
-        base.OnSceneLoad(scene, loadSceneMode);
-        GetConditionRequirements();
-    }
-
-    private void GetConditionRequirements()
+    protected override void GetConditionRequirements()
     {
         if (objectToGather.gameObject != null) // If we have the scene where the target is located
         {

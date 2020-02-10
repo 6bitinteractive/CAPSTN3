@@ -79,7 +79,9 @@ public abstract class Condition : MonoBehaviour
     {
         Debug.LogFormat("{0} - Condition initialized.", gameObject.name);
         eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
+
         SceneManager.sceneLoaded += OnSceneLoad;
+        GetConditionRequirements(); // We also do this at Initialize for cases where the object is already available at the scene when the QuestEvent activates
 
         initialized = true;
     }
@@ -110,7 +112,12 @@ public abstract class Condition : MonoBehaviour
     {
         if (Satisfied)
             return;
+
+        GetConditionRequirements();
     }
+
+    protected virtual void GetConditionRequirements()
+    { }
 
     public enum Status
     {

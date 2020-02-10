@@ -17,7 +17,6 @@ public class InteractionCondition : Condition
     {
         base.InitializeCondition();
         eventManager.Subscribe<InteractionEvent, InteractionData>(GetInteractionData);
-        GetConditionRequirements(); // We also do this at Initialize for cases where the object is already available at the scene when the QuestEvent activates
     }
 
     protected override void FinalizeCondition()
@@ -45,13 +44,7 @@ public class InteractionCondition : Condition
             && a.interactionType == b.interactionType;
     }
 
-    protected override void OnSceneLoad(Scene scene, LoadSceneMode loadSceneMode)
-    {
-        base.OnSceneLoad(scene, loadSceneMode);
-        GetConditionRequirements();
-    }
-
-    private void GetConditionRequirements()
+    protected override void GetConditionRequirements()
     {
         if (interactionTarget.gameObject != null) // If we have the scene where the target is located
         {

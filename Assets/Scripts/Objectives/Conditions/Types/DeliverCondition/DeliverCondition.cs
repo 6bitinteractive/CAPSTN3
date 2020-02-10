@@ -12,12 +12,6 @@ public class DeliverCondition : Condition
     private Requester requester;
     private bool requestSatisfied;
 
-    protected override void InitializeCondition()
-    {
-        base.InitializeCondition();
-        GetConditionRequirements();
-    }
-
     protected override void FinalizeCondition()
     {
         base.FinalizeCondition();
@@ -35,13 +29,7 @@ public class DeliverCondition : Condition
         SwitchStatus(Status.Evaluating);
     }
 
-    protected override void OnSceneLoad(Scene scene, LoadSceneMode loadSceneMode)
-    {
-        base.OnSceneLoad(scene, loadSceneMode);
-        GetConditionRequirements();
-    }
-
-    private void GetConditionRequirements()
+    protected override void GetConditionRequirements()
     {
         if (requesterGuid.gameObject != null) // If we have the scene where the target is located
         {
