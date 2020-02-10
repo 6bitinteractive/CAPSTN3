@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(GuidComponent))]
-[RequireComponent(typeof(Objective))]
 
 public class QuestEvent : MonoBehaviour
 {
@@ -38,7 +37,15 @@ public class QuestEvent : MonoBehaviour
         currentStatus = Status.Inactive;
 
         // Get all the attached Objective componenets
+        // Check if there are any Objective script
         objectives.AddRange(GetComponents<Objective>());
+
+        if (objectives.Count > 0)
+            Debug.LogError("The objective script/s is/are expected to be a child of " + gameObject.name);
+        else
+            objectives.AddRange(GetComponentsInChildren<Objective>());
+
+        //Debug.Log("Objective count: " + objectives.Count);
 
         foreach (var objective in objectives)
             objective.OnDone.AddListener(EvaluateQuestEvent);
@@ -58,7 +65,7 @@ public class QuestEvent : MonoBehaviour
             case Status.Active:
                 {
                     Debug.LogFormat("Activating QuestEvent \"{0}\".", displayName);
-                    ActivateConditions();
+                    ActivateCondition();
 
                     eventManager.Trigger<GameQuestEvent, QuestEvent>(OnActive, this);
                     break;
@@ -80,21 +87,26 @@ public class QuestEvent : MonoBehaviour
         SwitchStatus((Status)status);
     }
 
-    private void ActivateConditions()
+    private void ActivateCondition()
     {
-        foreach (var objective in objectives)
-            objective.Activate();
+        objectives[0].Activate();
     }
 
     private void EvaluateQuestEvent(Objective objective)
     {
+        // Remove listener
+        objective.OnDone.RemoveListener(EvaluateQuestEvent);
+
         // If there's any objective that has not yet been completed...
         if (objectives.Exists((x) => !x.Complete))
-            return;
+        {
+            int index = objectives.FindIndex(x => x == objective);
+            index++; // Move to next objective
+            if (index < objectives.Count)
+                objectives[index].Activate();
 
-        // Remove listeners
-        foreach (var o in objectives)
-            o.OnDone.RemoveListener(EvaluateQuestEvent);
+            return;
+        }
 
         SwitchStatus(Status.Done);
     }
