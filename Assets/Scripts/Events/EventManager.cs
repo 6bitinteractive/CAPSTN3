@@ -148,6 +148,23 @@ public class DeliveryEvent : UnityEvent<Deliverable> { }
 
 [Serializable]
 public class ScentModeEvent : UnityEvent<Sniffable> { }
+
+[Serializable]
+public class LocationEvent : UnityEvent<LocationData> { }
+
+[Serializable]
+public class LocationData
+{
+    public Location location;
+    public GameObject objectInLocation;
+    public Type type;
+
+    public enum Type
+    {
+        Enter,
+        Exit
+    }
+}
 #endregion
 
 // Reference
