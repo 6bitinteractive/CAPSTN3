@@ -9,4 +9,9 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         SingletonManager.Register<T>(this);
     }
+
+    protected virtual void OnDestroy()
+    {
+        SingletonManager.UnRegister<T>();
+    }
 }
