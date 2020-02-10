@@ -121,6 +121,7 @@ Transform:
   - {fileID: 1752259043}
   - {fileID: 74675474}
   - {fileID: 246371182970430251}
+  - {fileID: 7714089420616582827}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -998,15 +999,15 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1038197435144569682}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &2709157198328399154 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: ccf3b2875113a6945bdd40ff9d6da749,
-    type: 3}
-  m_PrefabInstance: {fileID: 1038197435144569682}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5409632253730498632 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: ccf3b2875113a6945bdd40ff9d6da749,
+    type: 3}
+  m_PrefabInstance: {fileID: 1038197435144569682}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2709157198328399154 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: ccf3b2875113a6945bdd40ff9d6da749,
     type: 3}
   m_PrefabInstance: {fileID: 1038197435144569682}
   m_PrefabAsset: {fileID: 0}
@@ -1159,3 +1160,99 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c34d4b17b8aa4438690d65d69a0fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &7485554339929730507
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1038197436724218278}
+    m_Modifications:
+    - target: {fileID: 932240132433931104, guid: 585ea1a4ccb1c954aa8286d4e2ebed04,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 932240132433931104, guid: 585ea1a4ccb1c954aa8286d4e2ebed04,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 932240132433931104, guid: 585ea1a4ccb1c954aa8286d4e2ebed04,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 932240132433931104, guid: 585ea1a4ccb1c954aa8286d4e2ebed04,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 932240132433931104, guid: 585ea1a4ccb1c954aa8286d4e2ebed04,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 932240132433931104, guid: 585ea1a4ccb1c954aa8286d4e2ebed04,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 932240132433931105, guid: 585ea1a4ccb1c954aa8286d4e2ebed04,
+        type: 3}
+      propertyPath: m_Name
+      value: DialogueDisplay-Flea
+      objectReference: {fileID: 0}
+    - target: {fileID: 932240132433931105, guid: 585ea1a4ccb1c954aa8286d4e2ebed04,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1504961188204757474, guid: 585ea1a4ccb1c954aa8286d4e2ebed04,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1504961188204757474, guid: 585ea1a4ccb1c954aa8286d4e2ebed04,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1504961188204757474, guid: 585ea1a4ccb1c954aa8286d4e2ebed04,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1504961188204757474, guid: 585ea1a4ccb1c954aa8286d4e2ebed04,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1504961188204757474, guid: 585ea1a4ccb1c954aa8286d4e2ebed04,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1504961189013448492, guid: 585ea1a4ccb1c954aa8286d4e2ebed04,
+        type: 3}
+      propertyPath: dialogueSpeaker
+      value: 
+      objectReference: {fileID: 11400000, guid: 2cdb60320808ecd43ba300813b6f1046,
+        type: 2}
+    - target: {fileID: 1504961189013448494, guid: 585ea1a4ccb1c954aa8286d4e2ebed04,
+        type: 3}
+      propertyPath: m_Name
+      value: DialoguePanel-Flea
+      objectReference: {fileID: 0}
+    - target: {fileID: 1504961189013448495, guid: 585ea1a4ccb1c954aa8286d4e2ebed04,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 585ea1a4ccb1c954aa8286d4e2ebed04, type: 3}
+--- !u!4 &7714089420616582827 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 932240132433931104, guid: 585ea1a4ccb1c954aa8286d4e2ebed04,
+    type: 3}
+  m_PrefabInstance: {fileID: 7485554339929730507}
+  m_PrefabAsset: {fileID: 0}
