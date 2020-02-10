@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(GuidComponent))]
+
 public class Objective : MonoBehaviour
 {
     [Tooltip("Optional. Describe what is expected in this objective.")]

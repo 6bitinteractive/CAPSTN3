@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(GuidComponent))]
+
 public abstract class Condition : MonoBehaviour
 {
     [Tooltip("Most likely for conditions used to listen for QuestEvent updates, not by QuestEvents themselves, e.g. for switching dialogue")]
