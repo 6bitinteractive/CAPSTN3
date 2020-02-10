@@ -15,8 +15,8 @@ public class QuestEventStateCondition : Condition
 
     protected override void InitializeCondition()
     {
-        base.InitializeCondition();
         requiredQuestEvent = questEvent.gameObject.GetComponent<QuestEvent>();
+        base.InitializeCondition();
 
         // If the event has already passed
         if (requiredQuestEvent.CurrentStatus != QuestEvent.Status.Inactive)
@@ -50,19 +50,13 @@ public class QuestEventStateCondition : Condition
         return statusToAssess == requiredStatus;
     }
 
-    protected override void OnSceneLoad(Scene scene, LoadSceneMode loadSceneMode)
-    {
-        base.OnSceneLoad(scene, loadSceneMode);
-        GetConditionRequirements();
-    }
-
     private void OnQuestUpdate(QuestEvent questEvent)
     {
         statusToAssess = questEvent.CurrentStatus;
         SwitchStatus(Status.Evaluating);
     }
 
-    private void GetConditionRequirements()
+    protected override void GetConditionRequirements()
     {
         switch (requiredStatus)
         {
