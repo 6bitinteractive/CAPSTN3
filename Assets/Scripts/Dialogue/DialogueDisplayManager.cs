@@ -6,9 +6,14 @@ using UnityEngine.Events;
 
 public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
 {
-    [SerializeField] private float characterDisplayWaitTime = 0.1f;
-    [SerializeField] private float characterDisplayWaitTimeMultiplier = 0.3f;
+    [SerializeField] private float defaultCharacterDisplayWaitTime = 0.06f;
 
+    [Tooltip("This is the shortest amount of time to display text.")]
+    [SerializeField] private float minCharacterDisplayWaitTime = 0.0024f;
+
+    [Tooltip("NOTE: This is a multiplier.\n\nA smaller number means you make the wait time shorter.\n\nShorter wait time means faster display of text.")]
+
+    [SerializeField] private float characterDisplayWaitTimeMultiplier = 0.2f;
     public Dictionary<DialogueSpeaker, DialogueDisplay> dialogueDisplays = new Dictionary<DialogueSpeaker, DialogueDisplay>();
 
     public UnityEvent OnConversationBegin = new UnityEvent();
@@ -20,12 +25,15 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
     private DialogueSpeaker previousSpeaker;
     private DialogueDisplay currentDisplay;
     private string nextLine;
+    private float currentCharacterWaitTime;
+    private float maxCharacterWaitTime;
     private WaitForSeconds waitTime;
     private State currentState;
 
     private void Start()
     {
-        waitTime = new WaitForSeconds(characterDisplayWaitTime);
+        maxCharacterWaitTime = defaultCharacterDisplayWaitTime * characterDisplayWaitTimeMultiplier;
+        ResetDisplayLineSpeed();
     }
 
     public void DisplayConversation(Conversation conversation)
@@ -54,13 +62,21 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
             case State.DisplayingLine:
                 {
                     // Make the text display faster
-                    waitTime = new WaitForSeconds(characterDisplayWaitTime * characterDisplayWaitTimeMultiplier);
+                    currentCharacterWaitTime *= characterDisplayWaitTimeMultiplier;
+                    currentCharacterWaitTime = Mathf.Clamp(currentCharacterWaitTime, minCharacterDisplayWaitTime, maxCharacterWaitTime);
+
+                    // Don't set a new wait time if the speed has already reached the minimum (i.e. it's at its fastest display speed)
+                    if (!Mathf.Approximately(currentCharacterWaitTime, minCharacterDisplayWaitTime))
+                        waitTime = new WaitForSeconds(currentCharacterWaitTime);
+
                     break;
                 }
 
             case State.LineEnded:
                 {
+                    ResetDisplayLineSpeed();
                     StopAllCoroutines();
+
                     StartCoroutine(DetermineLine());
                     break;
                 }
@@ -87,6 +103,9 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
 
         // Close the display
         currentDisplay?.Display(false);
+
+        // Reset everything
+        ResetDisplayLineSpeed();
 
         // Clear references to avoid null ref errors
         currentDialogue = null;
@@ -153,6 +172,12 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
             textToDisplay.Dequeue();
             yield return waitTime;
         }
+    }
+
+    private void ResetDisplayLineSpeed()
+    {
+        currentCharacterWaitTime = defaultCharacterDisplayWaitTime;
+        waitTime = new WaitForSeconds(currentCharacterWaitTime);
     }
 
     private DialogueDisplay GetDialogueDisplay(DialogueSpeaker dialogueSpeaker)
