@@ -59,11 +59,12 @@ public class Objective : MonoBehaviour
             switch (sequenceType)
             {
                 case SequenceType.Sequential:
-                    int previousConditionIndex = conditions.FindIndex((x) => x == condition);
+                    int index = conditions.FindIndex((x) => x == condition);
                     condition.enabled = false;
-                    previousConditionIndex++; // Move to next condition
-                    if (previousConditionIndex < conditions.Count)
-                        conditions[previousConditionIndex].SwitchStatus(Condition.Status.Active);
+                    index++; // Move to next condition
+                    if (index < conditions.Count)
+                        conditions[index].SwitchStatus(Condition.Status.Active);
+
                     return;
 
                 case SequenceType.Parallel:
