@@ -8,8 +8,7 @@ public class SceneLoader : MonoBehaviour
 
     private void Start()
     {
-        if (sceneController == null)
-            sceneController = SingletonManager.GetInstance<SceneController>();
+        sceneController = sceneController ?? SingletonManager.GetInstance<SceneController>();
     }
 
     public void LoadScene(SceneData sceneDataToLoad)
