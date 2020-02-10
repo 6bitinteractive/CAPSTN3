@@ -980,8 +980,7 @@ PrefabInstance:
         type: 3}
       propertyPath: questRelatedConversations.Array.data[2].conversation.dialogue.Array.data[1].speaker
       value: 
-      objectReference: {fileID: 11400000, guid: c1622173f7ed9aa41a2cc840143b772e,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 8004794727290381549, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: questRelatedConversations.Array.data[2].conversation.dialogue.Array.data[1].dialogueLines.Array.data[0]
@@ -1039,6 +1038,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3591100975741683318}
     m_Modifications:
+    - target: {fileID: -7266546661826149295, guid: 7c66101edaa3d7544a70e34cff65d173,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7266546661826149295, guid: 7c66101edaa3d7544a70e34cff65d173,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -6186369672833988029, guid: 7c66101edaa3d7544a70e34cff65d173,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -6186369672833988029, guid: 7c66101edaa3d7544a70e34cff65d173,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 7c66101edaa3d7544a70e34cff65d173,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1094,10 +1113,70 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1917009504966134177, guid: 7c66101edaa3d7544a70e34cff65d173,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1917009504966134177, guid: 7c66101edaa3d7544a70e34cff65d173,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 7c66101edaa3d7544a70e34cff65d173,
         type: 3}
       propertyPath: m_Name
       value: bullied_boy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1079672550633365113, guid: 7c66101edaa3d7544a70e34cff65d173,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1079672550633365113, guid: 7c66101edaa3d7544a70e34cff65d173,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3162898737692117250, guid: 7c66101edaa3d7544a70e34cff65d173,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3162898737692117250, guid: 7c66101edaa3d7544a70e34cff65d173,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040925720841448211, guid: 7c66101edaa3d7544a70e34cff65d173,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040925720841448211, guid: 7c66101edaa3d7544a70e34cff65d173,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5576356796337580520, guid: 7c66101edaa3d7544a70e34cff65d173,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5576356796337580520, guid: 7c66101edaa3d7544a70e34cff65d173,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243201047581606300, guid: 7c66101edaa3d7544a70e34cff65d173,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243201047581606300, guid: 7c66101edaa3d7544a70e34cff65d173,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c66101edaa3d7544a70e34cff65d173, type: 3}
