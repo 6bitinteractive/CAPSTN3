@@ -61,6 +61,11 @@ public class DialogueHandler : MonoBehaviour
 
     private void DetermineCurrentConversation(QuestEvent questEvent)
     {
+        if (questRelatedConversations.Count == 0)
+        {
+            return;
+        }
+
         // Find the related conversation to the quest event
         // If there's no related conversation to the questEvent, we set current conversation to default
         // TODO: Cache QuestEvent component instead of always calling it every evaluation

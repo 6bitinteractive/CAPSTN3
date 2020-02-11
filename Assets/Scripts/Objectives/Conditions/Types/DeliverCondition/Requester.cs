@@ -69,7 +69,9 @@ public class Requester : MonoBehaviour
                 Debug.Log("DELIVERED");
                 CurrentRequest.active = false;
                 CurrentRequest.satisfied = true;
-                dialogueHandler.StartConversation(CurrentRequest.conversationSatisfied);
+
+                if (CurrentRequest.conversationSatisfied != null)
+                    dialogueHandler.StartConversation(CurrentRequest.conversationSatisfied);
                 OnRequestSatisfied.Invoke();
 
                 // Clear references
@@ -78,7 +80,8 @@ public class Requester : MonoBehaviour
             }
             else
             {
-                dialogueHandler.StartConversation(CurrentRequest.conversationUnsatisfied);
+                if (CurrentRequest.conversationUnsatisfied != null)
+                    dialogueHandler.StartConversation(CurrentRequest.conversationUnsatisfied);
             }
         }
     }
