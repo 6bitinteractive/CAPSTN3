@@ -11,15 +11,16 @@ public class Digable : MonoBehaviour, IInteractable
     [SerializeField] GameObject objectToSpawn;
     [SerializeField] int ObjectToSpawnJumpSpeed = 300;
     [SerializeField] float DespawnTimer = 10f;
-   
+
     private Collider collider;
     private int currentHp;
+    private static EventManager eventManager;
 
     public GameObject ObjectToSpawn { get => objectToSpawn; set => objectToSpawn = value; }
 
     public void DisplayInteractability()
     {
-      
+
     }
 
     public void Interact(Interactor source, IInteractable target)
@@ -39,7 +40,8 @@ public class Digable : MonoBehaviour, IInteractable
     void OnEnable()
     {
         currentHp = maxHealth;
-        collider.enabled = true;   
+        collider.enabled = true;
+        eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
     }
 
 
@@ -53,15 +55,15 @@ public class Digable : MonoBehaviour, IInteractable
 
     private void OnTriggerExit(Collider collider)
     {
-        Dig digSource = collider.GetComponent<Dig>();   
-        
+        Dig digSource = collider.GetComponent<Dig>();
+
         if (digSource != null)
         {
             StartCoroutine(DespawnDigable());
             Physics.IgnoreLayerCollision(8, 9, false); // Player can collide with digable terrain
         }
     }
-      
+
     public void TakeDamage(Interactor source, int damageValue)
     {
         currentHp -= damageValue;
@@ -78,7 +80,7 @@ public class Digable : MonoBehaviour, IInteractable
             collider.enabled = false;
             SpawnObject();
             StartCoroutine(DespawnDigable());
-            OnEndDig.Invoke();           
+            OnEndDig.Invoke();
         }
     }
 
@@ -88,6 +90,9 @@ public class Digable : MonoBehaviour, IInteractable
         {
             GameObject newObjectToSpawn = Instantiate(ObjectToSpawn, transform.position, Quaternion.identity);
             newObjectToSpawn.GetComponent<Rigidbody>().AddForce(Vector3.up * ObjectToSpawnJumpSpeed); // Make newly spawned object jump up
+
+            // Broadcast that an object has been found
+            eventManager.Trigger<DigableEvent, Digable>(this);
         }
         else
         {
@@ -96,13 +101,13 @@ public class Digable : MonoBehaviour, IInteractable
     }
 
     public IEnumerator DespawnDigable()
-    { 
+    {
         yield return new WaitForSeconds(DespawnTimer);
-        gameObject.SetActive(false);    
+        gameObject.SetActive(false);
     }
 
     public void HideInteractability()
     {
-      
+
     }
 }

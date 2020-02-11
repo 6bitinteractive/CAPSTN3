@@ -165,6 +165,9 @@ public class LocationData
         Exit
     }
 }
+
+[Serializable]
+public class DigableEvent : UnityEvent<Digable> { }
 #endregion
 
 // Reference
