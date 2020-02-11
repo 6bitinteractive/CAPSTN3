@@ -36,21 +36,14 @@ public class Objective : MonoBehaviour
             // Listen to condition updates
             condition.OnDone.gameEvent.AddListener(EvaluateObjective);
 
-            switch (sequenceType)
-            {
-                case SequenceType.Sequential:
-                    {
-                        conditions[0].SwitchStatus(Condition.Status.Active); // FIX: This is called more than once?
-                        break;
-                    }
-
-                case SequenceType.Parallel:
-                    {
-                        condition.SwitchStatus(Condition.Status.Active);
-                        break;
-                    }
-            }
+            // Activate all conditions for parallel sequence type
+            if (sequenceType == SequenceType.Parallel)
+                condition.SwitchStatus(Condition.Status.Active);
         }
+
+        // For sequential order, only activate the first condition
+        if (sequenceType == SequenceType.Sequential)
+            conditions[0].SwitchStatus(Condition.Status.Active);
     }
 
     private void EvaluateObjective(Condition condition)
