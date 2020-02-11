@@ -42,10 +42,12 @@ public class PlayerController : MonoBehaviour
         sceneController.AfterSceneLoad.AddListener(() => enabled = true);
         // Fix: need to set up the proper settings (currently using arbitrary keys)
         dialogueDisplayManager = dialogueDisplayManager ?? SingletonManager.GetInstance<DialogueDisplayManager>();
-        dialogueDisplayManager.OnConversationBegin.AddListener(() => {
+        dialogueDisplayManager.OnConversationBegin.AddListener(() =>
+        {
             controlScheme.Player.Disable();
             controlScheme.DialogueInteraction.Enable();
-            movement.Move(Vector3.zero, 0); });
+            movement.Move(Vector3.zero, 0);
+        });
         dialogueDisplayManager.OnConversationEnd.AddListener(() => { controlScheme.DialogueInteraction.Disable(); controlScheme.Player.Enable(); });
 
         controlScheme.Player.Enable();
@@ -77,11 +79,14 @@ public class PlayerController : MonoBehaviour
 
     public void Bark()
     {
+        if (!bark.enabled) { return; }
         bark.BarkEvent(interactor);
     }
 
     public void Bite()
     {
+        if (!bite.enabled) { return; }
+
         // Makes sure the target exists and has the component biteable otherwise return
         if (interactor.CurrentTarget != null && !interactor.CurrentTarget.GetComponent<Biteable>()) return;
 
@@ -120,6 +125,8 @@ public class PlayerController : MonoBehaviour
 
     public void Dig()
     {
+        if (!dig.enabled) { return; }
+
         // Makes sure the target exists and has the component digable otherwise return
         if (interactor.CurrentTarget != null)
         {
@@ -136,6 +143,8 @@ public class PlayerController : MonoBehaviour
 
     public void Talk()
     {
+        if (!talk.enabled) { return; }
+
         // Makes sure the target exists and has the component digable otherwise return
         if (interactor.CurrentTarget != null)
         {
