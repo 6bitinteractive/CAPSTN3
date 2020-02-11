@@ -14,38 +14,37 @@ public class DialogueHandler : MonoBehaviour
     [SerializeField] private Conversation defaultConversation;
     [SerializeField] private List<ConversationSet> questRelatedConversations;
 
-    private static EventManager eventManager;
     private static DialogueDisplayManager dialogueDisplayManager;
-    private bool isDirty;
+    private static EventManager eventManager;
+    private static Quest quest;
 
-
-
-    private IEnumerator Start()
+    private void Start()
     {
         dialogueDisplayManager = dialogueDisplayManager ?? SingletonManager.GetInstance<DialogueDisplayManager>();
+        eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
+        quest = quest ?? SingletonManager.GetInstance<QuestManager>().CurrentQuest;
 
         // Listen to quest event status update
-        eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
         eventManager.Subscribe<GameQuestEvent, QuestEvent>(DetermineCurrentConversation);
         //Debug.LogFormat("DialogueHandler for {0} started listening to QuestEventUpdates.", gameObject.name);
 
-        yield return new WaitForEndOfFrame();
-
         // TODO: Load a saved data
 
+        // Determine what's the current conversation
         CurrentConversation = defaultConversation;
-        QuestEvent currentQuestEvent = SingletonManager.GetInstance<QuestManager>().CurrentQuest.CurrentQuestEvent;
-        if (!isDirty) // We only set a conversation at Start() if no QuestEvent has changed it yet.
-        {
-            //Debug.LogFormat("Set default conversation for {0}", gameObject.name);
-            DetermineCurrentConversation(currentQuestEvent);
-        }
+        DetermineCurrentConversation(null);
     }
 
     private void OnDisable()
     {
         //Debug.LogFormat("DialogueHandler for {0} stopped listening to QuestEventUpdates.", gameObject.name);
         eventManager.Unsubscribe<GameQuestEvent, QuestEvent>(DetermineCurrentConversation);
+    }
+
+    // This allows you to change the current conversation but not display it right away
+    public void SwitchConversation(Conversation conversation)
+    {
+        CurrentConversation = conversation;
     }
 
     public void StartConversation()
@@ -60,41 +59,50 @@ public class DialogueHandler : MonoBehaviour
         dialogueDisplayManager.DisplayConversation(conversation);
     }
 
-    public void SwitchConversation(Conversation conversation)
-    {
-        CurrentConversation = conversation;
-    }
-
-
-
-
-
-
-
-
     private void DetermineCurrentConversation(QuestEvent questEvent)
     {
-        isDirty = true;
-
         // Find the related conversation to the quest event
         // If there's no related conversation to the questEvent, we set current conversation to default
         // TODO: Cache QuestEvent component instead of always calling it every evaluation
 
-        //Debug.Log("QUESTEVENT: " + questEvent.DisplayName + " - " + questEvent.CurrentStatus);
-        ConversationSet cs = questRelatedConversations.Find(x => questEvent == x.questEventReference.gameObject.GetComponent<QuestEvent>()
-                                                          && questEvent.CurrentStatus == x.requiredQuestEventStatus);
+        ConversationSet cs = null;
+        if (questEvent != null) // Check if it came from a QuestEvent update
+        {
+            cs = FindRelatedConversation(questEvent);
+            if (cs != null)
+            {
+                CurrentConversation = cs.conversation;
+                Debug.LogFormat("Dialogue updated by {0} - {1}", questEvent, questEvent.CurrentStatus);
+                Debug.LogFormat("{1} Current Dialogue: {0}", CurrentConversation.dialogue[0].dialogueLines[0], gameObject.name);
+                return;
+            }
+        }
 
+        // Check if theres a conversation related to current quest
+        cs = FindRelatedConversation(quest.CurrentQuestEvent);
         if (cs != null)
         {
             CurrentConversation = cs.conversation;
-            Debug.LogFormat("Dialogue updated by {0}", questEvent);
+            Debug.LogFormat("{1} Current Dialogue: {0}", CurrentConversation.dialogue[0].dialogueLines[0], gameObject.name);
+            // Check if there's a conversation related to the recently done quest
         }
-        //else
-        //{
-        //    CurrentConversation = defaultConversation;
-        //}
+        else
+        {
+            cs = FindRelatedConversation(quest.PreviousQuestEvent);
 
-        Debug.LogFormat("{1} Current Dialogue: {0}", CurrentConversation.dialogue[0].dialogueLines[0], gameObject.name);
+            if (cs != null)
+                CurrentConversation = cs.conversation;
+            else
+                CurrentConversation = defaultConversation;
+
+            Debug.LogFormat("{1} Current Dialogue: {0}", CurrentConversation.dialogue[0].dialogueLines[0], gameObject.name);
+        }
+    }
+
+    private ConversationSet FindRelatedConversation(QuestEvent questEvent)
+    {
+        return questRelatedConversations.Find(x => questEvent == x.questEventReference.gameObject.GetComponent<QuestEvent>()
+                                                && questEvent.CurrentStatus == x.requiredQuestEventStatus);
     }
 
     [System.Serializable]
