@@ -11,7 +11,8 @@ public class Quest : MonoBehaviour // Only a MonoBehaviour to make it available 
     private List<QuestEvent> questEvents = new List<QuestEvent>();
 
     // Assumes there's only one active quest event which is true for current implementation
-    public QuestEvent CurrentQuestEvent => questEvents.FindLast(x => x.CurrentStatus != QuestEvent.Status.Inactive);
+    public QuestEvent CurrentQuestEvent { get; private set; }  // The current active
+    public QuestEvent PreviousQuestEvent { get; private set; } // The recently done
 
     public UnityEvent OnQuestEnd = new UnityEvent();
 
@@ -39,10 +40,16 @@ public class Quest : MonoBehaviour // Only a MonoBehaviour to make it available 
             {
                 // Start the next quest event in line
                 questEvent.SwitchStatus(QuestEvent.Status.Active);
+
+                // Set as current quest event
+                CurrentQuestEvent = questEvent;
             }
         }
 
-        // Turn off questEvent
+        // Set done as previous quest event
+        PreviousQuestEvent = doneQuestEvent;
+
+        // Turn off recently done quest event
         doneQuestEvent.gameObject.SetActive(false);
 
         // Note: For now, we assume that all quest events will be done
