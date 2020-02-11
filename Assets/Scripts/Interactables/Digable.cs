@@ -88,8 +88,13 @@ public class Digable : MonoBehaviour, IInteractable
     {
         if (ObjectToSpawn != null)
         {
-            GameObject newObjectToSpawn = Instantiate(ObjectToSpawn, transform.position, Quaternion.identity);
-            newObjectToSpawn.GetComponent<Rigidbody>().AddForce(Vector3.up * ObjectToSpawnJumpSpeed); // Make newly spawned object jump up
+            //GameObject newObjectToSpawn = Instantiate(ObjectToSpawn, transform.position, Quaternion.identity);
+            //newObjectToSpawn.GetComponent<Rigidbody>().AddForce(Vector3.up * ObjectToSpawnJumpSpeed); // Make newly spawned object jump up
+
+            // Temporary
+            ObjectToSpawn.transform.position = transform.position;
+            ObjectToSpawn.SetActive(true);
+            ObjectToSpawn.GetComponent<Rigidbody>().AddForce(Vector3.up * ObjectToSpawnJumpSpeed);
 
             // Broadcast that an object has been found
             eventManager.Trigger<DigableEvent, Digable>(this);
