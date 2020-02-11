@@ -25,9 +25,13 @@ public class Sniff : MonoBehaviour
         line.enabled = true;
         grayScalePostProcessingVolume.SetActive(true);
 
-        Sniffable sniffable = CurrentDestination.GetComponent<Sniffable>();
-        if (sniffable != null)
-            eventManager.Trigger<ScentModeEvent, Sniffable>(sniffable);
+        if (CurrentDestination != null)
+        {
+            Sniffable sniffable = CurrentDestination.GetComponent<Sniffable>();
+
+            if (sniffable != null)
+                eventManager.Trigger<ScentModeEvent, Sniffable>(sniffable);
+        }
     }
 
     public void DeactivateScentMode()

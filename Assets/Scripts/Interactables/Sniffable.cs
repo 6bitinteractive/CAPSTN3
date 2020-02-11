@@ -14,6 +14,7 @@ public class Sniffable : MonoBehaviour
 
     public void RemoveCurrentTargetSniffable()
     {
-        sniff.CurrentDestination = null;
+        if (sniff != null)
+            sniff.CurrentDestination = null;
     }
 }
