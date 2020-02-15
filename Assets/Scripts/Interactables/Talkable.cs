@@ -27,10 +27,31 @@ public class Talkable : MonoBehaviour, IInteractable
         //Debug.Log(source + "Is talking to " + target);
         OnTalk.Invoke();
         dialogueHandler.StartConversation();
+
+        if (!source) { return; }
+        StartCoroutine(RotateTowardsTarget(source.transform));
     }
 
     public void HideInteractability()
     {
 
+    }
+
+    IEnumerator RotateTowardsTarget (Transform targetTransform)
+    {      
+        float duration = Quaternion.Angle(transform.rotation, targetTransform.rotation) / 100; // Get rotation duration
+        Vector3 direction = (targetTransform.position - transform.position).normalized;
+        direction.y = 0; // Prevent y axis rotation
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        float currentTime = 0f;
+
+        while (currentTime < duration)
+        {
+            yield return null;
+            currentTime += Time.deltaTime;
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, currentTime / duration);
+        }
+
+        transform.rotation = targetRotation;
     }
 }
