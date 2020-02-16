@@ -12,8 +12,8 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
     [SerializeField] private float minCharacterDisplayWaitTime = 0.0024f;
 
     [Tooltip("NOTE: This is a multiplier.\n\nA smaller number means you make the wait time shorter.\n\nShorter wait time means faster display of text.")]
-
     [SerializeField] private float characterDisplayWaitTimeMultiplier = 0.2f;
+
     public Dictionary<DialogueSpeaker, DialogueDisplay> dialogueDisplays = new Dictionary<DialogueSpeaker, DialogueDisplay>();
 
     public UnityEvent OnConversationBegin = new UnityEvent();
@@ -22,6 +22,7 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
 
     private Conversation conversationToDisplay;
     private Dialogue currentDialogue;
+    private Dialogue previousDialogue = new Dialogue();
     private DialogueSpeaker previousSpeaker;
     private DialogueDisplay currentDisplay;
     private string nextLine;
@@ -96,8 +97,6 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
 
     public void EndConversation()
     {
-        currentState = State.ReadyForConversation;
-
         // Make sure no coroutines are running
         StopAllCoroutines();
 
@@ -109,12 +108,16 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
 
         // Clear references to avoid null ref errors
         currentDialogue = null;
+        previousDialogue = null;
         currentDisplay = null;
         previousSpeaker = null;
 
         // Broadcast that the conversation has ended
         conversationToDisplay.OnConversationEnd.Invoke(); // Invoke the event specific to the conversation
         OnConversationEnd.Invoke();
+
+        // Ready for new conversation
+        currentState = State.ReadyForConversation;
     }
 
     private IEnumerator DetermineLine()
@@ -134,6 +137,10 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
             currentDisplay = GetDialogueDisplay(currentDialogue.speaker);
         }
 
+        // Check if this is the start of a new dialogue
+        if (currentDialogue != previousDialogue)
+            currentDialogue.OnDialogueBegin.Invoke(); // Invoke current dialogue's OnDialogueBegin event
+
         // Do the typewriter effect
         yield return StartCoroutine(DisplayLine());
 
@@ -143,10 +150,19 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
 
         if (currentDialogue.HasEnded()) // Check if we're at the end of the current speaker's dialogue
         {
+            // Invoke current dialogue's OnDialogueEnd event
+            // NOTE: This is invoked as soon as the line is done displaying, i.e. no player input is required
+            currentDialogue.OnDialogueEnd.Invoke();
+
             if (!conversationToDisplay.HasEnded()) // Check if we're not yet at the end of the conversation
+            {
+                previousDialogue = currentDialogue;
                 currentDialogue = conversationToDisplay.GetNextDialogue();
+            }
             else
+            {
                 currentState = State.ConversationEnded;
+            }
         }
     }
 

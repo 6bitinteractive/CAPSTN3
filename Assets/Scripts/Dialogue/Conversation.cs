@@ -16,14 +16,9 @@ public class Conversation : MonoBehaviour
     {
         currentIndex++;
         if (currentIndex < dialogue.Length)
-        {
             return dialogue[currentIndex];
-        }
-        else
-        {
-            currentIndex = -1;
-            return null;
-        }
+
+        return null;
     }
 
     public bool HasEnded()
