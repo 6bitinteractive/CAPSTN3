@@ -13,14 +13,13 @@ public class FaceCamera : MonoBehaviour
 
     private void Start()
     {
-        referenceCamera = referenceCamera ?? SingletonManager.GetInstance<CameraManager>().MainCam;
+        referenceCamera = SingletonManager.GetInstance<CameraManager>().MainCam; // Always get the reference to the camera used in the current scene
         thisTransform = transform;
         active = true;
     }
 
     private void OnDisable()
     {
-        referenceCamera = null;
         active = false;
     }
 
