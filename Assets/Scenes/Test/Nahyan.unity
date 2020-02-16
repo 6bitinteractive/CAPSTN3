@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 325514748}
   - component: {fileID: 325514750}
   - component: {fileID: 325514749}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,6 +279,9 @@ MonoBehaviour:
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  ignoreLayerMask:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!1 &345078468
 GameObject:
   m_ObjectHideFlags: 0
@@ -2399,7 +2402,7 @@ PrefabInstance:
     - target: {fileID: 858786690155735837, guid: b816a4aa69363404fa5f00c8ac0ea6e3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.89
+      value: 5.84
       objectReference: {fileID: 0}
     - target: {fileID: 858786690155735837, guid: b816a4aa69363404fa5f00c8ac0ea6e3,
         type: 3}
