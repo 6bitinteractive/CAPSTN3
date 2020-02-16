@@ -8,9 +8,6 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
 {
     [SerializeField] private float defaultCharacterDisplayWaitTime = 0.06f;
 
-    [Tooltip("This is the shortest amount of time to display text.")]
-    [SerializeField] private float minCharacterDisplayWaitTime = 0.0024f;
-
     [Tooltip("NOTE: This is a multiplier.\n\nA smaller number means you make the wait time shorter.\n\nShorter wait time means faster display of text.")]
     [SerializeField] private float characterDisplayWaitTimeMultiplier = 0.2f;
 
@@ -27,13 +24,15 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
     private DialogueDisplay currentDisplay;
     private string nextLine;
     private float currentCharacterWaitTime;
-    private float maxCharacterWaitTime;
+    private float minCharacterDisplayWaitTime;
     private WaitForSeconds waitTime;
     private State currentState;
+    private Queue<char> textToDisplay = new Queue<char>();
 
     private void Start()
     {
-        maxCharacterWaitTime = defaultCharacterDisplayWaitTime * characterDisplayWaitTimeMultiplier;
+        // Fastest (minimum) waiting time
+        minCharacterDisplayWaitTime = defaultCharacterDisplayWaitTime * characterDisplayWaitTimeMultiplier * characterDisplayWaitTimeMultiplier;
         ResetDisplayLineSpeed();
     }
 
@@ -64,11 +63,17 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
                 {
                     // Make the text display faster
                     currentCharacterWaitTime *= characterDisplayWaitTimeMultiplier;
-                    currentCharacterWaitTime = Mathf.Clamp(currentCharacterWaitTime, minCharacterDisplayWaitTime, maxCharacterWaitTime);
+                    currentCharacterWaitTime = Mathf.Clamp(currentCharacterWaitTime, minCharacterDisplayWaitTime, defaultCharacterDisplayWaitTime);
 
-                    // Don't set a new wait time if the speed has already reached the minimum (i.e. it's at its fastest display speed)
+                    // Only set a new wait time if the speed has not yet reached the minimum
                     if (!Mathf.Approximately(currentCharacterWaitTime, minCharacterDisplayWaitTime))
+                    {
                         waitTime = new WaitForSeconds(currentCharacterWaitTime);
+                    }
+                    else // The next time the player continues (reaches below minimum or 0), the full text is displayed
+                    {
+                        DisplayFullLine();
+                    }
 
                     break;
                 }
@@ -166,7 +171,11 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
         }
     }
 
-    private Queue<char> textToDisplay = new Queue<char>();
+    private void DisplayFullLine()
+    {
+        textToDisplay.Clear();
+        currentDisplay.displayText.text = nextLine;
+    }
 
     private IEnumerator DisplayLine()
     {
