@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
 {
@@ -22,12 +23,22 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
     private Dialogue previousDialogue = new Dialogue();
     private DialogueSpeaker previousSpeaker;
     private DialogueDisplay currentDisplay;
+    private State currentState;
     private string nextLine;
     private float currentCharacterWaitTime;
     private float minCharacterDisplayWaitTime;
-    private WaitForSeconds waitTime;
-    private State currentState;
-    private Queue<char> textToDisplay = new Queue<char>();
+    private bool hasTextChanged;
+
+    private void OnEnable()
+    {
+        // Subscribe to event fired when text object has been regenerated.
+        TMPro_EventManager.TEXT_CHANGED_EVENT.Add(OnTextChanged);
+    }
+
+    private void OnDisable()
+    {
+        TMPro_EventManager.TEXT_CHANGED_EVENT.Remove(OnTextChanged);
+    }
 
     private void Start()
     {
@@ -65,15 +76,9 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
                     currentCharacterWaitTime *= characterDisplayWaitTimeMultiplier;
                     currentCharacterWaitTime = Mathf.Clamp(currentCharacterWaitTime, minCharacterDisplayWaitTime, defaultCharacterDisplayWaitTime);
 
-                    // Only set a new wait time if the speed has not yet reached the minimum
-                    if (!Mathf.Approximately(currentCharacterWaitTime, minCharacterDisplayWaitTime))
-                    {
-                        waitTime = new WaitForSeconds(currentCharacterWaitTime);
-                    }
-                    else // The next time the player continues (reaches below minimum or 0), the full text is displayed
-                    {
+                    // If the speed has not reached the minimum, we simply display the full line
+                    if (Mathf.Approximately(currentCharacterWaitTime, minCharacterDisplayWaitTime))
                         DisplayFullLine();
-                    }
 
                     break;
                 }
@@ -90,11 +95,6 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
             case State.ConversationEnded:
                 {
                     EndConversation();
-                    break;
-                }
-
-            default:
-                {
                     break;
                 }
         }
@@ -125,6 +125,19 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
         currentState = State.ReadyForConversation;
     }
 
+    private DialogueDisplay GetDialogueDisplay(DialogueSpeaker dialogueSpeaker)
+    {
+        if (dialogueDisplays.TryGetValue(dialogueSpeaker, out var dialogueDisplay))
+            return dialogueDisplay;
+
+        return null;
+    }
+
+    private void ResetDisplayLineSpeed()
+    {
+        currentCharacterWaitTime = defaultCharacterDisplayWaitTime;
+    }
+
     private IEnumerator DetermineLine()
     {
         currentState = State.DeterminingLine;
@@ -147,7 +160,7 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
             currentDialogue.OnDialogueBegin.Invoke(); // Invoke current dialogue's OnDialogueBegin event
 
         // Do the typewriter effect
-        yield return StartCoroutine(DisplayLine());
+        yield return StartCoroutine(DisplayLine(nextLine));
 
         // Displaying the line is now done
         currentState = State.LineEnded;
@@ -173,44 +186,131 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
 
     private void DisplayFullLine()
     {
-        textToDisplay.Clear();
+        totalCharacters = 0;
+        currentDisplay.displayText.text = string.Empty;
         currentDisplay.displayText.text = nextLine;
     }
 
-    private IEnumerator DisplayLine()
+    private int totalCharacters;
+    private IEnumerator DisplayLine(string text)
     {
-        textToDisplay.Clear();
-        currentDisplay.displayText.text = string.Empty;
+        //currentDisplay.displayText.text = StripAllCommands(text);
+        currentDisplay.displayText.text = text;
+        currentDisplay.displayText.ForceMeshUpdate();
 
-        foreach (var character in nextLine)
-        {
-            textToDisplay.Enqueue(character);
-        }
+        //specialCommands = BuildSpecialCommandList(text);
+
+        //Count how many characters we have in our new dialogue line.
+        TMP_TextInfo textInfo = currentDisplay.displayText.textInfo;
+        totalCharacters = currentDisplay.displayText.textInfo.characterCount;
+
+        //Color of all characters' vertices.
+        Color32[] newVertexColors;
+
+        //Base color for our text.
+        Color32 c0 = currentDisplay.displayText.color;
 
         // Display the line
         currentDisplay?.Display();
         currentState = State.DisplayingLine;
 
-        while (textToDisplay.Count > 0)
+        //Shake text if true.
+        //if (isTextShaking)
+        //{
+        //    StartCoroutine(ShakingText());
+        //}
+
+        //We now hide text based on each character's alpha value
+        HideText();
+
+        int i = 0;
+        while (i < totalCharacters)
         {
-            currentDisplay.displayText.text += textToDisplay.Peek();
-            textToDisplay.Dequeue();
-            yield return waitTime;
+
+            //If we change the text live on runtime in our inspector, adjust the character count!
+            if (hasTextChanged)
+            {
+                totalCharacters = textInfo.characterCount; // Update visible character count.
+                hasTextChanged = false;
+            }
+
+            /*  Note: implementing a color command is easy now! All you need to do is
+             *  extract the value, create a bool isColorizing = true, and use this color instead
+             *  of the base c0 color. A second command can put isColorizing to false.
+             *  I leave it up to you to figure this out.
+            */
+            //if (specialCommands.Count > 0)
+            //{
+            //    CheckForCommands(i);
+            //}
+
+            //Instead of incrementing maxVisibleCharacters or add the current character to our string, we do this :
+
+            // Get the index of the material used by the current character.
+            int materialIndex = textInfo.characterInfo[i].materialReferenceIndex;
+
+            // Get the vertex colors of the mesh used by this text element (character or sprite).
+            newVertexColors = textInfo.meshInfo[materialIndex].colors32;
+
+            // Get the index of the first vertex used by this text element.
+            int vertexIndex = textInfo.characterInfo[i].vertexIndex;
+
+            // Only change the vertex color if the text element is visible. (It's visible, only the alpha color is 0)
+            if (textInfo.characterInfo[i].isVisible)
+            {
+
+                newVertexColors[vertexIndex + 0] = c0;
+                newVertexColors[vertexIndex + 1] = c0;
+                newVertexColors[vertexIndex + 2] = c0;
+                newVertexColors[vertexIndex + 3] = c0;
+
+                // New function which pushes (all) updated vertex data to the appropriate meshes when using either the Mesh Renderer or CanvasRenderer.
+                currentDisplay.displayText.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
+            }
+
+            i++;
+            yield return new WaitForSeconds(currentCharacterWaitTime);
         }
     }
 
-    private void ResetDisplayLineSpeed()
+    //Hide our text by making all our characters invisible.
+    private void HideText()
     {
-        currentCharacterWaitTime = defaultCharacterDisplayWaitTime;
-        waitTime = new WaitForSeconds(currentCharacterWaitTime);
+        currentDisplay.displayText.ForceMeshUpdate();
+
+        TMP_TextInfo textInfo = currentDisplay.displayText.textInfo;
+
+        Color32[] newVertexColors;
+        Color32 c0 = currentDisplay.displayText.color;
+
+        for (int i = 0; i < textInfo.characterCount; i++)
+        {
+
+            int materialIndex = textInfo.characterInfo[i].materialReferenceIndex;
+
+            // Get the vertex colors of the mesh used by this text element (character or sprite).
+            newVertexColors = textInfo.meshInfo[materialIndex].colors32;
+
+            // Get the index of the first vertex used by this text element.
+            int vertexIndex = textInfo.characterInfo[i].vertexIndex;
+
+            //Alpha = 0
+            c0 = new Color32(c0.r, c0.g, c0.b, 0);
+
+            //Apply it to all vertex.
+            newVertexColors[vertexIndex + 0] = c0;
+            newVertexColors[vertexIndex + 1] = c0;
+            newVertexColors[vertexIndex + 2] = c0;
+            newVertexColors[vertexIndex + 3] = c0;
+
+            // New function which pushes (all) updated vertex data to the appropriate meshes when using either the Mesh Renderer or CanvasRenderer.
+            currentDisplay.displayText.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
+        }
     }
 
-    private DialogueDisplay GetDialogueDisplay(DialogueSpeaker dialogueSpeaker)
+    private void OnTextChanged(UnityEngine.Object obj)
     {
-        if (dialogueDisplays.TryGetValue(dialogueSpeaker, out var dialogueDisplay))
-            return dialogueDisplay;
-
-        return null;
+        hasTextChanged = true;
     }
 
     public enum State
@@ -222,3 +322,6 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
         ConversationEnded
     }
 }
+
+// Source - typewriter effect:
+// https://bitbucket.org/flaredust/excerpts-of-video-game-code-for-unity/src/master/project-libra/RPG%20Dialogue%20System/DialogueExample5.cs
