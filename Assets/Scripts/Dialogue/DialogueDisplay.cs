@@ -7,14 +7,22 @@ using TMPro;
 
 public class DialogueDisplay : MonoBehaviour
 {
+    [SerializeField] private Transform canvasContainer;
+
     public DialogueSpeaker dialogueSpeaker;
     public TextMeshProUGUI displayText;
 
+    private Transform thisTransform;
+    private bool displayed;
+
     private CanvasGroupController canvasGroup;
+
     private static DialogueDisplayManager dialogueDisplayManager;
+    private static Camera mainCam;
 
     private void Awake()
     {
+        thisTransform = transform;
         canvasGroup = GetComponent<CanvasGroupController>();
         displayText.text = string.Empty;
     }
@@ -23,6 +31,7 @@ public class DialogueDisplay : MonoBehaviour
     {
         dialogueDisplayManager = dialogueDisplayManager ?? SingletonManager.GetInstance<DialogueDisplayManager>();
         dialogueDisplayManager.dialogueDisplays.Add(dialogueSpeaker, this);
+        mainCam = SingletonManager.GetInstance<CameraManager>().MainCam;
     }
 
     private void OnDisable()
@@ -35,13 +44,25 @@ public class DialogueDisplay : MonoBehaviour
         Display(false);
     }
 
+    private void LateUpdate()
+    {
+        if (displayed)
+            Reposition();
+    }
+
     public void Display(bool value = true)
     {
+        displayed = value;
         canvasGroup.Display(value);
     }
 
     private void Hide()
     {
         Display(false);
+    }
+
+    private void Reposition()
+    {
+        thisTransform.position = mainCam.WorldToScreenPoint(canvasContainer.position);
     }
 }

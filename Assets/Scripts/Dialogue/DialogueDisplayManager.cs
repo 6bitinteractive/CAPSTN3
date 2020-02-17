@@ -176,9 +176,13 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
 
     private void DisplayFullLine()
     {
-        textToDisplay.Clear();
+        // For typewriter effect using TMP
         totalCharacters = 0;
         currentDisplay.displayText.text = string.Empty;
+
+        // For simple typewriter effect
+        textToDisplay.Clear();
+
         currentDisplay.displayText.text = nextLine;
     }
 

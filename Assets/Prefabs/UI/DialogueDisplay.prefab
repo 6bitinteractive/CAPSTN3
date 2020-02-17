@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 932240132433931104}
-  - component: {fileID: 344447125118219052}
   m_Layer: 0
   m_Name: DialogueDisplay
   m_TagString: Untagged
@@ -32,20 +31,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &344447125118219052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 932240132433931105}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82ee6b963c396f2419662f8e570113a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  axis: 0
-  reverseFace: 1
 --- !u!1 &932240134075677502
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,6 +343,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 2cdb60320808ecd43ba300813b6f1046,
         type: 2}
+    - target: {fileID: 4971201935841686468, guid: 42f473917d6f0f24abdadff5722e8109,
+        type: 3}
+      propertyPath: canvasContainer
+      value: 
+      objectReference: {fileID: 932240132433931104}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42f473917d6f0f24abdadff5722e8109, type: 3}
 --- !u!224 &7751518039269173176 stripped
