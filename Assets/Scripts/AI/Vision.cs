@@ -54,13 +54,4 @@ public class Vision : MonoBehaviour
         if (agent.Target != null && other.gameObject == agent.Target)
             agent.Target = null;
     }
-
-    private void SpotTarget(GameObject target, Vector3 targetPosition)
-    {
-        Vector3 direction = (targetPosition - transform.position).normalized;
-        Ray ray = new Ray(transform.position, direction);
-        Debug.DrawRay(transform.position, direction);
-        agent.Target = target;
-        return;
-    }
 }

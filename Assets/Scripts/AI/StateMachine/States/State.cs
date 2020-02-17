@@ -2,16 +2,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(Agent))]
 public class State : MonoBehaviour
 {
     protected Agent agent;
+    protected NavMeshAgent navMeshAgent;
     [SerializeField] private List<Transition> transitions = new List<Transition>();
 
     void Awake()
     {
         agent = GetComponent<Agent>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     public virtual void OnEnable()
