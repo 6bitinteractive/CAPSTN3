@@ -31,6 +31,7 @@ public class ChaseState : State
     private void RotateTowardsTarget(Transform currentTarget)
     {
         Vector3 direction = (currentTarget.transform.position - transform.position).normalized;
+        direction.y = 0;
         Quaternion rotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Lerp(transform.rotation, rotation, roationSpeed * Time.deltaTime);
     }
