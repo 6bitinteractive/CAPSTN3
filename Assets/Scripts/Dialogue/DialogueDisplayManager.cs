@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+using UnityEngine.UI;
 
 public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
 {
@@ -27,18 +28,7 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
     private string nextLine;
     private float currentCharacterWaitTime;
     private float minCharacterDisplayWaitTime;
-    private bool hasTextChanged;
 
-    private void OnEnable()
-    {
-        // Subscribe to event fired when text object has been regenerated.
-        TMPro_EventManager.TEXT_CHANGED_EVENT.Add(OnTextChanged);
-    }
-
-    private void OnDisable()
-    {
-        TMPro_EventManager.TEXT_CHANGED_EVENT.Remove(OnTextChanged);
-    }
 
     private void Start()
     {
@@ -160,7 +150,7 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
             currentDialogue.OnDialogueBegin.Invoke(); // Invoke current dialogue's OnDialogueBegin event
 
         // Do the typewriter effect
-        yield return StartCoroutine(DisplayLine(nextLine));
+        yield return StartCoroutine(SimpleDisplayLine());
 
         // Displaying the line is now done
         currentState = State.LineEnded;
@@ -186,12 +176,52 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
 
     private void DisplayFullLine()
     {
+        textToDisplay.Clear();
         totalCharacters = 0;
         currentDisplay.displayText.text = string.Empty;
         currentDisplay.displayText.text = nextLine;
     }
 
+    private Queue<char> textToDisplay = new Queue<char>();
+
+    private IEnumerator SimpleDisplayLine()
+    {
+        textToDisplay.Clear();
+        currentDisplay.displayText.text = string.Empty;
+
+        foreach (var character in nextLine)
+        {
+            textToDisplay.Enqueue(character);
+        }
+
+        // Display the line
+        currentDisplay?.Display();
+        currentState = State.DisplayingLine;
+
+        while (textToDisplay.Count > 0)
+        {
+            currentDisplay.displayText.text += textToDisplay.Peek();
+            textToDisplay.Dequeue();
+            yield return new WaitForSeconds(currentCharacterWaitTime);
+        }
+    }
+
+    #region Typewriter effect using TextMeshPro / Incompatible with Vertical Layout Group
+
+    private void OnEnable()
+    {
+        // Subscribe to event fired when text object has been regenerated.
+        TMPro_EventManager.TEXT_CHANGED_EVENT.Add(OnTextChanged);
+    }
+
+    private void OnDisable()
+    {
+        TMPro_EventManager.TEXT_CHANGED_EVENT.Remove(OnTextChanged);
+    }
+
+    private bool hasTextChanged;
     private int totalCharacters;
+
     private IEnumerator DisplayLine(string text)
     {
         //currentDisplay.displayText.text = StripAllCommands(text);
@@ -226,7 +256,6 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
         int i = 0;
         while (i < totalCharacters)
         {
-
             //If we change the text live on runtime in our inspector, adjust the character count!
             if (hasTextChanged)
             {
@@ -312,6 +341,7 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
     {
         hasTextChanged = true;
     }
+    #endregion
 
     public enum State
     {
@@ -323,5 +353,5 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
     }
 }
 
-// Source - typewriter effect:
+// Source - typewriter effect using TextMeshPro:
 // https://bitbucket.org/flaredust/excerpts-of-video-game-code-for-unity/src/master/project-libra/RPG%20Dialogue%20System/DialogueExample5.cs
