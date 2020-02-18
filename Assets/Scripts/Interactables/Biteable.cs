@@ -9,7 +9,7 @@ public class Biteable : MonoBehaviour, IInteractable
 {
     public UnityEvent OnBite;
     public UnityEvent OnRelease;
-    [SerializeField] private Vector3 offSet;
+    [SerializeField] private Vector3 offset;
 
     public void Interact(Interactor source, IInteractable target)
     {
@@ -57,8 +57,8 @@ public class Biteable : MonoBehaviour, IInteractable
         {
             Pickupable pickupableTarget = gameObject.GetComponent<Pickupable>();
             Transform mouth = source.GetComponent<Bite>().Mouth.transform;
-            Vector3 mouthPos = mouth.position + offSet;
-            mouth.position = mouthPos;
+            Vector3 mouthPos = mouth.localPosition + offset;
+            mouth.localPosition = mouthPos;
             pickupableTarget.Pickup(source, mouth);
         }
 
