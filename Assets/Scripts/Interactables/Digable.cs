@@ -11,10 +11,12 @@ public class Digable : MonoBehaviour, IInteractable
     [SerializeField] GameObject objectToSpawn;
     [SerializeField] int ObjectToSpawnJumpSpeed = 300;
     [SerializeField] float DespawnTimer = 10f;
+    [SerializeField] Vector3 scaleIncrease;
 
     private Collider collider;
     private int currentHp;
     private static EventManager eventManager;
+    private Vector3 originalScale;
 
     public GameObject ObjectToSpawn { get => objectToSpawn; set => objectToSpawn = value; }
 
@@ -35,6 +37,7 @@ public class Digable : MonoBehaviour, IInteractable
     void Awake()
     {
         collider = gameObject.GetComponent<Collider>();
+        originalScale = transform.localScale;
     }
 
     void OnEnable()
@@ -66,9 +69,16 @@ public class Digable : MonoBehaviour, IInteractable
 
     public void TakeDamage(Interactor source, int damageValue)
     {
+      
         currentHp -= damageValue;
         currentHp = Mathf.Clamp(currentHp, 0, maxHealth);
-        if (currentHp <= 0) DugUp(source);
+
+        if (currentHp <= 0)
+        {
+            DugUp(source);
+            return;
+        }
+        transform.localScale += scaleIncrease;
     }
 
     public void DugUp(Interactor source)
@@ -108,6 +118,7 @@ public class Digable : MonoBehaviour, IInteractable
     public IEnumerator DespawnDigable()
     {
         yield return new WaitForSeconds(DespawnTimer);
+        transform.localScale = originalScale;
         gameObject.SetActive(false);
     }
 
