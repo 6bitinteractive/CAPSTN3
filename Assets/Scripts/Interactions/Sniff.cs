@@ -8,7 +8,7 @@ public class Sniff : MonoBehaviour
     [SerializeField] private float scentSpeed = 0.9f;
     [SerializeField] private LineRenderer line;
     [SerializeField] private Transform startPos;
-    [SerializeField] private GameObject grayScalePostProcessingVolume;
+    [SerializeField] private GameObject postProcessingEffect;
     private Transform currentDestination;
     private static EventManager eventManager;
 
@@ -23,7 +23,7 @@ public class Sniff : MonoBehaviour
     public void ActivateScentMode()
     {
         line.enabled = true;
-        grayScalePostProcessingVolume.SetActive(true);
+        postProcessingEffect.SetActive(true);
 
         if (CurrentDestination != null)
         {
@@ -37,7 +37,7 @@ public class Sniff : MonoBehaviour
     public void DeactivateScentMode()
     {
         line.enabled = false;
-        grayScalePostProcessingVolume.SetActive(false);
+        postProcessingEffect.SetActive(false);
     }
 
     void Update()
