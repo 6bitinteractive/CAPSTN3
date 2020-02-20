@@ -14,6 +14,10 @@ public class SceneController : Singleton<SceneController>
     [Header("Starting Point")]
     public SceneData playerStartingPoint;
 
+    [Header("Transition Effect")]
+    [SerializeField] private SceneTransitionEffect transitionEffect;
+
+    [Header("Events")]
     public UnityEvent BeforeSceneUnload = new UnityEvent();
     public UnityEvent AfterSceneLoad = new UnityEvent();
 
@@ -37,7 +41,8 @@ public class SceneController : Singleton<SceneController>
 
     public void LoadScene(SceneData sceneData)
     {
-        StartCoroutine(LoadAndSetActive(sceneData.SceneName));
+        if (!transitionEffect.IsInTransition)
+            StartCoroutine(LoadAndSetActive(sceneData.SceneName));
     }
 
     // This assumes there's only one additively loaded scene
@@ -49,12 +54,13 @@ public class SceneController : Singleton<SceneController>
         {
             Debug.LogFormat("The scene, {0}, is already loaded.", sceneName);
             SceneManager.SetActiveScene(scene); // Set it as the active scene, the one to be unloaded next
+            yield return StartCoroutine(transitionEffect.StartTransitionEffect(0f));
             yield break;
         }
 #endif
 
         // Start loading screen/effect here
-        // ...
+        yield return StartCoroutine(transitionEffect.StartTransitionEffect(1f));
 
         // Let any listener to this event do their thing
         BeforeSceneUnload.Invoke();
@@ -78,5 +84,7 @@ public class SceneController : Singleton<SceneController>
 
         // Let any listener to this event do their thing
         AfterSceneLoad.Invoke();
+
+        yield return StartCoroutine(transitionEffect.StartTransitionEffect(0f));
     }
 }
