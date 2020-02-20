@@ -66,7 +66,7 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
                     currentCharacterWaitTime *= characterDisplayWaitTimeMultiplier;
                     currentCharacterWaitTime = Mathf.Clamp(currentCharacterWaitTime, minCharacterDisplayWaitTime, defaultCharacterDisplayWaitTime);
 
-                    // If the speed has not reached the minimum, we simply display the full line
+                    // If the speed has reached the minimum, we then display the full line
                     if (Mathf.Approximately(currentCharacterWaitTime, minCharacterDisplayWaitTime))
                         DisplayFullLine();
 
@@ -211,6 +211,7 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
     }
 
     #region Typewriter effect using TextMeshPro / Incompatible with Vertical Layout Group
+    // This implementation fixes word-wrapping issues for very long texts that span multiple lines
 
     private void OnEnable()
     {

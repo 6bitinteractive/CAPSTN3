@@ -7,8 +7,9 @@ public class CameraManager : Singleton<CameraManager>
 {
     public Camera MainCam { get; private set; }
 
-    void OnEnable()
+    protected override void Awake()
     {
+        base.Awake();
         MainCam = GetComponent<Camera>();
     }
 }

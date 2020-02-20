@@ -31,7 +31,6 @@ public class DialogueDisplay : MonoBehaviour
     {
         dialogueDisplayManager = dialogueDisplayManager ?? SingletonManager.GetInstance<DialogueDisplayManager>();
         dialogueDisplayManager.dialogueDisplays.Add(dialogueSpeaker, this);
-        mainCam = SingletonManager.GetInstance<CameraManager>().MainCam;
     }
 
     private void OnDisable()
@@ -41,6 +40,7 @@ public class DialogueDisplay : MonoBehaviour
 
     private void Start()
     {
+        mainCam = SingletonManager.GetInstance<CameraManager>().MainCam;
         Display(false);
     }
 
