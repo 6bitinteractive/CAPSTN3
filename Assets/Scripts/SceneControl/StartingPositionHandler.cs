@@ -8,9 +8,12 @@ public class StartingPositionHandler : MonoBehaviour
 {
     private SceneController sceneController;
 
+    private Transform thisTransform;
+
     private void Start()
     {
         sceneController = SingletonManager.GetInstance<SceneController>();
+        thisTransform = transform;
         SetStartingPosition();
     }
 
@@ -23,6 +26,7 @@ public class StartingPositionHandler : MonoBehaviour
         }
 
         Transform startingPosition = StartingPosition.FindStartingPosition(sceneController.playerStartingPoint.StartingPointName);
-        transform.position = startingPosition.position;
+        thisTransform.position = startingPosition.position;
+        thisTransform.rotation = startingPosition.rotation;
     }
 }
