@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -68,7 +68,6 @@ public class DialogueHandler : MonoBehaviour
 
         // Find the related conversation to the quest event
         // If there's no related conversation to the questEvent, we set current conversation to default
-        // TODO: Cache QuestEvent component instead of always calling it every evaluation
 
         ConversationSet cs = null;
         if (questEvent != null) // Check if it came from a QuestEvent update
@@ -89,11 +88,10 @@ public class DialogueHandler : MonoBehaviour
         {
             CurrentConversation = cs.conversation;
             Debug.LogFormat("{1} Current Dialogue: {0}", CurrentConversation.dialogue[0].dialogueLines[0], gameObject.name);
-            // Check if there's a conversation related to the recently done quest
         }
         else
         {
-            cs = FindRelatedConversation(quest.PreviousQuestEvent);
+            cs = FindRelatedConversation(quest.PreviousQuestEvent); // Check if there's a conversation related to the recently done quest
 
             if (cs != null)
                 CurrentConversation = cs.conversation;
@@ -106,7 +104,7 @@ public class DialogueHandler : MonoBehaviour
 
     private ConversationSet FindRelatedConversation(QuestEvent questEvent)
     {
-        return questRelatedConversations.Find(x => questEvent == x.questEventReference.gameObject.GetComponent<QuestEvent>()
+        return questRelatedConversations.Find(x => questEvent == x.QuestEvent
                                                 && questEvent.CurrentStatus == x.requiredQuestEventStatus);
     }
 
@@ -116,5 +114,18 @@ public class DialogueHandler : MonoBehaviour
         public GuidReference questEventReference;
         public QuestEvent.Status requiredQuestEventStatus = QuestEvent.Status.Active;
         public Conversation conversation;
+        private QuestEvent qe;
+
+        public QuestEvent QuestEvent
+        {
+            get
+            {
+                if (qe != null)
+                    return qe;
+                else
+                    qe = questEventReference.gameObject.GetComponent<QuestEvent>();
+                return qe;
+            }
+        }
     }
 }
