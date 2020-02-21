@@ -65,6 +65,13 @@ public abstract class Condition : MonoBehaviour
         SwitchStatus((Status)status);
     }
 
+    // NOTE: This is mainly used for debugging!
+    public void ForceComplete()
+    {
+        Satisfied = true;
+        currentStatus = Status.Done;
+    }
+
     protected abstract bool IsSatisfied();
 
     // NOTE: Only called once

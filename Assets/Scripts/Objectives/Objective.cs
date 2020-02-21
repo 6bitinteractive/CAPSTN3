@@ -46,6 +46,15 @@ public class Objective : MonoBehaviour
             conditions[0].SwitchStatus(Condition.Status.Active);
     }
 
+    // NOTE: This is mainly used for debugging!
+    public void ForceComplete()
+    {
+        foreach (var condition in conditions)
+            condition.ForceComplete();
+
+        Complete = true;
+    }
+
     private void EvaluateObjective(Condition condition)
     {
         //Debug.Log("Condition : " + condition.name);

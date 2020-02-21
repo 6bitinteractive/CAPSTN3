@@ -87,6 +87,15 @@ public class QuestEvent : MonoBehaviour
         SwitchStatus((Status)status);
     }
 
+    // NOTE: This is mainly used for debugging!
+    public void ForceComplete()
+    {
+        foreach (var objective in objectives)
+            objective.ForceComplete();
+
+        currentStatus = Status.Done;
+    }
+
     private void ActivateCondition()
     {
         objectives[0].Activate();

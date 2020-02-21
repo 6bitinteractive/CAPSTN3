@@ -9,12 +9,26 @@ public class ConditionStateListenerManager : MonoBehaviour
 {
     private List<Condition> conditions = new List<Condition>();
 
-    private void Awake()
+    private IEnumerator Start()
     {
+        yield return new WaitForEndOfFrame();
+
         conditions.AddRange(GetComponentsInChildren<Condition>());
 
-        // All conditions must be active at start
         foreach (var condition in conditions)
+        {
+            // All conditions must be active at start
             condition.SwitchStatus(Condition.Status.Active);
+        }
+
+        foreach (var condition in conditions)
+        {
+            // If it's been done, invoke OnActive/OnDone events to apply reactions
+            if (condition.CurrentStatus == Condition.Status.Done)
+            {
+                condition.OnActive.gameEvent.Invoke(condition);
+                condition.OnDone.gameEvent.Invoke(condition);
+            }
+        }
     }
 }

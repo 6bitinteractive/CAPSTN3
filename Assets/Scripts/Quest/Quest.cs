@@ -31,6 +31,15 @@ public class Quest : MonoBehaviour // Only a MonoBehaviour to make it available 
         PrintPath();
     }
 
+    // NOTE: This is mainly used for debugging!
+    public void ForceComplete()
+    {
+        foreach (var questEvent in questEvents)
+            questEvent.ForceComplete();
+
+        gameObject.SetActive(false);
+    }
+
     private void EvaluateQuestState(QuestEvent doneQuestEvent)
     {
         foreach (var questEvent in questEvents)
