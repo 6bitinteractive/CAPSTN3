@@ -2337,6 +2337,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC-HomelessMan
       objectReference: {fileID: 0}
+    - target: {fileID: 818966246139021291, guid: 3b7f115b29833394f8c59f646bfd2b73,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1076491268916707581, guid: 3b7f115b29833394f8c59f646bfd2b73,
         type: 3}
       propertyPath: serializedGuid.Array.size
@@ -2435,72 +2440,72 @@ PrefabInstance:
     - target: {fileID: 3120370847094403555, guid: 3b7f115b29833394f8c59f646bfd2b73,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3120370847094403555, guid: 3b7f115b29833394f8c59f646bfd2b73,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3120370847094403555, guid: 3b7f115b29833394f8c59f646bfd2b73,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 107.675
       objectReference: {fileID: 0}
     - target: {fileID: 3120370847094403555, guid: 3b7f115b29833394f8c59f646bfd2b73,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -32.29
       objectReference: {fileID: 0}
     - target: {fileID: 3120370847094403555, guid: 3b7f115b29833394f8c59f646bfd2b73,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 175.35
       objectReference: {fileID: 0}
     - target: {fileID: 3120370847094403555, guid: 3b7f115b29833394f8c59f646bfd2b73,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 24.58
       objectReference: {fileID: 0}
     - target: {fileID: 3120370847850109626, guid: 3b7f115b29833394f8c59f646bfd2b73,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3120370847850109626, guid: 3b7f115b29833394f8c59f646bfd2b73,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3120370847850109626, guid: 3b7f115b29833394f8c59f646bfd2b73,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 107.675
       objectReference: {fileID: 0}
     - target: {fileID: 3120370847850109626, guid: 3b7f115b29833394f8c59f646bfd2b73,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -64.58
       objectReference: {fileID: 0}
     - target: {fileID: 3120370847850109626, guid: 3b7f115b29833394f8c59f646bfd2b73,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 215.35
       objectReference: {fileID: 0}
     - target: {fileID: 3120370847850109626, guid: 3b7f115b29833394f8c59f646bfd2b73,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 64.58
       objectReference: {fileID: 0}
     - target: {fileID: 3120370848040622477, guid: 3b7f115b29833394f8c59f646bfd2b73,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 215.35
       objectReference: {fileID: 0}
     - target: {fileID: 3120370848040622477, guid: 3b7f115b29833394f8c59f646bfd2b73,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 64.58
       objectReference: {fileID: 0}
     - target: {fileID: 3217289679485329946, guid: 3b7f115b29833394f8c59f646bfd2b73,
         type: 3}
@@ -3484,29 +3489,94 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4742819065194398897, guid: 1bb04624a62029d40be31848e45948ad,
         type: 3}
-      propertyPath: defaultConversation
-      value: 
-      objectReference: {fileID: 346191697}
-    - target: {fileID: 4742819065194398897, guid: 1bb04624a62029d40be31848e45948ad,
-        type: 3}
       propertyPath: questRelatedConversations.Array.data[0].conversation
       value: 
-      objectReference: {fileID: 346191697}
+      objectReference: {fileID: 2143460712}
     - target: {fileID: 4742819065194398897, guid: 1bb04624a62029d40be31848e45948ad,
         type: 3}
-      propertyPath: questRelatedConversations.Array.data[1].conversation
-      value: 
-      objectReference: {fileID: 346191699}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[0]
+      value: 159
+      objectReference: {fileID: 0}
     - target: {fileID: 4742819065194398897, guid: 1bb04624a62029d40be31848e45948ad,
         type: 3}
-      propertyPath: questRelatedConversations.Array.data[2].conversation
-      value: 
-      objectReference: {fileID: 346191698}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[1]
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 4742819065194398897, guid: 1bb04624a62029d40be31848e45948ad,
         type: 3}
-      propertyPath: questRelatedConversations.Array.data[3].conversation
-      value: 
-      objectReference: {fileID: 346191697}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[2]
+      value: 162
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742819065194398897, guid: 1bb04624a62029d40be31848e45948ad,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[3]
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742819065194398897, guid: 1bb04624a62029d40be31848e45948ad,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[4]
+      value: 182
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742819065194398897, guid: 1bb04624a62029d40be31848e45948ad,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[5]
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742819065194398897, guid: 1bb04624a62029d40be31848e45948ad,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[6]
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742819065194398897, guid: 1bb04624a62029d40be31848e45948ad,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[7]
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742819065194398897, guid: 1bb04624a62029d40be31848e45948ad,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[8]
+      value: 190
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742819065194398897, guid: 1bb04624a62029d40be31848e45948ad,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[9]
+      value: 43
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742819065194398897, guid: 1bb04624a62029d40be31848e45948ad,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[10]
+      value: 217
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742819065194398897, guid: 1bb04624a62029d40be31848e45948ad,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[11]
+      value: 39
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742819065194398897, guid: 1bb04624a62029d40be31848e45948ad,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[12]
+      value: 83
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742819065194398897, guid: 1bb04624a62029d40be31848e45948ad,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[13]
+      value: 142
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742819065194398897, guid: 1bb04624a62029d40be31848e45948ad,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[14]
+      value: 227
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742819065194398897, guid: 1bb04624a62029d40be31848e45948ad,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[15]
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742819065194398897, guid: 1bb04624a62029d40be31848e45948ad,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.cachedName
+      value: QuestEvent - Stand over diggable ground
+      objectReference: {fileID: 0}
     - target: {fileID: 4763933753845339436, guid: 1bb04624a62029d40be31848e45948ad,
         type: 3}
       propertyPath: OnConversationEnd.m_PersistentCalls.m_Calls.Array.size
@@ -3866,30 +3936,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bb04624a62029d40be31848e45948ad, type: 3}
---- !u!114 &346191697 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4329419160518246094, guid: 1bb04624a62029d40be31848e45948ad,
-    type: 3}
-  m_PrefabInstance: {fileID: 346191696}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f30671f44d05b14a8bc1af6a0495cbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &346191698 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1664417328940153115, guid: 1bb04624a62029d40be31848e45948ad,
-    type: 3}
-  m_PrefabInstance: {fileID: 346191696}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f30671f44d05b14a8bc1af6a0495cbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &346191699 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2001241725567835866, guid: 1bb04624a62029d40be31848e45948ad,

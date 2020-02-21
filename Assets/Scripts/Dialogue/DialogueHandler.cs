@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -50,13 +50,15 @@ public class DialogueHandler : MonoBehaviour
     public void StartConversation()
     {
         // Feed current conversation to DialogueDisplayManager
-        dialogueDisplayManager.DisplayConversation(CurrentConversation);
+        if (CurrentConversation != null)
+            dialogueDisplayManager.DisplayConversation(CurrentConversation);
     }
 
     // For times when you want to pass a conversation
     public void StartConversation(Conversation conversation)
     {
-        dialogueDisplayManager.DisplayConversation(conversation);
+        if (conversation != null)
+            dialogueDisplayManager.DisplayConversation(conversation);
     }
 
     private void DetermineCurrentConversation(QuestEvent questEvent)
