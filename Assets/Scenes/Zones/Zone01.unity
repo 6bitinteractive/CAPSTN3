@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -8355,7 +8355,7 @@ PrefabInstance:
     - target: {fileID: 4784442160861713716, guid: fbf552a5af5f93f40924ec926dd31786,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4784442160861713716, guid: fbf552a5af5f93f40924ec926dd31786,
         type: 3}
@@ -8365,7 +8365,7 @@ PrefabInstance:
     - target: {fileID: 4784442160861713716, guid: fbf552a5af5f93f40924ec926dd31786,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4784442160861713716, guid: fbf552a5af5f93f40924ec926dd31786,
         type: 3}
@@ -8380,7 +8380,7 @@ PrefabInstance:
     - target: {fileID: 4784442160861713716, guid: fbf552a5af5f93f40924ec926dd31786,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4784442160861713716, guid: fbf552a5af5f93f40924ec926dd31786,
         type: 3}
@@ -8396,7 +8396,7 @@ PrefabInstance:
     - target: {fileID: 4784442160861713718, guid: fbf552a5af5f93f40924ec926dd31786,
         type: 3}
       propertyPath: m_Name
-      value: StartingPosition - ToOpenPark
+      value: StartingPosition - Zone01-ParkingSpace
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbf552a5af5f93f40924ec926dd31786, type: 3}
@@ -10773,7 +10773,7 @@ PrefabInstance:
     - target: {fileID: 4784442160861713718, guid: fbf552a5af5f93f40924ec926dd31786,
         type: 3}
       propertyPath: m_Name
-      value: StartingPosition - MarketStartingPoint
+      value: StartingPosition - Zone01-StartingPoint
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbf552a5af5f93f40924ec926dd31786, type: 3}
@@ -12903,7 +12903,7 @@ PrefabInstance:
     - target: {fileID: 7636039989347588074, guid: b4b66223741bd6b48abccc4a3d025bf5,
         type: 3}
       propertyPath: m_Name
-      value: EnterArea - ToOpenPark
+      value: EnterArea - To-Zone02-WestEntrance
       objectReference: {fileID: 0}
     - target: {fileID: 7964757325653825642, guid: b4b66223741bd6b48abccc4a3d025bf5,
         type: 3}
