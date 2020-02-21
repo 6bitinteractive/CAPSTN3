@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+// NOTE: Getting MissingReference errors? Clear the GuidReference and re-set it again
+
 [RequireComponent(typeof(DialogueHandler))]
 
 public class Requester : MonoBehaviour
@@ -15,6 +17,8 @@ public class Requester : MonoBehaviour
 
     private Dictionary<QuestEvent, Request> requestDict = new Dictionary<QuestEvent, Request>();
     private QuestEvent currentQuestEvent;
+    private Deliverable requestedItem;
+
     private DeliveryArea deliveryArea;
     private DialogueHandler dialogueHandler;
 
@@ -35,8 +39,11 @@ public class Requester : MonoBehaviour
             if (questEvent.CurrentStatus == QuestEvent.Status.Done)
                 continue;
 
-            requestDict.Add(questEvent, request);
-            questEvent.OnActive.gameEvent.AddListener(ActivateRequest);
+            if (!requestDict.ContainsKey(questEvent))
+            {
+                requestDict.Add(questEvent, request);
+                questEvent.OnActive.gameEvent.AddListener(ActivateRequest);
+            }
 
             // Set the active quest event as the currently relevant questEvent
             if (questEvent.CurrentStatus == QuestEvent.Status.Active)
@@ -63,7 +70,7 @@ public class Requester : MonoBehaviour
     {
         if (CurrentRequest != null)
         {
-            Deliverable requestedItem = CurrentRequest.requestedObject.gameObject.GetComponent<Deliverable>();
+            requestedItem = CurrentRequest.requestedObject.gameObject.GetComponent<Deliverable>();
             if (deliverable == requestedItem)
             {
                 Debug.Log("DELIVERED");
