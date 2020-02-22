@@ -14,6 +14,7 @@ public class ConversationSelector : MonoBehaviour
     [SerializeField] private Conversation defaultConversation;
     [SerializeField] private List<ConversationSet> questRelatedConversations;
 
+    private Conversation currentConversation;
     private DialogueHandler dialogueHandler;
     private static EventManager eventManager;
     private static Quest quest;
@@ -29,6 +30,10 @@ public class ConversationSelector : MonoBehaviour
         //Debug.LogFormat("DialogueHandler for {0} started listening to QuestEventUpdates.", gameObject.name);
 
         // TODO: Load a saved data
+
+        // Start with the default conversation
+        currentConversation = defaultConversation;
+        dialogueHandler.SwitchConversation(currentConversation);
 
         // Determine what's the current conversation
         DetermineCurrentConversation(null);
@@ -51,7 +56,6 @@ public class ConversationSelector : MonoBehaviour
         // If there's no related conversation to the questEvent, we set current conversation to default
 
         ConversationSet cs = null;
-        Conversation currentConversation = defaultConversation;
         if (questEvent != null) // Check if it came from a QuestEvent update
         {
             cs = FindRelatedConversation(questEvent);
