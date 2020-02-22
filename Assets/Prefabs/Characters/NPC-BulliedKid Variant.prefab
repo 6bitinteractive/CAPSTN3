@@ -1,40 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5418075615503320835
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4501319775589133523}
-  m_Layer: 0
-  m_Name: Day1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4501319775589133523
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5418075615503320835}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 8059919407929485753}
-  - {fileID: 5191080857568627117}
-  - {fileID: 4960302158381002348}
-  - {fileID: 1964276107628427014}
-  - {fileID: 1284474447980233307}
-  m_Father: {fileID: 8879662271918300753}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3370766934689505372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42,6 +7,76 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 293175832414853165, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 293175832414853165, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 293175832414853165, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 293175832414853165, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 293175832414853165, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 293175832414853165, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 293175832597502746, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 293175832597502746, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 293175833270285172, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 293175833270285172, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 293175833270285172, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 293175833270285172, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 293175833270285172, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 293175833270285172, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2333845488221335239, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: meshRendersToOutline.Array.size
@@ -177,6 +212,122 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC-BulliedKid Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3662210664687742007, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[0]
+      value: 171
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[1]
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[2]
+      value: 192
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[3]
+      value: 252
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[4]
+      value: 196
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[5]
+      value: 93
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[6]
+      value: 177
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[7]
+      value: 73
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[8]
+      value: 179
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[9]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[10]
+      value: 203
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[11]
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[12]
+      value: 240
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[13]
+      value: 170
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[14]
+      value: 207
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[15]
+      value: 117
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.cachedName
+      value: QuestEvent - Talk to the Bullied Kid
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.cachedScene
+      value: 
+      objectReference: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab,
+        type: 3}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].requiredQuestEventStatus
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139757867034374131, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5967391041396790482, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -251,6 +402,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DialogueDisplay - BulliedKid
+      objectReference: {fileID: 0}
+    - target: {fileID: 7164248707463808923, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
@@ -491,6 +647,12 @@ PrefabInstance:
       propertyPath: requests.Array.data[0].conversationUnsatisfied.dialogue.Array.data[0].dialogueLines.Array.data[0]
       value: Hmm... It's not exactly what I was looking for.
       objectReference: {fileID: 0}
+    - target: {fileID: 7691275076173969540, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: dialogue.Array.data[0].speaker
+      value: 
+      objectReference: {fileID: 11400000, guid: ae1136a1e433e3946a82d25089a316e7,
+        type: 2}
     - target: {fileID: 8004794727290381549, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: defaultConversation.dialogue.Array.size
@@ -1076,7 +1238,7 @@ PrefabInstance:
         type: 3}
       propertyPath: defaultConversation
       value: 
-      objectReference: {fileID: 4329419160518246094}
+      objectReference: {fileID: 0}
     - target: {fileID: 8004794727290381549, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: questRelatedConversations.Array.data[0].conversation
@@ -1108,12 +1270,6 @@ PrefabInstance:
 --- !u!4 &3591100975741683318 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2238704512513123882, guid: 505a91d4177b1e44181cef9fc088309f,
-    type: 3}
-  m_PrefabInstance: {fileID: 3370766934689505372}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &8879662271918300753 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6196314688455458317, guid: 505a91d4177b1e44181cef9fc088309f,
     type: 3}
   m_PrefabInstance: {fileID: 3370766934689505372}
   m_PrefabAsset: {fileID: 0}
@@ -1313,591 +1469,4 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 3162898737692117250, guid: 7c66101edaa3d7544a70e34cff65d173,
     type: 3}
   m_PrefabInstance: {fileID: 3370766935825362556}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &3778035583268132948
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 4501319775589133523}
-    m_Modifications:
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5727208611821072848, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_Name
-      value: 'Bullied Kid Quest: Talk to - Done'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].dialogueLines.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].speaker
-      value: 
-      objectReference: {fileID: 11400000, guid: ae1136a1e433e3946a82d25089a316e7,
-        type: 2}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[0]
-      value: My toy... that meanie made me drop it!
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[1]
-      value: But I forgot where I dropped it...
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[2]
-      value: If I don't find it...
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[3]
-      value: My mom is totally gonna kill me!
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[4]
-      value: Wait...
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[5]
-      value: Where's my toy!?
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fcdffdb8bb04e634a979dedc2215acdf, type: 3}
---- !u!4 &1964276107628427014 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-    type: 3}
-  m_PrefabInstance: {fileID: 3778035583268132948}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &4539517762685152521
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 4501319775589133523}
-    m_Modifications:
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5727208611821072848, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_Name
-      value: 'Bullied Kid Quest: Bring toy - Done'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].dialogueLines.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: OnConversationBegin.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: OnConversationEnd.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].speaker
-      value: 
-      objectReference: {fileID: 11400000, guid: ae1136a1e433e3946a82d25089a316e7,
-        type: 2}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[0]
-      value: Huh..? Is that..?
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[1]
-      value: My toy! You found it!!
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[2]
-      value: Thank you thank you thank you thank you!!!
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[3]
-      value: You're the bestest dog ever!
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[4]
-      value: My mom made this lunch for me.
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[5]
-      value: But you can have it!
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[6]
-      value: Please take this, Mr. Dog!
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: OnConversationBegin.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: OnConversationBegin.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: OnConversationEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: OnConversationEnd.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: OnConversationBegin.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: OnConversationEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: OnConversationBegin.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Pause
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: OnConversationBegin.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: OnConversationEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Play
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: OnConversationEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fcdffdb8bb04e634a979dedc2215acdf, type: 3}
---- !u!4 &1284474447980233307 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-    type: 3}
-  m_PrefabInstance: {fileID: 4539517762685152521}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &4681016898277132011
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 4501319775589133523}
-    m_Modifications:
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5727208611821072848, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_Name
-      value: Bullied Kid Default
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].speaker
-      value: 
-      objectReference: {fileID: 11400000, guid: ae1136a1e433e3946a82d25089a316e7,
-        type: 2}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fcdffdb8bb04e634a979dedc2215acdf, type: 3}
---- !u!4 &8059919407929485753 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-    type: 3}
-  m_PrefabInstance: {fileID: 4681016898277132011}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4329419160518246094 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-    type: 3}
-  m_PrefabInstance: {fileID: 4681016898277132011}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f30671f44d05b14a8bc1af6a0495cbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1001 &7432814497975527167
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 4501319775589133523}
-    m_Modifications:
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5727208611821072848, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_Name
-      value: 'Bullied Kid Quest: Talk to'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].speaker
-      value: 
-      objectReference: {fileID: 11400000, guid: ae1136a1e433e3946a82d25089a316e7,
-        type: 2}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fcdffdb8bb04e634a979dedc2215acdf, type: 3}
---- !u!4 &5191080857568627117 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-    type: 3}
-  m_PrefabInstance: {fileID: 7432814497975527167}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &7780616409576767806
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 4501319775589133523}
-    m_Modifications:
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5727208611821072848, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: m_Name
-      value: 'Bullied Kid Quest: Talk to'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].dialogueLines.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].speaker
-      value: 
-      objectReference: {fileID: 11400000, guid: ae1136a1e433e3946a82d25089a316e7,
-        type: 2}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[0]
-      value: My toy... that meanie made me drop it!
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[1]
-      value: But I forgot where I dropped it...
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[2]
-      value: If I don't find it...
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[3]
-      value: My mom is totally gonna kill me!
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[4]
-      value: Wait...
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
-        type: 3}
-      propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[5]
-      value: Where's my toy!?
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fcdffdb8bb04e634a979dedc2215acdf, type: 3}
---- !u!4 &4960302158381002348 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
-    type: 3}
-  m_PrefabInstance: {fileID: 7780616409576767806}
   m_PrefabAsset: {fileID: 0}

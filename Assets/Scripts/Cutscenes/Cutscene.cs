@@ -6,7 +6,6 @@ using UnityEngine.Playables;
 
 [RequireComponent(typeof(PlayableDirector))]
 [RequireComponent(typeof(DialogueHandler))]
-[RequireComponent(typeof(Conversation))]
 
 public class Cutscene : MonoBehaviour
 {
@@ -16,7 +15,7 @@ public class Cutscene : MonoBehaviour
 
     private PlayableDirector playableDirector;
     private DialogueHandler dialogueHandler;
-    private Conversation conversation;
+    private List<Conversation> conversations = new List<Conversation>();
 
     private static EventManager eventManager;
 
@@ -25,9 +24,44 @@ public class Cutscene : MonoBehaviour
         eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
         playableDirector = GetComponent<PlayableDirector>();
         dialogueHandler = GetComponent<DialogueHandler>();
-        conversation = GetComponent<Conversation>();
+        conversations.AddRange(GetComponentsInChildren<Conversation>());
 
         playableDirector.playOnAwake = false;
+
+        if (conversations.Count == 0)
+            return;
+
+        // Subscribe to events
+        foreach (var conversation in conversations)
+        {
+            conversation.OnConversationBegin.AddListener(OnConversationBegin);
+            conversation.OnConversationEnd.AddListener(OnConversationEnd);
+
+            foreach (var dialogue in conversation.dialogue)
+            {
+                dialogue.OnDialogueBegin.AddListener(OnDialogueBegin);
+                dialogue.OnDialogueEnd.AddListener(OnDialogueEnd);
+            }
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (conversations.Count == 0)
+            return;
+
+        foreach (var conversation in conversations)
+        {
+            conversation.OnConversationBegin.RemoveListener(OnConversationBegin);
+            conversation.OnConversationEnd.RemoveListener(OnConversationEnd);
+
+            foreach (var dialogue in conversation.dialogue)
+            {
+                dialogue.OnDialogueBegin.RemoveListener(OnDialogueBegin);
+                dialogue.OnDialogueEnd.RemoveListener(OnDialogueEnd);
+            }
+        }
+
     }
 
     public void Play()
@@ -46,5 +80,23 @@ public class Cutscene : MonoBehaviour
     {
         playableDirector.Stop();
         eventManager.Trigger<CutsceneEvent, Cutscene>(OnCutsceneStop, this);
+    }
+
+    private void OnDialogueBegin()
+    {
+    }
+
+    private void OnDialogueEnd()
+    {
+    }
+
+    private void OnConversationBegin()
+    {
+        Pause();
+    }
+
+    private void OnConversationEnd()
+    {
+        Play();
     }
 }

@@ -29,7 +29,6 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
     private float currentCharacterWaitTime;
     private float minCharacterDisplayWaitTime;
 
-
     private void Start()
     {
         // Fastest (minimum) waiting time
