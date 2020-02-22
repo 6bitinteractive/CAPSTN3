@@ -79,7 +79,10 @@ public class DialogueHandler : MonoBehaviour
             {
                 CurrentConversation = cs.conversation;
                 Debug.LogFormat("Dialogue updated by {0} - {1}", questEvent, questEvent.CurrentStatus);
-                Debug.LogFormat("{1} Current Dialogue: {0}", CurrentConversation.dialogue[0].dialogueLines[0], gameObject.name);
+
+                if (CurrentConversation != null)
+                    Debug.LogFormat("{1} Current Dialogue: {0}", CurrentConversation.dialogue[0].dialogueLines[0], gameObject.name);
+
                 return;
             }
         }
@@ -89,7 +92,6 @@ public class DialogueHandler : MonoBehaviour
         if (cs != null)
         {
             CurrentConversation = cs.conversation;
-            Debug.LogFormat("{1} Current Dialogue: {0}", CurrentConversation.dialogue[0].dialogueLines[0], gameObject.name);
         }
         else
         {
@@ -100,8 +102,10 @@ public class DialogueHandler : MonoBehaviour
             else
                 CurrentConversation = defaultConversation;
 
-            Debug.LogFormat("{1} Current Dialogue: {0}", CurrentConversation.dialogue[0].dialogueLines[0], gameObject.name);
         }
+
+        if (CurrentConversation != null)
+            Debug.LogFormat("{1} Current Dialogue: {0}", CurrentConversation.dialogue[0].dialogueLines[0], gameObject.name);
     }
 
     private ConversationSet FindRelatedConversation(QuestEvent questEvent)
