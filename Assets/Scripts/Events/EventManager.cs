@@ -98,6 +98,9 @@ public class ConditionEventType : EventType<ConditionEvent, Condition> { }
 
 [Serializable]
 public class InteractionEventType : EventType<InteractionEvent, InteractionData> { }
+
+[Serializable]
+public class CutsceneEventType : EventType<CutsceneEvent, Cutscene> { }
 #endregion
 
 // When you want to know which events are available for <T, U>:
@@ -168,6 +171,9 @@ public class LocationData
 
 [Serializable]
 public class DigableEvent : UnityEvent<Digable> { }
+
+[Serializable]
+public class CutsceneEvent : UnityEvent<Cutscene> { }
 #endregion
 
 // Reference
