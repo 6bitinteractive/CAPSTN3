@@ -57,7 +57,11 @@ public class PlayerController : MonoBehaviour
     {
         controlScheme.Player.Disable();
         controlScheme.PlayerBiting.Disable();
-        controlScheme.DialogueInteraction.Disable();
+
+        // FIX?: After digging for the toy, PlayerController gets disabled which disables this which then becomes a blocker
+        // because you can't coninue the conversation
+        // FIND the cause of what disables this (PlayerController) component; it's is not among the SwitchX methods :(
+        //controlScheme.DialogueInteraction.Disable();
 
         // Remove listeners
         eventManager.Unsubscribe<CutsceneEvent, Cutscene>(SwitchCutsceneControlScheme);
@@ -194,6 +198,7 @@ public class PlayerController : MonoBehaviour
 
     public void SwitchToBitingControlScheme()
     {
+        controlScheme.DialogueInteraction.Disable();
         controlScheme.Player.Disable();
         controlScheme.PlayerBiting.Enable();
         playerInput.SwitchCurrentActionMap("PlayerBiting");
@@ -218,6 +223,7 @@ public class PlayerController : MonoBehaviour
         movement.enabled = false;
 
         controlScheme.Player.Disable();
+        controlScheme.PlayerBiting.Disable();
         controlScheme.DialogueInteraction.Enable();
         playerInput.SwitchCurrentActionMap("DialogueInteraction");
     }
