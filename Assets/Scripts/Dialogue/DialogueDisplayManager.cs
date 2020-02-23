@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -91,6 +91,9 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
 
     public void EndConversation()
     {
+        if (conversationToDisplay == null)
+            return;
+
         // Make sure no coroutines are running
         StopAllCoroutines();
 
