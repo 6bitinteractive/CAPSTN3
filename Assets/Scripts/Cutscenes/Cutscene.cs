@@ -7,6 +7,8 @@ using UnityEngine.Playables;
 
 // NOTE: Make sure to use Stop() in the inspector for Cutscenes that playOnAwake
 // Simply disabling them might not cleanly stop the cutscene
+// It's advisable to avoid playing cutscenes on awake but, instead,
+// manually call the Play() method in a QuestState/ConditionState listener
 
 [RequireComponent(typeof(PlayableDirector))]
 [RequireComponent(typeof(DialogueHandler))]
