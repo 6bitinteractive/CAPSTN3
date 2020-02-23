@@ -26,7 +26,11 @@ public class StartingPositionHandler : MonoBehaviour
         }
 
         Transform startingPosition = StartingPosition.FindStartingPosition(sceneController.playerStartingPoint.StartingPointName);
-        thisTransform.position = startingPosition.position;
-        thisTransform.rotation = startingPosition.rotation;
+
+        if (startingPosition != null)
+        {
+            thisTransform.position = startingPosition.position;
+            thisTransform.rotation = startingPosition.rotation;
+        }
     }
 }
