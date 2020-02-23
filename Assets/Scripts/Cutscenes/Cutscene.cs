@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Playables;
 
+// NOTE: Make sure to use Stop() in the inspector for Cutscenes that playOnAwake
+// Simply disabling them might not cleanly stop the cutscene
+
 [RequireComponent(typeof(PlayableDirector))]
 [RequireComponent(typeof(DialogueHandler))]
 
