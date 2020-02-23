@@ -946,7 +946,7 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""0004f20c-dabf-47ab-a97e-3004493a970f"",
-                    ""path"": ""<Keyboard>/escape"",
+                    ""path"": ""<Keyboard>/capsLock"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
