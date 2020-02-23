@@ -12,10 +12,10 @@ public class ConditionStateController : MonoBehaviour
 
     private IEnumerator Start()
     {
-        yield return new WaitForEndOfFrame();
-
         if (!activeAtStart)
             yield break;
+
+        yield return new WaitForEndOfFrame();
 
         condition = GetComponent<Condition>();
         condition.SwitchStatus(Condition.Status.Active);
