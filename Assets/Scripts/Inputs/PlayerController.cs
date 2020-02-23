@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -58,9 +58,10 @@ public class PlayerController : MonoBehaviour
         controlScheme.Player.Disable();
         controlScheme.PlayerBiting.Disable();
 
-        // FIX?: After digging for the toy, PlayerController gets disabled which disables this which then becomes a blocker
-        // because you can't coninue the conversation
-        // FIND the cause of what disables this (PlayerController) component; it's is not among the SwitchX methods :(
+        // FIX-LowPriority?: While digging for the toy, PlayerController gets disabled which disables this which then becomes a blocker
+        // because you can't continue the conversation
+        // FIND the cause of what disables this (PlayerController) component during Dig interaction; it's is not among the SwitchX methods :(
+        // On the other hand, it may not be really necessary to disable the dialogue control scheme whenever the PlayerController is disabled---for now???
         //controlScheme.DialogueInteraction.Disable();
 
         // Remove listeners

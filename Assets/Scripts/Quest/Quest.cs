@@ -28,7 +28,7 @@ public class Quest : MonoBehaviour // Only a MonoBehaviour to make it available 
 
         DefinePath();
         DefineOrder(questEvents[0].Id);
-        PrintPath();
+        //PrintPath();
     }
 
     // NOTE: This is mainly used for debugging!

@@ -77,7 +77,7 @@ public abstract class Condition : MonoBehaviour
     // NOTE: Only called once
     protected virtual void InitializeCondition()
     {
-        Debug.LogFormat("{0} - Condition initialized.", gameObject.name);
+        //Debug.LogFormat("{0} - Condition initialized.", gameObject.name);
         eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
 
         SceneManager.sceneLoaded += OnSceneLoad;
@@ -88,7 +88,7 @@ public abstract class Condition : MonoBehaviour
 
     protected virtual void EvaluateCondition()
     {
-        Debug.LogFormat("{0} - Evaluating condition.", gameObject.name);
+        //Debug.LogFormat("{0} - Evaluating condition.", gameObject.name);
 
         if (IsSatisfied())
         {
@@ -103,7 +103,7 @@ public abstract class Condition : MonoBehaviour
 
     protected virtual void FinalizeCondition()
     {
-        Debug.LogFormat("{0} - Finalizing condition.", gameObject.name);
+        //Debug.LogFormat("{0} - Finalizing condition.", gameObject.name);
         SceneManager.sceneLoaded -= OnSceneLoad;
     }
 

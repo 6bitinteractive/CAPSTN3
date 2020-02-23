@@ -73,7 +73,7 @@ public class Requester : MonoBehaviour
             requestedItem = CurrentRequest.requestedObject.gameObject.GetComponent<Deliverable>();
             if (deliverable == requestedItem)
             {
-                Debug.Log("DELIVERED");
+                //Debug.Log("DELIVERED");
                 CurrentRequest.active = false;
                 CurrentRequest.satisfied = true;
 
