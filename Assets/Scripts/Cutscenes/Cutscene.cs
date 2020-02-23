@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,9 +10,14 @@ using UnityEngine.Playables;
 
 public class Cutscene : MonoBehaviour
 {
+    [Tooltip("NOTE: PlayOnAwake in PlayableDirector will always be set to false.\n" +
+        "We set it here so that events are properly triggered.")]
+    [SerializeField] private bool playOnAwake;
+
     public CutsceneEventType OnCutscenePlay;
     public CutsceneEventType OnCutscenePause;
     public CutsceneEventType OnCutsceneStop;
+    public State CurrentState { get; private set; }
 
     private PlayableDirector playableDirector;
     private DialogueHandler dialogueHandler;
@@ -19,14 +25,34 @@ public class Cutscene : MonoBehaviour
 
     private static EventManager eventManager;
 
-    private void Start()
+    private void Awake()
     {
-        eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
         playableDirector = GetComponent<PlayableDirector>();
         dialogueHandler = GetComponent<DialogueHandler>();
         conversations.AddRange(GetComponentsInChildren<Conversation>());
+        CurrentState = State.Stopped;
+    }
 
-        playableDirector.playOnAwake = false;
+    private void OnEnable()
+    {
+        playableDirector.played += OnPlayableDirectorPlayed;
+        playableDirector.paused += OnPlayableDirectorPaused;
+        playableDirector.stopped += OnPlayableDirectorStopped;
+    }
+
+    private void OnDisable()
+    {
+        playableDirector.played -= OnPlayableDirectorPlayed;
+        playableDirector.paused -= OnPlayableDirectorPaused;
+        playableDirector.stopped -= OnPlayableDirectorStopped;
+
+        if (CurrentState != State.Stopped)
+            Stop();
+    }
+
+    private void Start()
+    {
+        eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
 
         if (conversations.Count == 0)
             return;
@@ -43,6 +69,9 @@ public class Cutscene : MonoBehaviour
                 dialogue.OnDialogueEnd.AddListener(OnDialogueEnd);
             }
         }
+
+        if (playOnAwake)
+            Play();
     }
 
     private void OnDestroy()
@@ -67,25 +96,44 @@ public class Cutscene : MonoBehaviour
     public void Play()
     {
         playableDirector.Play();
-        eventManager.Trigger<CutsceneEvent, Cutscene>(OnCutscenePlay, this);
     }
 
     public void Pause()
     {
         playableDirector.Pause();
-        eventManager.Trigger<CutsceneEvent, Cutscene>(OnCutscenePause, this);
     }
 
     public void Stop()
     {
         playableDirector.Stop();
+    }
+
+    #region PlayableDirectorEventsCallback
+    private void OnPlayableDirectorPlayed(PlayableDirector playableDirector)
+    {
+        CurrentState = State.Playing;
+        eventManager.Trigger<CutsceneEvent, Cutscene>(OnCutscenePlay, this);
+    }
+
+    private void OnPlayableDirectorPaused(PlayableDirector playableDirector)
+    {
+        CurrentState = State.Paused;
+        eventManager.Trigger<CutsceneEvent, Cutscene>(OnCutscenePause, this);
+    }
+
+    private void OnPlayableDirectorStopped(PlayableDirector playableDirector)
+    {
+        CurrentState = State.Stopped;
         eventManager.Trigger<CutsceneEvent, Cutscene>(OnCutsceneStop, this);
     }
+    #endregion
 
     private void OnDialogueBegin()
     {
     }
 
+    // NOTE: OnDialogueEnd is invoked right away and does not wait for player input
+    // Depending on your needs, this might not be the best place to control the PlayableDirector
     private void OnDialogueEnd()
     {
     }
@@ -97,6 +145,16 @@ public class Cutscene : MonoBehaviour
 
     private void OnConversationEnd()
     {
+        if (CurrentState == State.Stopped)
+            return;
+
         Play();
+    }
+
+    public enum State
+    {
+        Stopped,
+        Playing,
+        Paused
     }
 }

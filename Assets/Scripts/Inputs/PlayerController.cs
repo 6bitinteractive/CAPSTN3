@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 currentMove;
 
     private SceneController sceneController;
+    private EventManager eventManager;
     private DialogueDisplayManager dialogueDisplayManager;
 
     void Awake()
@@ -37,29 +38,40 @@ public class PlayerController : MonoBehaviour
 
     void OnEnable()
     {
-        sceneController = sceneController ?? SingletonManager.GetInstance<SceneController>();
+        controlScheme.Player.Enable();
+
+        sceneController = SingletonManager.GetInstance<SceneController>();
         sceneController.BeforeSceneUnload.AddListener(() => enabled = false);
         sceneController.AfterSceneLoad.AddListener(() => enabled = true);
-        // Fix: need to set up the proper settings (currently using arbitrary keys)
-        dialogueDisplayManager = dialogueDisplayManager ?? SingletonManager.GetInstance<DialogueDisplayManager>();
-        dialogueDisplayManager.OnConversationBegin.AddListener(() =>
-        {
-            controlScheme.Player.Disable();
-            controlScheme.DialogueInteraction.Enable();
-            movement.Move(Vector3.zero, 0);
-        });
-        dialogueDisplayManager.OnConversationEnd.AddListener(() => { controlScheme.DialogueInteraction.Disable(); controlScheme.Player.Enable(); });
 
-        controlScheme.Player.Enable();
+        eventManager = SingletonManager.GetInstance<EventManager>();
+        eventManager.Subscribe<CutsceneEvent, Cutscene>(SwitchCutsceneControlScheme);
+
+        // Fix: need to set up the proper settings (currently using arbitrary keys)
+        dialogueDisplayManager = SingletonManager.GetInstance<DialogueDisplayManager>();
+        dialogueDisplayManager.OnConversationBegin.AddListener(SwitchToDialogueInteractionControlScheme);
+        dialogueDisplayManager.OnConversationEnd.AddListener(SwitchToDefaultControlScheme);
     }
 
     void OnDisable()
     {
         controlScheme.Player.Disable();
         controlScheme.PlayerBiting.Disable();
+        controlScheme.DialogueInteraction.Disable();
+
+        // Remove listeners
+        eventManager.Unsubscribe<CutsceneEvent, Cutscene>(SwitchCutsceneControlScheme);
+        dialogueDisplayManager.OnConversationBegin.RemoveListener(SwitchToDialogueInteractionControlScheme);
+        dialogueDisplayManager.OnConversationEnd.RemoveListener(SwitchToDefaultControlScheme);
     }
 
     private void FixedUpdate()
+    {
+        Move();
+    }
+
+    #region Movement & Interactions
+    public void Move()
     {
         // If can move
         if (!movement.enabled) return;
@@ -79,7 +91,7 @@ public class PlayerController : MonoBehaviour
 
     public void Bark()
     {
-        if (!bark.enabled) { return; }
+        if (!bark.enabled) { return; } // Make sure it's not called when its corresponding components are disabled
         bark.BarkEvent(interactor);
     }
 
@@ -171,12 +183,14 @@ public class PlayerController : MonoBehaviour
         // Play Moving Animation
         //Debug.Log(currentMove);
     }
+
     private void CancelMove(InputAction.CallbackContext context)
     {
         currentMove = Vector2.zero;
         //Play Idle Animation
         return;
     }
+    #endregion
 
     public void SwitchToBitingControlScheme()
     {
@@ -187,9 +201,48 @@ public class PlayerController : MonoBehaviour
 
     public void SwitchToDefaultControlScheme()
     {
+        // We don't allow a conversation from a cutscene to turn the controller scheme back to default
+        if (playingCutscene)
+            return;
+
+        movement.enabled = true;
+        controlScheme.DialogueInteraction.Disable();
         controlScheme.PlayerBiting.Disable();
         controlScheme.Player.Enable();
         playerInput.SwitchCurrentActionMap("Player");
+    }
+
+    public void SwitchToDialogueInteractionControlScheme()
+    {
+        movement.Move(Vector3.zero, 0);
+        movement.enabled = false;
+
+        controlScheme.Player.Disable();
+        controlScheme.DialogueInteraction.Enable();
+        playerInput.SwitchCurrentActionMap("DialogueInteraction");
+    }
+
+    private bool playingCutscene;
+    private void SwitchCutsceneControlScheme(Cutscene cutscene)
+    {
+        playingCutscene = true;
+
+        switch (cutscene.CurrentState)
+        {
+            case Cutscene.State.Stopped:
+                {
+                    playingCutscene = false;
+                    SwitchToDefaultControlScheme();
+                    break;
+                }
+
+            case Cutscene.State.Playing:
+            case Cutscene.State.Paused:
+                {
+                    SwitchToDialogueInteractionControlScheme();
+                    break;
+                }
+        }
     }
 
     private void SetupPlayerConrtolScheme()
