@@ -7,6 +7,12 @@ public class ChaseState : State
     [SerializeField] private GameObject sightedIndicator;
     [SerializeField] private float chaseSpeed = 2f;
     [SerializeField] private float roationSpeed = 10f;
+    Attack attack;
+
+    public void Start()
+    {
+        attack = GetComponent<Attack>();
+    }
     public override void OnEnable()
     {
         base.OnEnable();

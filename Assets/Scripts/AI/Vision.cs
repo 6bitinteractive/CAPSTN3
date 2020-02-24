@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Agent))]
 public class Vision : MonoBehaviour
 {
     [SerializeField] private LayerMask targetLayerMask;
