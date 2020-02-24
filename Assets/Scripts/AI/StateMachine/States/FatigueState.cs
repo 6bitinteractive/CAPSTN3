@@ -11,13 +11,11 @@ public class FatigueState : State
         agent.Target = null;
         navMeshAgent.ResetPath(); // Stop moving
         eyes.gameObject.SetActive(false);
-        Debug.Log("Fatigued");
     }
 
     public override void OnDisable()
     {
         base.OnDisable();
         eyes.gameObject.SetActive(true);
-        Debug.Log("No longer Fatigued");
     }
 }
