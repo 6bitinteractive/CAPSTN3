@@ -13052,6 +13052,20 @@ MonoBehaviour:
   maxHungerValue: 100
   minFullHungerValue: 75
   maxHungryHungerValue: 25
+  OnEvaluateHunger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2038800476586497531}
+        m_MethodName: UpdateMultiplier
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &2038800476586497518
 Animator:
   serializedVersion: 3
@@ -13071,6 +13085,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2038800476586497531 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2038800476700527455, guid: 63cc54b93023a1740a617c7bf7756820,
+    type: 3}
+  m_PrefabInstance: {fileID: 2038800476586497512}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038800476586497516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f41affaa2558ce4eb0e3330f9062ae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2708590810812873727
 PrefabInstance:
   m_ObjectHideFlags: 0
