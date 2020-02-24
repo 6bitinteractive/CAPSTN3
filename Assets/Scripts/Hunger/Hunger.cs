@@ -44,6 +44,8 @@ public class Hunger : MonoBehaviour
             CurrentValue = playerStats.Hunger = maxHungerValue;
         else
             CurrentValue = playerStats.Hunger;
+
+        EvaluateState(CurrentValue);
     }
 
     public void Eat(Food food)
