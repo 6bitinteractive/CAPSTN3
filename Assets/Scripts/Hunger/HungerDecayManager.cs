@@ -72,7 +72,6 @@ public class HungerDecayManager : MonoBehaviour
 
     private void OnInteract(InteractionData interactionData)
     {
-        Debug.Log("INTERACT: " + interactionData.interactionType);
         switch (interactionData.interactionType)
         {
             case InteractionType.Bark:

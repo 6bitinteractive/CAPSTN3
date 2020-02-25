@@ -81,7 +81,7 @@ public class Hunger : MonoBehaviour
         else if (hungerDecay.duration == 0)
         {
             CurrentValue -= hungerDecay.decayValue;
-            Debug.LogFormat("DECREASE INSTANTLY: {0}", hungerDecay.decayValue);
+            //Debug.LogFormat("DECREASE INSTANTLY: {0}", hungerDecay.decayValue);
             OnInstantDecay.Invoke(this);
         }
         else

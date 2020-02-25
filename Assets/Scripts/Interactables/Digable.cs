@@ -31,15 +31,6 @@ public class Digable : MonoBehaviour, IInteractable
         {
             OnDig.Invoke();
             TakeDamage(source, source.GetComponent<Dig>().DigPower);
-
-            InteractionData interactionData = new InteractionData()
-            {
-                source = source,
-                target = target,
-                interactionType = InteractionType.Dig
-            };
-            eventManager.Trigger<InteractionEvent, InteractionData>(interactionData);
-            Debug.Log("DIGGGGGGGGGGG");
         }
     }
 
@@ -55,7 +46,6 @@ public class Digable : MonoBehaviour, IInteractable
         collider.enabled = true;
         eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
     }
-
 
     private void OnTriggerEnter(Collider collider)
     {
