@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[Serializable] public class HungerEvent : UnityEvent<Hunger> { }
-
 public class Hunger : MonoBehaviour
 {
     [Header("Hunger Value")]
@@ -19,8 +17,10 @@ public class Hunger : MonoBehaviour
     public State CurrentState { get; private set; }
     public float CurrentValue { get; private set; }
     public float CurrentValueNormalized => CurrentValue / maxHungerValue;
+    public HungerDecay CurrentHungerDecay { get; set; }
 
     public HungerEvent OnEvaluateHunger;
+    [HideInInspector] public HungerEvent OnInstantDecay;
 
     private static EventManager eventManager;
     private PlayerStats playerStats;
@@ -48,21 +48,54 @@ public class Hunger : MonoBehaviour
         EvaluateState(CurrentValue);
     }
 
+    private void Update()
+    {
+        Starve(CurrentHungerDecay);
+    }
+
     public void Eat(Food food)
     {
-        CurrentValue += food.Value;
-        EvaluateState(CurrentValue);
-        Debug.LogFormat("{0} ate {1} [+{2}]", gameObject.name, food.DisplayName, food.Value);
+        Satiate(food.Value);
+        //Debug.LogFormat("{0} ate {1} [+{2}] - Hunger Level: {3}", gameObject.name, food.DisplayName, food.Value, CurrentValue);
         food.Consume(gameObject);
     }
 
-    private void OnPickup(PickupData pickupData)
+    /// <summary>
+    /// Increases hunger value. Use Eat() for increasing hunger by taking in food
+    /// </summary>
+    /// <param name="value">Increase hunger by this much.</param>
+    public void Satiate(float value)
     {
-        if (pickupData.type == PickupData.Type.Drop) { return; }
+        CurrentValue += value;
+        EvaluateState(CurrentValue);
+    }
 
-        Food food = pickupData.pickupable.GetComponent<Food>();
-        if (food != null)
-            Eat(food);
+    public void Starve(HungerDecay hungerDecay)
+    {
+        if (hungerDecay.duration > 0)
+        {
+            float decay = hungerDecay.decayValue * (Time.deltaTime / hungerDecay.duration);
+            CurrentValue -= decay;
+            //Debug.LogFormat("DECREASE: {0} | TOTAL: {1} in {2}", decay, hungerDecay.decayValue, hungerDecay.duration);
+        }
+        else if (hungerDecay.duration == 0)
+        {
+            CurrentValue -= hungerDecay.decayValue;
+            Debug.LogFormat("DECREASE INSTANTLY: {0}", hungerDecay.decayValue);
+            OnInstantDecay.Invoke(this);
+        }
+        else
+        {
+            Debug.LogError("Hunger decay duration cannot be negative.");
+        }
+
+        //Debug.LogFormat("Starving: {0}/{1}", CurrentValue, maxHungerValue);
+        EvaluateState(CurrentValue);
+    }
+
+    public void SwitchHungerDecay(HungerDecay hungerDecay)
+    {
+        CurrentHungerDecay = hungerDecay;
     }
 
     private State EvaluateState(float value)
@@ -80,6 +113,15 @@ public class Hunger : MonoBehaviour
         OnEvaluateHunger.Invoke(this);
 
         return CurrentState;
+    }
+
+    private void OnPickup(PickupData pickupData)
+    {
+        if (pickupData.type == PickupData.Type.Drop) { return; }
+
+        Food food = pickupData.pickupable.GetComponent<Food>();
+        if (food != null)
+            Eat(food);
     }
 
     public enum State
