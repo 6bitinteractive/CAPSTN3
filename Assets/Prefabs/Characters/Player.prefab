@@ -98,6 +98,8 @@ GameObject:
   - component: {fileID: 2480888589758247716}
   - component: {fileID: 3781248140756241280}
   - component: {fileID: 9092773033142861807}
+  - component: {fileID: 3153596588024487646}
+  - component: {fileID: 7916108200923710770}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -299,6 +301,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   rotationSpeed: 15
+  fullMultiplier: 1.2
+  normalMultiplier: 1
+  hungryMultiplier: 0.5
   camera: {fileID: 0}
   animator: {fileID: 5325784608514906865}
 --- !u!114 &1331823813
@@ -547,6 +552,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ff5ffca2f7dca41b4351d283b22a29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3153596588024487646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038197436724218274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b969f937489708449b039aa20b841f35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minHungerValue: 1
+  maxHungerValue: 100
+  minFullHungerValue: 75
+  maxHungryHungerValue: 25
+  OnEvaluateHunger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1038197436724218276}
+        m_MethodName: UpdateMultiplier
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInstantDecay:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7916108200923710770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038197436724218274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 886d4c71888801e4c945a319ba4bdd36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idle:
+    decayValue: 0.5
+    duration: 4
+  biteCarry:
+    decayValue: 2
+    duration: 4
+  bitePull:
+    decayValue: 2
+    duration: 4
+  bark:
+    decayValue: 1
+    duration: 0
+  dig:
+    decayValue: 2
+    duration: 0
+  scentMode:
+    decayValue: 3
+    duration: 4
 --- !u!114 &5371530391929232723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -939,6 +1007,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1038197436724218278}
     m_Modifications:
+    - target: {fileID: 4260695085484745912, guid: fb0776868199d7e42a4e9caa40c264d5,
+        type: 3}
+      propertyPath: hunger
+      value: 
+      objectReference: {fileID: 3153596588024487646}
     - target: {fileID: 5019529777677682895, guid: fb0776868199d7e42a4e9caa40c264d5,
         type: 3}
       propertyPath: m_Name
