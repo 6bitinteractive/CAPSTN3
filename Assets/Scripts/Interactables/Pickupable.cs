@@ -32,7 +32,9 @@ public class Pickupable : MonoBehaviour
 
     public void DropObject(Interactor source)
     {
-        source.GetComponent<Bite>().IsBiting = false;
+        if (source != null)
+            source.GetComponent<Bite>().IsBiting = false;
+   
         transform.SetParent(null);
         collider.enabled = true;
         rb.isKinematic = false;
