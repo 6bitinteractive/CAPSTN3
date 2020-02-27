@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] float spawnInterval = 3.5f;
+    [SerializeField] bool isSpawning = true;
     [SerializeField] List<GameObject> pooledObjectList;
     [SerializeField] List<GameObject> spawnPoints;
     private float timer;
@@ -19,6 +20,8 @@ public class Spawner : MonoBehaviour
 
     public void Update()
     {
+        if (isSpawning == false) return;
+
         timer += Time.deltaTime; // Start wait timer
 
         if (timer >= spawnInterval)
