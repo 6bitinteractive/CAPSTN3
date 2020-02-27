@@ -47,9 +47,16 @@ public class PatrolState : State
                 if (currentWayPoint == wayPoints.Count)
                 {
                     currentWayPoint = 0; // Reset waypoint target to first waypoint
+                    CheckDespawn();            
                 }
                 timer = 0;
             }           
         }
+    }
+
+    public void CheckDespawn()
+    {
+        if (gameObject.GetComponent<DeSpawnable>() == null) return;
+        gameObject.SetActive(false);
     }
 }
