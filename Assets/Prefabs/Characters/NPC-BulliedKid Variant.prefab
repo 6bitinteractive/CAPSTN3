@@ -1,5 +1,189 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &57191177611677718
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2023690292092259435}
+    m_Modifications:
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5727208611821072848, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_Name
+      value: Deliver toy Quest - Done
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: dialogue.Array.data[0].speaker
+      value: 
+      objectReference: {fileID: 11400000, guid: ae1136a1e433e3946a82d25089a316e7,
+        type: 2}
+    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[0]
+      value: Thank you for helping me again!
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fcdffdb8bb04e634a979dedc2215acdf, type: 3}
+--- !u!114 &8946489488734545971 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
+    type: 3}
+  m_PrefabInstance: {fileID: 57191177611677718}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f30671f44d05b14a8bc1af6a0495cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &1603850410610680385
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2023690292092259435}
+    m_Modifications:
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5727208611821072848, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_Name
+      value: Undelivered toy Quest
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: dialogue.Array.data[0].speaker
+      value: 
+      objectReference: {fileID: 11400000, guid: ae1136a1e433e3946a82d25089a316e7,
+        type: 2}
+    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[0]
+      value: I wonder where I left my toy...
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fcdffdb8bb04e634a979dedc2215acdf, type: 3}
+--- !u!114 &7683557317455714916 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
+    type: 3}
+  m_PrefabInstance: {fileID: 1603850410610680385}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f30671f44d05b14a8bc1af6a0495cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3370766934689505372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73,6 +257,36 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 293175833270285172, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859469803718763960, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859469803718763960, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859469803718763960, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859469803718763960, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859469803718763960, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859469803718763960, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -220,11 +434,36 @@ PrefabInstance:
     - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: questRelatedConversations.Array.size
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[2].questEventReference.serializedGuid.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[3].questEventReference.serializedGuid.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[4].questEventReference.serializedGuid.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[5].questEventReference.serializedGuid.Array.size
       value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
@@ -323,6 +562,511 @@ PrefabInstance:
       propertyPath: questRelatedConversations.Array.data[0].requiredQuestEventStatus
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[0]
+      value: 94
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[1]
+      value: 196
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[2]
+      value: 103
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[3]
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[4]
+      value: 54
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[5]
+      value: 104
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[6]
+      value: 249
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[7]
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[8]
+      value: 135
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[9]
+      value: 142
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[10]
+      value: 197
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[11]
+      value: 243
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[12]
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[13]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[14]
+      value: 197
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[15]
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.cachedName
+      value: QuestEvent - Scare away the Bully
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.cachedScene
+      value: 
+      objectReference: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab,
+        type: 3}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].requiredQuestEventStatus
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].conversation
+      value: 
+      objectReference: {fileID: 5734183688818771270}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[2].questEventReference.serializedGuid.Array.data[0]
+      value: 209
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[2].questEventReference.serializedGuid.Array.data[1]
+      value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[2].questEventReference.serializedGuid.Array.data[2]
+      value: 177
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[2].questEventReference.serializedGuid.Array.data[3]
+      value: 208
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[2].questEventReference.serializedGuid.Array.data[4]
+      value: 179
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[2].questEventReference.serializedGuid.Array.data[5]
+      value: 173
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[2].questEventReference.serializedGuid.Array.data[6]
+      value: 137
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[2].questEventReference.serializedGuid.Array.data[7]
+      value: 73
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[2].questEventReference.serializedGuid.Array.data[8]
+      value: 191
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[2].questEventReference.serializedGuid.Array.data[9]
+      value: 183
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[2].questEventReference.serializedGuid.Array.data[10]
+      value: 246
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[2].questEventReference.serializedGuid.Array.data[11]
+      value: 142
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[2].questEventReference.serializedGuid.Array.data[12]
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[2].questEventReference.serializedGuid.Array.data[13]
+      value: 202
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[2].questEventReference.serializedGuid.Array.data[14]
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[2].questEventReference.serializedGuid.Array.data[15]
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[2].questEventReference.cachedName
+      value: QuestEvent - Deliver toy to Bullied Kid
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[2].questEventReference.cachedScene
+      value: 
+      objectReference: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab,
+        type: 3}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[2].requiredQuestEventStatus
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[2].conversation
+      value: 
+      objectReference: {fileID: 8946489488734545971}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[3].questEventReference.serializedGuid.Array.data[0]
+      value: 159
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[3].questEventReference.serializedGuid.Array.data[1]
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[3].questEventReference.serializedGuid.Array.data[2]
+      value: 162
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[3].questEventReference.serializedGuid.Array.data[3]
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[3].questEventReference.serializedGuid.Array.data[4]
+      value: 182
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[3].questEventReference.serializedGuid.Array.data[5]
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[3].questEventReference.serializedGuid.Array.data[6]
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[3].questEventReference.serializedGuid.Array.data[7]
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[3].questEventReference.serializedGuid.Array.data[8]
+      value: 190
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[3].questEventReference.serializedGuid.Array.data[9]
+      value: 43
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[3].questEventReference.serializedGuid.Array.data[10]
+      value: 217
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[3].questEventReference.serializedGuid.Array.data[11]
+      value: 39
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[3].questEventReference.serializedGuid.Array.data[12]
+      value: 83
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[3].questEventReference.serializedGuid.Array.data[13]
+      value: 142
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[3].questEventReference.serializedGuid.Array.data[14]
+      value: 227
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[3].questEventReference.serializedGuid.Array.data[15]
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[3].questEventReference.cachedName
+      value: QuestEvent - Stand over diggable ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[3].questEventReference.cachedScene
+      value: 
+      objectReference: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab,
+        type: 3}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[3].requiredQuestEventStatus
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[3].conversation
+      value: 
+      objectReference: {fileID: 7683557317455714916}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[4].questEventReference.serializedGuid.Array.data[0]
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[4].questEventReference.serializedGuid.Array.data[1]
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[4].questEventReference.serializedGuid.Array.data[2]
+      value: 165
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[4].questEventReference.serializedGuid.Array.data[3]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[4].questEventReference.serializedGuid.Array.data[4]
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[4].questEventReference.serializedGuid.Array.data[5]
+      value: 168
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[4].questEventReference.serializedGuid.Array.data[6]
+      value: 231
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[4].questEventReference.serializedGuid.Array.data[7]
+      value: 78
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[4].questEventReference.serializedGuid.Array.data[8]
+      value: 158
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[4].questEventReference.serializedGuid.Array.data[9]
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[4].questEventReference.serializedGuid.Array.data[10]
+      value: 194
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[4].questEventReference.serializedGuid.Array.data[11]
+      value: 183
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[4].questEventReference.serializedGuid.Array.data[12]
+      value: 44
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[4].questEventReference.serializedGuid.Array.data[13]
+      value: 151
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[4].questEventReference.serializedGuid.Array.data[14]
+      value: 147
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[4].questEventReference.serializedGuid.Array.data[15]
+      value: 218
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[4].questEventReference.cachedName
+      value: QuestEvent - Dig on diggable ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[4].questEventReference.cachedScene
+      value: 
+      objectReference: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab,
+        type: 3}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[4].requiredQuestEventStatus
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[4].conversation
+      value: 
+      objectReference: {fileID: 7683557317455714916}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[5].questEventReference.serializedGuid.Array.data[0]
+      value: 209
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[5].questEventReference.serializedGuid.Array.data[1]
+      value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[5].questEventReference.serializedGuid.Array.data[2]
+      value: 177
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[5].questEventReference.serializedGuid.Array.data[3]
+      value: 208
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[5].questEventReference.serializedGuid.Array.data[4]
+      value: 179
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[5].questEventReference.serializedGuid.Array.data[5]
+      value: 173
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[5].questEventReference.serializedGuid.Array.data[6]
+      value: 137
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[5].questEventReference.serializedGuid.Array.data[7]
+      value: 73
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[5].questEventReference.serializedGuid.Array.data[8]
+      value: 191
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[5].questEventReference.serializedGuid.Array.data[9]
+      value: 183
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[5].questEventReference.serializedGuid.Array.data[10]
+      value: 246
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[5].questEventReference.serializedGuid.Array.data[11]
+      value: 142
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[5].questEventReference.serializedGuid.Array.data[12]
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[5].questEventReference.serializedGuid.Array.data[13]
+      value: 202
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[5].questEventReference.serializedGuid.Array.data[14]
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[5].questEventReference.serializedGuid.Array.data[15]
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[5].questEventReference.cachedName
+      value: QuestEvent - Deliver toy to Bullied Kid
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[5].questEventReference.cachedScene
+      value: 
+      objectReference: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab,
+        type: 3}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[5].requiredQuestEventStatus
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[5].conversation
+      value: 
+      objectReference: {fileID: 7683557317455714916}
     - target: {fileID: 4139757867034374131, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: m_RootOrder
@@ -653,6 +1397,36 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: ae1136a1e433e3946a82d25089a316e7,
         type: 2}
+    - target: {fileID: 7870710448423642161, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870710448423642161, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870710448423642161, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870710448423642161, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870710448423642161, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870710448423642161, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8004794727290381549, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: defaultConversation.dialogue.Array.size
@@ -1265,11 +2039,47 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: ae1136a1e433e3946a82d25089a316e7,
         type: 2}
+    - target: {fileID: 9165149093992955776, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9165149093992955776, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9165149093992955776, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9165149093992955776, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9165149093992955776, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9165149093992955776, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 505a91d4177b1e44181cef9fc088309f, type: 3}
 --- !u!4 &3591100975741683318 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2238704512513123882, guid: 505a91d4177b1e44181cef9fc088309f,
+    type: 3}
+  m_PrefabInstance: {fileID: 3370766934689505372}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2023690292092259435 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3662210664687742007, guid: 505a91d4177b1e44181cef9fc088309f,
     type: 3}
   m_PrefabInstance: {fileID: 3370766934689505372}
   m_PrefabAsset: {fileID: 0}
@@ -1470,3 +2280,90 @@ MeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 3370766935825362556}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3706627934190878051
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2023690292092259435}
+    m_Modifications:
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5727208611821072848, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_Name
+      value: DefaultConversation (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: dialogue.Array.data[0].speaker
+      value: 
+      objectReference: {fileID: 11400000, guid: ae1136a1e433e3946a82d25089a316e7,
+        type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fcdffdb8bb04e634a979dedc2215acdf, type: 3}
+--- !u!114 &5734183688818771270 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
+    type: 3}
+  m_PrefabInstance: {fileID: 3706627934190878051}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f30671f44d05b14a8bc1af6a0495cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

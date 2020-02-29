@@ -25,19 +25,31 @@ public class Sniff : MonoBehaviour
         line.enabled = true;
         postProcessingEffect.SetActive(true);
 
+        Sniffable sniffable = null;
         if (CurrentDestination != null)
         {
-            Sniffable sniffable = CurrentDestination.GetComponent<Sniffable>();
-
-            if (sniffable != null)
-                eventManager.Trigger<ScentModeEvent, Sniffable>(sniffable);
+            sniffable = CurrentDestination.GetComponent<Sniffable>();
         }
+
+        ScentModeData scentModeData = new ScentModeData()
+        {
+            sniffable = sniffable,
+            state = ScentModeData.State.On
+        };
+        eventManager.Trigger<ScentModeEvent, ScentModeData>(scentModeData);
     }
 
     public void DeactivateScentMode()
     {
         line.enabled = false;
         postProcessingEffect.SetActive(false);
+
+        ScentModeData scentModeData = new ScentModeData()
+        {
+            sniffable = null,
+            state = ScentModeData.State.Off
+        };
+        eventManager.Trigger<ScentModeEvent, ScentModeData>(scentModeData);
     }
 
     void Update()

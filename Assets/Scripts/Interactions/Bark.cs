@@ -19,6 +19,13 @@ public class Bark : MonoBehaviour
 
     public void BarkEvent(Interactor source)
     {
+        InteractionData interactionData = new InteractionData
+        {
+            source = source,
+            target = null,
+            interactionType = InteractionType.Bark
+        };
+
         // Set targets to anything that overlaps with sphere
         Collider[] targets = Physics.OverlapSphere(transform.position, radius, -1, QueryTriggerInteraction.Ignore); //Ignore trigger is to prevent being called multiple times on one object
         {
@@ -32,16 +39,14 @@ public class Bark : MonoBehaviour
                     barkable.Interact(source, interactableTarget);
                     //Debug.Log("Barking at " + target.gameObject.name);
 
-                    InteractionData interactionData = new InteractionData
-                    {
-                        source = source,
-                        target = interactableTarget,
-                        interactionType = InteractionType.Bark
-                    };
-                    eventManager.Trigger<InteractionEvent, InteractionData>(interactionData);
+                    interactionData.target = interactableTarget;
                 }
             }
+
         }
+
+        // FIX: the target set in interactionData only contains the last object set in the foreach loop
+        eventManager.Trigger<InteractionEvent, InteractionData>(interactionData);
 
         audioSource.clip = barkSfx;
         audioSource.Play();

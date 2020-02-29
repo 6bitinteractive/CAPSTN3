@@ -127,7 +127,8 @@ public class InteractionData
 public enum InteractionType
 {
     Bark,
-    Talk
+    Talk,
+    Dig
 }
 
 [Serializable]
@@ -147,10 +148,38 @@ public class PickupData
 }
 
 [Serializable]
-public class DeliveryEvent : UnityEvent<Deliverable> { }
+public class PullEvent : UnityEvent<PullData> { }
+
+public class PullData
+{
+    public Interactor source;
+    public Pullable pullable;
+    public Type type;
+
+    public enum Type
+    {
+        Pull,
+        Release
+    }
+}
 
 [Serializable]
-public class ScentModeEvent : UnityEvent<Sniffable> { }
+public class ScentModeEvent : UnityEvent<ScentModeData> { }
+
+public class ScentModeData
+{
+    public Sniffable sniffable;
+    public State state;
+
+    public enum State
+    {
+        Off,
+        On
+    }
+}
+
+[Serializable]
+public class DeliveryEvent : UnityEvent<Deliverable> { }
 
 [Serializable]
 public class LocationEvent : UnityEvent<LocationData> { }
@@ -174,6 +203,9 @@ public class DigableEvent : UnityEvent<Digable> { }
 
 [Serializable]
 public class CutsceneEvent : UnityEvent<Cutscene> { }
+
+[Serializable]
+public class HungerEvent : UnityEvent<Hunger> { }
 #endregion
 
 // Reference

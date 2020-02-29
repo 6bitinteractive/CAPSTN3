@@ -9,11 +9,13 @@ public class Pullable : MonoBehaviour
 {
     Rigidbody rb;
     FixedJoint fixedJoint;
+    static EventManager eventManager;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         fixedJoint = GetComponent<FixedJoint>();
+        eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
     }
 
     public void Pull(Interactor source)
@@ -22,6 +24,14 @@ public class Pullable : MonoBehaviour
         rb.isKinematic = false;
         rb.useGravity = false;
         fixedJoint.connectedBody = source.GetComponent<Rigidbody>();
+
+        PullData pullData = new PullData()
+        {
+            source = source,
+            pullable = this,
+            type = PullData.Type.Pull
+        };
+        eventManager.Trigger<PullEvent, PullData>(pullData);
     }
 
     public void StopPulling(Interactor source)
@@ -30,5 +40,13 @@ public class Pullable : MonoBehaviour
         rb.isKinematic = true;
         rb.useGravity = true;
         fixedJoint.connectedBody = null;
+
+        PullData pullData = new PullData()
+        {
+            source = source,
+            pullable = this,
+            type = PullData.Type.Release
+        };
+        eventManager.Trigger<PullEvent, PullData>(pullData);
     }
 }

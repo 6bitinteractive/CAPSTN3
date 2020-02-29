@@ -322,6 +322,36 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1859469803718763960, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859469803718763960, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859469803718763960, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859469803718763960, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859469803718763960, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859469803718763960, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2333845488221335239, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: meshRendersToOutline.Array.size
@@ -477,6 +507,223 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[0]
+      value: 157
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[2]
+      value: 159
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[3]
+      value: 157
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[4]
+      value: 222
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[5]
+      value: 227
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[6]
+      value: 191
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[7]
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[8]
+      value: 157
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[9]
+      value: 122
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[10]
+      value: 153
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[11]
+      value: 228
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[12]
+      value: 101
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[13]
+      value: 209
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[14]
+      value: 215
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.serializedGuid.Array.data[15]
+      value: 169
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.cachedName
+      value: QuestEvent - Deliver food to Homeless Man
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].questEventReference.cachedScene
+      value: 
+      objectReference: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab,
+        type: 3}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].requiredQuestEventStatus
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[0].conversation
+      value: 
+      objectReference: {fileID: 2320483651159010030}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[0]
+      value: 157
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[2]
+      value: 159
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[3]
+      value: 157
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[4]
+      value: 222
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[5]
+      value: 227
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[6]
+      value: 191
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[7]
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[8]
+      value: 157
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[9]
+      value: 122
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[10]
+      value: 153
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[11]
+      value: 228
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[12]
+      value: 101
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[13]
+      value: 209
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[14]
+      value: 215
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.serializedGuid.Array.data[15]
+      value: 169
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.cachedName
+      value: QuestEvent - Deliver food to Homeless Man
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].questEventReference.cachedScene
+      value: 
+      objectReference: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab,
+        type: 3}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].requiredQuestEventStatus
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: questRelatedConversations.Array.data[1].conversation
+      value: 
+      objectReference: {fileID: 138817691347383211}
     - target: {fileID: 4139757867034374131, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: m_RootOrder
@@ -691,42 +938,42 @@ PrefabInstance:
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedObject.serializedGuid.Array.data[0]
-      value: 84
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedObject.serializedGuid.Array.data[1]
-      value: 33
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedObject.serializedGuid.Array.data[2]
-      value: 250
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedObject.serializedGuid.Array.data[3]
-      value: 11
+      value: 84
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedObject.serializedGuid.Array.data[4]
-      value: 42
+      value: 111
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedObject.serializedGuid.Array.data[5]
-      value: 218
+      value: 49
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedObject.serializedGuid.Array.data[6]
-      value: 210
+      value: 149
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedObject.serializedGuid.Array.data[7]
-      value: 70
+      value: 71
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
@@ -736,37 +983,37 @@ PrefabInstance:
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedObject.serializedGuid.Array.data[9]
-      value: 68
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedObject.serializedGuid.Array.data[10]
-      value: 147
+      value: 165
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedObject.serializedGuid.Array.data[11]
-      value: 249
+      value: 190
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedObject.serializedGuid.Array.data[12]
-      value: 155
+      value: 207
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedObject.serializedGuid.Array.data[13]
-      value: 37
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedObject.serializedGuid.Array.data[14]
-      value: 82
+      value: 92
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedObject.serializedGuid.Array.data[15]
-      value: 124
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
@@ -777,7 +1024,7 @@ PrefabInstance:
         type: 3}
       propertyPath: requests.Array.data[0].requestedObject.cachedScene
       value: 
-      objectReference: {fileID: 102900000, guid: b42835fa3cc95164f8a58bd11d8500ab,
+      objectReference: {fileID: 102900000, guid: 7cdb606e197b18f4c808f2cbfa85e9bc,
         type: 3}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
@@ -821,6 +1068,36 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[0]
       value: Good morning, pooch.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870710448423642161, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870710448423642161, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870710448423642161, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870710448423642161, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870710448423642161, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870710448423642161, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8004794727290381549, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
@@ -1134,6 +1411,36 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: b818bc963da096d48a8e4ab3d5081747,
         type: 2}
+    - target: {fileID: 9165149093992955776, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9165149093992955776, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9165149093992955776, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9165149093992955776, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9165149093992955776, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9165149093992955776, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 505a91d4177b1e44181cef9fc088309f, type: 3}
 --- !u!4 &3480474343718167741 stripped
@@ -1193,7 +1500,7 @@ PrefabInstance:
     - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
@@ -1285,7 +1592,7 @@ PrefabInstance:
     - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
@@ -1417,7 +1724,7 @@ PrefabInstance:
     - target: {fileID: 5727208611821072848, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
       propertyPath: m_Name
-      value: 'Homeless Man Quest: Find Food'
+      value: 'Homeless Man Quest: Find Food - Active'
       objectReference: {fileID: 0}
     - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
@@ -1468,6 +1775,129 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
     type: 3}
   m_PrefabInstance: {fileID: 6689952449109840587}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f30671f44d05b14a8bc1af6a0495cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &9011230256674212750
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2129798207261781664}
+    m_Modifications:
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.4239998
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.802
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.1850004
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399309448685104978, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5727208611821072848, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: m_Name
+      value: 'Homeless Man Quest: Find Food - Done'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: dialogue.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: dialogue.Array.data[1].dialogueLines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: dialogue.Array.data[0].dialogueLines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: dialogue.Array.data[0].speaker
+      value: 
+      objectReference: {fileID: 11400000, guid: b818bc963da096d48a8e4ab3d5081747,
+        type: 2}
+    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[0]
+      value: Thank you... Thank you...
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: dialogue.Array.data[1].speaker
+      value: 
+      objectReference: {fileID: 11400000, guid: 2cdb60320808ecd43ba300813b6f1046,
+        type: 2}
+    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: dialogue.Array.data[1].dialogueLines.Array.data[0]
+      value: Hmm...
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
+        type: 3}
+      propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[1]
+      value: You're such a kind dog...
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fcdffdb8bb04e634a979dedc2215acdf, type: 3}
+--- !u!114 &138817691347383211 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
+    type: 3}
+  m_PrefabInstance: {fileID: 9011230256674212750}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1

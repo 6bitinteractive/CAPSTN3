@@ -47,7 +47,6 @@ public class Digable : MonoBehaviour, IInteractable
         eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
     }
 
-
     private void OnTriggerEnter(Collider collider)
     {
         Dig digSource = collider.GetComponent<Dig>();
@@ -69,7 +68,6 @@ public class Digable : MonoBehaviour, IInteractable
 
     public void TakeDamage(Interactor source, int damageValue)
     {
-      
         currentHp -= damageValue;
         currentHp = Mathf.Clamp(currentHp, 0, maxHealth);
 

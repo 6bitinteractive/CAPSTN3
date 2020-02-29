@@ -5,28 +5,30 @@ using UnityEngine;
 
 public class ScentModeCondition : Condition
 {
-    private bool scentModeActivated;
+    [SerializeField] private ScentModeData.State requiredState = ScentModeData.State.On;
+
+    private bool conditionSatisfied;
 
     protected override bool IsSatisfied()
     {
-        return scentModeActivated;
+        return conditionSatisfied;
     }
 
     protected override void InitializeCondition()
     {
         base.InitializeCondition();
-        eventManager.Subscribe<ScentModeEvent, Sniffable>(OnScentMode);
+        eventManager.Subscribe<ScentModeEvent, ScentModeData>(OnScentMode);
     }
 
     protected override void FinalizeCondition()
     {
         base.FinalizeCondition();
-        eventManager.Unsubscribe<ScentModeEvent, Sniffable>(OnScentMode);
+        eventManager.Unsubscribe<ScentModeEvent, ScentModeData>(OnScentMode);
     }
 
-    private void OnScentMode(Sniffable sniffable)
+    private void OnScentMode(ScentModeData scentModeData)
     {
-        scentModeActivated = true;
+        conditionSatisfied = scentModeData.state == requiredState;
         SwitchStatus(Status.Evaluating);
     }
 }
