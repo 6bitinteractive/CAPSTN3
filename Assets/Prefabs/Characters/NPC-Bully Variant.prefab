@@ -461,6 +461,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC-Bully Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4704045098519815600, guid: 0452eb207f1ce094ebd8627544f0d86c,
+        type: 3}
+      propertyPath: OnBark.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704045098519815600, guid: 0452eb207f1ce094ebd8627544f0d86c,
+        type: 3}
+      propertyPath: OnBark.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704045098519815600, guid: 0452eb207f1ce094ebd8627544f0d86c,
+        type: 3}
+      propertyPath: OnBark.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704045098519815600, guid: 0452eb207f1ce094ebd8627544f0d86c,
+        type: 3}
+      propertyPath: OnBark.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 178526365625100185}
+    - target: {fileID: 4704045098519815600, guid: 0452eb207f1ce094ebd8627544f0d86c,
+        type: 3}
+      propertyPath: OnBark.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MoveAway
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704045098519815600, guid: 0452eb207f1ce094ebd8627544f0d86c,
+        type: 3}
+      propertyPath: OnBark.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5249338034595309876, guid: 0452eb207f1ce094ebd8627544f0d86c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -851,6 +881,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0452eb207f1ce094ebd8627544f0d86c, type: 3}
+--- !u!114 &178526365625100185 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4704045098519815600, guid: 0452eb207f1ce094ebd8627544f0d86c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4842038998238020137}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a6b40296a1be44ca9dcbe7ef07bbe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5055873994372520421 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 367169044016880588, guid: 0452eb207f1ce094ebd8627544f0d86c,

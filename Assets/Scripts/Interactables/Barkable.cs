@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.AI;
+using System;
+
+[Serializable]
+public class BarkEvent : UnityEvent<Interactor> { }
 
 [RequireComponent(typeof(Collider))]
 
 public class Barkable : MonoBehaviour, IInteractable
 {
     [SerializeField] private float speed = 2f;
-    public UnityEvent OnBark;
+    public BarkEvent OnBark;
     private NavMeshAgent navMeshAgent;
 
     private void Start()
@@ -19,8 +23,8 @@ public class Barkable : MonoBehaviour, IInteractable
 
     public void Interact(Interactor source, IInteractable target)
     {
-        MoveAway(source);
-        OnBark.Invoke();
+        //MoveAway(source);
+        OnBark.Invoke(source);
     }
 
     public void DisplayInteractability()
@@ -28,7 +32,7 @@ public class Barkable : MonoBehaviour, IInteractable
 
     }
 
-    private void MoveAway(Interactor source)
+    public void MoveAway(Interactor source)
     {
         Vector3 displacement = transform.position - source.transform.position;
         displacement.Normalize(); // Get direction
