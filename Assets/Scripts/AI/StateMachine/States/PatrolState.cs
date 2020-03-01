@@ -6,14 +6,22 @@ public class PatrolState : State
 {
     [SerializeField] private float patrolSpeed = 1f;
     [SerializeField] private float waitTime = 2.5f;
+    [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private List<Transform> wayPoints;
     private float originalSpeed;
     private float timer;
     private int currentWayPoint = 0;
 
+    private void Start()
+    {
+        if (wayPoints.Count <= 0)
+            Debug.LogError("Please add waypoints to " + gameObject.name + " under (Patrol) script");
+    }
+
     public override void OnEnable()
     {
         base.OnEnable();
+       
         originalSpeed = navMeshAgent.speed;
         navMeshAgent.speed = patrolSpeed;
     }
@@ -31,6 +39,7 @@ public class PatrolState : State
 
     public void Patrol()
     {
+        RotateTowardsTarget(wayPoints[currentWayPoint]);
         navMeshAgent.SetDestination(wayPoints[currentWayPoint].position);
 
         // Check if near waypoint
@@ -58,5 +67,13 @@ public class PatrolState : State
     {
         if (gameObject.GetComponent<DeSpawnable>() == null) return;
         gameObject.SetActive(false);
+    }
+
+    private void RotateTowardsTarget(Transform currentTarget)
+    {
+        Vector3 direction = (currentTarget.transform.position - transform.position).normalized;
+        direction.y = 0;
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
     }
 }
