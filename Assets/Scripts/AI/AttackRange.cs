@@ -12,10 +12,14 @@ public class AttackRange : MonoBehaviour
     private Attack attack;
     private void Awake()
     {
-        agent = GetComponentInParent<Agent>();
-        attack = GetComponentInParent<Attack>();
+        agent = GetComponentInParent<Agent>();    
         sphereCollider = GetComponent<SphereCollider>();
-        sphereCollider.radius = attack.AttackRadius;
+
+        if (attack == null) return;
+        {
+            attack = GetComponentInParent<Attack>();
+            sphereCollider.radius = attack.AttackRadius;
+        }
     }
 
     private void OnTriggerStay(Collider other)
