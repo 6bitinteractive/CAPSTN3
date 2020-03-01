@@ -105,27 +105,50 @@ public class PlayerController : MonoBehaviour
         if (!bite.enabled) { return; }
 
         // Makes sure the target exists and has the component biteable otherwise return
-        if (interactor.CurrentTarget != null && !interactor.CurrentTarget.GetComponent<Biteable>()) return;
+        if (interactor.CurrentTarget == null) return;
+
+        Biteable biteable = interactor.CurrentTarget.GetComponent<Biteable>();
+        if (biteable == null) return;
 
         // If the player is no longer biting
-        if (interactor.CurrentTarget != null && !bite.IsBiting)
+        if (!bite.IsBiting)
         {
             // Turn off interaction with other objects
             interactor.CanInteract = false;
 
             // If player is not biting anything and the target is pullable
-            if (!bite.IsBiting && interactor.CurrentTarget.GetComponent<Pullable>())
+            Pullable pullable = interactor.CurrentTarget.GetComponent<Pullable>();
+            if (pullable)
             {
-                if (!controlScheme.PlayerBiting.enabled) SwitchToBitingControlScheme(); // Switch control scheme to reversed controls
-                bite.BiteEvent(interactor, interactor.CurrentTarget.GetComponent<Biteable>());
-                return;
+                if (pullable.enabled)
+                {
+                    if (!controlScheme.PlayerBiting.enabled) SwitchToBitingControlScheme(); // Switch control scheme to reversed controls
+                    bite.BiteEvent(interactor, biteable);
+                    return;
+                }
+                else // Pullable component exists but is disabled
+                {
+                    interactor.CurrentTarget = null;
+                    interactor.CanInteract = true;
+                    return;
+                }
             }
 
-            // If player is not biting anything and the target is pullable
-            else if (!bite.IsBiting)
+            // If player is not biting anything and the target is pickupable
+            Pickupable pickupable = interactor.CurrentTarget.GetComponent<Pickupable>();
+            if (pickupable)
             {
-                bite.BiteEvent(interactor, interactor.CurrentTarget.GetComponent<Biteable>());
-                return;
+                if (pickupable.enabled)
+                {
+                    bite.BiteEvent(interactor, biteable);
+                    return;
+                }
+                else // Pickupable component exists but is disabled
+                {
+                    interactor.CurrentTarget = null;
+                    interactor.CanInteract = true;
+                    return;
+                }
             }
         }
 
