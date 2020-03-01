@@ -8,7 +8,8 @@ public class Pickupable : MonoBehaviour
 {
     Rigidbody rb;
     Collider collider;
-
+    [SerializeField] private Vector3 dropOffset;
+    [SerializeField] private float dropSpeed = 300f;
     static EventManager eventManager;
 
     private void Start()
@@ -39,7 +40,7 @@ public class Pickupable : MonoBehaviour
         collider.enabled = true;
         rb.isKinematic = false;
         rb.useGravity = true;
-
+        rb.AddForce(dropOffset * dropSpeed);
         eventManager.Trigger<PickupEvent, PickupData>(new PickupData() { source = source, pickupable = this, type = PickupData.Type.Drop });
     }
 }
