@@ -9,7 +9,6 @@ public class ShockState : State
     public override void OnEnable()
     {
         base.OnEnable();
-        agent.Target = null;
         navMeshAgent.ResetPath(); // Stop moving
 
         if (emoticon)
@@ -19,14 +18,23 @@ public class ShockState : State
     public override void OnDisable()
     {
         base.OnDisable();
+        agent.TargetWithinRange = null;
         if (emoticon)
             emoticon.SetActive(false);
     }
 
-    public void Shock()
+    public override void Update()
     {
-        // Reminders for myself
-        // Look at target
-        // Play shock Animation
+        if (agent.TargetWithinRange == null) return;
+        base.Update();
+        RotateTowardsTarget();
+    }
+
+    private void RotateTowardsTarget()
+    {
+        Vector3 direction = (agent.TargetWithinRange.transform.position - transform.position).normalized;
+        direction.y = 0;
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 2 * Time.deltaTime);
     }
 }
