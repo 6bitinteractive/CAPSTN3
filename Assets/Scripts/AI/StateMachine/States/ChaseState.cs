@@ -8,7 +8,7 @@ public class ChaseState : State
     [SerializeField] private float chaseSpeed = 2f;
     [SerializeField] private float roationSpeed = 10f;
     Attack attack;
-
+    private GameObject currentTarget;
     public void Start()
     {
         attack = GetComponent<Attack>();
@@ -18,6 +18,9 @@ public class ChaseState : State
         base.OnEnable();
         if (sightedIndicator)
             sightedIndicator.SetActive(true);
+
+        if (agent.Target != null)
+            currentTarget = agent.Target;
     }
 
     public override void OnDisable()
@@ -25,13 +28,15 @@ public class ChaseState : State
         base.OnDisable();
         if (sightedIndicator)
             sightedIndicator.SetActive(false);
+
+        currentTarget = null;
     }
 
     public override void Update()
     {
-        if (agent.Target == null) return;
-        RotateTowardsTarget(agent.Target.transform);
-        transform.position = Vector3.MoveTowards(transform.position, agent.Target.transform.position, chaseSpeed * Time.deltaTime);
+        if (currentTarget == null) return;
+        RotateTowardsTarget(currentTarget.transform);
+        transform.position = Vector3.MoveTowards(transform.position, currentTarget.transform.position, chaseSpeed * Time.deltaTime);
     }
 
     private void RotateTowardsTarget(Transform currentTarget)
