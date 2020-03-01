@@ -17,7 +17,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private Animator animator;
 
     private Rigidbody rb;
-    private float currentMultiplier;
+    private float currentMultiplier = 1f;
 
     private void Start()
     {
