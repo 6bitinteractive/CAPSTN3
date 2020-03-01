@@ -11,11 +11,22 @@ public class Biteable : MonoBehaviour, IInteractable
     public UnityEvent OnRelease;
     [SerializeField] private Vector3 offset;
 
+    // Cache components since target will always be `this` gameObject; lessen GetComponent<T>() calls
+    private Pullable pullableTarget;
+    private Pickupable pickupableTarget;
+
+    private void Start()
+    {
+        pullableTarget = GetComponent<Pullable>();
+        pickupableTarget = GetComponent<Pickupable>();
+    }
+
     public void Interact(Interactor source, IInteractable target)
     {
         //Debug.Log("Biting " + gameObject.name);
         Bite(source);
     }
+
     public void DisplayInteractability()
     {
 
@@ -26,15 +37,12 @@ public class Biteable : MonoBehaviour, IInteractable
         if (!source.GetComponent<Bite>().IsBiting) return;
 
         // Check if Biteable is Pullable
-        if (gameObject.GetComponent<Pullable>() != null)
+        if (pullableTarget != null)
         {
-            Pullable pullableTarget = gameObject.GetComponent<Pullable>();
             pullableTarget.StopPulling(source);
         }
-
-        else if (gameObject.GetComponent<Pickupable>() != null)
+        else if (pickupableTarget != null)
         {
-            Pickupable pickupableTarget = gameObject.GetComponent<Pickupable>();
             pickupableTarget.DropObject(source);
         }
 
@@ -46,16 +54,14 @@ public class Biteable : MonoBehaviour, IInteractable
         if (source.GetComponent<Bite>().IsBiting) return;
 
         // Check if Biteable is Pullable
-        if (gameObject.GetComponent<Pullable>() != null)
+        if (pullableTarget != null && pullableTarget.enabled)
         {
-            Pullable pullableTarget = gameObject.GetComponent<Pullable>();
             pullableTarget.Pull(source);
         }
 
         // Check if Biteable is Pickupable
-        else if (gameObject.GetComponent<Pickupable>() != null)
+        else if (pickupableTarget != null && pickupableTarget.enabled)
         {
-            Pickupable pickupableTarget = gameObject.GetComponent<Pickupable>();
             Transform mouth = source.GetComponent<Bite>().Mouth.transform;
             Vector3 mouthPos = mouth.localPosition + offset;
             mouth.localPosition = mouthPos;
