@@ -25,6 +25,16 @@ public class GameDataWriter
         writer.Write(value);
     }
 
+    public void Write(bool value)
+    {
+        writer.Write(value);
+    }
+
+    public void Write(string value)
+    {
+        writer.Write(value);
+    }
+
     public void Write(Vector3 value)
     {
         writer.Write(value.x);

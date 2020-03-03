@@ -23,6 +23,16 @@ public class GameDataReader
         return reader.ReadSingle(); // ReadSingle = single-precision float
     }
 
+    public bool ReadBool()
+    {
+        return reader.ReadBoolean();
+    }
+
+    public string ReadString()
+    {
+        return reader.ReadString();
+    }
+
     public Vector3 ReadVector3()
     {
         Vector3 value;
