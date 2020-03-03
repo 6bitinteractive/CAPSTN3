@@ -11,6 +11,10 @@ public class SceneData : ScriptableObject
     [Tooltip("Leave empty if not applicable.")]
     [SerializeField] private string startingPointName;
 
+    [Tooltip("The name to display in UI.")]
+    [SerializeField] private string displayName;
+
     public string SceneName => sceneName;
     public string StartingPointName => startingPointName;
+    public string DisplayName => displayName;
 }
