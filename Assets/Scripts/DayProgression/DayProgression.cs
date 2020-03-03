@@ -5,13 +5,12 @@ using UnityEngine;
 public class DayProgression : MonoBehaviour
 {
     // "Proper" count of day, starting with 1
-    public int CurrentDayCount => currentDayIndex + 1;
+    public int CurrentDayCount => CurrentDayIndex + 1;
+    public int CurrentDayIndex { get; set; }
     public QuestManager QuestManager { get; private set; }
 
     [HideInInspector]
     public bool debugMode;
-
-    private int currentDayIndex;
 
     private void Start()
     {
@@ -19,7 +18,7 @@ public class DayProgression : MonoBehaviour
             return;
 
         Initialize();
-        BeginDay(0);
+        BeginDay(CurrentDayIndex);
     }
 
     public void Initialize()
@@ -35,16 +34,16 @@ public class DayProgression : MonoBehaviour
 
     public void BeginDay(int index = 0)
     {
-        currentDayIndex = index;
+        CurrentDayIndex = index;
         Debug.LogFormat("Beginning Day {0}", CurrentDayCount);
 
         // Start the quest to be tackled for the day; assumes that the day shares the same index number as the quest
-        QuestManager.ActivateQuest(currentDayIndex);
+        QuestManager.ActivateQuest(CurrentDayIndex);
     }
 
     public void EndDay()
     {
         Debug.LogFormat("Finished Day {0}", CurrentDayCount);
-        currentDayIndex++;
+        CurrentDayIndex++;
     }
 }
