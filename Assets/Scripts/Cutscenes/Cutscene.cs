@@ -7,8 +7,6 @@ using UnityEngine.Playables;
 
 // NOTE: Make sure to use Stop() in the inspector for Cutscenes that playOnAwake
 // Simply disabling them might not cleanly stop the cutscene
-// It's advisable to avoid playing cutscenes on awake but, instead,
-// manually call the Play() method in a QuestState/ConditionState listener
 
 [RequireComponent(typeof(PlayableDirector))]
 [RequireComponent(typeof(DialogueHandler))]
@@ -16,13 +14,19 @@ using UnityEngine.Playables;
 public class Cutscene : MonoBehaviour
 {
     [Tooltip("NOTE: PlayOnAwake in PlayableDirector will always be set to false.\n" +
-        "We set it here so that events are properly triggered.")]
+        "We set it here so that events are properly triggered.\n\n" +
+        "It's advisable to avoid playing cutscenes on awake but, instead, " +
+        "manually call the Play() method in a QuestState/ConditionState listener")]
     [SerializeField] private bool playOnAwake;
+
+    [Tooltip("Cutscene can be played again even after being viewed once.")]
+    [SerializeField] private bool replayable;
 
     public CutsceneEventType OnCutscenePlay;
     public CutsceneEventType OnCutscenePause;
     public CutsceneEventType OnCutsceneStop;
     public State CurrentState { get; private set; }
+    public int PlayCount { get; private set; } // Number of times the cutscene has been completely viewed
 
     private PlayableDirector playableDirector;
     private DialogueHandler dialogueHandler;
@@ -35,6 +39,8 @@ public class Cutscene : MonoBehaviour
         playableDirector = GetComponent<PlayableDirector>();
         dialogueHandler = GetComponent<DialogueHandler>();
         conversations.AddRange(GetComponentsInChildren<Conversation>());
+
+        playableDirector.playOnAwake = false;
         CurrentState = State.Stopped;
     }
 
@@ -100,6 +106,10 @@ public class Cutscene : MonoBehaviour
 
     public void Play()
     {
+        // If the cutscene is not replayable and has been played (count is 1+)
+        if (!replayable && PlayCount >= 1)
+            return;
+
         playableDirector.Play();
     }
 
@@ -128,6 +138,7 @@ public class Cutscene : MonoBehaviour
 
     private void OnPlayableDirectorStopped(PlayableDirector playableDirector)
     {
+        PlayCount++;
         CurrentState = State.Stopped;
         eventManager.Trigger<CutsceneEvent, Cutscene>(OnCutsceneStop, this);
     }
