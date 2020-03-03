@@ -27,14 +27,6 @@ public class ShockState : State
     {
         if (agent.TargetWithinRange == null) return;
         base.Update();
-        RotateTowardsTarget();
-    }
-
-    private void RotateTowardsTarget()
-    {
-        Vector3 direction = (agent.TargetWithinRange.transform.position - transform.position).normalized;
-        direction.y = 0;
-        Quaternion rotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 2 * Time.deltaTime);
+        RotateTowardsTarget(agent.TargetWithinRange.transform, 2);
     }
 }

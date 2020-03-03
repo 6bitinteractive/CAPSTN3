@@ -35,15 +35,7 @@ public class ChaseState : State
     public override void Update()
     {
         if (currentTarget == null) return;
-        RotateTowardsTarget(currentTarget.transform);
+        RotateTowardsTarget(currentTarget.transform, roationSpeed);
         transform.position = Vector3.MoveTowards(transform.position, currentTarget.transform.position, chaseSpeed * Time.deltaTime);
-    }
-
-    private void RotateTowardsTarget(Transform currentTarget)
-    {
-        Vector3 direction = (currentTarget.transform.position - transform.position).normalized;
-        direction.y = 0;
-        Quaternion rotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, roationSpeed * Time.deltaTime);
     }
 }

@@ -39,7 +39,7 @@ public class PatrolState : State
 
     public void Patrol()
     {
-        RotateTowardsTarget(wayPoints[currentWayPoint]);
+        RotateTowardsTarget(wayPoints[currentWayPoint], rotationSpeed);
         navMeshAgent.SetDestination(wayPoints[currentWayPoint].position);
 
         // Check if near waypoint
@@ -67,13 +67,5 @@ public class PatrolState : State
     {
         if (gameObject.GetComponent<DeSpawnable>() == null) return;
         gameObject.SetActive(false);
-    }
-
-    private void RotateTowardsTarget(Transform currentTarget)
-    {
-        Vector3 direction = (currentTarget.transform.position - transform.position).normalized;
-        direction.y = 0;
-        Quaternion rotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
     }
 }

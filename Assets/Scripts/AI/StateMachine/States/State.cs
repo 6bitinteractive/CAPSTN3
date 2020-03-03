@@ -50,10 +50,18 @@ public class State : MonoBehaviour
         }
     }
 
+    public virtual void RotateTowardsTarget(Transform targetTransform, float rotationSpeed)
+    {
+        Vector3 direction = (targetTransform.position - transform.position).normalized;
+        direction.y = 0;
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+    }
+
     [Serializable]
     public struct Transition
     {
         public AICondition aiCondition;
         public State targetState;
-    }
+    }  
 }
