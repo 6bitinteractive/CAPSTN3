@@ -65,7 +65,7 @@ public class ConversationSelector : MonoBehaviour
                 dialogueHandler.SwitchConversation(currentConversation);
 
                 //Debug.LogFormat("Dialogue updated by {0} - {1}", questEvent, questEvent.CurrentStatus);
-                // PrintConversation();
+                //PrintConversation();
                 return;
             }
         }
@@ -89,7 +89,7 @@ public class ConversationSelector : MonoBehaviour
 
         dialogueHandler.SwitchConversation(currentConversation);
 
-        // PrintConversation();
+        //PrintConversation();
     }
 
     private ConversationSet FindRelatedConversation(QuestEvent questEvent)
@@ -116,10 +116,7 @@ public class ConversationSelector : MonoBehaviour
         {
             get
             {
-                if (qe != null)
-                    return qe;
-                else
-                    qe = questEventReference.gameObject.GetComponent<QuestEvent>();
+                qe = qe ?? questEventReference.gameObject.GetComponent<QuestEvent>();
                 return qe;
             }
         }
