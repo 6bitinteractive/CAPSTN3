@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : Singleton<SceneController>
 {
+    [SerializeField] private GameDataManager gameDataManager;
+
     [Header("Scenes")]
     [SerializeField] private SceneData initialSceneToLoad;
     [SerializeField] private SceneData persistentSceneData;
@@ -65,12 +67,18 @@ public class SceneController : Singleton<SceneController>
         // Let any listener to this event do their thing
         BeforeSceneUnload.Invoke();
 
+        // TEST: Save
+        gameDataManager.SaveGameData();
+
         // Get a reference to scene to be unloaded, which is the current active scene
         Scene sceneToBeUnloaded = SceneManager.GetActiveScene();
 
         // Unload the scene now, unless it's the persistent scene
         if (sceneToBeUnloaded.name != persistentSceneData.name)
             yield return SceneManager.UnloadSceneAsync(sceneToBeUnloaded);
+
+        // TEST: Load
+        gameDataManager.LoadGameData();
 
         // Allow the given scene to load over several frames and add it to the already loaded scenes
         yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
