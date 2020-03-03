@@ -29,12 +29,13 @@ public class PatrolState : State
     public override void OnDisable()
     {
         base.OnDisable();
+      
         navMeshAgent.speed = originalSpeed;
     }
     public override void Update()
     {
         base.Update();
-        Patrol();
+        Patrol(); 
     }
 
     public void Patrol()

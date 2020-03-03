@@ -13,6 +13,9 @@ public class ShockState : State
 
         if (emoticon)
             emoticon.SetActive(true);
+
+        if (animator == null) return;
+        animator.SetTrigger("Shock");
     }
 
     public override void OnDisable()
