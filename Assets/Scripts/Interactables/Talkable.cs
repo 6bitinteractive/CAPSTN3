@@ -10,10 +10,12 @@ public class Talkable : MonoBehaviour, IInteractable
     public UnityEvent OnTalk;
 
     private DialogueHandler dialogueHandler;
+    private Animator animator;
 
     private void Start()
     {
         dialogueHandler = GetComponent<DialogueHandler>();
+        animator = GetComponent<Animator>();
     }
 
     public void DisplayInteractability()
@@ -23,10 +25,16 @@ public class Talkable : MonoBehaviour, IInteractable
 
     public void Interact(Interactor source, IInteractable target)
     {
-        //Call dialogue function here
         //Debug.Log(source + "Is talking to " + target);
+
+        if (animator != null)
+            animator.SetTrigger("Talk");
+
         OnTalk.Invoke();
         dialogueHandler.StartConversation();
+
+
+       
 
         if (!source) { return; }
         StartCoroutine(RotateTowardsTarget(source.transform));

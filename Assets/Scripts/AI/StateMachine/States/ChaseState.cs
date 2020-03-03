@@ -9,6 +9,8 @@ public class ChaseState : State
     [SerializeField] private float roationSpeed = 10f;
     Attack attack;
     private GameObject currentTarget;
+    private float originalSpeed;
+
     public void Start()
     {
         attack = GetComponent<Attack>();
@@ -16,6 +18,10 @@ public class ChaseState : State
     public override void OnEnable()
     {
         base.OnEnable();
+        navMeshAgent.ResetPath();
+        originalSpeed = navMeshAgent.speed;
+        navMeshAgent.speed = chaseSpeed;
+
         if (sightedIndicator)
             sightedIndicator.SetActive(true);
 
@@ -30,20 +36,14 @@ public class ChaseState : State
             sightedIndicator.SetActive(false);
 
         currentTarget = null;
+        navMeshAgent.speed = originalSpeed;
     }
 
     public override void Update()
     {
+        base.Update();
         if (currentTarget == null) return;
-        RotateTowardsTarget(currentTarget.transform);
-        transform.position = Vector3.MoveTowards(transform.position, currentTarget.transform.position, chaseSpeed * Time.deltaTime);
-    }
-
-    private void RotateTowardsTarget(Transform currentTarget)
-    {
-        Vector3 direction = (currentTarget.transform.position - transform.position).normalized;
-        direction.y = 0;
-        Quaternion rotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, roationSpeed * Time.deltaTime);
+        RotateTowardsTarget(currentTarget.transform, roationSpeed);
+        navMeshAgent.SetDestination(currentTarget.transform.position);
     }
 }
