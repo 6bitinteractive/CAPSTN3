@@ -34,7 +34,8 @@ public class State : MonoBehaviour
 
     public virtual void Update()
     {
-        
+        if (animator == null) return;
+        AnimateMovement(navMeshAgent.velocity);
     }
 
     public void FixedUpdate()
@@ -50,10 +51,24 @@ public class State : MonoBehaviour
         }
     }
 
+    public virtual void RotateTowardsTarget(Transform targetTransform, float rotationSpeed)
+    {
+        Vector3 direction = (targetTransform.position - transform.position).normalized;
+        direction.y = 0;
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+    }
+
+    public void AnimateMovement(Vector3 direction)
+    {
+        animator.SetFloat("VelX", direction.x);
+        animator.SetFloat("VelY", direction.y);
+    }
+
     [Serializable]
     public struct Transition
     {
         public AICondition aiCondition;
         public State targetState;
-    }
+    }  
 }
