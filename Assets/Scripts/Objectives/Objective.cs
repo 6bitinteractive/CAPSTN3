@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 [RequireComponent(typeof(GuidComponent))]
 
-public class Objective : MonoBehaviour
+public class Objective : Persistable
 {
     [Tooltip("Optional. Describe what is expected in this objective.")]
     public string description;
@@ -24,13 +24,17 @@ public class Objective : MonoBehaviour
     private List<Condition> conditions = new List<Condition>();
     //private List<Reaction> reactions = new List<Reaction>();
 
-    public void Activate()
+    private void Awake()
     {
+        // Get children ASAP so they can be saved/loaded
         conditions.AddRange(GetComponentsInChildren<Condition>());
 
         if (conditions.Count == 0)
-            Debug.LogWarningFormat("Conditions are expected to be child objects of {0}", gameObject.name);
+            Debug.LogErrorFormat("Conditions are expected to be child objects of {0}", gameObject.name);
+    }
 
+    public void Activate()
+    {
         foreach (var condition in conditions)
         {
             // Listen to condition updates
@@ -44,6 +48,33 @@ public class Objective : MonoBehaviour
         // For sequential order, only activate the first condition
         if (sequenceType == SequenceType.Sequential)
             conditions[0].SwitchStatus(Condition.Status.Active);
+    }
+
+    public override void Save(GameDataWriter writer)
+    {
+        base.Save(writer);
+
+        Debug.Log("SAVED: " + gameObject.name + " - Complete? " + Complete);
+
+        // Complete
+        writer.Write(Complete);
+
+        // Save conditions' states
+        foreach (var condition in conditions)
+            condition.Save(writer);
+    }
+
+    public override void Load(GameDataReader reader)
+    {
+        base.Load(reader);
+
+        // Complete
+        Complete = reader.ReadBool();
+        Debug.Log("LOADED: " + gameObject.name + " - Complete? " + Complete);
+
+        // Load conditions' states
+        foreach (var condition in conditions)
+            condition.Load(reader);
     }
 
     // NOTE: This is mainly used for debugging!

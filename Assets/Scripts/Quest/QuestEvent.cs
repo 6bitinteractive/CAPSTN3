@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 [RequireComponent(typeof(GuidComponent))]
 
-public class QuestEvent : MonoBehaviour
+public class QuestEvent : Persistable
 {
     [SerializeField] private string displayName;
     [SerializeField] private string description;
@@ -27,17 +27,10 @@ public class QuestEvent : MonoBehaviour
     [HideInInspector] public int order = -1; // We start with -1 to easily determine that the order has not yet been set
     [HideInInspector] public List<QuestPath> pathList = new List<QuestPath>();
 
-    public void Initialize()
+    private void Awake()
     {
-        eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
-
-        Id = Guid.NewGuid().ToString();
-        DisplayName = displayName;
-        Description = description;
-        currentStatus = Status.Inactive;
-
-        // Get all the attached Objective componenets
-        // Check if there are any Objective script
+        // Get children ASAP so they can be saved/loaded
+        // Get all the attached Objective componenets; Check if there are any Objective script attached to the gameObject itself
         objectives.AddRange(GetComponents<Objective>());
 
         if (objectives.Count > 0)
@@ -46,6 +39,16 @@ public class QuestEvent : MonoBehaviour
             objectives.AddRange(GetComponentsInChildren<Objective>());
 
         //Debug.Log("Objective count: " + objectives.Count);
+    }
+
+    public void Initialize()
+    {
+        eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
+
+        Id = Guid.NewGuid().ToString();
+        DisplayName = displayName;
+        Description = description;
+        currentStatus = Status.Inactive;
 
         foreach (var objective in objectives)
             objective.OnDone.AddListener(EvaluateQuestEvent);
@@ -85,6 +88,39 @@ public class QuestEvent : MonoBehaviour
     public void SwitchStatus(int status)
     {
         SwitchStatus((Status)status);
+    }
+
+    public override void Save(GameDataWriter writer)
+    {
+        base.Save(writer);
+
+        Debug.Log("SAVED: " + gameObject.name + " - " + Enum.GetName(typeof(Status), currentStatus));
+
+        // Status
+        writer.Write(Enum.GetName(typeof(Status), currentStatus));
+
+        // Save objectives' states
+        foreach (var objective in objectives)
+            objective.Save(writer);
+    }
+
+    public override void Load(GameDataReader reader)
+    {
+        base.Load(reader);
+
+        // Status
+        if (!Enum.TryParse(reader.ReadString(), out currentStatus))
+        {
+            Debug.Log("Could not parse enum - " + gameObject.name + " - " + currentStatus);
+        }
+        else
+        {
+            Debug.Log("Succesfully parsed enum - " + gameObject.name + " - " + currentStatus);
+        }
+
+        // Load objectives' states
+        foreach (var objective in objectives)
+            objective.Load(reader);
     }
 
     // NOTE: This is mainly used for debugging!

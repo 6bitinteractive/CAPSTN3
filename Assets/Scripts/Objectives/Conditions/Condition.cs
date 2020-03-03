@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(GuidComponent))]
 
-public abstract class Condition : MonoBehaviour
+public abstract class Condition : Persistable
 {
     public Status CurrentStatus => currentStatus;
     public bool Satisfied { get; protected set; }
@@ -63,6 +63,37 @@ public abstract class Condition : MonoBehaviour
     public void SwitchStatus(int status)
     {
         SwitchStatus((Status)status);
+    }
+
+    public override void Save(GameDataWriter writer)
+    {
+        base.Save(writer);
+
+        Debug.Log("SAVED: " + gameObject.name + " - " + Enum.GetName(typeof(Status), currentStatus));
+
+        // Status
+        writer.Write(Enum.GetName(typeof(Status), currentStatus));
+
+        // Satisfied
+        writer.Write(Satisfied);
+    }
+
+    public override void Load(GameDataReader reader)
+    {
+        base.Load(reader);
+
+        // Status
+        if (!Enum.TryParse(reader.ReadString(), out currentStatus))
+        {
+            Debug.Log("Could not parse enum - " + gameObject.name + " - " + currentStatus);
+        }
+        else
+        {
+            Debug.Log("Succesfully parsed enum - " + gameObject.name + " - " + currentStatus);
+        }
+
+        // Satisfied
+        Satisfied = reader.ReadBool();
     }
 
     // NOTE: This is mainly used for debugging!

@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 [RequireComponent(typeof(GuidComponent))]
 
-public class Quest : MonoBehaviour // Only a MonoBehaviour to make it available in the inspector
+public class Quest : Persistable // Only a MonoBehaviour to make it available in the inspector
 {
     private List<QuestEvent> questEvents = new List<QuestEvent>();
 
@@ -29,6 +29,22 @@ public class Quest : MonoBehaviour // Only a MonoBehaviour to make it available 
         DefinePath();
         DefineOrder(questEvents[0].Id);
         //PrintPath();
+    }
+
+    public override void Save(GameDataWriter writer)
+    {
+        base.Save(writer);
+
+        foreach (var questEvent in questEvents)
+            questEvent.Save(writer);
+    }
+
+    public override void Load(GameDataReader reader)
+    {
+        base.Load(reader);
+
+        foreach (var questEvent in questEvents)
+            questEvent.Load(reader);
     }
 
     // NOTE: This is mainly used for debugging!
