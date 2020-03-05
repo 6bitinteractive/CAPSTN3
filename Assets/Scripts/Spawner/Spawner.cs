@@ -12,7 +12,7 @@ public class Spawner : MonoBehaviour
     private float timer;
     private int randomSpawnPoint;
 
-    public virtual void Start()
+    public void Start()
     {
         for (int i = 0; i < pooledObjectList.Count; i++)
         {
@@ -20,7 +20,7 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    public virtual void Update()
+    public void Update()
     {
         if (isSpawning == false) return;
 
@@ -33,7 +33,7 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    public virtual void Spawn()
+    public void Spawn()
     {
         availableSpawnPoints.Clear();
         CheckSpawnPoints();
