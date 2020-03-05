@@ -1010,12 +1010,12 @@ GameObject:
   - component: {fileID: 5625863638892515574}
   - component: {fileID: 5951855219649502490}
   - component: {fileID: 7233407159615759824}
+  - component: {fileID: 5059953654368073855}
   - component: {fileID: 1897525895744646988}
   - component: {fileID: 7485173395206480564}
   - component: {fileID: 5255013382271643943}
   - component: {fileID: 290378673617110870}
   - component: {fileID: 6914078509547294613}
-  - component: {fileID: 5059953654368073855}
   - component: {fileID: 4843260645945008252}
   - component: {fileID: 7157125830910967546}
   - component: {fileID: 7860320246725198477}
@@ -1074,6 +1074,20 @@ CapsuleCollider:
   m_GameObject: {fileID: 3420977063234496736}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.25
+  m_Height: 0.75
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &5059953654368073855
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3420977063234496736}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.25
   m_Height: 0.75
@@ -1178,20 +1192,6 @@ MonoBehaviour:
   transitions:
   - aiCondition: {fileID: 11400000, guid: 28daeffb7301b6c46b803f2d93bfde4a, type: 2}
     targetState: {fileID: 290378673617110870}
---- !u!136 &5059953654368073855
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3420977063234496736}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4843260645945008252
 MonoBehaviour:
   m_ObjectHideFlags: 0

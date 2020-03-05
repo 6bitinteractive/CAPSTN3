@@ -27,6 +27,9 @@ public class ChaseState : State
 
         if (agent.Target != null)
             currentTarget = agent.Target;
+
+        if (animator == null) return;
+        animator.SetBool("IsMoving", true);
     }
 
     public override void OnDisable()
@@ -37,6 +40,9 @@ public class ChaseState : State
 
         currentTarget = null;
         navMeshAgent.speed = originalSpeed;
+
+        if (animator == null) return;
+        animator.SetBool("IsMoving", false);
     }
 
     public override void Update()

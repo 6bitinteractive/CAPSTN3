@@ -24,6 +24,9 @@ public class PatrolState : State
        
         originalSpeed = navMeshAgent.speed;
         navMeshAgent.speed = patrolSpeed;
+
+        if (animator == null) return;
+        animator.SetBool("IsMoving", true);
     }
 
     public override void OnDisable()
@@ -31,6 +34,9 @@ public class PatrolState : State
         base.OnDisable();
       
         navMeshAgent.speed = originalSpeed;
+
+        if (animator == null) return;
+        animator.SetBool("IsMoving", false);
     }
     public override void Update()
     {
