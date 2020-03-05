@@ -69,7 +69,7 @@ public class Spawner : MonoBehaviour
     {
         for (int i = 0; i < spawnPoints.Count; i++)
         {
-            // Check if there arent any active pooled objects
+            // Check if a spawnpoint can spawn
             if (spawnPoints[i].CanSpawn == true)
             {
                 availableSpawnPoints.Add(spawnPoints[i]);
