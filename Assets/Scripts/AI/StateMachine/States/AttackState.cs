@@ -5,7 +5,6 @@ using UnityEngine;
 public class AttackState : State
 {
     [SerializeField] string animationToPlayName;
-    Animator animator;
 
     public override void OnEnable()
     {
