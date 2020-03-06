@@ -35,6 +35,11 @@ public class GameDataWriter
         writer.Write(value);
     }
 
+    public void Write(System.Guid guid)
+    {
+        writer.Write(guid.ToByteArray());
+    }
+
     public void Write(Vector3 value)
     {
         writer.Write(value.x);

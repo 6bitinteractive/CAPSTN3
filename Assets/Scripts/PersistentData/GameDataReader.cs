@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -31,6 +32,11 @@ public class GameDataReader
     public string ReadString()
     {
         return reader.ReadString();
+    }
+
+    public System.Guid ReadGuid()
+    {
+        return new Guid(reader.ReadBytes(16));
     }
 
     public Vector3 ReadVector3()
