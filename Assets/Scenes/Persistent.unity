@@ -38,13 +38,13 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1206,6 +1206,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1060668583}
+  - component: {fileID: 1060668586}
+  - component: {fileID: 1060668585}
   - component: {fileID: 1060668582}
   - component: {fileID: 1060668584}
   m_Layer: 0
@@ -1257,6 +1259,31 @@ MonoBehaviour:
   debugMode: 0
   startDayIndex: 1
   dayProgression: {fileID: 1060668582}
+--- !u!114 &1060668585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060668581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 472b41c9a72eff44bbbc5d0d89096732, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1060668586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060668581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98bbc2c1e63e98543830eec78d976795, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializedGuid: 79f8fb08782ccb4fa8d895765480753c
 --- !u!1001 &1090475666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1765,6 +1792,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1273029385}
+  - component: {fileID: 1273029387}
+  - component: {fileID: 1273029386}
   - component: {fileID: 1273029384}
   - component: {fileID: 1273029383}
   m_Layer: 0
@@ -1787,9 +1816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   persistentStorage: {fileID: 1273029384}
-  sceneController: {fileID: 1539852845}
-  dayProgression: {fileID: 1060668582}
-  questManager: {fileID: 1900297895}
+  gameData: {fileID: 1273029386}
 --- !u!114 &1273029384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1816,6 +1843,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1273029386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273029382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d47669db792bc4db8fcf5c5de16e61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneController: {fileID: 1539852845}
+  dayProgression: {fileID: 1060668582}
+  questManager: {fileID: 1900297895}
+  playerStats: {fileID: 486205369}
+--- !u!114 &1273029387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273029382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98bbc2c1e63e98543830eec78d976795, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializedGuid: 3a556297e093634aa372b1be772d8ab2
 --- !u!4 &1308021646 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3560431630348688589, guid: aa9b234a61bc4d44fbb3f6650c51146b,
