@@ -45,7 +45,7 @@ public class QuestEvent : Persistable
     {
         eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
 
-        Id = Guid.NewGuid().ToString();
+        Id = GetComponent<GuidComponent>().GetGuid().ToString();
         DisplayName = displayName;
         Description = description;
         currentStatus = Status.Inactive;
