@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DayProgression : MonoBehaviour
+public class DayProgression : Persistable
 {
-    // "Proper" count of day, starting with 1
+    /// <summary>
+    /// This is currentDayIndex + 1, i.e. the human-readable/natural way of counting days
+    /// </summary>
     public int CurrentDayCount => CurrentDayIndex + 1;
+
+    /// <summary>
+    /// Day 1 is index 0.
+    /// </summary>
     public int CurrentDayIndex { get; set; }
+
     public QuestManager QuestManager { get; private set; }
 
     [HideInInspector]
@@ -45,5 +52,15 @@ public class DayProgression : MonoBehaviour
     {
         Debug.LogFormat("Finished Day {0}", CurrentDayCount);
         CurrentDayIndex++;
+    }
+
+    public override void Save(GameDataWriter writer)
+    {
+        writer.Write(CurrentDayIndex);
+    }
+
+    public override void Load(GameDataReader reader)
+    {
+        CurrentDayIndex = reader.ReadInt();
     }
 }
