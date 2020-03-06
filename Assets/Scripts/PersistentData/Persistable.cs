@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,23 +8,27 @@ using UnityEngine;
 // Order matters! Save and Load should match; in this case, the order is position, rotation, then scale---i.e. we read in the same order as what we wrote.
 
 [DisallowMultipleComponent] // Make sure only one component per object is attached
+[RequireComponent(typeof(GuidComponent))]
 
-public class Persistable : MonoBehaviour
+public class Persistable : MonoBehaviour, IPersistable
 {
+    public PersistentData PersistentData { get; set; }
+
+    protected static GameDataManager gameDataManager;
+
+    public virtual void InitializeData()
+    {
+        gameDataManager = gameDataManager ?? SingletonManager.GetInstance<GameDataManager>();
+    }
+
     public virtual void Save(GameDataWriter writer)
     {
-        writer.Write(transform.localPosition);
-        writer.Write(transform.localRotation);
-        writer.Write(transform.localScale);
-        writer.Write(gameObject.activeInHierarchy);
+        PersistentData.Save(writer);
     }
 
     public virtual void Load(GameDataReader reader)
     {
-        transform.localPosition = reader.ReadVector3();
-        transform.localRotation = reader.ReadQuaternion();
-        transform.localScale = reader.ReadVector3();
-        gameObject.SetActive(reader.ReadBool());
+        PersistentData.Load(reader);
     }
 }
 
