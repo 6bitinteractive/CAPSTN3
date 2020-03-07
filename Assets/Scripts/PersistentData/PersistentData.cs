@@ -7,7 +7,7 @@ using UnityEngine;
 public class PersistentData
 {
     public Guid guid;
-    public bool active;
+    public bool active = true;
     public Vector3 position = Vector3.zero;
     public Quaternion rotation = Quaternion.identity;
     public Vector3 scale = Vector3.one;
@@ -42,6 +42,7 @@ public class QuestEventData : PersistentData
         base.Save(writer);
 
         writer.Write(Enum.GetName(typeof(QuestEvent.Status), status));
+        //Debug.LogFormat("QuestEvent Saved Status {0} - {1}", status, guid);
     }
 
     public override void Load(GameDataReader reader)
@@ -49,6 +50,7 @@ public class QuestEventData : PersistentData
         base.Load(reader);
 
         Enum.TryParse(reader.ReadString(), out status);
+        //Debug.LogFormat("QuestEvent Loaded Status {0} - {1}", status, guid);
     }
 }
 
@@ -62,6 +64,8 @@ public class ObjectiveData : PersistentData
         base.Save(writer);
 
         writer.Write(complete);
+
+        //Debug.LogFormat("Object Saved Complete {0} - {1}", complete, guid);
     }
 
     public override void Load(GameDataReader reader)
@@ -69,6 +73,7 @@ public class ObjectiveData : PersistentData
         base.Load(reader);
 
         complete = reader.ReadBool();
+        //Debug.LogFormat("Object Loaded Complete {0} - {1}", complete, guid);
     }
 }
 
@@ -82,6 +87,7 @@ public class ConditionData : PersistentData
         base.Save(writer);
 
         writer.Write(Enum.GetName(typeof(Condition.Status), status));
+        //Debug.LogFormat("Condition Saved Status {0} - {1}", status, guid);
     }
 
     public override void Load(GameDataReader reader)
@@ -89,6 +95,7 @@ public class ConditionData : PersistentData
         base.Load(reader);
 
         Enum.TryParse(reader.ReadString(), out status);
+        //Debug.LogFormat("Condition Saved Status {0} - {1}", status, guid);
     }
 }
 #endregion
