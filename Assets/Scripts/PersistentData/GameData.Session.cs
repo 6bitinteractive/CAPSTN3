@@ -21,9 +21,16 @@ public partial class GameData
         Debug.Log("Current count: " + typeof(T).ToString() + " - " + dictionary.Count);
     }
 
-    private bool GetPersistentData<T>(Dictionary<Guid, T> dictionary, T persistentData) where T : PersistentData
+    private T GetPersistentData<T>(Dictionary<Guid, T> dictionary, T persistentData) where T : PersistentData
     {
-        return dictionary.TryGetValue(persistentData.guid, out persistentData);
+        //Debug.LogFormat("Finding GUID: {0}", persistentData.guid);
+        if (dictionary.TryGetValue(persistentData.guid, out persistentData))
+        {
+            return persistentData as T;
+        }
+
+        //Debug.Log("No persistent data found.");
+        return null;
     }
 
     public void AddPersistentData(PersistentData persistentData)
@@ -46,22 +53,22 @@ public partial class GameData
         AddPersistentData(conditionDataDict, conditionData);
     }
 
-    public bool GetPersistentData(PersistentData persistentData)
+    public PersistentData GetPersistentData(PersistentData persistentData)
     {
         return GetPersistentData(persistentDataDict, persistentData);
     }
 
-    public bool GetPersistentData(QuestEventData questEventData)
+    public QuestEventData GetPersistentData(QuestEventData questEventData)
     {
         return GetPersistentData(questEventDataDict, questEventData);
     }
 
-    public bool GetPersistentData(ObjectiveData objectiveData)
+    public ObjectiveData GetPersistentData(ObjectiveData objectiveData)
     {
         return GetPersistentData(objectiveDataDict, objectiveData);
     }
 
-    public bool GetPersistentData(ConditionData conditionData)
+    public ConditionData GetPersistentData(ConditionData conditionData)
     {
         return GetPersistentData(conditionDataDict, conditionData);
     }
