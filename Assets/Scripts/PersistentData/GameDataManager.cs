@@ -12,9 +12,8 @@ public class GameDataManager : Singleton<GameDataManager>
 
     protected override void Awake()
     {
-        //base.Awake();
-
-        //Invoke("LoadGameData", 0.5f);
+        base.Awake();
+        LoadGameData();
     }
 
     public void SaveGameData()

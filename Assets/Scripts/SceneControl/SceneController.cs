@@ -67,9 +67,6 @@ public class SceneController : Singleton<SceneController>
         // Let any listener to this event do their thing
         BeforeSceneUnload.Invoke();
 
-        // TEST: Save
-        gameDataManager.SaveGameData();
-
         // Get a reference to scene to be unloaded, which is the current active scene
         Scene sceneToBeUnloaded = SceneManager.GetActiveScene();
 
@@ -77,14 +74,15 @@ public class SceneController : Singleton<SceneController>
         if (sceneToBeUnloaded.name != persistentSceneData.name)
             yield return SceneManager.UnloadSceneAsync(sceneToBeUnloaded);
 
-        // TEST: Load
-        gameDataManager.LoadGameData();
-
         // Allow the given scene to load over several frames and add it to the already loaded scenes
         yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
 
         // Find the scene that was most recently loaded (the one at the last index of the laoded scenes)
         Scene newlyLoadedScene = SceneManager.GetSceneAt(SceneManager.sceneCount - 1);
+
+
+        // TEST
+        gameDataManager.SaveGameData();
 
         // Set the newly loaded scene as the active scene
         // This also marks it as the one to be unloaded next
@@ -94,5 +92,9 @@ public class SceneController : Singleton<SceneController>
         AfterSceneLoad.Invoke();
 
         yield return StartCoroutine(transitionEffect.StartTransitionEffect(0f));
+
+        // Debug. Print which scenes are active in hierarchy
+        //for (int i = 0; i < SceneManager.sceneCount; i++)
+        //    Debug.LogFormat("{0} - {1}", i, SceneManager.GetSceneAt(i).name);
     }
 }
