@@ -22,6 +22,7 @@ public class QuestEvent : Persistable
     public Status CurrentStatus => currentStatus;
 
     private static EventManager eventManager;
+    private QuestEventData questEventData;
     private Status currentStatus;
 
     [HideInInspector] public int order = -1; // We start with -1 to easily determine that the order has not yet been set
@@ -49,6 +50,8 @@ public class QuestEvent : Persistable
         DisplayName = displayName;
         Description = description;
         currentStatus = Status.Inactive;
+
+        InitializeData();
 
         foreach (var objective in objectives)
             objective.OnDone.AddListener(EvaluateQuestEvent);
@@ -90,37 +93,29 @@ public class QuestEvent : Persistable
         SwitchStatus((Status)status);
     }
 
-    public override void Save(GameDataWriter writer)
+    public override void InitializeData()
     {
-        base.Save(writer);
+        base.InitializeData();
 
-        Debug.Log("SAVED: " + gameObject.name + " - " + Enum.GetName(typeof(Status), currentStatus));
+        PersistentData = new QuestEventData();
+        questEventData = PersistentData as QuestEventData;
+        questEventData.guid = new Guid(Id);
 
-        // Status
-        writer.Write(Enum.GetName(typeof(Status), currentStatus));
-
-        // Save objectives' states
-        foreach (var objective in objectives)
-            objective.Save(writer);
-    }
-
-    public override void Load(GameDataReader reader)
-    {
-        base.Load(reader);
-
-        // Status
-        if (!Enum.TryParse(reader.ReadString(), out currentStatus))
+        // Check if there's a saved data
+        questEventData = gameDataManager.GameData.GetPersistentData(questEventData);
+        if (questEventData == null)
         {
-            Debug.Log("Could not parse enum - " + gameObject.name + " - " + currentStatus);
+            questEventData.active = gameObject.activeInHierarchy;
+            questEventData.status = currentStatus;
+            gameDataManager.GameData.AddPersistentData(questEventData);
+            Debug.Log("Created new data");
         }
         else
         {
-            Debug.Log("Succesfully parsed enum - " + gameObject.name + " - " + currentStatus);
+            Debug.LogFormat("Set from saved data - {0} | {1}", questEventData.status, questEventData.active);
+            currentStatus = questEventData.status;
+            gameObject.SetActive(questEventData.active);
         }
-
-        // Load objectives' states
-        foreach (var objective in objectives)
-            objective.Load(reader);
     }
 
     // NOTE: This is mainly used for debugging!
@@ -154,6 +149,11 @@ public class QuestEvent : Persistable
         }
 
         SwitchStatus(Status.Done);
+
+        // Update persistent data
+        questEventData.active = gameObject.activeInHierarchy;
+        questEventData.status = currentStatus;
+        gameDataManager.GameData.AddPersistentData(questEventData);
     }
 
     public enum Status
