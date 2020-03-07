@@ -88,7 +88,8 @@ public class Quest : Persistable // Only a MonoBehaviour to make it available in
 
     public void ActivateQuest()
     {
-        questEvents[0].SwitchStatus(QuestEvent.Status.Active);
+        QuestEvent firstInactiveQuest = questEvents.Find(x => x.CurrentStatus == QuestEvent.Status.Inactive);
+        firstInactiveQuest.SwitchStatus(QuestEvent.Status.Active);
     }
 
     public void EndQuest()
