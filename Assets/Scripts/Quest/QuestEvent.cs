@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
@@ -97,24 +97,27 @@ public class QuestEvent : Persistable
     {
         base.InitializeData();
 
+        // FIX?: Rewrite this???
         PersistentData = new QuestEventData();
         questEventData = PersistentData as QuestEventData;
         questEventData.guid = new Guid(Id);
 
         // Check if there's a saved data
         questEventData = gameManager.GameData.GetPersistentData(questEventData);
-        if (questEventData == null)
+        if (questEventData != null)
         {
-            questEventData.active = gameObject.activeInHierarchy;
-            questEventData.status = currentStatus;
-            gameManager.GameData.AddPersistentData(questEventData);
-            Debug.Log("Created new data");
+            //Debug.LogFormat("Set from saved data - {0} | {1}", questEventData.status, questEventData.active);
+            currentStatus = questEventData.status;
+            gameObject.SetActive(questEventData.active);
         }
         else
         {
-            Debug.LogFormat("Set from saved data - {0} | {1}", questEventData.status, questEventData.active);
-            currentStatus = questEventData.status;
-            gameObject.SetActive(questEventData.active);
+            questEventData = PersistentData as QuestEventData;
+            questEventData.guid = new Guid(Id);
+            questEventData.active = gameObject.activeInHierarchy;
+            questEventData.status = currentStatus;
+            gameManager.GameData.AddPersistentData(questEventData);
+            //Debug.Log("Created new data");
         }
     }
 

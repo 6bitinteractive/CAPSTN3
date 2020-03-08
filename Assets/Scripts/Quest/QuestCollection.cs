@@ -91,6 +91,7 @@ public class QuestCollection : Persistable // Only a MonoBehaviour to make it av
     {
         QuestEvent firstInactiveQuest = QuestEvents.Find(x => x.CurrentStatus == QuestEvent.Status.Inactive);
         firstInactiveQuest.SwitchStatus(QuestEvent.Status.Active);
+        CurrentQuestEvent = firstInactiveQuest;
     }
 
     public void EndQuest()
