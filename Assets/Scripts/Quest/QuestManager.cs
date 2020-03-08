@@ -6,27 +6,27 @@ using UnityEngine;
 public class QuestManager : Singleton<QuestManager>
 {
     [HideInInspector]
-    public List<Quest> quests = new List<Quest>();
+    public List<QuestCollection> questCollections = new List<QuestCollection>();
 
-    public Quest CurrentQuest { get; private set; }
+    public QuestCollection CurrentQuestCollection { get; private set; }
 
     public void Initialize()
     {
         // Get all the quests
-        quests.AddRange(GetComponentsInChildren<Quest>());
+        questCollections.AddRange(GetComponentsInChildren<QuestCollection>());
 
-        foreach (var quest in quests)
-            quest.Initialize();
+        foreach (var questCollection in questCollections)
+            questCollection.Initialize();
     }
 
-    public void ActivateQuest(int index)
+    public void ActivateQuestCollection(int index)
     {
         if (index < 0)
             return;
 
-        if (index < quests.Count)
-            quests[index].ActivateQuest();
+        if (index < questCollections.Count)
+            questCollections[index].ActivateQuest();
 
-        CurrentQuest = quests[index];
+        CurrentQuestCollection = questCollections[index];
     }
 }

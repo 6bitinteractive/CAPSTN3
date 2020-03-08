@@ -17,13 +17,13 @@ public class ConversationSelector : MonoBehaviour
     private Conversation currentConversation;
     private DialogueHandler dialogueHandler;
     private static EventManager eventManager;
-    private static Quest quest;
+    private static QuestCollection questCollection;
 
     private void Start()
     {
         dialogueHandler = GetComponent<DialogueHandler>();
         eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
-        quest = quest ?? SingletonManager.GetInstance<QuestManager>().CurrentQuest;
+        questCollection = questCollection ?? SingletonManager.GetInstance<QuestManager>().CurrentQuestCollection;
 
         // Listen to quest event status update
         eventManager.Subscribe<GameQuestEvent, QuestEvent>(DetermineCurrentConversation);
@@ -71,14 +71,14 @@ public class ConversationSelector : MonoBehaviour
         }
 
         // Check if theres a conversation related to current quest
-        cs = FindRelatedConversation(quest.CurrentQuestEvent);
+        cs = FindRelatedConversation(questCollection.CurrentQuestEvent);
         if (cs != null)
         {
             currentConversation = cs.conversation;
         }
         else
         {
-            cs = FindRelatedConversation(quest.PreviousQuestEvent); // Check if there's a conversation related to the recently done quest
+            cs = FindRelatedConversation(questCollection.PreviousQuestEvent); // Check if there's a conversation related to the recently done quest
 
             if (cs != null)
                 currentConversation = cs.conversation;

@@ -1257,7 +1257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugMode: 0
-  startDayIndex: 1
+  startDayIndex: 0
   dayProgression: {fileID: 1060668582}
 --- !u!114 &1060668585
 MonoBehaviour:
@@ -3576,7 +3576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e039c612250688b4397321b1244a13c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quests: []
+  questCollections: []
 --- !u!4 &1900297896
 Transform:
   m_ObjectHideFlags: 0

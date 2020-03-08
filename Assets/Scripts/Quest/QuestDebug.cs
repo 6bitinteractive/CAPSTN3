@@ -18,7 +18,7 @@ public class QuestDebug : MonoBehaviour
 
         // Force complete all quest event prior to dayIndex
         for (int i = 0; i < startDayIndex; i++)
-            dayProgression.QuestManager.quests[i].ForceComplete();
+            dayProgression.QuestManager.questCollections[i].ForceComplete();
 
         // TODO: Force complete inactive quest events
 

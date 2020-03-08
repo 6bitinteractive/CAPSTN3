@@ -6,9 +6,10 @@ using UnityEngine.Events;
 
 [RequireComponent(typeof(GuidComponent))]
 
-public class Quest : Persistable // Only a MonoBehaviour to make it available in the inspector
+// QuestCollection holds all the quests (QuestEvents) related to a specific day
+public class QuestCollection : Persistable // Only a MonoBehaviour to make it available in the inspector
 {
-    private List<QuestEvent> questEvents = new List<QuestEvent>();
+    public List<QuestEvent> QuestEvents { get; } = new List<QuestEvent>();
 
     // Assumes there's only one active quest event which is true for current implementation
     public QuestEvent CurrentQuestEvent { get; private set; }  // The current active
@@ -18,16 +19,16 @@ public class Quest : Persistable // Only a MonoBehaviour to make it available in
 
     public void Initialize()
     {
-        questEvents.AddRange(GetComponentsInChildren<QuestEvent>());
+        QuestEvents.AddRange(GetComponentsInChildren<QuestEvent>());
 
-        foreach (var questEvent in questEvents)
+        foreach (var questEvent in QuestEvents)
         {
             questEvent.Initialize();
             questEvent.OnDone.gameEvent.AddListener(EvaluateQuestState);
         }
 
         DefinePath();
-        DefineOrder(questEvents[0].Id);
+        DefineOrder(QuestEvents[0].Id);
         //PrintPath();
     }
 
@@ -35,7 +36,7 @@ public class Quest : Persistable // Only a MonoBehaviour to make it available in
     {
         base.Save(writer);
 
-        foreach (var questEvent in questEvents)
+        foreach (var questEvent in QuestEvents)
             questEvent.Save(writer);
     }
 
@@ -43,14 +44,14 @@ public class Quest : Persistable // Only a MonoBehaviour to make it available in
     {
         base.Load(reader);
 
-        foreach (var questEvent in questEvents)
+        foreach (var questEvent in QuestEvents)
             questEvent.Load(reader);
     }
 
     // NOTE: This is mainly used for debugging!
     public void ForceComplete()
     {
-        foreach (var questEvent in questEvents)
+        foreach (var questEvent in QuestEvents)
             questEvent.ForceComplete();
 
         gameObject.SetActive(false);
@@ -58,7 +59,7 @@ public class Quest : Persistable // Only a MonoBehaviour to make it available in
 
     private void EvaluateQuestState(QuestEvent doneQuestEvent)
     {
-        foreach (var questEvent in questEvents)
+        foreach (var questEvent in QuestEvents)
         {
             // If this event is next in order
             if (questEvent.order == doneQuestEvent.order + 1)
@@ -79,7 +80,7 @@ public class Quest : Persistable // Only a MonoBehaviour to make it available in
 
         // Note: For now, we assume that all quest events will be done
         // ... so once we finish the last quest event, we can then end the Quest.
-        if (doneQuestEvent == questEvents[questEvents.Count - 1])
+        if (doneQuestEvent == QuestEvents[QuestEvents.Count - 1])
         {
             Debug.Log("All quest events have been completed.");
             EndQuest();
@@ -88,13 +89,13 @@ public class Quest : Persistable // Only a MonoBehaviour to make it available in
 
     public void ActivateQuest()
     {
-        QuestEvent firstInactiveQuest = questEvents.Find(x => x.CurrentStatus == QuestEvent.Status.Inactive);
+        QuestEvent firstInactiveQuest = QuestEvents.Find(x => x.CurrentStatus == QuestEvent.Status.Inactive);
         firstInactiveQuest.SwitchStatus(QuestEvent.Status.Active);
     }
 
     public void EndQuest()
     {
-        foreach (var questEvent in questEvents)
+        foreach (var questEvent in QuestEvents)
             questEvent.OnDone.gameEvent.RemoveListener(EvaluateQuestState);
 
         OnQuestEnd.Invoke();
@@ -104,8 +105,8 @@ public class Quest : Persistable // Only a MonoBehaviour to make it available in
     public void PrintPath()
     {
         Debug.Log("Quest Path:");
-        for (int i = 0; i < questEvents.Count; i++)
-            Debug.LogFormat("|- ({0} | Depth {3}): {1} - {2}", i, questEvents[i].DisplayName, questEvents[i].CurrentStatus, questEvents[i].order);
+        for (int i = 0; i < QuestEvents.Count; i++)
+            Debug.LogFormat("|- ({0} | Depth {3}): {1} - {2}", i, QuestEvents[i].DisplayName, QuestEvents[i].CurrentStatus, QuestEvents[i].order);
     }
 
     //public QuestEvent AddQuestEvent(string name, string description)
@@ -135,7 +136,7 @@ public class Quest : Persistable // Only a MonoBehaviour to make it available in
 
     private QuestEvent FindQuestEvent(string id)
     {
-        foreach (var questEvent in questEvents)
+        foreach (var questEvent in QuestEvents)
         {
             if (questEvent.Id == id)
                 return questEvent;
@@ -150,12 +151,12 @@ public class Quest : Persistable // Only a MonoBehaviour to make it available in
     private void DefinePath()
     {
         // This is a simple linear progression, i.e. quests are done sequentially
-        for (int i = 0; i < questEvents.Count; i++)
+        for (int i = 0; i < QuestEvents.Count; i++)
         {
-            if (i + 1 >= questEvents.Count)
+            if (i + 1 >= QuestEvents.Count)
                 return;
 
-            AddPath(questEvents[i].Id, questEvents[i + 1].Id);
+            AddPath(QuestEvents[i].Id, QuestEvents[i + 1].Id);
         }
     }
 

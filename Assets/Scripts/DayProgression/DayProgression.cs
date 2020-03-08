@@ -33,7 +33,7 @@ public class DayProgression : Persistable
         QuestManager = SingletonManager.GetInstance<QuestManager>();
         QuestManager.Initialize();
 
-        foreach (var quest in QuestManager.quests)
+        foreach (var quest in QuestManager.questCollections)
         {
             quest.OnQuestEnd.AddListener(EndDay); // Test only; EndDay() will most probably be manually called
         }
