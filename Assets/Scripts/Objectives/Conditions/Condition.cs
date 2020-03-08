@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(GuidComponent))]
 
-public abstract class Condition : Persistable
+public abstract class Condition : Persistable<ConditionData>
 {
     public Status CurrentStatus => currentStatus;
     public bool Satisfied { get; protected set; }

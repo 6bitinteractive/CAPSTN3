@@ -7,7 +7,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(GuidComponent))]
 
 // QuestCollection holds all the quests (QuestEvents) related to a specific day
-public class QuestCollection : Persistable // Only a MonoBehaviour to make it available in the inspector
+public class QuestCollection : Persistable<PersistentData> // Only a MonoBehaviour to make it available in the inspector
 {
     public List<QuestEvent> QuestEvents { get; } = new List<QuestEvent>();
 

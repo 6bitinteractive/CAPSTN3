@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DayProgression : Persistable
+public class DayProgression : Persistable<PersistentData>
 {
     /// <summary>
     /// This is currentDayIndex + 1, i.e. the human-readable/natural way of counting days

@@ -11,25 +11,48 @@ using UnityEngine;
 [DisallowMultipleComponent] // Make sure only one component per object is attached
 [RequireComponent(typeof(GuidComponent))]
 
-public class Persistable : MonoBehaviour, IPersistable
+public class Persistable<T> : MonoBehaviour, IPersistable where T : PersistentData, new()
 {
-    public PersistentData PersistentData { get; set; }
+    public T Data { get; set; } = new T();
 
     protected static GameManager gameManager;
+    protected GuidComponent guidComponent;
 
     public virtual void InitializeData()
     {
         gameManager = gameManager ?? SingletonManager.GetInstance<GameManager>();
+        guidComponent = guidComponent ?? GetComponent<GuidComponent>();
+
+        Data.guid = guidComponent.GetGuid();
+
+        // Check if there's a saved data
+        Data = gameManager.GameData.GetPersistentData(Data) as T;
+
+        if (Data != null)
+            SetFromPersistentData();
+        else
+            UpdatePersistentData();
+    }
+
+    public virtual void SetFromPersistentData()
+    { }
+
+    // Don't forget to add/update the game data;
+    // Use ` gameManager.GameData.AddPersistentData(Data);` at the end
+    public virtual void UpdatePersistentData()
+    {
+        if (Data == null)
+            Data = new T { guid = guidComponent.GetGuid() };
     }
 
     public virtual void Save(GameDataWriter writer)
     {
-        PersistentData.Save(writer);
+        Data.Save(writer);
     }
 
     public virtual void Load(GameDataReader reader)
     {
-        PersistentData.Load(reader);
+        Data.Load(reader);
     }
 }
 

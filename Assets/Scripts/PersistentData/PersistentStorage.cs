@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -7,7 +7,7 @@ public class PersistentStorage : MonoBehaviour
 {
     private string savePath;
 
-    public void Save(Persistable persistableObject)
+    public void Save(Persistable<PersistentData> persistableObject)
     {
         using (var writer = new BinaryWriter(File.Open(savePath, FileMode.Create)))
         {
@@ -15,7 +15,7 @@ public class PersistentStorage : MonoBehaviour
         }
     }
 
-    public void Load(Persistable persistableObject)
+    public void Load(Persistable<PersistentData> persistableObject)
     {
         using (var reader = new BinaryReader(File.Open(savePath, FileMode.Open)))
         {

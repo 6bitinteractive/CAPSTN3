@@ -26,7 +26,7 @@ public partial class GameData
         //Debug.LogFormat("Finding GUID: {0}", persistentData.guid);
         if (dictionary.TryGetValue(persistentData.guid, out persistentData))
         {
-            return persistentData as T;
+            return persistentData;
         }
 
         //Debug.Log("No persistent data found.");
