@@ -1793,11 +1793,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1273029385}
   - component: {fileID: 1273029387}
-  - component: {fileID: 1273029386}
   - component: {fileID: 1273029384}
+  - component: {fileID: 1273029386}
   - component: {fileID: 1273029383}
   m_Layer: 0
-  m_Name: GameDataManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2590,7 +2590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75f68583d6766c549bd02f3983c2894c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameDataManager: {fileID: 1273029383}
+  gameManager: {fileID: 1273029383}
   initialSceneToLoad: {fileID: 11400000, guid: 9d051ad0ee483ee4dae8eec5a885bafb, type: 2}
   persistentSceneData: {fileID: 11400000, guid: 469667e6b148e5c488de5190e9d6cc65,
     type: 2}

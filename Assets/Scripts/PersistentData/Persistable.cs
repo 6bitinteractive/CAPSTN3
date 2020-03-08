@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Meowfia.WanderDog;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,11 +15,11 @@ public class Persistable : MonoBehaviour, IPersistable
 {
     public PersistentData PersistentData { get; set; }
 
-    protected static GameDataManager gameDataManager;
+    protected static GameManager gameManager;
 
     public virtual void InitializeData()
     {
-        gameDataManager = gameDataManager ?? SingletonManager.GetInstance<GameDataManager>();
+        gameManager = gameManager ?? SingletonManager.GetInstance<GameManager>();
     }
 
     public virtual void Save(GameDataWriter writer)

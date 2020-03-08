@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
@@ -102,12 +102,12 @@ public class QuestEvent : Persistable
         questEventData.guid = new Guid(Id);
 
         // Check if there's a saved data
-        questEventData = gameDataManager.GameData.GetPersistentData(questEventData);
+        questEventData = gameManager.GameData.GetPersistentData(questEventData);
         if (questEventData == null)
         {
             questEventData.active = gameObject.activeInHierarchy;
             questEventData.status = currentStatus;
-            gameDataManager.GameData.AddPersistentData(questEventData);
+            gameManager.GameData.AddPersistentData(questEventData);
             Debug.Log("Created new data");
         }
         else
@@ -153,7 +153,7 @@ public class QuestEvent : Persistable
         // Update persistent data
         questEventData.active = gameObject.activeInHierarchy;
         questEventData.status = currentStatus;
-        gameDataManager.GameData.AddPersistentData(questEventData);
+        gameManager.GameData.AddPersistentData(questEventData);
     }
 
     public enum Status

@@ -1,3 +1,4 @@
+using Meowfia.WanderDog;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : Singleton<SceneController>
 {
-    [SerializeField] private GameDataManager gameDataManager;
+    [SerializeField] private GameManager gameManager;
 
     [Header("Scenes")]
     [SerializeField] private SceneData initialSceneToLoad;
@@ -82,7 +83,7 @@ public class SceneController : Singleton<SceneController>
 
 
         // TEST
-        gameDataManager.SaveGameData();
+        gameManager.SaveGameData();
 
         // Set the newly loaded scene as the active scene
         // This also marks it as the one to be unloaded next
