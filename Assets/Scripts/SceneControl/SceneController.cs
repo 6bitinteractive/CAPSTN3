@@ -8,10 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : Singleton<SceneController>
 {
-    [SerializeField] private GameManager gameManager;
-
-    [Header("Scenes")]
-    [SerializeField] private SceneData initialSceneToLoad;
+    [Header("Persistent Scene")]
     [SerializeField] private SceneData persistentSceneData;
 
     [Header("Starting Point")]
@@ -21,8 +18,9 @@ public class SceneController : Singleton<SceneController>
     [SerializeField] private SceneTransitionEffect transitionEffect;
 
     [Header("Events")]
-    public UnityEvent BeforeSceneUnload = new UnityEvent();
-    public UnityEvent AfterSceneLoad = new UnityEvent();
+    public UnityEvent BeforePreviousSceneUnload = new UnityEvent();
+    public UnityEvent AfterPreviousSceneUnload = new UnityEvent();
+    public UnityEvent AfterCurrentSceneLoad = new UnityEvent();
 
     protected override void Awake()
     {
@@ -34,12 +32,6 @@ public class SceneController : Singleton<SceneController>
             Debug.LogErrorFormat("{0} is expected to live in the {1} scene. It is currently in the {2} scene.",
                 GetType().ToString(), persistentSceneData.SceneName, gameObject.scene.name);
         }
-    }
-
-    private void Start()
-    {
-        // Load the very first scene, typically the Title screen
-        LoadScene(initialSceneToLoad);
     }
 
     public void LoadScene(SceneData sceneData)
@@ -66,7 +58,7 @@ public class SceneController : Singleton<SceneController>
         yield return StartCoroutine(transitionEffect.StartTransitionEffect(1f));
 
         // Let any listener to this event do their thing
-        BeforeSceneUnload.Invoke();
+        BeforePreviousSceneUnload.Invoke();
 
         // Get a reference to scene to be unloaded, which is the current active scene
         Scene sceneToBeUnloaded = SceneManager.GetActiveScene();
@@ -75,22 +67,21 @@ public class SceneController : Singleton<SceneController>
         if (sceneToBeUnloaded.name != persistentSceneData.name)
             yield return SceneManager.UnloadSceneAsync(sceneToBeUnloaded);
 
+        // Previous scene is done unloading
+        AfterPreviousSceneUnload.Invoke();
+
         // Allow the given scene to load over several frames and add it to the already loaded scenes
         yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
 
         // Find the scene that was most recently loaded (the one at the last index of the laoded scenes)
         Scene newlyLoadedScene = SceneManager.GetSceneAt(SceneManager.sceneCount - 1);
 
-
-        // TEST
-        gameManager.SaveGameData();
-
         // Set the newly loaded scene as the active scene
         // This also marks it as the one to be unloaded next
         SceneManager.SetActiveScene(newlyLoadedScene);
 
         // Let any listener to this event do their thing
-        AfterSceneLoad.Invoke();
+        AfterCurrentSceneLoad.Invoke();
 
         yield return StartCoroutine(transitionEffect.StartTransitionEffect(0f));
 

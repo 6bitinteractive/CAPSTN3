@@ -1,24 +1,27 @@
-﻿using System.Collections;
+﻿using Meowfia.WanderDog;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class QuestDebug : MonoBehaviour
 {
-    [SerializeField] private bool debugMode;
     [SerializeField] private int startDayIndex;
     [SerializeField] private DayProgression dayProgression;
 
+    private GameManager gameManager;
+
     private void Start()
     {
-        if (!debugMode)
+        gameManager = SingletonManager.GetInstance<GameManager>();
+
+        if (!gameManager.debug)
             return;
 
-        dayProgression.debugMode = true;
-        dayProgression.Initialize();
+        //dayProgression.Initialize();
 
-        // Force complete all quest event prior to dayIndex
-        for (int i = 0; i < startDayIndex; i++)
-            dayProgression.QuestManager.questCollections[i].ForceComplete();
+        //// Force complete all quest event prior to dayIndex
+        //for (int i = 0; i < startDayIndex; i++)
+        //    dayProgression.QuestManager.questCollections[i].ForceComplete();
 
         // TODO: Force complete inactive quest events
 

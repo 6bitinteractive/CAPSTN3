@@ -14,26 +14,14 @@ public class DayProgression : Persistable
     /// </summary>
     public int CurrentDayIndex { get; set; }
 
-    public QuestManager QuestManager { get; private set; }
+    private QuestManager questManager;
 
-    [HideInInspector]
-    public bool debugMode;
-
-    private void Start()
+    public void Initialize(QuestManager qm)
     {
-        if (debugMode)
-            return;
+        questManager = qm;
+        questManager.Initialize();
 
-        Initialize();
-        BeginDay(CurrentDayIndex);
-    }
-
-    public void Initialize()
-    {
-        QuestManager = SingletonManager.GetInstance<QuestManager>();
-        QuestManager.Initialize();
-
-        foreach (var quest in QuestManager.questCollections)
+        foreach (var quest in questManager.questCollections)
         {
             quest.OnQuestEnd.AddListener(EndDay); // Test only; EndDay() will most probably be manually called
         }
@@ -45,7 +33,7 @@ public class DayProgression : Persistable
         Debug.LogFormat("Beginning Day {0}", CurrentDayCount);
 
         // Start the quest to be tackled for the day; assumes that the day shares the same index number as the quest
-        QuestManager.ActivateQuest(CurrentDayIndex);
+        questManager.ActivateQuestCollection(CurrentDayIndex);
     }
 
     public void EndDay()

@@ -41,8 +41,8 @@ public class PlayerController : MonoBehaviour
         controlScheme.Player.Enable();
 
         sceneController = SingletonManager.GetInstance<SceneController>();
-        sceneController.BeforeSceneUnload.AddListener(() => enabled = false);
-        sceneController.AfterSceneLoad.AddListener(() => enabled = true);
+        sceneController.BeforePreviousSceneUnload.AddListener(() => enabled = false);
+        sceneController.AfterCurrentSceneLoad.AddListener(() => enabled = true);
 
         eventManager = SingletonManager.GetInstance<EventManager>();
         eventManager.Subscribe<CutsceneEvent, Cutscene>(SwitchCutsceneControlScheme);
