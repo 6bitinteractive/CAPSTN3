@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,6 +25,8 @@ namespace Meowfia.WanderDog
         [SerializeField] private SceneData initialSceneToLoad;
 
         public GameData GameData => gameData;
+        public bool StartNewGame { get; set; }
+        public bool CanLoadSavedData => persistentStorage.HasSaveFile();
 
         protected override void Awake()
         {
@@ -52,7 +54,8 @@ namespace Meowfia.WanderDog
 
         private void Start()
         {
-            LoadGameData();
+            if (!StartNewGame)
+                LoadGameData();
 
             // Load the first scene (usually the TitleScreen
             sceneController.LoadScene(initialSceneToLoad);

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -27,5 +27,11 @@ public class PersistentStorage : MonoBehaviour
     {
         if (string.IsNullOrWhiteSpace(savePath))
             savePath = Path.Combine(Application.persistentDataPath, "saveFile");
+    }
+
+    public bool HasSaveFile()
+    {
+        Debug.Log("File exists: " + File.Exists(savePath));
+        return File.Exists(savePath);
     }
 }
