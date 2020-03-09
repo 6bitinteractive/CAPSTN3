@@ -3876,6 +3876,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6914078509547294613, guid: 624612a181ac80349922f8abc0967068,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7233407159615759824, guid: 624612a181ac80349922f8abc0967068,
         type: 3}
       propertyPath: m_Enabled
@@ -3921,6 +3926,11 @@ PrefabInstance:
       propertyPath: wayPoints.Array.data[4]
       value: 
       objectReference: {fileID: 1874794192}
+    - target: {fileID: 7860320246725198477, guid: 624612a181ac80349922f8abc0967068,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 624612a181ac80349922f8abc0967068, type: 3}
 --- !u!1 &1181125089
@@ -6469,7 +6479,7 @@ PrefabInstance:
     - target: {fileID: 1984300830525499187, guid: 4cdc08f09b9aa134b99f7888da7a9e35,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.359
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1984300830525499187, guid: 4cdc08f09b9aa134b99f7888da7a9e35,
         type: 3}
