@@ -1,4 +1,5 @@
-﻿using Meowfia.WanderDog;
+﻿#if UNITY_EDITOR
+using Meowfia.WanderDog;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,3 +31,4 @@ public class QuestDebug : MonoBehaviour
         dayProgression.BeginDay(startDayIndex);
     }
 }
+#endif
