@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -19,7 +19,18 @@ public class PersistentStorage : MonoBehaviour
     {
         using (var reader = new BinaryReader(File.Open(savePath, FileMode.Open)))
         {
-            persistableObject.Load(new GameDataReader(reader));
+            //while (reader.BaseStream.Position != reader.BaseStream.Length) // Check if EndOfFile
+            //{
+            //
+            //}
+            try
+            {
+                persistableObject.Load(new GameDataReader(reader));
+            }
+            catch (EndOfStreamException)
+            {
+                Debug.Log("EOE");
+            }
         }
     }
 
@@ -31,7 +42,7 @@ public class PersistentStorage : MonoBehaviour
 
     public bool HasSaveFile()
     {
-        Debug.Log("File exists: " + File.Exists(savePath));
+        //Debug.Log("Save file exists: " + File.Exists(savePath));
         return File.Exists(savePath);
     }
 }
