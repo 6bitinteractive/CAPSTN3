@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
@@ -106,6 +106,8 @@ public class QuestEvent : Persistable<QuestEventData>
 
         currentStatus = Data.status;
         gameObject.SetActive(Data.active);
+
+        //Debug.LogFormat("SET_FROM PersistentData: Active: {0} | State: {1} - {2}" ,Data.active, Data.status, Data.guid);
     }
 
     public override void UpdatePersistentData()
@@ -114,6 +116,8 @@ public class QuestEvent : Persistable<QuestEventData>
 
         Data.active = gameObject.activeInHierarchy;
         Data.status = currentStatus;
+
+        //Debug.LogFormat("ADD/UPDATE PersistentData: Active: {0} | State: {1} - {2}" ,Data.active, Data.status, Data.guid);
 
         // Note: We do this here so that the correct type is used
         // Calling this at base Persistable class always defaults to adding to the plain PersistentData dictionary

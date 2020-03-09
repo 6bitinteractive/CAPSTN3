@@ -1,4 +1,4 @@
-using Meowfia.WanderDog;
+﻿using Meowfia.WanderDog;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -40,7 +40,9 @@ public class Persistable<T> : MonoBehaviour, IPersistable<T> where T : Persisten
     }
 
     public virtual void SetFromPersistentData()
-    { }
+    {
+        //Debug.Log("Set from persistent data");
+    }
 
     // Don't forget to add/update the game data;
     // Use ` gameManager.GameData.AddPersistentData(Data);` at the end

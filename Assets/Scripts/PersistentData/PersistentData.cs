@@ -42,7 +42,7 @@ public class QuestEventData : PersistentData
         base.Save(writer);
 
         writer.Write(Enum.GetName(typeof(QuestEvent.Status), status));
-        //Debug.LogFormat("QuestEvent Saved Status {0} - {1}", status, guid);
+        //Debug.LogFormat("QuestEvent Saved Status {0} | {2} - {1}", status, guid, active);
     }
 
     public override void Load(GameDataReader reader)
@@ -50,7 +50,7 @@ public class QuestEventData : PersistentData
         base.Load(reader);
 
         Enum.TryParse(reader.ReadString(), out status);
-        //Debug.LogFormat("QuestEvent Loaded Status {0} - {1}", status, guid);
+        //Debug.LogFormat("QuestEvent Loaded Status {0} | {2} - {1}", status, guid, active);
     }
 }
 
@@ -65,7 +65,7 @@ public class ObjectiveData : PersistentData
 
         writer.Write(complete);
 
-        //Debug.LogFormat("Object Saved Complete {0} - {1}", complete, guid);
+        //Debug.LogFormat("Object Saved Complete {0} | {2} - {1}", complete, guid, active);
     }
 
     public override void Load(GameDataReader reader)
@@ -73,7 +73,7 @@ public class ObjectiveData : PersistentData
         base.Load(reader);
 
         complete = reader.ReadBool();
-        //Debug.LogFormat("Object Loaded Complete {0} - {1}", complete, guid);
+        //Debug.LogFormat("Object Loaded Complete {0} | {2} - {1}", complete, guid, active);
     }
 }
 
@@ -87,7 +87,7 @@ public class ConditionData : PersistentData
         base.Save(writer);
 
         writer.Write(Enum.GetName(typeof(Condition.Status), status));
-        //Debug.LogFormat("Condition Saved Status {0} - {1}", status, guid);
+        //Debug.LogFormat("Condition Saved Status {0} | {2} - {1}", status, guid, active;
     }
 
     public override void Load(GameDataReader reader)
@@ -95,7 +95,7 @@ public class ConditionData : PersistentData
         base.Load(reader);
 
         Enum.TryParse(reader.ReadString(), out status);
-        //Debug.LogFormat("Condition Saved Status {0} - {1}", status, guid);
+        //Debug.LogFormat("Condition Saved Status {0} | {2} - {1}", status, guid, active);
     }
 }
 #endregion

@@ -25,7 +25,8 @@ public partial class GameData : Persistable<PersistentData>
 
     public override void Save(GameDataWriter writer)
     {
-        Debug.Log("SAVING............");
+        //Debug.Log("SAVING............");
+
         // Current scene
         writer.Write(sceneController.playerStartingPoint.SceneName);
 
@@ -53,11 +54,14 @@ public partial class GameData : Persistable<PersistentData>
             conditionDataDict[item].Save(writer);
 
         // TODO: Zone-specific
+
+        //Debug.Log("SAVING............ DONE");
     }
 
     public override void Load(GameDataReader reader)
     {
-        Debug.Log("LOADING..........");
+        //Debug.Log("LOADING..........");
+
         // Scene
         // TODO: need to load this scene and setup SceneController?
         currentScene = reader.ReadString();
@@ -109,5 +113,7 @@ public partial class GameData : Persistable<PersistentData>
         }
 
         // TODO: Zone-specific
+
+        //Debug.Log("LOADING.......... DONE");
     }
 }
