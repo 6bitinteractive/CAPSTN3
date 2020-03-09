@@ -7,7 +7,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(GuidComponent))]
 
 // QuestCollection holds all the quests (QuestEvents) related to a specific day
-public class QuestCollection : Persistable // Only a MonoBehaviour to make it available in the inspector
+public class QuestCollection : Persistable<PersistentData> // Only a MonoBehaviour to make it available in the inspector
 {
     public List<QuestEvent> QuestEvents { get; } = new List<QuestEvent>();
 
@@ -75,15 +75,12 @@ public class QuestCollection : Persistable // Only a MonoBehaviour to make it av
         // Set done as previous quest event
         PreviousQuestEvent = doneQuestEvent;
 
-        // Turn off recently done quest event
-        doneQuestEvent.gameObject.SetActive(false);
-
         // Note: For now, we assume that all quest events will be done
         // ... so once we finish the last quest event, we can then end the Quest.
         if (doneQuestEvent == QuestEvents[QuestEvents.Count - 1])
         {
             Debug.Log("All quest events have been completed.");
-            EndQuest();
+            CompleteQuestCollection();
         }
     }
 
@@ -94,7 +91,7 @@ public class QuestCollection : Persistable // Only a MonoBehaviour to make it av
         CurrentQuestEvent = firstInactiveQuest;
     }
 
-    public void EndQuest()
+    public void CompleteQuestCollection()
     {
         foreach (var questEvent in QuestEvents)
             questEvent.OnDone.gameEvent.RemoveListener(EvaluateQuestState);

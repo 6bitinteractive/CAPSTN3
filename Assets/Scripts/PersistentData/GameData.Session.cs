@@ -18,7 +18,8 @@ public partial class GameData
         // Otherwise, it'll update the existing entry
         // Reference: https://stackoverflow.com/a/11557431
         dictionary[persistentData.guid] = persistentData;
-        Debug.Log("Current count: " + typeof(T).ToString() + " - " + dictionary.Count);
+
+        //Debug.LogFormat("{0} - Current count: {1}", typeof(T).ToString(), dictionary.Count);
     }
 
     private T GetPersistentData<T>(Dictionary<Guid, T> dictionary, T persistentData) where T : PersistentData
@@ -26,7 +27,8 @@ public partial class GameData
         //Debug.LogFormat("Finding GUID: {0}", persistentData.guid);
         if (dictionary.TryGetValue(persistentData.guid, out persistentData))
         {
-            return persistentData as T;
+            //Debug.LogFormat("Data Type - {0}", persistentData.GetType());
+            return persistentData;
         }
 
         //Debug.Log("No persistent data found.");

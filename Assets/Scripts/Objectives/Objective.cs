@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 [RequireComponent(typeof(GuidComponent))]
 
-public class Objective : Persistable
+public class Objective : Persistable<ObjectiveData>
 {
     [Tooltip("Optional. Describe what is expected in this objective.")]
     public string description;

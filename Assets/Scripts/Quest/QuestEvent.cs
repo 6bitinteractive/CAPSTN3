@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 [RequireComponent(typeof(GuidComponent))]
 
-public class QuestEvent : Persistable
+public class QuestEvent : Persistable<QuestEventData>
 {
     [SerializeField] private string displayName;
     [SerializeField] private string description;
@@ -22,7 +22,7 @@ public class QuestEvent : Persistable
     public Status CurrentStatus => currentStatus;
 
     private static EventManager eventManager;
-    private QuestEventData questEventData;
+    //private QuestEventData questEventData;
     private Status currentStatus;
 
     [HideInInspector] public int order = -1; // We start with -1 to easily determine that the order has not yet been set
@@ -80,6 +80,8 @@ public class QuestEvent : Persistable
             case Status.Done:
                 {
                     Debug.LogFormat("QuestEvent \"{0}\" complete.", displayName);
+                    gameObject.SetActive(false);
+                    UpdatePersistentData();
 
                     eventManager.Trigger<GameQuestEvent, QuestEvent>(OnDone, this);
                     break;
@@ -93,32 +95,33 @@ public class QuestEvent : Persistable
         SwitchStatus((Status)status);
     }
 
-    public override void InitializeData()
+    public override QuestEventData GetPersistentData()
     {
-        base.InitializeData();
+        return gameManager.GameData.GetPersistentData(Data);
+    }
 
-        // FIX?: Rewrite this???
-        PersistentData = new QuestEventData();
-        questEventData = PersistentData as QuestEventData;
-        questEventData.guid = new Guid(Id);
+    public override void SetFromPersistentData()
+    {
+        base.SetFromPersistentData();
 
-        // Check if there's a saved data
-        questEventData = gameManager.GameData.GetPersistentData(questEventData);
-        if (questEventData != null)
-        {
-            //Debug.LogFormat("Set from saved data - {0} | {1}", questEventData.status, questEventData.active);
-            currentStatus = questEventData.status;
-            gameObject.SetActive(questEventData.active);
-        }
-        else
-        {
-            questEventData = PersistentData as QuestEventData;
-            questEventData.guid = new Guid(Id);
-            questEventData.active = gameObject.activeInHierarchy;
-            questEventData.status = currentStatus;
-            gameManager.GameData.AddPersistentData(questEventData);
-            //Debug.Log("Created new data");
-        }
+        currentStatus = Data.status;
+        gameObject.SetActive(Data.active);
+
+        //Debug.LogFormat("SET_FROM PersistentData: Active: {0} | State: {1} - {2}" ,Data.active, Data.status, Data.guid);
+    }
+
+    public override void UpdatePersistentData()
+    {
+        base.UpdatePersistentData();
+
+        Data.active = gameObject.activeInHierarchy;
+        Data.status = currentStatus;
+
+        //Debug.LogFormat("ADD/UPDATE PersistentData: Active: {0} | State: {1} - {2}" ,Data.active, Data.status, Data.guid);
+
+        // Note: We do this here so that the correct type is used
+        // Calling this at base Persistable class always defaults to adding to the plain PersistentData dictionary
+        gameManager.GameData.AddPersistentData(Data);
     }
 
     // NOTE: This is mainly used for debugging!
@@ -152,11 +155,6 @@ public class QuestEvent : Persistable
         }
 
         SwitchStatus(Status.Done);
-
-        // Update persistent data
-        questEventData.active = gameObject.activeInHierarchy;
-        questEventData.status = currentStatus;
-        gameManager.GameData.AddPersistentData(questEventData);
     }
 
     public enum Status

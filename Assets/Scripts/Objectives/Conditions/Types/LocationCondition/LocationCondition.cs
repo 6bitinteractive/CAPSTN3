@@ -4,9 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// Note: If you're getting Null errors, add a SceneEnterCondition before the LocationCondition
-// to ensure that the requirements' references will not be null
-
 public class LocationCondition : Condition
 {
     [SerializeField] private GuidReference locationRequired;
@@ -55,7 +52,7 @@ public class LocationCondition : Condition
 
     protected override void GetConditionRequirements()
     {
-        if (locationRequired != null)
+        if (locationRequired.gameObject != null)
         {
             required.location = locationRequired.gameObject.GetComponent<Location>();
             required.objectInLocation = objectRequiredAtLocation.gameObject;

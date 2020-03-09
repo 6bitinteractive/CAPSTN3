@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public partial class GameData : Persistable
+public partial class GameData : Persistable<PersistentData>
 {
     [SerializeField] private SceneController sceneController;
     [SerializeField] private DayProgression dayProgression;
@@ -25,7 +25,8 @@ public partial class GameData : Persistable
 
     public override void Save(GameDataWriter writer)
     {
-        Debug.Log("SAVING............");
+        //Debug.Log("SAVING............");
+
         // Current scene
         writer.Write(sceneController.playerStartingPoint.SceneName);
 
@@ -53,11 +54,14 @@ public partial class GameData : Persistable
             conditionDataDict[item].Save(writer);
 
         // TODO: Zone-specific
+
+        //Debug.Log("SAVING............ DONE");
     }
 
     public override void Load(GameDataReader reader)
     {
-        Debug.Log("LOADING..........");
+        //Debug.Log("LOADING..........");
+
         // Scene
         // TODO: need to load this scene and setup SceneController?
         currentScene = reader.ReadString();
@@ -109,5 +113,7 @@ public partial class GameData : Persistable
         }
 
         // TODO: Zone-specific
+
+        //Debug.Log("LOADING.......... DONE");
     }
 }

@@ -7,7 +7,7 @@ public class PersistentStorage : MonoBehaviour
 {
     private string savePath;
 
-    public void Save(Persistable persistableObject)
+    public void Save(Persistable<PersistentData> persistableObject)
     {
         using (var writer = new BinaryWriter(File.Open(savePath, FileMode.Create)))
         {
@@ -15,11 +15,22 @@ public class PersistentStorage : MonoBehaviour
         }
     }
 
-    public void Load(Persistable persistableObject)
+    public void Load(Persistable<PersistentData> persistableObject)
     {
         using (var reader = new BinaryReader(File.Open(savePath, FileMode.Open)))
         {
-            persistableObject.Load(new GameDataReader(reader));
+            //while (reader.BaseStream.Position != reader.BaseStream.Length) // Check if EndOfFile
+            //{
+            //
+            //}
+            try
+            {
+                persistableObject.Load(new GameDataReader(reader));
+            }
+            catch (EndOfStreamException)
+            {
+                Debug.Log("EOE");
+            }
         }
     }
 
@@ -31,7 +42,7 @@ public class PersistentStorage : MonoBehaviour
 
     public bool HasSaveFile()
     {
-        Debug.Log("File exists: " + File.Exists(savePath));
+        //Debug.Log("Save file exists: " + File.Exists(savePath));
         return File.Exists(savePath);
     }
 }
