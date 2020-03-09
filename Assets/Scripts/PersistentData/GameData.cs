@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Note: Delete any old saveFile whenever Save/Load's implementations are changed
+
 public partial class GameData : Persistable<PersistentData>
 {
     [SerializeField] private SceneController sceneController;
@@ -10,11 +12,17 @@ public partial class GameData : Persistable<PersistentData>
     [SerializeField] private QuestManager questManager;
     [SerializeField] private PlayerStats playerStats;
 
-    private string currentScene;
+    public SceneData SceneToLoad => Resources.Load<SceneData>
+        (string.IsNullOrWhiteSpace(startingPoint)
+        ? string.Format("{0}/{1}", sceneDataFolder, currentScene)
+        : string.Format("{0}/{1} - {2}", sceneDataFolder, currentScene, startingPoint));
+
+    private string sceneDataFolder = "SceneData";
+    private string currentScene, startingPoint;
 
     public void ResetData()
     {
-        currentScene = string.Empty;
+        currentScene = startingPoint = string.Empty;
 
         // Clear session data
         persistentDataDict.Clear();
@@ -29,6 +37,7 @@ public partial class GameData : Persistable<PersistentData>
 
         // Current scene
         writer.Write(sceneController.playerStartingPoint.SceneName);
+        writer.Write(sceneController.playerStartingPoint.StartingPointName);
 
         // TODO: Player Stats
 
@@ -65,6 +74,7 @@ public partial class GameData : Persistable<PersistentData>
         // Scene
         // TODO: need to load this scene and setup SceneController?
         currentScene = reader.ReadString();
+        startingPoint = reader.ReadString();
 
         // TODO: Player Stats
 

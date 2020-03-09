@@ -54,11 +54,20 @@ namespace Meowfia.WanderDog
 
         private void Start()
         {
+            SceneData sceneToLoad = null;
             if (!StartNewGame && persistentStorage.HasSaveFile())
+            {
                 LoadGameData();
+                sceneToLoad = gameData.SceneToLoad;
+                sceneController.playerStartingPoint = sceneToLoad;
+            }
+            else
+            {
+                sceneToLoad = initialSceneToLoad;
+            }
 
             // Load the first scene (usually the TitleScreen
-            sceneController.LoadScene(initialSceneToLoad);
+            sceneController.LoadScene(sceneToLoad);
 
             // Begin day
             dayProgression.Initialize(questManager);
