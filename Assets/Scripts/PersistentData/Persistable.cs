@@ -1,4 +1,4 @@
-﻿using Meowfia.WanderDog;
+using Meowfia.WanderDog;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using UnityEngine;
 [DisallowMultipleComponent] // Make sure only one component per object is attached
 [RequireComponent(typeof(GuidComponent))]
 
-public class Persistable<T> : MonoBehaviour, IPersistable where T : PersistentData, new()
+public class Persistable<T> : MonoBehaviour, IPersistable<T> where T : PersistentData, new()
 {
     public T Data { get; set; } = new T();
 
@@ -26,12 +26,17 @@ public class Persistable<T> : MonoBehaviour, IPersistable where T : PersistentDa
         Data.guid = guidComponent.GetGuid();
 
         // Check if there's a saved data
-        Data = gameManager.GameData.GetPersistentData(Data) as T;
+        Data = GetPersistentData();
 
         if (Data != null)
             SetFromPersistentData();
         else
             UpdatePersistentData();
+    }
+
+    public virtual T GetPersistentData()
+    {
+        return null;
     }
 
     public virtual void SetFromPersistentData()

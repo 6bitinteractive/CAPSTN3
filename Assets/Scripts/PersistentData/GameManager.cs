@@ -54,7 +54,7 @@ namespace Meowfia.WanderDog
 
         private void Start()
         {
-            if (!StartNewGame)
+            if (!StartNewGame && persistentStorage.HasSaveFile())
                 LoadGameData();
 
             // Load the first scene (usually the TitleScreen
@@ -84,7 +84,7 @@ namespace Meowfia.WanderDog
 
         private void OnQuestUpdate(QuestEvent questEvent)
         {
-            if (questEvent.CurrentStatus == QuestEvent.Status.Done)
+            if (questEvent.CurrentStatus == QuestEvent.Status.Active || questEvent.CurrentStatus == QuestEvent.Status.Done)
                 SaveGameData();
         }
 

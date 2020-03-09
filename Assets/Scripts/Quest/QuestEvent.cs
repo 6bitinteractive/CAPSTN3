@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
@@ -80,6 +80,7 @@ public class QuestEvent : Persistable<QuestEventData>
             case Status.Done:
                 {
                     Debug.LogFormat("QuestEvent \"{0}\" complete.", displayName);
+                    gameObject.SetActive(false);
                     UpdatePersistentData();
 
                     eventManager.Trigger<GameQuestEvent, QuestEvent>(OnDone, this);
@@ -92,6 +93,11 @@ public class QuestEvent : Persistable<QuestEventData>
     public void SwitchStatus(int status)
     {
         SwitchStatus((Status)status);
+    }
+
+    public override QuestEventData GetPersistentData()
+    {
+        return gameManager.GameData.GetPersistentData(Data);
     }
 
     public override void SetFromPersistentData()
