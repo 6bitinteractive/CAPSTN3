@@ -97,6 +97,8 @@ public class QuestEvent : Persistable<QuestEventData>
 
     public override QuestEventData GetPersistentData()
     {
+        // Note: We do this here so that the correct type is used
+        // Calling this at base Persistable class always defaults to adding to the plain PersistentData dictionary
         return gameManager.GameData.GetPersistentData(Data);
     }
 

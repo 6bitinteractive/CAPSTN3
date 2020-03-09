@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// This interface is for classes that can't inherit from Persistable, e.g. Singletons
+// See Persistable.cs and QuestEvent.cs for sample implementation
 public interface IPersistable<T>
 {
-    /// <summary>
-    /// Initialize PersistentData and add it to GameData via GameData.AddPersistentData().
-    /// </summary>
+    T Data { get; set; }
+
     void InitializeData();
     T GetPersistentData();
     void SetFromPersistentData();
