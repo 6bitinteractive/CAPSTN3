@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,6 +7,9 @@ using UnityEngine.Events;
 
 public class Talkable : MonoBehaviour, IInteractable
 {
+    [Tooltip("Should the object face the dog?")]
+    [SerializeField] private bool faceSource = true;
+
     public UnityEvent OnTalk;
 
     private DialogueHandler dialogueHandler;
@@ -36,7 +39,7 @@ public class Talkable : MonoBehaviour, IInteractable
 
        
 
-        if (!source) { return; }
+        if (!source || !faceSource) { return; }
         StartCoroutine(RotateTowardsTarget(source.transform));
     }
 
@@ -46,7 +49,7 @@ public class Talkable : MonoBehaviour, IInteractable
     }
 
     IEnumerator RotateTowardsTarget (Transform targetTransform)
-    {      
+    {
         float duration = Quaternion.Angle(transform.rotation, targetTransform.rotation) / 100; // Get rotation duration
         Vector3 direction = (targetTransform.position - transform.position).normalized;
         direction.y = 0; // Prevent y axis rotation
