@@ -18,9 +18,10 @@ public class Talk : MonoBehaviour
         InteractionData interactionData = new InteractionData
         {
             source = source,
-            target = target,
+            target = target.gameObject,
             interactionType = InteractionType.Talk
         };
+
         eventManager.Trigger<InteractionEvent, InteractionData>(interactionData);
     }
 }

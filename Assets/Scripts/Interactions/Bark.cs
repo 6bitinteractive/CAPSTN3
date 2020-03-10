@@ -39,7 +39,7 @@ public class Bark : MonoBehaviour
                     barkable.Interact(source, interactableTarget);
                     //Debug.Log("Barking at " + target.gameObject.name);
 
-                    interactionData.target = interactableTarget;
+                    interactionData.target = target.gameObject;
                 }
             }
 

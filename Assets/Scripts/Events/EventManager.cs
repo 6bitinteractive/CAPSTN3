@@ -120,7 +120,7 @@ public class InteractionEvent : UnityEvent<InteractionData> { }
 public class InteractionData
 {
     public Interactor source;
-    public IInteractable target;
+    public GameObject target;
     public InteractionType interactionType;
 }
 

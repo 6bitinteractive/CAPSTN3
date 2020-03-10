@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -50,7 +50,7 @@ public class InteractionCondition : Condition
         {
             //Debug.Log("Getting references for GuidReference");
             condition.source = interactionSource.gameObject.GetComponent<Interactor>();
-            condition.target = interactionTarget.gameObject.GetComponent<IInteractable>();
+            condition.target = interactionTarget.gameObject;
             condition.interactionType = interactionType;
         }
     }

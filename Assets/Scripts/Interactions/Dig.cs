@@ -9,7 +9,7 @@ public class Dig : MonoBehaviour
     [SerializeField] private GameObject digOffset;
     [SerializeField] private Animator animator;
     private AudioSource audioSource;
-    private InteractionData interactionData;
+    private InteractionData digableInteractionData;
     private static EventManager eventManager;
 
     public int DigPower { get => digPower; set => digPower = value; }
@@ -24,10 +24,10 @@ public class Dig : MonoBehaviour
     public void DigTerrainEvent(Interactor source, DigableTerrain target)
     {
         target.Interact(source, target);
-        interactionData = new InteractionData()
+        digableInteractionData = new InteractionData
         {
             source = source,
-            target = target,
+            target = target.gameObject,
             interactionType = InteractionType.Dig
         };
         HandleDig();
@@ -36,10 +36,10 @@ public class Dig : MonoBehaviour
     public void DigEvent(Interactor source, Digable target)
     {
         target.Interact(source, target);
-        interactionData = new InteractionData()
+        digableInteractionData = new InteractionData
         {
             source = source,
-            target = target,
+            target = target.gameObject,
             interactionType = InteractionType.Dig
         };
         HandleDig();
@@ -60,6 +60,6 @@ public class Dig : MonoBehaviour
             Animate();
         }
 
-        eventManager.Trigger<InteractionEvent, InteractionData>(interactionData);
+        eventManager.Trigger<InteractionEvent, InteractionData>(digableInteractionData);
     }
 }
