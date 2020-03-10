@@ -22,8 +22,10 @@ namespace Meowfia.WanderDog
         [SerializeField] private QuestManager questManager;
 
         [Header("Scene")]
-        [SerializeField] private SceneData initialSceneToLoad;
-        private SceneData sceneToLoad;
+        [SerializeField] private SceneData titleScreen;
+        [SerializeField] private SceneData storybookScene;
+
+        public DayProgression DayProgression => dayProgression;
 
         public GameData GameData => gameData;
         public bool StartNewGame { get; set; }
@@ -35,17 +37,6 @@ namespace Meowfia.WanderDog
 
             // Ready persistent storage
             persistentStorage.InitializeSavePath();
-
-            if (!StartNewGame && persistentStorage.HasSaveFile())
-            {
-                LoadGameData();
-                sceneToLoad = gameData.SceneToLoad;
-                sceneController.playerStartingPoint = sceneToLoad;
-            }
-            else
-            {
-                sceneToLoad = initialSceneToLoad;
-            }
         }
 
         private void OnEnable()
@@ -68,12 +59,30 @@ namespace Meowfia.WanderDog
 
         private void Start()
         {
-            // Load the first scene (usually the TitleScreen)
-            sceneController.LoadScene(sceneToLoad);
+            // Load the TitleScreen
+            sceneController.LoadScene(titleScreen);
 
-            // Begin day
+        }
+
+        public void StartGame()
+        {
+            SceneData sceneToLoad;
+            if (!StartNewGame && persistentStorage.HasSaveFile())
+            {
+                LoadGameData();
+                sceneToLoad = gameData.SceneToLoad;
+                sceneController.playerStartingPoint = sceneToLoad;
+            }
+            else
+            {
+                GameData.ResetData();
+                sceneToLoad = storybookScene;
+            }
+
+            // Prepare day
             dayProgression.Initialize(questManager);
-            dayProgression.BeginDay();
+
+            sceneController.LoadScene(sceneToLoad);
         }
 
         public void SaveGameData()
