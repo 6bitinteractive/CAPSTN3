@@ -29,6 +29,7 @@ public partial class GameData : Persistable<PersistentData>
         questEventDataDict.Clear();
         objectiveDataDict.Clear();
         conditionDataDict.Clear();
+        cutsceneDataDict.Clear();
     }
 
     // NOTE: Make sure of parity between Save and Load
