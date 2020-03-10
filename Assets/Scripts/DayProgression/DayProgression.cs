@@ -23,7 +23,7 @@ public class DayProgression : Persistable<PersistentData>
 
         foreach (var quest in questManager.questCollections)
         {
-            quest.OnQuestEnd.AddListener(EndDay); // Test only; EndDay() will most probably be manually called
+            quest.OnQuestCollectionComplete.AddListener(EndDay); // Test only; EndDay() will most probably be manually called
         }
     }
 

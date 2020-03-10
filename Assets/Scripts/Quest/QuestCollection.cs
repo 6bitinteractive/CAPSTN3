@@ -15,7 +15,7 @@ public class QuestCollection : Persistable<PersistentData> // Only a MonoBehavio
     public QuestEvent CurrentQuestEvent { get; private set; }  // The current active
     public QuestEvent PreviousQuestEvent { get; private set; } // The recently done
 
-    public UnityEvent OnQuestEnd = new UnityEvent();
+    public UnityEvent OnQuestCollectionComplete = new UnityEvent();
 
     public void Initialize()
     {
@@ -96,7 +96,7 @@ public class QuestCollection : Persistable<PersistentData> // Only a MonoBehavio
         foreach (var questEvent in QuestEvents)
             questEvent.OnDone.gameEvent.RemoveListener(EvaluateQuestState);
 
-        OnQuestEnd.Invoke();
+        OnQuestCollectionComplete.Invoke();
     }
 
     // For debugging
