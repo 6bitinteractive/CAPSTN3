@@ -47,7 +47,7 @@ public class ConversationSelector : MonoBehaviour
 
     private void DetermineCurrentConversation(QuestEvent questEvent)
     {
-        if (questRelatedConversations.Count == 0)
+        if (questRelatedConversations.Count == 0 || questCollection == null || questCollection.CurrentQuestEvent == null)
         {
             return;
         }
