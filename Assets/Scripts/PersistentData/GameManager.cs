@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +23,7 @@ namespace Meowfia.WanderDog
 
         [Header("Scene")]
         [SerializeField] private SceneData initialSceneToLoad;
+        private SceneData sceneToLoad;
 
         public GameData GameData => gameData;
         public bool StartNewGame { get; set; }
@@ -34,6 +35,17 @@ namespace Meowfia.WanderDog
 
             // Ready persistent storage
             persistentStorage.InitializeSavePath();
+
+            if (!StartNewGame && persistentStorage.HasSaveFile())
+            {
+                LoadGameData();
+                sceneToLoad = gameData.SceneToLoad;
+                sceneController.playerStartingPoint = sceneToLoad;
+            }
+            else
+            {
+                sceneToLoad = initialSceneToLoad;
+            }
         }
 
         private void OnEnable()
@@ -54,19 +66,7 @@ namespace Meowfia.WanderDog
 
         private void Start()
         {
-            SceneData sceneToLoad = null;
-            if (!StartNewGame && persistentStorage.HasSaveFile())
-            {
-                LoadGameData();
-                sceneToLoad = gameData.SceneToLoad;
-                sceneController.playerStartingPoint = sceneToLoad;
-            }
-            else
-            {
-                sceneToLoad = initialSceneToLoad;
-            }
-
-            // Load the first scene (usually the TitleScreen
+            // Load the first scene (usually the TitleScreen)
             sceneController.LoadScene(sceneToLoad);
 
             // Begin day
