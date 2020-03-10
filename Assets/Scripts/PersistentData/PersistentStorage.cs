@@ -29,7 +29,8 @@ public class PersistentStorage : MonoBehaviour
             }
             catch (EndOfStreamException)
             {
-                Debug.Log("EOE");
+                Debug.LogError("End of Stream Exception. Try removing the saveFile:\n\n" +
+                    "For Windows: <UserDirectory>/AppData/LocalLow/Meowfia/Wander Dog/saveFile\n\n");
             }
         }
     }
