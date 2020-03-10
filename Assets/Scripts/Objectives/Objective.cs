@@ -15,6 +15,7 @@ public class Objective : Persistable<ObjectiveData>
     [Tooltip("Sequential = one condition is active at a time.\nParallel = all conditions are active at once.")]
     [SerializeField] private SequenceType sequenceType = SequenceType.Sequential;
 
+    public List<Condition> Conditions => conditions;
     public bool Complete { get; private set; }
 
     public ObjectiveEvent OnDone = new ObjectiveEvent();
@@ -26,15 +27,33 @@ public class Objective : Persistable<ObjectiveData>
 
     private void Awake()
     {
-        // Get children ASAP so they can be saved/loaded
         conditions.AddRange(GetComponentsInChildren<Condition>());
 
         if (conditions.Count == 0)
             Debug.LogErrorFormat("Conditions are expected to be child objects of {0}", gameObject.name);
     }
 
+    private void Start()
+    {
+        InitializeData();
+
+        //// Make sure conditions have the correct data before checking
+        //foreach (var condition in conditions)
+        //    condition.InitializeData();
+
+        //// Force check
+        //Debug.Log("Last done: " + conditions.FindLast(x => x.CurrentStatus == Condition.Status.Done));
+        //EvaluateObjective(conditions.FindLast(x => x.CurrentStatus == Condition.Status.Done));
+    }
+
     public void Activate()
     {
+        InitializeData();
+
+        // Make sure conditions have the correct data before checking
+        foreach (var condition in conditions)
+            condition.InitializeData();
+
         foreach (var condition in conditions)
         {
             // Listen to condition updates
@@ -45,36 +64,32 @@ public class Objective : Persistable<ObjectiveData>
                 condition.SwitchStatus(Condition.Status.Active);
         }
 
-        // For sequential order, only activate the first condition
+        // For sequential order, only activate the first condition that has not yet been done
         if (sequenceType == SequenceType.Sequential)
-            conditions[0].SwitchStatus(Condition.Status.Active);
+        {
+            Condition inactiveCondition = conditions.Find(x => x.CurrentStatus != Condition.Status.Done);
+            inactiveCondition?.SwitchStatus(Condition.Status.Active);
+        }
     }
 
-    public override void Save(GameDataWriter writer)
+    public override ObjectiveData GetPersistentData()
     {
-        base.Save(writer);
-
-        Debug.Log("SAVED: " + gameObject.name + " - Complete? " + Complete);
-
-        // Complete
-        writer.Write(Complete);
-
-        // Save conditions' states
-        foreach (var condition in conditions)
-            condition.Save(writer);
+        return gameManager.GameData.GetPersistentData(Data);
     }
 
-    public override void Load(GameDataReader reader)
+    public override void SetFromPersistentData()
     {
-        base.Load(reader);
+        base.SetFromPersistentData();
 
-        // Complete
-        Complete = reader.ReadBool();
-        Debug.Log("LOADED: " + gameObject.name + " - Complete? " + Complete);
+        Complete = Data.complete;
+    }
 
-        // Load conditions' states
-        foreach (var condition in conditions)
-            condition.Load(reader);
+    public override void UpdatePersistentData()
+    {
+        base.UpdatePersistentData();
+
+        Data.complete = Complete;
+        gameManager.GameData.AddPersistentData(Data);
     }
 
     // NOTE: This is mainly used for debugging!
@@ -88,17 +103,23 @@ public class Objective : Persistable<ObjectiveData>
 
     private void EvaluateObjective(Condition condition)
     {
+        if (condition == null)
+            return;
+
         //Debug.Log("Condition : " + condition.name);
         if (conditions.Exists((x) => x.CurrentStatus != Condition.Status.Done))
         {
             switch (sequenceType)
             {
                 case SequenceType.Sequential:
-                    int index = conditions.FindIndex((x) => x == condition);
+                    int index = conditions.FindIndex(x => x == condition);
                     condition.enabled = false;
                     index++; // Move to next condition
                     if (index < conditions.Count)
+                    {
+                        Debug.Log(conditions[index]);
                         conditions[index].SwitchStatus(Condition.Status.Active);
+                    }
 
                     return;
 
@@ -121,6 +142,7 @@ public class Objective : Persistable<ObjectiveData>
 
         // Broadcast that this objective is done
         OnDone.Invoke(this);
+        UpdatePersistentData();
 
         // Stop listening to the condition's event
         condition.OnDone.gameEvent.RemoveListener(EvaluateObjective);

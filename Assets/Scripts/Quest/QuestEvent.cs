@@ -80,7 +80,7 @@ public class QuestEvent : Persistable<QuestEventData>
             case Status.Done:
                 {
                     Debug.LogFormat("QuestEvent \"{0}\" complete.", displayName);
-                    gameObject.SetActive(false);
+                    //gameObject.SetActive(false);
                     UpdatePersistentData();
 
                     eventManager.Trigger<GameQuestEvent, QuestEvent>(OnDone, this);
@@ -98,7 +98,7 @@ public class QuestEvent : Persistable<QuestEventData>
     public override QuestEventData GetPersistentData()
     {
         // Note: We do this here so that the correct type is used
-        // Calling this at base Persistable class always defaults to adding to the plain PersistentData dictionary
+        // Calling this at base Persistable class always defaults to getting from the plain PersistentData dictionary
         return gameManager.GameData.GetPersistentData(Data);
     }
 
@@ -137,7 +137,8 @@ public class QuestEvent : Persistable<QuestEventData>
 
     private void ActivateCondition()
     {
-        objectives[0].Activate();
+        Objective incompleteObjective = objectives.Find(x => !x.Complete);
+        incompleteObjective?.Activate();
     }
 
     private void EvaluateQuestEvent(Objective objective)

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -65,7 +65,7 @@ public class ObjectiveData : PersistentData
 
         writer.Write(complete);
 
-        //Debug.LogFormat("Object Saved Complete {0} | {2} - {1}", complete, guid, active);
+        //Debug.LogFormat("Objective Saved Complete {0} | {2} - {1}", complete, guid, active);
     }
 
     public override void Load(GameDataReader reader)
@@ -73,7 +73,7 @@ public class ObjectiveData : PersistentData
         base.Load(reader);
 
         complete = reader.ReadBool();
-        //Debug.LogFormat("Object Loaded Complete {0} | {2} - {1}", complete, guid, active);
+        //Debug.LogFormat("Objective Loaded Complete {0} | {2} - {1}", complete, guid, active);
     }
 }
 
