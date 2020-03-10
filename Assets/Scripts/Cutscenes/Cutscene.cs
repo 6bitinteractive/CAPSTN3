@@ -142,8 +142,8 @@ public class Cutscene : Persistable<CutsceneData>
     {
         PlayCount++;
         CurrentState = State.Stopped;
+        UpdatePersistentData(); // This needs to be updated first as triggering the event will call to save the data
         eventManager.Trigger<CutsceneEvent, Cutscene>(OnCutsceneStop, this);
-        UpdatePersistentData();
     }
     #endregion
 
