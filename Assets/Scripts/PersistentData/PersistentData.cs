@@ -81,13 +81,15 @@ public class ObjectiveData : PersistentData
 public class ConditionData : PersistentData
 {
     public Condition.Status status;
+    public bool satisfied;
 
     public override void Save(GameDataWriter writer)
     {
         base.Save(writer);
 
         writer.Write(Enum.GetName(typeof(Condition.Status), status));
-        //Debug.LogFormat("Condition Saved Status {0} | {2} - {1}", status, guid, active;
+        writer.Write(satisfied);
+        //Debug.LogFormat("Condition Saved Status {0} | {2} - {1}", status, guid, active);
     }
 
     public override void Load(GameDataReader reader)
@@ -95,6 +97,7 @@ public class ConditionData : PersistentData
         base.Load(reader);
 
         Enum.TryParse(reader.ReadString(), out status);
+        satisfied = reader.ReadBool();
         //Debug.LogFormat("Condition Saved Status {0} | {2} - {1}", status, guid, active);
     }
 }

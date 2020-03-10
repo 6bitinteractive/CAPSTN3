@@ -19,6 +19,11 @@ public abstract class Condition : Persistable<ConditionData>
     private Status currentStatus;
     private bool initialized;
 
+    private void Start()
+    {
+        InitializeData();
+    }
+
     public void SwitchStatus(Status status)
     {
         if (status == currentStatus)
@@ -38,6 +43,7 @@ public abstract class Condition : Persistable<ConditionData>
                     if (!initialized)
                     {
                         InitializeCondition();
+                        UpdatePersistentData();
                     }
 
                     eventManager.Trigger<ConditionEvent, Condition>(OnActive, this);
@@ -53,6 +59,7 @@ public abstract class Condition : Persistable<ConditionData>
             case Status.Done:
                 {
                     FinalizeCondition();
+                    UpdatePersistentData();
                     eventManager.Trigger<ConditionEvent, Condition>(OnDone, this);
                     break;
                 }
@@ -65,35 +72,31 @@ public abstract class Condition : Persistable<ConditionData>
         SwitchStatus((Status)status);
     }
 
-    public override void Save(GameDataWriter writer)
+    public override ConditionData GetPersistentData()
     {
-        base.Save(writer);
-
-        Debug.Log("SAVED: " + gameObject.name + " - " + Enum.GetName(typeof(Status), currentStatus));
-
-        // Status
-        writer.Write(Enum.GetName(typeof(Status), currentStatus));
-
-        // Satisfied
-        writer.Write(Satisfied);
+        return gameManager.GameData.GetPersistentData(Data);
     }
 
-    public override void Load(GameDataReader reader)
+    public override void SetFromPersistentData()
     {
-        base.Load(reader);
+        base.SetFromPersistentData();
 
-        // Status
-        if (!Enum.TryParse(reader.ReadString(), out currentStatus))
-        {
-            Debug.Log("Could not parse enum - " + gameObject.name + " - " + currentStatus);
-        }
+        // If the condition is still active, we make sure we call SwitchStatus to fully initialize the condition
+        if (Data.status == Status.Active)
+            SwitchStatus(Status.Active);
         else
-        {
-            Debug.Log("Succesfully parsed enum - " + gameObject.name + " - " + currentStatus);
-        }
+            currentStatus = Data.status;
 
-        // Satisfied
-        Satisfied = reader.ReadBool();
+        Satisfied = Data.satisfied;
+    }
+
+    public override void UpdatePersistentData()
+    {
+        base.UpdatePersistentData();
+
+        Data.status = currentStatus;
+        Data.satisfied = Satisfied;
+        gameManager.GameData.AddPersistentData(Data);
     }
 
     // NOTE: This is mainly used for debugging!
@@ -109,6 +112,8 @@ public abstract class Condition : Persistable<ConditionData>
     protected virtual void InitializeCondition()
     {
         //Debug.LogFormat("{0} - Condition initialized.", gameObject.name);
+
+        InitializeData();
         eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
 
         SceneManager.sceneLoaded += OnSceneLoad;
