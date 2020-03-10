@@ -11,6 +11,7 @@ public partial class GameData
     private Dictionary<Guid, QuestEventData> questEventDataDict = new Dictionary<Guid, QuestEventData>();
     private Dictionary<Guid, ObjectiveData> objectiveDataDict = new Dictionary<Guid, ObjectiveData>();
     private Dictionary<Guid, ConditionData> conditionDataDict = new Dictionary<Guid, ConditionData>();
+    private Dictionary<Guid, CutsceneData> cutsceneDataDict = new Dictionary<Guid, CutsceneData>();
 
     private void AddPersistentData<T>(Dictionary<Guid, T> dictionary, T persistentData) where T : PersistentData
     {
@@ -55,6 +56,11 @@ public partial class GameData
         AddPersistentData(conditionDataDict, conditionData);
     }
 
+    public void AddPersistentData(CutsceneData cutsceneData)
+    {
+        AddPersistentData(cutsceneDataDict, cutsceneData);
+    }
+
     public PersistentData GetPersistentData(PersistentData persistentData)
     {
         return GetPersistentData(persistentDataDict, persistentData);
@@ -73,5 +79,10 @@ public partial class GameData
     public ConditionData GetPersistentData(ConditionData conditionData)
     {
         return GetPersistentData(conditionDataDict, conditionData);
+    }
+
+    public CutsceneData GetPersistentData(CutsceneData cutsceneData)
+    {
+        return GetPersistentData(cutsceneDataDict, cutsceneData);
     }
 }

@@ -31,6 +31,8 @@ public partial class GameData : Persistable<PersistentData>
         conditionDataDict.Clear();
     }
 
+    // NOTE: Make sure of parity between Save and Load
+
     public override void Save(GameDataWriter writer)
     {
         //Debug.Log("SAVING............");
@@ -61,6 +63,10 @@ public partial class GameData : Persistable<PersistentData>
         writer.Write(conditionDataDict.Count);
         foreach (var item in conditionDataDict.Keys)
             conditionDataDict[item].Save(writer);
+
+        writer.Write(cutsceneDataDict.Count);
+        foreach (var item in cutsceneDataDict.Keys)
+            cutsceneDataDict[item].Save(writer);
 
         // TODO: Zone-specific
 
@@ -120,6 +126,16 @@ public partial class GameData : Persistable<PersistentData>
             ConditionData c = new ConditionData();
             c.Load(reader);
             conditionDataDict.Add(c.guid, c);
+        }
+
+        count = reader.ReadInt();
+        cutsceneDataDict = new Dictionary<Guid, CutsceneData>(count);
+
+        for (int i = 0; i < count; i++)
+        {
+            CutsceneData c = new CutsceneData();
+            c.Load(reader);
+            cutsceneDataDict.Add(c.guid, c);
         }
 
         // TODO: Zone-specific

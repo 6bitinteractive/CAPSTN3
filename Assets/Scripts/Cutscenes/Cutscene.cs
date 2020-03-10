@@ -11,7 +11,7 @@ using UnityEngine.Playables;
 [RequireComponent(typeof(PlayableDirector))]
 [RequireComponent(typeof(DialogueHandler))]
 
-public class Cutscene : MonoBehaviour
+public class Cutscene : Persistable<CutsceneData>
 {
     [Tooltip("NOTE: PlayOnAwake in PlayableDirector will always be set to false.\n" +
         "We set it here so that events are properly triggered.\n\n" +
@@ -106,6 +106,8 @@ public class Cutscene : MonoBehaviour
 
     public void Play()
     {
+        InitializeData();
+
         // If the cutscene is not replayable and has been played (count is 1+)
         if (!replayable && PlayCount >= 1)
             return;
@@ -141,6 +143,7 @@ public class Cutscene : MonoBehaviour
         PlayCount++;
         CurrentState = State.Stopped;
         eventManager.Trigger<CutsceneEvent, Cutscene>(OnCutsceneStop, this);
+        UpdatePersistentData();
     }
     #endregion
 
@@ -172,5 +175,27 @@ public class Cutscene : MonoBehaviour
         Stopped,
         Playing,
         Paused
+    }
+
+    public override CutsceneData GetPersistentData()
+    {
+        return gameManager.GameData.GetPersistentData(Data);
+    }
+
+    public override void SetFromPersistentData()
+    {
+        base.SetFromPersistentData();
+
+        PlayCount = Data.playCount;
+        //Debug.LogFormat("CUTSCENE \"{0}\" played x{1}", gameObject.name, Data.playCount);
+    }
+
+    public override void UpdatePersistentData()
+    {
+        base.UpdatePersistentData();
+
+        Data.playCount = PlayCount;
+        gameManager.GameData.AddPersistentData(Data);
+        //Debug.LogFormat("CUTSCENE \"{0}\" played x{1}", gameObject.name, Data.playCount);
     }
 }

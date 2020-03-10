@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -54,6 +54,7 @@ namespace Meowfia.WanderDog
             eventManager.Subscribe<GameQuestEvent, QuestEvent>(OnQuestUpdate);
             eventManager.Subscribe<ObjectiveEvent, Objective>(OnObjectiveUpdate);
             eventManager.Subscribe<ConditionEvent, Condition>(OnConditionUpdate);
+            eventManager.Subscribe<CutsceneEvent, Cutscene>(OnCutsceneUpdate);
         }
 
         private void OnDisable()
@@ -62,6 +63,7 @@ namespace Meowfia.WanderDog
             eventManager.Unsubscribe<GameQuestEvent, QuestEvent>(OnQuestUpdate);
             eventManager.Unsubscribe<ObjectiveEvent, Objective>(OnObjectiveUpdate);
             eventManager.Unsubscribe<ConditionEvent, Condition>(OnConditionUpdate);
+            eventManager.Unsubscribe<CutsceneEvent, Cutscene>(OnCutsceneUpdate);
         }
 
         private void Start()
@@ -106,6 +108,12 @@ namespace Meowfia.WanderDog
         private void OnConditionUpdate(Condition condition)
         {
             if (condition.CurrentStatus == Condition.Status.Done)
+                SaveGameData();
+        }
+
+        private void OnCutsceneUpdate(Cutscene cutscene)
+        {
+            if (cutscene.CurrentState == Cutscene.State.Stopped)
                 SaveGameData();
         }
     }

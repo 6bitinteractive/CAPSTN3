@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -102,3 +102,26 @@ public class ConditionData : PersistentData
     }
 }
 #endregion
+
+[Serializable]
+public class CutsceneData : PersistentData
+{
+    public int playCount;
+    public Cutscene.State state;
+
+    public override void Save(GameDataWriter writer)
+    {
+        base.Save(writer);
+
+        writer.Write(playCount);
+        writer.Write(Enum.GetName(typeof(Cutscene.State), state));
+    }
+
+    public override void Load(GameDataReader reader)
+    {
+        base.Load(reader);
+
+        playCount = reader.ReadInt();
+        Enum.TryParse(reader.ReadString(), out state);
+    }
+}
