@@ -147,6 +147,9 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
             currentDisplay = GetDialogueDisplay(currentDialogue.speaker);
         }
 
+        // Hide the button prompt
+        currentDisplay?.ShowButton(false);
+
         // Check if this is the start of a new dialogue
         if (currentDialogue != previousDialogue)
             currentDialogue.OnDialogueBegin.Invoke(); // Invoke current dialogue's OnDialogueBegin event
@@ -156,6 +159,7 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
 
         // Displaying the line is now done
         currentState = State.LineEnded;
+        currentDisplay.ShowButton(true);
         OnDialogueLineEnd.Invoke();
 
         if (currentDialogue.HasEnded()) // Check if we're at the end of the current speaker's dialogue

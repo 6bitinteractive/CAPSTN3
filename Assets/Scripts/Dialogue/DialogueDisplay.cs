@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(CanvasGroupController))]
 
 public class DialogueDisplay : MonoBehaviour
 {
     [SerializeField] private Transform canvasContainer;
+    [SerializeField] private GameObject dialogueButtonPanel;
 
     public DialogueSpeaker dialogueSpeaker;
     public TextMeshProUGUI displayText;
@@ -15,6 +18,7 @@ public class DialogueDisplay : MonoBehaviour
     private Transform thisTransform;
     private bool displayed;
 
+    private Button dialogueButton;
     private CanvasGroupController canvasGroup;
 
     private static DialogueDisplayManager dialogueDisplayManager;
@@ -23,6 +27,7 @@ public class DialogueDisplay : MonoBehaviour
     private void Awake()
     {
         thisTransform = transform;
+        dialogueButton = dialogueButtonPanel.GetComponentInChildren<Button>();
         canvasGroup = GetComponent<CanvasGroupController>();
         displayText.text = string.Empty;
     }
@@ -30,11 +35,13 @@ public class DialogueDisplay : MonoBehaviour
     private void OnEnable()
     {
         dialogueDisplayManager = dialogueDisplayManager ?? SingletonManager.GetInstance<DialogueDisplayManager>();
+        dialogueButton.onClick.AddListener(dialogueDisplayManager.ContinueConversation);
         dialogueDisplayManager.dialogueDisplays.Add(dialogueSpeaker, this);
     }
 
     private void OnDisable()
     {
+        dialogueButton.onClick.RemoveListener(dialogueDisplayManager.ContinueConversation);
         dialogueDisplayManager.dialogueDisplays.Remove(dialogueSpeaker);
     }
 
@@ -54,6 +61,11 @@ public class DialogueDisplay : MonoBehaviour
     {
         displayed = value;
         canvasGroup.Display(value);
+    }
+
+    public void ShowButton(bool value = true)
+    {
+        dialogueButtonPanel.SetActive(value);
     }
 
     private void Hide()
