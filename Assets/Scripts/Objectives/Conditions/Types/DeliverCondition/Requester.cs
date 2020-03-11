@@ -13,12 +13,9 @@ public class Requester : MonoBehaviour
     [SerializeField] private List<Request> requests = new List<Request>();
 
     public UnityEvent OnRequestSatisfied = new UnityEvent();
-    public Request CurrentRequest { get; private set; }
+    public List<Request> ActiveRequests { get; private set; } = new List<Request>();
 
-    private Dictionary<QuestEvent, Request> requestDict = new Dictionary<QuestEvent, Request>();
-    private QuestEvent currentQuestEvent;
-    private Deliverable requestedItem;
-
+    private Dictionary<Condition, Request> requestDict = new Dictionary<Condition, Request>();
     private DeliveryArea deliveryArea;
     private DialogueHandler dialogueHandler;
 
@@ -30,34 +27,39 @@ public class Requester : MonoBehaviour
         deliveryArea = GetComponentInChildren<DeliveryArea>();
         deliveryArea.OnDeliverableReceived.AddListener(VerifyDeliverable);
 
-        // Listen to relevant QuestEvents
+        // Listen to relevant Deliver conditions
         foreach (var request in requests)
         {
-            QuestEvent questEvent = request.questEvent.gameObject.GetComponent<QuestEvent>();
+            Condition condition = request.deliverCondition.gameObject.GetComponent<Condition>();
 
-            // Only get questEvents that are still relevant
-            if (questEvent.CurrentStatus == QuestEvent.Status.Done)
+            if (condition == null)
+                Debug.LogError("Field expects an object with a Condition component.");
+
+            // Only get Conditions that are still relevant
+            if (condition.CurrentStatus == Condition.Status.Done)
                 continue;
 
-            if (!requestDict.ContainsKey(questEvent))
+            if (!requestDict.ContainsKey(condition))
             {
-                requestDict.Add(questEvent, request);
-                questEvent.OnActive.gameEvent.AddListener(ActivateRequest);
+                requestDict.Add(condition, request);
+                condition.OnActive.gameEvent.AddListener(ActivateRequest);
             }
 
-            // Set the active quest event as the currently relevant questEvent
-            if (questEvent.CurrentStatus == QuestEvent.Status.Active)
-                ActivateRequest(questEvent);
+            // Set the active conditions as the relevant active requests
+            if (condition.CurrentStatus == Condition.Status.Active)
+                ActivateRequest(condition);
         }
     }
 
-    private void ActivateRequest(QuestEvent questEvent)
+    private void ActivateRequest(Condition condition)
     {
-        if (requestDict.TryGetValue(questEvent, out Request request))
+        if (requestDict.TryGetValue(condition, out Request request))
         {
-            currentQuestEvent = questEvent;
-            CurrentRequest = request;
-            CurrentRequest.active = true;
+            //currentActiveConditions.Add(condition);
+            ActiveRequests.Add(request);
+
+            foreach (var activeRequest in ActiveRequests)
+                activeRequest.active = true;
         }
     }
 
@@ -68,28 +70,32 @@ public class Requester : MonoBehaviour
 
     public void VerifyDeliverable(Deliverable deliverable)
     {
-        if (CurrentRequest != null)
+        if (ActiveRequests == null || ActiveRequests.Count == 0)
+            return;
+
+        // Find the related request that has this deliverable
+        Request activeRequest = ActiveRequests.Find(x => x.requestedDeliverableObject.gameObject.GetComponent<Deliverable>() == deliverable);
+
+        if (activeRequest != null)
         {
-            requestedItem = CurrentRequest.requestedObject.gameObject.GetComponent<Deliverable>();
-            if (deliverable == requestedItem)
-            {
-                //Debug.Log("DELIVERED");
-                CurrentRequest.active = false;
-                CurrentRequest.satisfied = true;
+            //Debug.LogFormat("DELIVERED: {0}", requestedItem);
+            deliverable.OnDeliver();
 
-                if (CurrentRequest.conversationSatisfied != null)
-                    dialogueHandler.StartConversation(CurrentRequest.conversationSatisfied);
-                OnRequestSatisfied.Invoke();
+            activeRequest.active = false;
+            activeRequest.satisfied = true;
 
-                // Clear references
-                CurrentRequest = null;
-                currentQuestEvent = null;
-            }
-            else
-            {
-                if (CurrentRequest.conversationUnsatisfied != null)
-                    dialogueHandler.StartConversation(CurrentRequest.conversationUnsatisfied);
-            }
+            if (activeRequest.conversationSatisfied != null)
+                dialogueHandler.StartConversation(activeRequest.conversationSatisfied);
+
+            OnRequestSatisfied.Invoke();
+        }
+        else
+        {
+            // Find an activeRequest that has not yet been satisfied and show dialogue feedback that the request isn't satisfied
+            // This just shows one dialogue among all possible feedback, not necessarily the particular request the player is trying to satisfy
+            activeRequest = ActiveRequests.Find(x => !x.satisfied);
+            if (activeRequest.conversationUnsatisfied != null)
+                dialogueHandler.StartConversation(activeRequest.conversationUnsatisfied);
         }
     }
 }
@@ -97,8 +103,8 @@ public class Requester : MonoBehaviour
 [System.Serializable]
 public class Request
 {
-    public GuidReference questEvent;
-    public GuidReference requestedObject;
+    public GuidReference deliverCondition;
+    public GuidReference requestedDeliverableObject;
     public Conversation conversationSatisfied;
     public Conversation conversationUnsatisfied;
     [HideInInspector] public bool active;

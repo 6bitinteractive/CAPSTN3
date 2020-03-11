@@ -25,7 +25,7 @@ public class DeliverCondition : Condition
 
     private void Evaluate()
     {
-        requestSatisfied = true;
+        requestSatisfied = requester.ActiveRequests.Exists(x => x.deliverCondition.gameObject.GetComponent<Condition>() == this && x.satisfied);
         SwitchStatus(Status.Evaluating);
     }
 
