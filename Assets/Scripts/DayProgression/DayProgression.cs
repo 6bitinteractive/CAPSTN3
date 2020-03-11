@@ -20,11 +20,6 @@ public class DayProgression : Persistable<PersistentData>
     {
         questManager = qm;
         questManager.Initialize();
-
-        foreach (var quest in questManager.questCollections)
-        {
-            quest.OnQuestCollectionComplete.AddListener(EndDay); // Test only; EndDay() will most probably be manually called
-        }
     }
 
     public void BeginDay(int index = 0)

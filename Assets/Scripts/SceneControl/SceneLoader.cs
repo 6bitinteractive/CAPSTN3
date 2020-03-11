@@ -14,16 +14,7 @@ public class SceneLoader : MonoBehaviour
     public void LoadScene(SceneData sceneDataToLoad)
     {
         // Set the starting position
-        if (string.IsNullOrWhiteSpace(sceneDataToLoad.StartingPointName))
-        {
-            sceneController.playerStartingPoint = null;
-            Debug.LogWarning("No starting position at the scene that is about to be loaded.");
-        }
-        else
-        {
-            sceneController.playerStartingPoint = sceneDataToLoad;
-        }
-
+        sceneController.playerStartingPoint = sceneDataToLoad;
         sceneController.LoadScene(sceneDataToLoad);
     }
 }

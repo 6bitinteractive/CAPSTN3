@@ -16,9 +16,4 @@ public class DaySelection : MonoBehaviour
 
         buttons[gameManager.DayProgression.CurrentDayIndex].interactable = true;
     }
-
-    public void BeginDay()
-    {
-        gameManager.DayProgression.BeginDay(gameManager.DayProgression.CurrentDayIndex);
-    }
 }
