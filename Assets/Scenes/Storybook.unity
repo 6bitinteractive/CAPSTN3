@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 234162770}
   - component: {fileID: 234162769}
   m_Layer: 5
-  m_Name: DayButton (2)
+  m_Name: DayButton 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -357,7 +357,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 298107149}
+      - m_Target: {fileID: 298107151}
         m_MethodName: BeginDay
         m_Mode: 1
         m_Arguments:
@@ -426,6 +426,7 @@ GameObject:
   - component: {fileID: 298107147}
   - component: {fileID: 298107148}
   - component: {fileID: 298107149}
+  - component: {fileID: 298107151}
   - component: {fileID: 298107150}
   m_Layer: 5
   m_Name: Buttons
@@ -505,6 +506,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac265c4e13f9eef4caaf3a59f2171f8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &298107151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298107146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da9c11eb55c7b748978b1b8dd0856d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &429144494
@@ -1159,7 +1172,7 @@ GameObject:
   - component: {fileID: 945804833}
   - component: {fileID: 945804832}
   m_Layer: 5
-  m_Name: DayButton
+  m_Name: DayButton 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1228,7 +1241,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 298107149}
+      - m_Target: {fileID: 298107151}
         m_MethodName: BeginDay
         m_Mode: 1
         m_Arguments:
@@ -1366,7 +1379,7 @@ GameObject:
   - component: {fileID: 1677704296}
   - component: {fileID: 1677704295}
   m_Layer: 5
-  m_Name: DayButton (3)
+  m_Name: DayButton 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1435,7 +1448,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 298107149}
+      - m_Target: {fileID: 298107151}
         m_MethodName: BeginDay
         m_Mode: 1
         m_Arguments:
@@ -1760,7 +1773,7 @@ GameObject:
   - component: {fileID: 1983000024}
   - component: {fileID: 1983000023}
   m_Layer: 5
-  m_Name: DayButton (4)
+  m_Name: DayButton 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1829,7 +1842,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 298107149}
+      - m_Target: {fileID: 298107151}
         m_MethodName: BeginDay
         m_Mode: 1
         m_Arguments:
@@ -1900,7 +1913,7 @@ GameObject:
   - component: {fileID: 2075384741}
   - component: {fileID: 2075384740}
   m_Layer: 5
-  m_Name: DayButton (1)
+  m_Name: DayButton 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1969,7 +1982,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 298107149}
+      - m_Target: {fileID: 298107151}
         m_MethodName: BeginDay
         m_Mode: 1
         m_Arguments:
@@ -1984,7 +1997,7 @@ MonoBehaviour:
         m_MethodName: LoadScene
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 0f5056b1a3051a7489798b3f26026f01,
+          m_ObjectArgument: {fileID: 11400000, guid: 294b296a38f987f4e8f5f0902b3dde0b,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: SceneData, Assembly-CSharp
           m_IntArgument: 0
