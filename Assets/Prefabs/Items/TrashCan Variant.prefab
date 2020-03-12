@@ -294,7 +294,17 @@ PrefabInstance:
     - target: {fileID: 2594588416542819708, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: m_Name
-      value: TrashCan
+      value: TrashCan Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2594588416542819708, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4532191095603491822, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4803602610191519610, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
