@@ -94,7 +94,7 @@ public class Requester : MonoBehaviour
             // Find an activeRequest that has not yet been satisfied and show dialogue feedback that the request isn't satisfied
             // This just shows one dialogue among all possible feedback, not necessarily the particular request the player is trying to satisfy
             activeRequest = ActiveRequests.Find(x => !x.satisfied);
-            if (activeRequest.conversationUnsatisfied != null)
+            if (activeRequest != null && activeRequest.conversationUnsatisfied != null)
                 dialogueHandler.StartConversation(activeRequest.conversationUnsatisfied);
         }
     }
