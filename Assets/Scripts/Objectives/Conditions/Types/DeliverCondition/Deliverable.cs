@@ -7,14 +7,14 @@ public class Deliverable : MonoBehaviour
     private Biteable biteable;
     private Pickupable pickupable;
     private Outlineable outlineable;
-    private Rigidbody rigidbody;
+    private Rigidbody rb;
 
     private void Awake()
     {
         biteable = GetComponent<Biteable>();
         pickupable = GetComponent<Pickupable>();
         outlineable = GetComponent<Outlineable>();
-        rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
 
     public void OnDeliver()
@@ -28,7 +28,7 @@ public class Deliverable : MonoBehaviour
         if (outlineable)
             outlineable.enabled = false;
 
-        if (rigidbody)
-            rigidbody.isKinematic = true;
+        if (rb)
+            rb.isKinematic = true;
     }
 }

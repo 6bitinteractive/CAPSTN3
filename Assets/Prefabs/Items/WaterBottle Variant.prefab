@@ -161,6 +161,11 @@ PrefabInstance:
       propertyPath: serializedGuid.Array.data[15]
       value: 144
       objectReference: {fileID: 0}
+    - target: {fileID: 4780190561334857533, guid: 399c7aece7d46f443aad3e3f6bef67d9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6856942955775714544, guid: 399c7aece7d46f443aad3e3f6bef67d9,
         type: 3}
       propertyPath: m_Size.x
@@ -239,24 +244,24 @@ PrefabInstance:
     - target: {fileID: 7723614683506839470, guid: 399c7aece7d46f443aad3e3f6bef67d9,
         type: 3}
       propertyPath: m_Name
-      value: WaterBottle
-      objectReference: {fileID: 0}
-    - target: {fileID: 7775425164358097538, guid: 399c7aece7d46f443aad3e3f6bef67d9,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7775425164358097538, guid: 399c7aece7d46f443aad3e3f6bef67d9,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.2
+      value: WaterBottle Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7775425164358097538, guid: 399c7aece7d46f443aad3e3f6bef67d9,
         type: 3}
       propertyPath: m_Center.y
       value: 0.02
       objectReference: {fileID: 0}
-    - target: {fileID: 7775425164358097538, guid: 399c7aece7d46f443aad3e3f6bef67d9,
+    - target: {fileID: 9170194305678494747, guid: 399c7aece7d46f443aad3e3f6bef67d9,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 9170194305678494747, guid: 399c7aece7d46f443aad3e3f6bef67d9,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9170194305678494747, guid: 399c7aece7d46f443aad3e3f6bef67d9,
         type: 3}
       propertyPath: m_Size.z
       value: 0.1

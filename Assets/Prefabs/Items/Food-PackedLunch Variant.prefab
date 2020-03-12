@@ -202,6 +202,11 @@ PrefabInstance:
       propertyPath: meshRendersToOutline.Array.data[0]
       value: 
       objectReference: {fileID: 4229768084652467527}
+    - target: {fileID: 4780190561334857533, guid: 399c7aece7d46f443aad3e3f6bef67d9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7723614683506839469, guid: 399c7aece7d46f443aad3e3f6bef67d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -260,7 +265,32 @@ PrefabInstance:
     - target: {fileID: 7723614683506839470, guid: 399c7aece7d46f443aad3e3f6bef67d9,
         type: 3}
       propertyPath: m_Name
-      value: Food-PackedLunch
+      value: Food-PackedLunch Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775425164358097538, guid: 399c7aece7d46f443aad3e3f6bef67d9,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775425164358097538, guid: 399c7aece7d46f443aad3e3f6bef67d9,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775425164358097538, guid: 399c7aece7d46f443aad3e3f6bef67d9,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9170194305678494747, guid: 399c7aece7d46f443aad3e3f6bef67d9,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 9170194305678494747, guid: 399c7aece7d46f443aad3e3f6bef67d9,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399c7aece7d46f443aad3e3f6bef67d9, type: 3}

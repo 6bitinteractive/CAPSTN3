@@ -79,8 +79,11 @@ public class Requester : MonoBehaviour
         if (activeRequest != null)
         {
             //Debug.LogFormat("DELIVERED: {0}", requestedItem);
+
+            // Let deliverable do what it wants when it's delivered
             deliverable.OnDeliver();
 
+            // Flag active request as satisfied
             activeRequest.active = false;
             activeRequest.satisfied = true;
 
@@ -94,7 +97,7 @@ public class Requester : MonoBehaviour
             // Find an activeRequest that has not yet been satisfied and show dialogue feedback that the request isn't satisfied
             // This just shows one dialogue among all possible feedback, not necessarily the particular request the player is trying to satisfy
             activeRequest = ActiveRequests.Find(x => !x.satisfied);
-            if (activeRequest != null && activeRequest.conversationUnsatisfied != null)
+            if (activeRequest?.conversationUnsatisfied != null)
                 dialogueHandler.StartConversation(activeRequest.conversationUnsatisfied);
         }
     }

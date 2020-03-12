@@ -396,6 +396,11 @@ PrefabInstance:
       propertyPath: meshRendersToOutline.Array.data[9]
       value: 
       objectReference: {fileID: 4884713351480291139}
+    - target: {fileID: 4780190561334857533, guid: 399c7aece7d46f443aad3e3f6bef67d9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6856942955775714544, guid: 399c7aece7d46f443aad3e3f6bef67d9,
         type: 3}
       propertyPath: m_Size.x
@@ -470,21 +475,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Toy-Robot
-      objectReference: {fileID: 0}
-    - target: {fileID: 7775425164358097538, guid: 399c7aece7d46f443aad3e3f6bef67d9,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7775425164358097538, guid: 399c7aece7d46f443aad3e3f6bef67d9,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 7775425164358097538, guid: 399c7aece7d46f443aad3e3f6bef67d9,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 0.17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399c7aece7d46f443aad3e3f6bef67d9, type: 3}
