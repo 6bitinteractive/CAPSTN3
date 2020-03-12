@@ -324,9 +324,9 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 1
+  groundDistance: 0.4
   camera: {fileID: 0}
   animator: {fileID: 5325784608514906865}
-  groundDistance: 0.4
 --- !u!114 &1331823813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,7 +650,7 @@ CharacterController:
   m_Height: 0.57
   m_Radius: 0.24
   m_SlopeLimit: 45
-  m_StepOffset: 0.02
+  m_StepOffset: 0.05
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: -0.56, z: -0.06}

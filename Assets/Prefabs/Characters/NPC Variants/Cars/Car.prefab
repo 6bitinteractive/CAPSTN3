@@ -224,8 +224,8 @@ MonoBehaviour:
   transitions:
   - aiCondition: {fileID: 11400000, guid: 9d84a886e0e2fe94ab25fbfdff7b70c2, type: 2}
     targetState: {fileID: 750148396844529744}
-  patrolSpeed: 1
-  waitTime: 2.5
+  patrolSpeed: 3
+  waitTime: 0
   rotationSpeed: 5
   wayPoints: []
 --- !u!114 &2630169680782562734
