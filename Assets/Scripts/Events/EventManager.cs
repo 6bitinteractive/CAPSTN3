@@ -205,6 +205,9 @@ public class DigableEvent : UnityEvent<Digable> { }
 public class CutsceneEvent : UnityEvent<Cutscene> { }
 
 [Serializable]
+public class SwitchStateEvent : UnityEvent<State> { }
+
+[Serializable]
 public class HungerEvent : UnityEvent<Hunger> { }
 #endregion
 

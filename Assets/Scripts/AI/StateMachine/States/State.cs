@@ -12,8 +12,10 @@ public class State : MonoBehaviour
     protected NavMeshAgent navMeshAgent;
     protected Animator animator;
     [SerializeField] protected UnityEvent onEnable;
-    [SerializeField] protected UnityEvent onDisable; 
+    [SerializeField] protected UnityEvent onDisable;
     [SerializeField] private List<Transition> transitions = new List<Transition>();
+
+    private static EventManager eventManager;
 
     void Awake()
     {
@@ -25,6 +27,8 @@ public class State : MonoBehaviour
     public virtual void OnEnable()
     {
         onEnable.Invoke();
+        eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
+        eventManager.Trigger<SwitchStateEvent, State>(this);
     }
 
     public virtual void OnDisable()
@@ -70,5 +74,5 @@ public class State : MonoBehaviour
     {
         public AICondition aiCondition;
         public State targetState;
-    }  
+    }
 }
