@@ -9,6 +9,7 @@ public class Timer : MonoBehaviour
     public UnityEvent OnCountdownStart;
     public UnityEvent OnCountdownEnd;
 
+    private bool end;
     private float currentCountdownValue;
 
     public float CurrentCountdownValue
@@ -37,7 +38,7 @@ public class Timer : MonoBehaviour
     void Update()
     {
         // If countdown ended call CountdownEnd function
-        if (CurrentCountdownValue <= 0)
+        if (CurrentCountdownValue <= 0 && !end)
         {
             CurrentCountdownValue = 0f;
             CountdownEnd();
@@ -55,11 +56,13 @@ public class Timer : MonoBehaviour
 
     private void CountdownEnd()
     {
+        end = true;
         if (OnCountdownEnd != null) OnCountdownEnd.Invoke(); // Broadcast to listeners that countdown has ended
     }
 
     public void ResetTimer()
     {
+        end = false;
         CurrentCountdownValue = CountdownValue;
         StartCoroutine(StartCountdown());
     }
