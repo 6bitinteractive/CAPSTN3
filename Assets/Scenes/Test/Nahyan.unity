@@ -414,6 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bfd91acaeb795845a7786ba8a6a82a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  faceSource: 1
   OnTalk:
     m_PersistentCalls:
       m_Calls: []
@@ -2482,6 +2483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bfd91acaeb795845a7786ba8a6a82a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  faceSource: 1
   OnTalk:
     m_PersistentCalls:
       m_Calls: []
@@ -2624,6 +2626,36 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 255704132852708906, guid: 63cc54b93023a1740a617c7bf7756820,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 582745730732876751, guid: 63cc54b93023a1740a617c7bf7756820,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 582745730732876751, guid: 63cc54b93023a1740a617c7bf7756820,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 582745730732876751, guid: 63cc54b93023a1740a617c7bf7756820,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 582745730732876751, guid: 63cc54b93023a1740a617c7bf7756820,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 582745730732876751, guid: 63cc54b93023a1740a617c7bf7756820,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 582745730732876751, guid: 63cc54b93023a1740a617c7bf7756820,
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -5031,6 +5063,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasContainer: {fileID: 1252559856}
+  dialogueButtonPanel: {fileID: 0}
   dialogueSpeaker: {fileID: 11400000, guid: 2cdb60320808ecd43ba300813b6f1046, type: 2}
   displayText: {fileID: 1535633559}
 --- !u!114 &1578029082
@@ -7295,6 +7328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bfd91acaeb795845a7786ba8a6a82a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  faceSource: 1
   OnTalk:
     m_PersistentCalls:
       m_Calls: []

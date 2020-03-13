@@ -13,6 +13,9 @@ public class FatigueState : State
         navMeshAgent.ResetPath(); // Stop moving
         eyes.gameObject.SetActive(false);
         attackRange.gameObject.SetActive(false);
+
+        if (animator == null) return;
+        animator.SetTrigger("Fatigue");
     }
 
     public override void OnDisable()

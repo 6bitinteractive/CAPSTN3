@@ -1152,7 +1152,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   transitions:
-  - aiCondition: {fileID: 11400000, guid: b22acf806eac6904dac825fc1fded313, type: 2}
+  - aiCondition: {fileID: 11400000, guid: a7e2fb35fbadb3d408f46823e8222337, type: 2}
     targetState: {fileID: 2608791735976079249}
   - aiCondition: {fileID: 11400000, guid: 9d84a886e0e2fe94ab25fbfdff7b70c2, type: 2}
     targetState: {fileID: 4843260645945008252}
@@ -1180,6 +1180,8 @@ MonoBehaviour:
   transitions:
   - aiCondition: {fileID: 11400000, guid: 28daeffb7301b6c46b803f2d93bfde4a, type: 2}
     targetState: {fileID: 290378673617110870}
+  - aiCondition: {fileID: 11400000, guid: b22acf806eac6904dac825fc1fded313, type: 2}
+    targetState: {fileID: 7860320246725198477}
 --- !u!114 &4843260645945008252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1264,7 +1266,7 @@ MonoBehaviour:
       m_Calls: []
   transitions:
   - aiCondition: {fileID: 11400000, guid: b22acf806eac6904dac825fc1fded313, type: 2}
-    targetState: {fileID: 7860320246725198477}
+    targetState: {fileID: 6914078509547294613}
   eyes: {fileID: 1163566861309459475}
   attackRange: {fileID: 5453320222454979358}
 --- !u!1 &3937158980684356567
