@@ -101,7 +101,7 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c2fffa55-0ff6-4304-972f-e7c225d9e529"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Player"",
@@ -112,7 +112,7 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""b48ef6f9-ce00-4888-bcff-8f0b3b02c8cf"",
-                    ""path"": ""<Keyboard>/i"",
+                    ""path"": ""<Keyboard>/l"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Player"",
