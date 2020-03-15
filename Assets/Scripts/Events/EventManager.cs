@@ -209,6 +209,9 @@ public class SwitchStateEvent : UnityEvent<State> { }
 
 [Serializable]
 public class HungerEvent : UnityEvent<Hunger> { }
+
+[Serializable]
+public class GoodBoyPointsEvent : UnityEvent<GoodBoyPointsHandler> { }
 #endregion
 
 // Reference

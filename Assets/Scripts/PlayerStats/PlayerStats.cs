@@ -5,4 +5,5 @@ using UnityEngine;
 public class PlayerStats : Singleton<PlayerStats>
 {
     public float Hunger { get; set; }
+    public int GoodBoyPoints { get; set; }
 }
