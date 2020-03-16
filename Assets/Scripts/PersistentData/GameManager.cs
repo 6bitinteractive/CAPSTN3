@@ -23,7 +23,7 @@ namespace Meowfia.WanderDog
 
         [Header("Scene")]
         [SerializeField] private SceneData titleScreen;
-        [SerializeField] private SceneData storybookScene;
+        [SerializeField] private SceneData newGameStartingPoint;
 
         public DayProgression DayProgression => dayProgression;
 
@@ -66,6 +66,7 @@ namespace Meowfia.WanderDog
 
         public void StartGame()
         {
+            // Determine which scene should be loaded
             SceneData sceneToLoad;
             if (!StartNewGame && persistentStorage.HasSaveFile())
             {
@@ -76,12 +77,17 @@ namespace Meowfia.WanderDog
             else
             {
                 GameData.ResetData();
-                sceneToLoad = storybookScene;
+                sceneToLoad = newGameStartingPoint;
             }
 
             // Prepare day
             dayProgression.Initialize(questManager);
 
+            // Begin day 1 if it's a new start of the game
+            if (sceneToLoad == newGameStartingPoint)
+                dayProgression.BeginDay(0);
+
+            // Load the scene
             sceneController.LoadScene(sceneToLoad);
         }
 

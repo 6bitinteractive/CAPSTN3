@@ -14,6 +14,7 @@ public class DaySelection : MonoBehaviour
         gameManager = SingletonManager.GetInstance<GameManager>();
         buttons.AddRange(GetComponentsInChildren<Button>());
 
-        buttons[gameManager.DayProgression.CurrentDayIndex].interactable = true;
+        // Less 1 because the storybook scene starts with day 2 (which is index 1)
+        buttons[gameManager.DayProgression.CurrentDayIndex - 1].interactable = true;
     }
 }
