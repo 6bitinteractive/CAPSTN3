@@ -5,11 +5,10 @@ using System.Linq;
 
 public class Interactor : MonoBehaviour
 {
-    private IInteractable[] interactableTargets;
+    private List<GameObject> interactableTargetsGameObjectList = new List<GameObject>();
+    private List<IInteractable> InteractableTargetsList = new List<IInteractable>();
     private GameObject currentTarget;
     private bool canInteract = true;
-
-    public IInteractable[] InteractableTargets { get => interactableTargets; set => interactableTargets = value; }
     public GameObject CurrentTarget { get => currentTarget; set => currentTarget = value; }
     public bool CanInteract { get => canInteract; set => canInteract = value; }
 
@@ -17,30 +16,115 @@ public class Interactor : MonoBehaviour
     {
         if (canInteract)
         {
-            InteractableTargets = collider.gameObject.GetComponents<IInteractable>();           
-            if (interactableTargets != null)
-            {
-                if (InteractableTargets.Length == 0) return;
-                foreach (var targets in InteractableTargets) targets.HideInteractability();
+            IInteractable newTarget = collider.gameObject.GetComponent<IInteractable>();
+
+            if (newTarget == null) return;
+            {            
+                newTarget.HideInteractability();
+                ClearLists(newTarget.gameObject);
                 CurrentTarget = null;
-                InteractableTargets = null;
             }
-        }    
-        //Debug.Log("No longer interacting with " + collider.name);
+        }
+      //  Debug.Log("No longer interacting with " + collider.name);
     }
 
+
+    // Reminder for myself if its too laggy perhaps changing it to onTriggerEnter would make more sense
     private void OnTriggerStay(Collider collider)
     {
         if (canInteract)
         {
-            InteractableTargets = collider.gameObject.GetComponents<IInteractable>();
-            if (interactableTargets != null)
+            //Check if the new target is interactable
+            IInteractable newTarget = collider.gameObject.GetComponent<IInteractable>();
+         
+            // Check if the new target exits
+            if (newTarget == null) return;
             {
-                if (InteractableTargets.Length == 0) return;
-                foreach (var targets in InteractableTargets) targets.DisplayInteractability();
-                currentTarget = collider.gameObject;
+                CheckForDuplicatesInList(newTarget.gameObject);
+                FindNearestGameObject();
+                CreateNewInteractableList();
             }
         }
-        //Debug.Log(currentTarget);
+      //  Debug.Log("Current: " + currentTarget);
+    }
+
+    public GameObject FindNearestGameObject()
+    {
+        float distanceToNearestTarget = Mathf.Infinity;
+        CurrentTarget = null;
+
+        // Find the nearest object
+        foreach (GameObject nearestTargets in interactableTargetsGameObjectList)
+        {
+            float distanceToTarget = (nearestTargets.transform.position - gameObject.transform.position).sqrMagnitude;
+
+            if (distanceToTarget < distanceToNearestTarget)
+            {
+                distanceToNearestTarget = distanceToTarget;
+                CurrentTarget = nearestTargets; // Set current target to neareset target
+
+                //  Debug.Log("Nearest" + currentTarget + " " + currentTarget.transform.position);
+                //  Debug.DrawLine(gameObject.transform.position, currentTarget.transform.position);
+            }
+        }
+      // Debug.Log("Nearest" + CurrentTarget);
+       return CurrentTarget;
+    }
+
+    private void CreateNewInteractableList()
+    {
+        // Clear the list of interactableTargetList
+        foreach (IInteractable interactable in InteractableTargetsList)
+            interactable.HideInteractability();
+
+        InteractableTargetsList.Clear();
+
+        // Create a new list based off the IInteractable componets in currentTarget
+        foreach (IInteractable targets in CurrentTarget.GetComponents<IInteractable>())
+        {
+            CheckForDuplicatesInDisplayList(targets);
+            targets.DisplayInteractability();
+            Debug.Log(targets);
+        }
+    }
+
+    private void CheckForDuplicatesInDisplayList(IInteractable newTarget)
+    {
+
+        if (InteractableTargetsList.Contains(newTarget))
+        {
+           // Debug.Log("Already contain " + newTarget);
+            return;
+        }
+
+        else
+        {
+           InteractableTargetsList.Add(newTarget);
+          // Debug.Log("Adding " + newTarget);
+        }
+    }
+
+    private void CheckForDuplicatesInList(GameObject newTarget)
+    {
+        if (interactableTargetsGameObjectList.Contains(newTarget.gameObject))
+        {
+           // Debug.Log("Already contain " + newTarget.gameObject);
+            return;
+        }
+
+        else
+        {
+            interactableTargetsGameObjectList.Add(newTarget.gameObject);
+          //  Debug.Log("Adding " + newTarget.gameObject.name);
+        }
+    }
+
+    private void ClearLists(GameObject newTarget)
+    {      
+       foreach (IInteractable interactable in InteractableTargetsList) 
+             interactable.HideInteractability();
+
+        InteractableTargetsList.Clear();
+        interactableTargetsGameObjectList.Remove(newTarget.gameObject);
     }
 }

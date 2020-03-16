@@ -93,7 +93,7 @@ public class Movement : MonoBehaviour
         if (isGrounded && currentDirection.y < 0)
         {
             currentDirection.y = -2f;
-            Debug.Log("grounded");
+            //Debug.Log("grounded");
         }
     }
 }
