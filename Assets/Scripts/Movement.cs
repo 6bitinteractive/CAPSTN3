@@ -35,14 +35,14 @@ public class Movement : MonoBehaviour
     public void Move(Vector3 direction, int modifier)
     {
         currentDirection = direction;
-       
+
         CheckIfGrounded();
         GetDirection();
         Rotate(currentDirection);
 
         currentDirection.y += gravity * Time.deltaTime;
         controller.Move((currentDirection * speed * currentMultiplier * modifier) * Time.deltaTime);
-      
+
         if (animator == null) return;
         Animate(currentDirection);
     }
@@ -93,7 +93,7 @@ public class Movement : MonoBehaviour
         if (isGrounded && currentDirection.y < 0)
         {
             currentDirection.y = -2f;
-            Debug.Log("grounded");
+            //Debug.Log("grounded");
         }
     }
 }
