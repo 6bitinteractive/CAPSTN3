@@ -84,7 +84,7 @@ public class Interactor : MonoBehaviour
         {
             CheckForDuplicatesInDisplayList(targets);
             targets.DisplayInteractability();
-            Debug.Log(targets);
+           // Debug.Log(targets);
         }
     }
 
