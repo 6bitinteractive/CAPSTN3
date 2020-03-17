@@ -76,6 +76,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   offset: {x: 0, y: 0, z: 0}
+--- !u!114 &3781556784008723075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122613510620525894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b1182bccbb5fb14aa7fd5c65c8043bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: -25
 --- !u!114 &4445025760628138331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,19 +107,19 @@ MonoBehaviour:
   - {fileID: 1246275425377623070}
   outlineShader: {fileID: -6465566751694194690, guid: 36b851668fd665943bf191c6bc63e477,
     type: 3}
---- !u!114 &3781556784008723075
-MonoBehaviour:
+--- !u!135 &105645066452395430
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2122613510620525894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b1182bccbb5fb14aa7fd5c65c8043bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  value: -25
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2169373149003381269
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,6 +213,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Burger
   value: 50
+--- !u!114 &4907925619723454784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4961492921094880441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b1182bccbb5fb14aa7fd5c65c8043bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: -25
 --- !u!114 &6059941242660210901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,19 +259,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   offset: {x: 0, y: 0, z: 0}
---- !u!114 &4907925619723454784
-MonoBehaviour:
+--- !u!135 &8968010341382261453
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4961492921094880441}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b1182bccbb5fb14aa7fd5c65c8043bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  value: -25
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5531148722418354170
 GameObject:
   m_ObjectHideFlags: 0
