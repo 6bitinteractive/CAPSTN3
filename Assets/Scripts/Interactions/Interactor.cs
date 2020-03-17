@@ -82,30 +82,48 @@ public class Interactor : MonoBehaviour
         // Create a new list based off the IInteractable componets in currentTarget
         foreach (IInteractable targets in CurrentTarget.GetComponents<IInteractable>())
         {
-            //If interactable component is not enabled return
-            if (!targets.enabled) return;
-            {
-                CheckForDuplicatesInDisplayList(targets);
-                targets.DisplayInteractability();
-                // Debug.Log(targets);
-            }
+            CheckForDuplicatesInDisplayList(targets);
+    
+           // Debug.Log(targets);
+           // Debug.Log(InteractableTargetsList.Count);
         }
     }
 
     private void CheckForDuplicatesInDisplayList(IInteractable newTarget)
     {
-
-        if (InteractableTargetsList.Contains(newTarget))
+        if (newTarget.enabled)
         {
-           // Debug.Log("Already contain " + newTarget);
-            return;
-        }
+            if (InteractableTargetsList.Contains(newTarget))
+            {
+                // Debug.Log("Already contain " + newTarget);
+                return;
+            }
 
-        else
-        {
-           InteractableTargetsList.Add(newTarget);
-          // Debug.Log("Adding " + newTarget);
-        }
+            else
+            {
+                InteractableTargetsList.Add(newTarget);
+                DisplayInteractability(newTarget);
+                // Debug.Log("Adding " + newTarget);
+            }
+        } 
+    }
+
+    private void DisplayInteractability(IInteractable newTarget)
+    {
+        newTarget.DisplayInteractability();
+        HandleOutline(newTarget);
+    }
+
+    private void HandleOutline(IInteractable newTarget)
+    {
+        Outlineable outlineableTarget = newTarget.gameObject.GetComponent<Outlineable>();
+
+        // Turn on outline shader if there are other IInteractables enabled not including Outlineable
+        if (outlineableTarget != null && newTarget.enabled && newTarget != outlineableTarget)
+            outlineableTarget.enabled = true;
+
+        // Else turn off Outlineable component
+        else outlineableTarget.enabled = false;
     }
 
     private void CheckForDuplicatesInList(GameObject newTarget)
