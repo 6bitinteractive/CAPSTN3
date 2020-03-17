@@ -10,6 +10,7 @@ public class Pickupable : MonoBehaviour
     Collider collider;
     [SerializeField] private Vector3 dropOffset;
     [SerializeField] private float dropSpeed = 300f;
+    Collider[] collidersArray;
     static EventManager eventManager;
 
     private void Start()
@@ -17,6 +18,7 @@ public class Pickupable : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
         eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
+        collidersArray = gameObject.GetComponents<Collider>();
     }
 
     public void Pickup(Interactor source, Transform mouth)
@@ -37,10 +39,11 @@ public class Pickupable : MonoBehaviour
             source.GetComponent<Bite>().IsBiting = false;
    
         transform.SetParent(null);
-        collider.enabled = true;
+        foreach (Collider collider in collidersArray) collider.enabled = true;
         rb.isKinematic = false;
         rb.useGravity = true;
         rb.AddForce(dropOffset * dropSpeed);
+
         eventManager.Trigger<PickupEvent, PickupData>(new PickupData() { source = source, pickupable = this, type = PickupData.Type.Drop });
     }
 }
