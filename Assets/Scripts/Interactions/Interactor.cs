@@ -82,9 +82,13 @@ public class Interactor : MonoBehaviour
         // Create a new list based off the IInteractable componets in currentTarget
         foreach (IInteractable targets in CurrentTarget.GetComponents<IInteractable>())
         {
-            CheckForDuplicatesInDisplayList(targets);
-            targets.DisplayInteractability();
-           // Debug.Log(targets);
+            //If interactable component is not enabled return
+            if (!targets.enabled) return;
+            {
+                CheckForDuplicatesInDisplayList(targets);
+                targets.DisplayInteractability();
+                // Debug.Log(targets);
+            }
         }
     }
 
