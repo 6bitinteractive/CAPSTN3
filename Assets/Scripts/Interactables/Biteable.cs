@@ -24,6 +24,7 @@ public class Biteable : MonoBehaviour, IInteractable
     public void Interact(Interactor source, IInteractable target)
     {
         //Debug.Log("Biting " + gameObject.name);
+        if (!enabled) return;
         Bite(source);
     }
 

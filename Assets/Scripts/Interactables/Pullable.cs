@@ -20,6 +20,7 @@ public class Pullable : MonoBehaviour
 
     public void Pull(Interactor source)
     {
+        if (!enabled) return;
         source.GetComponent<Bite>().IsBiting = true;
         rb.isKinematic = false;
         rb.useGravity = false;

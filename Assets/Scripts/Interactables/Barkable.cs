@@ -24,6 +24,7 @@ public class Barkable : MonoBehaviour, IInteractable
     public void Interact(Interactor source, IInteractable target)
     {
         //MoveAway(source);
+        if (!enabled) return;
         OnBark.Invoke(source);
     }
 

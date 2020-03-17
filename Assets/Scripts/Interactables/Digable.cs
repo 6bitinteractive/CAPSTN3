@@ -27,6 +27,7 @@ public class Digable : MonoBehaviour, IInteractable
 
     public void Interact(Interactor source, IInteractable target)
     {
+        if (!enabled) return;
         if (currentHp <= 0) return;
         {
             OnDig.Invoke();

@@ -17,6 +17,7 @@ public class DigableTerrain : MonoBehaviour, IInteractable
 
     public void Interact(Interactor source, IInteractable target)
     {
+        if (!enabled) return;
         poolHandler.SpawnPooledObject(source.GetComponent<Dig>().DigOffset);
     }
 

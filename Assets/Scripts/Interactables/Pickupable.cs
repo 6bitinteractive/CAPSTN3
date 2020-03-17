@@ -23,6 +23,7 @@ public class Pickupable : MonoBehaviour
 
     public void Pickup(Interactor source, Transform mouth)
     {
+        if (!enabled) return;
         source.GetComponent<Bite>().IsBiting = true;
         transform.SetParent(mouth.transform);
         transform.localPosition = Vector3.zero;

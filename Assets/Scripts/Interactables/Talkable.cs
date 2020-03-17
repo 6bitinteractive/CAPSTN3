@@ -29,6 +29,7 @@ public class Talkable : MonoBehaviour, IInteractable
     public void Interact(Interactor source, IInteractable target)
     {
         //Debug.Log(source + "Is talking to " + target);
+        if (!enabled) return;
 
         if (animator != null)
             animator.SetTrigger("Talk");
