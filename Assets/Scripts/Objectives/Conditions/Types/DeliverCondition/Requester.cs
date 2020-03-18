@@ -55,11 +55,9 @@ public class Requester : MonoBehaviour
     {
         if (requestDict.TryGetValue(condition, out Request request))
         {
-            //currentActiveConditions.Add(condition);
             ActiveRequests.Add(request);
-
-            foreach (var activeRequest in ActiveRequests)
-                activeRequest.active = true;
+            request.active = true;
+            request.Deliverable?.Activate();
         }
     }
 
@@ -74,7 +72,7 @@ public class Requester : MonoBehaviour
             return;
 
         // Find the related request that has this deliverable
-        Request activeRequest = ActiveRequests.Find(x => x.requestedDeliverableObject.gameObject.GetComponent<Deliverable>() == deliverable);
+        Request activeRequest = ActiveRequests.Find(x => x.Deliverable == deliverable);
 
         if (activeRequest != null)
         {
@@ -112,6 +110,16 @@ public class Request
     public Conversation conversationUnsatisfied;
     [HideInInspector] public bool active;
     [HideInInspector] public bool satisfied;
+    private Deliverable deliverable;
+
+    public Deliverable Deliverable
+    {
+        get
+        {
+            deliverable = deliverable ?? requestedDeliverableObject.gameObject.GetComponent<Deliverable>();
+            return deliverable;
+        }
+    }
 }
 
 /*

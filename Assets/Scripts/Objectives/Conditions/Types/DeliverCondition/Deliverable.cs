@@ -2,19 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Sniffable))]
+
 public class Deliverable : MonoBehaviour
 {
     private Biteable biteable;
     private Pickupable pickupable;
     private Outlineable outlineable;
+    private Sniffable sniffable;
     private Rigidbody rb;
 
     private void Awake()
     {
-        biteable = GetComponent<Biteable>();
-        pickupable = GetComponent<Pickupable>();
-        outlineable = GetComponent<Outlineable>();
-        rb = GetComponent<Rigidbody>();
+        Init();
+    }
+
+    public void Activate()
+    {
+        biteable.enabled = true;
+        sniffable.SetCurrentTarget();
     }
 
     public void OnDeliver()
@@ -30,5 +36,18 @@ public class Deliverable : MonoBehaviour
 
         if (rb)
             rb.isKinematic = true;
+
+        sniffable.RemoveCurrentTargetSniffable();
+    }
+
+    private void Init()
+    {
+        biteable = GetComponent<Biteable>();
+        pickupable = GetComponent<Pickupable>();
+        outlineable = GetComponent<Outlineable>();
+        sniffable = GetComponent<Sniffable>();
+        rb = GetComponent<Rigidbody>();
+
+        biteable.enabled = false;
     }
 }
