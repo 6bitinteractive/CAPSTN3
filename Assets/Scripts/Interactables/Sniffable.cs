@@ -9,6 +9,8 @@ public class Sniffable : MonoBehaviour
     public void SetCurrentTarget()
     {
         sniff = FindObjectOfType<Sniff>();
+        if (sniff == null || !sniff.enabled) return;
+
         sniff.CurrentDestination = gameObject.transform;
     }
 

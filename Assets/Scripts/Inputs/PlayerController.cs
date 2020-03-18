@@ -197,6 +197,8 @@ public class PlayerController : MonoBehaviour
 
     public void ActivateScentMode()
     {
+        if (!sniff.enabled) { return; }
+
         sniff.ActivateScentMode();
     }
 
