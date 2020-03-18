@@ -118,12 +118,15 @@ public class Interactor : MonoBehaviour
     {
         Outlineable outlineableTarget = newTarget.gameObject.GetComponent<Outlineable>();
 
-        // Turn on outline shader if there are other IInteractables enabled not including Outlineable
-        if (outlineableTarget != null && newTarget.enabled && newTarget != outlineableTarget)
-            outlineableTarget.enabled = true;
+        if (outlineableTarget != null)
+        {
+            // Turn on outline shader if there are other IInteractables enabled not including Outlineable
+            if (newTarget.enabled && newTarget != outlineableTarget)
+                outlineableTarget.enabled = true;
 
-        // Else turn off Outlineable component
-        else outlineableTarget.enabled = false;
+            // Else turn off Outlineable component
+            else outlineableTarget.enabled = false;
+        }
     }
 
     private void CheckForDuplicatesInList(GameObject newTarget)
