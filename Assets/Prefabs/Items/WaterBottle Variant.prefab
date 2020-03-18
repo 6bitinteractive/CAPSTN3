@@ -62,6 +62,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: fe76666ce637cd843836481475ac36aa,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: fe76666ce637cd843836481475ac36aa,
         type: 3}
       propertyPath: m_Name
@@ -69,6 +74,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe76666ce637cd843836481475ac36aa, type: 3}
+--- !u!23 &3629052801556708 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: fe76666ce637cd843836481475ac36aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 7715193379264843057}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7715193379357553322
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -161,6 +172,16 @@ PrefabInstance:
       propertyPath: serializedGuid.Array.data[15]
       value: 144
       objectReference: {fileID: 0}
+    - target: {fileID: 3734769556844303825, guid: 399c7aece7d46f443aad3e3f6bef67d9,
+        type: 3}
+      propertyPath: meshRendersToOutline.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3734769556844303825, guid: 399c7aece7d46f443aad3e3f6bef67d9,
+        type: 3}
+      propertyPath: meshRendersToOutline.Array.data[0]
+      value: 
+      objectReference: {fileID: 3629052801556708}
     - target: {fileID: 4780190561334857533, guid: 399c7aece7d46f443aad3e3f6bef67d9,
         type: 3}
       propertyPath: m_RootOrder
