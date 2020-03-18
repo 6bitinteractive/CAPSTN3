@@ -56,16 +56,20 @@ public class Interactor : MonoBehaviour
         // Find the nearest object
         foreach (GameObject nearestTargets in interactableTargetsGameObjectList)
         {
-            float distanceToTarget = (nearestTargets.transform.position - gameObject.transform.position).sqrMagnitude;
-
-            if (distanceToTarget < distanceToNearestTarget)
+            if (nearestTargets.activeInHierarchy)
             {
-                distanceToNearestTarget = distanceToTarget;
-                CurrentTarget = nearestTargets; // Set current target to neareset target
+                float distanceToTarget = (nearestTargets.transform.position - gameObject.transform.position).sqrMagnitude;
 
-                //  Debug.Log("Nearest" + currentTarget + " " + currentTarget.transform.position);
-                //  Debug.DrawLine(gameObject.transform.position, currentTarget.transform.position);
+                if (distanceToTarget < distanceToNearestTarget)
+                {
+                    distanceToNearestTarget = distanceToTarget;
+                    CurrentTarget = nearestTargets; // Set current target to neareset target
+
+                    //  Debug.Log("Nearest" + currentTarget + " " + currentTarget.transform.position);
+                    //  Debug.DrawLine(gameObject.transform.position, currentTarget.transform.position);
+                }
             }
+ 
         }
       // Debug.Log("Nearest" + CurrentTarget);
        return CurrentTarget;
