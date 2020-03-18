@@ -14,9 +14,9 @@ public class GoodBoyPointsHandler : MonoBehaviour
 
     public State CurrentState { get; private set; }
     public int CurrentValue { get; private set; }
-    public int CurrentValueNormalized => CurrentValue / maxGoodBoyPoints;
+    public float CurrentValueNormalized => CurrentValue / maxGoodBoyPoints;
 
-    public GoodBoyPointsEvent OnEvaluateGoodBoyPoints;
+    public GoodBoyPointsHandlerEvent OnEvaluateGoodBoyPoints;
 
     private static EventManager eventManager;
     private PlayerStats playerStats;
@@ -24,12 +24,12 @@ public class GoodBoyPointsHandler : MonoBehaviour
     private void OnEnable()
     {
         eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
-        eventManager.Subscribe<PickupEvent, PickupData>(OnPickup);
+        eventManager.Subscribe<GoodBoyPointsEvent, GoodBoyPoints>(OnPointsUpdate);
     }
 
     private void OnDisable()
     {
-        eventManager.Unsubscribe<PickupEvent, PickupData>(OnPickup);
+        eventManager.Unsubscribe<GoodBoyPointsEvent, GoodBoyPoints>(OnPointsUpdate);
     }
 
     private void Start()
@@ -44,21 +44,17 @@ public class GoodBoyPointsHandler : MonoBehaviour
         EvaluateState(CurrentValue);
     }
 
-    public void Handle(GoodBoyPoints goodBoyPoints)
+    public void UpdatePoints(GoodBoyPoints goodBoyPoints)
     {
-        Increase(goodBoyPoints.Value);
-        goodBoyPoints.AdjustGoodBoyPoints(gameObject);
-    }
-
-    public void Increase(int value)
-    {
-        CurrentValue += value;
+        CurrentValue += goodBoyPoints.Value;
         EvaluateState(CurrentValue);
     }
 
     private State EvaluateState(int value)
     {
         CurrentValue = Mathf.Clamp(CurrentValue, minGoodBoyPoints, maxGoodBoyPoints);
+
+        playerStats = playerStats ?? SingletonManager.GetInstance<PlayerStats>();
         playerStats.GoodBoyPoints = CurrentValue;
 
         if (value >= minFullGoodBoyPointsValue)
@@ -73,13 +69,10 @@ public class GoodBoyPointsHandler : MonoBehaviour
         return CurrentState;
     }
 
-    private void OnPickup(PickupData pickupData)
+    private void OnPointsUpdate(GoodBoyPoints goodBoyPoints)
     {
-        if (pickupData.type == PickupData.Type.Drop) { return; }
-
-        GoodBoyPoints goodboyPoints = pickupData.pickupable.GetComponent<GoodBoyPoints>();
-        if (goodboyPoints != null)
-            Handle(goodboyPoints);
+        if (goodBoyPoints != null)
+            UpdatePoints(goodBoyPoints);
     }
 
     public enum State
