@@ -14,6 +14,7 @@ public class DialogueDisplay : MonoBehaviour
 
     public DialogueSpeaker dialogueSpeaker;
     public TextMeshProUGUI displayText;
+    public LayoutElement layoutElement;
 
     private Transform thisTransform;
     private bool displayed;
@@ -26,6 +27,7 @@ public class DialogueDisplay : MonoBehaviour
 
     private void Awake()
     {
+        layoutElement = GetComponent<LayoutElement>();
         thisTransform = transform;
         dialogueButton = dialogueButtonPanel.GetComponentInChildren<Button>();
         canvasGroup = GetComponent<CanvasGroupController>();

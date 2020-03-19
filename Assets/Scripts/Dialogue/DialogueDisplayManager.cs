@@ -155,7 +155,8 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
             currentDialogue.OnDialogueBegin.Invoke(); // Invoke current dialogue's OnDialogueBegin event
 
         // Do the typewriter effect
-        yield return StartCoroutine(SimpleDisplayLine());
+        //yield return StartCoroutine(SimpleDisplayLine());
+        yield return StartCoroutine(DisplayLine(new string(nextLine.ToCharArray())));
 
         // Displaying the line is now done
         currentState = State.LineEnded;
@@ -185,6 +186,9 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
         // For typewriter effect using TMP
         totalCharacters = 0;
         currentDisplay.displayText.text = string.Empty;
+        currentDisplay.displayText.maxVisibleCharacters = nextLine.Length;
+        Vector2 preferred = currentDisplay.displayText.GetPreferredValues(nextLine); // Calculate the dimension of the text to be displayed
+        currentDisplay.layoutElement.preferredWidth = preferred.x + 100f; // Set the width
 
         // For simple typewriter effect
         textToDisplay.Clear();
@@ -200,9 +204,7 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
         currentDisplay.displayText.text = string.Empty;
 
         foreach (var character in nextLine)
-        {
             textToDisplay.Enqueue(character);
-        }
 
         // Display the line
         currentDisplay?.Display();
@@ -284,8 +286,6 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
             //    CheckForCommands(i);
             //}
 
-            //Instead of incrementing maxVisibleCharacters or add the current character to our string, we do this :
-
             // Get the index of the material used by the current character.
             int materialIndex = textInfo.characterInfo[i].materialReferenceIndex;
 
@@ -304,11 +304,22 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
                 newVertexColors[vertexIndex + 2] = c0;
                 newVertexColors[vertexIndex + 3] = c0;
 
+
                 // New function which pushes (all) updated vertex data to the appropriate meshes when using either the Mesh Renderer or CanvasRenderer.
                 currentDisplay.displayText.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
             }
 
+            // Force width of container to only be as big as the visible text
+            Vector2 rendered = currentDisplay.displayText.GetRenderedValues();
+            currentDisplay.layoutElement.preferredWidth = rendered.x > 0f ? rendered.x + 100f : 0f;
+
+            // Increment
             i++;
+
+            // Display i-number of characters
+            currentDisplay.displayText.maxVisibleCharacters = i;
+
+            // Wait to give that typewriter effect
             yield return new WaitForSeconds(currentCharacterWaitTime);
         }
     }
