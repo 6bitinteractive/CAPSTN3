@@ -7,6 +7,8 @@ using UnityEngine.Events;
 public class Dialogue
 {
     public DialogueSpeaker speaker;
+
+    [TextArea(3, 7)]
     public string[] dialogueLines;
 
     public UnityEvent OnDialogueBegin = new UnityEvent();

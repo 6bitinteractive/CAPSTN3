@@ -7,6 +7,7 @@ public class Conversation : MonoBehaviour
 {
     public Dialogue[] dialogue;
 
+    [Header("Conversation UnityEvents")]
     public UnityEvent OnConversationBegin = new UnityEvent();
     public UnityEvent OnConversationEnd = new UnityEvent();
 
