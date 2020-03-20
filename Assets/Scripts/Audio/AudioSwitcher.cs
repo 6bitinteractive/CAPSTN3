@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -22,7 +22,7 @@ public class AudioSwitcher : MonoBehaviour
 
     private void Awake()
     {
-        audioManager = new PersistentAudioManager(); //GameObject.FindGameObjectWithTag("AudioManager").GetComponent<PersistentAudioManager>();
+        audioManager = audioManager ?? SingletonManager.GetInstance<AudioManager>();
         audioSource = GetComponent<AudioSource>();
     }
 
