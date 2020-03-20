@@ -502,7 +502,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8531689703580132427}
   - component: {fileID: 5453320222454979358}
-  - component: {fileID: 3671359180460102032}
+  - component: {fileID: 4134058169753120884}
+  - component: {fileID: 4930795273909476395}
   m_Layer: 0
   m_Name: AttackPosition
   m_TagString: Untagged
@@ -518,7 +519,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1827963478816356691}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0603}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5625863638892515574}
@@ -539,8 +540,20 @@ MonoBehaviour:
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 256
---- !u!135 &3671359180460102032
-SphereCollider:
+--- !u!114 &4134058169753120884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827963478816356691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac265c4e13f9eef4caaf3a59f2171f8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &4930795273909476395
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -550,8 +563,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.09
-  m_Center: {x: 0, y: 0, z: 0.05}
+  m_Size: {x: 0.08862708, y: 0.08862707, z: 0.08862707}
+  m_Center: {x: -0.01942625, y: 0, z: 0}
 --- !u!1 &1856700610044615809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,7 +1020,7 @@ GameObject:
   - component: {fileID: 7157125830910967546}
   - component: {fileID: 7860320246725198477}
   - component: {fileID: 2608791735976079249}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: DogCatcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1196,7 +1209,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onEnable:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7157125830910967546}
+        m_MethodName: AttackEvent
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3420977063234496736}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDisable:
     m_PersistentCalls:
       m_Calls: []
@@ -1221,6 +1245,32 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   attackRadius: 0.2
+  OnAttack:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7157125830910967546}
+        m_MethodName: DisableTargetMovement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4134058169753120884}
+        m_MethodName: LoadScene
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 9d051ad0ee483ee4dae8eec5a885bafb,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: SceneData, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7860320246725198477
 MonoBehaviour:
   m_ObjectHideFlags: 0

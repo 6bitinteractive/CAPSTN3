@@ -109,6 +109,7 @@ public class PlayerController : MonoBehaviour
 
         Biteable biteable = interactor.CurrentTarget.GetComponent<Biteable>();
         if (biteable == null) return;
+        if (!biteable.isActiveAndEnabled) return;
 
         // If the player is no longer biting
         if (!bite.IsBiting)

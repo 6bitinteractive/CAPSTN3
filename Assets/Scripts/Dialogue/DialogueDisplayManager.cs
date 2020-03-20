@@ -6,12 +6,16 @@ using UnityEngine.Events;
 using TMPro;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
 {
     [SerializeField] private float defaultCharacterDisplayWaitTime = 0.06f;
 
     [Tooltip("NOTE: This is a multiplier.\n\nA smaller number means you make the wait time shorter.\n\nShorter wait time means faster display of text.")]
     [SerializeField] private float characterDisplayWaitTimeMultiplier = 0.2f;
+
+    [SerializeField] private AudioClip TextScrollSFX;
 
     public Dictionary<DialogueSpeaker, DialogueDisplay> dialogueDisplays = new Dictionary<DialogueSpeaker, DialogueDisplay>();
 
@@ -28,9 +32,12 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
     private string nextLine;
     private float currentCharacterWaitTime;
     private float minCharacterDisplayWaitTime;
+    private AudioSource audioSource;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         // Fastest (minimum) waiting time
         minCharacterDisplayWaitTime = defaultCharacterDisplayWaitTime * characterDisplayWaitTimeMultiplier * characterDisplayWaitTimeMultiplier;
         ResetDisplayLineSpeed();
@@ -137,6 +144,10 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
         // Start by taking the line to be displayed
         nextLine = currentDialogue.GetNextLine();
 
+        // Play text scroll SFX
+        audioSource.clip = TextScrollSFX;
+        audioSource.Play();
+
         // Check if we're going to need to use another display, i.e. there's another speaker
         if (currentDialogue.speaker != previousSpeaker)
         {
@@ -161,6 +172,7 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
         // Displaying the line is now done
         currentState = State.LineEnded;
         currentDisplay.ShowButton(true);
+        audioSource.Stop();
         OnDialogueLineEnd.Invoke();
 
         if (currentDialogue.HasEnded()) // Check if we're at the end of the current speaker's dialogue

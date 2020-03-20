@@ -9,6 +9,7 @@ public class Interactor : MonoBehaviour
     private List<IInteractable> InteractableTargetsList = new List<IInteractable>();
     private GameObject currentTarget;
     private bool canInteract = true;
+    private GameObject previousTarget;
     public GameObject CurrentTarget { get => currentTarget; set => currentTarget = value; }
     public bool CanInteract { get => canInteract; set => canInteract = value; }
 
@@ -40,9 +41,13 @@ public class Interactor : MonoBehaviour
             // Check if the new target exits
             if (newTarget == null) return;
             {
-                CheckForDuplicatesInList(newTarget.gameObject);
-                FindNearestGameObject();
-                CreateNewInteractableList();
+                // Only make the list if the previous target does not equal the current target
+                if (previousTarget != null && previousTarget == currentTarget) return;
+                {
+                    CheckForDuplicatesInList(newTarget.gameObject);
+                    FindNearestGameObject();
+                    CreateNewInteractableList();
+                }
             }
         }
       //  Debug.Log("Current: " + currentTarget);
@@ -64,7 +69,7 @@ public class Interactor : MonoBehaviour
                 {
                     distanceToNearestTarget = distanceToTarget;
                     CurrentTarget = nearestTargets; // Set current target to neareset target
-
+                    previousTarget = currentTarget;
                     //  Debug.Log("Nearest" + currentTarget + " " + currentTarget.transform.position);
                     //  Debug.DrawLine(gameObject.transform.position, currentTarget.transform.position);
                 }
@@ -154,6 +159,6 @@ public class Interactor : MonoBehaviour
              interactable.HideInteractability();
 
         InteractableTargetsList.Clear();
-        interactableTargetsGameObjectList.Remove(newTarget.gameObject);
+        interactableTargetsGameObjectList.Clear();
     }
 }
