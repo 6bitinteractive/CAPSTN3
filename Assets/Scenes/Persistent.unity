@@ -4906,6 +4906,7 @@ GameObject:
   - component: {fileID: 1273029384}
   - component: {fileID: 1273029383}
   - component: {fileID: 1273029388}
+  - component: {fileID: 1273029389}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5002,6 +5003,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d8b88eb67c753446909b17257c08d05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1273029389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273029382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 714e813655ea76b4eb06eb550c451bcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgm: {fileID: 0}
+  ambient: {fileID: 0}
 --- !u!4 &1308021646 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3560431630348688589, guid: aa9b234a61bc4d44fbb3f6650c51146b,
@@ -8659,7 +8674,6 @@ MonoBehaviour:
   defaultCharacterDisplayWaitTime: 0.06
   characterDisplayWaitTimeMultiplier: 0.2
   TextScrollSFX: {fileID: 8300000, guid: 1d10d99f1761b1449a7cc16d9d49f87b, type: 3}
-  ContinueDialogueSFX: {fileID: 8300000, guid: 9e4c02cccd04449429e86afea8300df2, type: 3}
   OnConversationBegin:
     m_PersistentCalls:
       m_Calls: []
