@@ -33,10 +33,12 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
     private float currentCharacterWaitTime;
     private float minCharacterDisplayWaitTime;
     private AudioSource audioSource;
+    private SpecialCommandHandler specialCommandHandler;
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        specialCommandHandler = new SpecialCommandHandler();
 
         // Fastest (minimum) waiting time
         minCharacterDisplayWaitTime = defaultCharacterDisplayWaitTime * characterDisplayWaitTimeMultiplier * characterDisplayWaitTimeMultiplier;
@@ -72,7 +74,8 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
                     currentCharacterWaitTime *= characterDisplayWaitTimeMultiplier;
                     currentCharacterWaitTime = Mathf.Clamp(currentCharacterWaitTime, minCharacterDisplayWaitTime, defaultCharacterDisplayWaitTime);
 
-                    // If the speed has reached the minimum, we then display the full line
+                    // If the speed has reached the minimum (i.e. the fastest), we then display the full line
+                    // We infer that the player must want to see the full line ASAP
                     if (Mathf.Approximately(currentCharacterWaitTime, minCharacterDisplayWaitTime))
                         DisplayFullLine();
 
@@ -107,10 +110,8 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
         // Close the display
         currentDisplay?.Display(false);
 
-        // Reset everything
+        // Reset some references
         ResetDisplayLineSpeed();
-
-        // Clear references to avoid null ref errors
         currentDialogue = null;
         previousDialogue = null;
         currentDisplay = null;
@@ -119,6 +120,9 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
         // Broadcast that the conversation has ended
         conversationToDisplay.OnConversationEnd.Invoke(); // Invoke the event specific to the conversation
         OnConversationEnd.Invoke();
+
+        // Reset the SpecialCommandHandler
+        specialCommandHandler.ResetSpecialCommandList();
 
         // Ready for new conversation
         currentState = State.ReadyForConversation;
@@ -208,6 +212,7 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
         currentDisplay.displayText.text = nextLine;
     }
 
+    #region Basic typewritter effect
     private Queue<char> textToDisplay = new Queue<char>();
 
     private IEnumerator SimpleDisplayLine()
@@ -229,8 +234,9 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
             yield return new WaitForSeconds(currentCharacterWaitTime);
         }
     }
+    #endregion
 
-    #region Typewriter effect using TextMeshPro / Incompatible with Vertical Layout Group
+    #region Typewriter effect using TextMeshPro
     // This implementation fixes word-wrapping issues for very long texts that span multiple lines
 
     private void OnEnable()
@@ -249,8 +255,8 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
 
     private IEnumerator DisplayLine(string text)
     {
-        //currentDisplay.displayText.text = StripAllCommands(text);
-        currentDisplay.displayText.text = text;
+        currentDisplay.displayText.text = specialCommandHandler.FormatText(text);
+        //currentDisplay.displayText.text = text;
         currentDisplay.displayText.ForceMeshUpdate();
 
         //specialCommands = BuildSpecialCommandList(text);
