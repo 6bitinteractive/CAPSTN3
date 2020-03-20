@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -18,7 +18,7 @@ public class AudioSwitcher : MonoBehaviour
 
     [SerializeField] private AudioType audioType;
     private AudioSource audioSource;
-    private static PersistentAudioManager audioManager;
+    private static AudioManager audioManager;
 
     private void Awake()
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PersistentAudioManager : Singleton<PersistentAudioManager>
+public class AudioManager : Singleton<AudioManager>
 {
     [SerializeField] private AudioSource bgm;
     [SerializeField] private AudioSource ambient;
