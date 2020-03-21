@@ -19,13 +19,13 @@ public class SpecialCommandHandler
 
     public void Init()
     {
-        //specialCommandsFactory["keyword"] = x => new KeywordSpecialCommand(x);
+        //specialCommandsFactory["kw"] = x => new KeywordSpecialCommand(x);
         specialCommandsFactory["sfx"] = x => new SfxSpecialCommand();
-        specialCommandsFactory["emoticon"] = x => new EmoticonSpecialCommand();
+        specialCommandsFactory["emote"] = x => new EmoticonSpecialCommand();
     }
 
     /// <summary>
-    /// Parses {keyword:x} commands
+    /// Parses keyword ({kw:x}...{kw:x:end}) commands
     /// </summary>
     /// <param name="text">The text it will need to format</param>
     /// <returns>Formatted text</returns>
@@ -33,8 +33,8 @@ public class SpecialCommandHandler
     {
         string formattedText = text;
 
-        // Find {keyword:x}, capture x
-        Match match = Regex.Match(formattedText, @"{keyword:([A-Za-z0-9\-]+)}", RegexOptions.IgnoreCase);
+        // Find {kw:x}, capture x
+        Match match = Regex.Match(formattedText, @"{kw:([A-Za-z0-9\-:]+)}", RegexOptions.IgnoreCase);
 
         if (!match.Success)
         {
@@ -50,7 +50,7 @@ public class SpecialCommandHandler
             // Get the value
             string value = match.Groups[1].Value; // Note: Groups are indexed starting at 1, not 0
 
-            if (value != Keyword.endKeyword) // If it's not {keyword:end}
+            if (!value.EndsWith(":" + Keyword.endKeyword)) // If it's not {kw:x:end}
             {
                 // Create a new KeywordCommand
                 recentCommand = new KeywordSpecialCommand(value);
@@ -59,9 +59,9 @@ public class SpecialCommandHandler
             }
             else
             {
-                // Note: It's assumed that the {keyword:end} has a {keyword:x} pair that comes before it, i.e. the recentCommand
+                // Note: It's assumed that the {kw:x:end} has a {kw:x} pair that comes before it, i.e. the recentCommand
                 if (recentCommand == null)
-                    Debug.LogError("A KeywordSpecialCommand has not been created! No pair for this end tag was found.");
+                    Debug.LogError("A KeywordSpecialCommand has not been created! No opening tag pair for this end tag was found.");
 
                 tags = recentCommand.GetClosingTags();
             }
@@ -69,13 +69,14 @@ public class SpecialCommandHandler
             // Replace the command with actual tags
             formattedText = Regex.Replace(formattedText, match.Value, tags);
 
+            // Get the next match
             match = match.NextMatch();
         }
 
-        // Clean out the {keyword:x} commands
-        formattedText = Regex.Replace(formattedText, @"{keyword:[A-Za-z0-9\-]+}", "");
-
+        // Clean out the {kw:x} commands
+        formattedText = Regex.Replace(formattedText, @"{kw:[A-Za-z0-9\-:]+}", "");
         //Debug.LogFormat("FORMATTED TEXT: {0}", formattedText);
+
         return formattedText;
     }
 

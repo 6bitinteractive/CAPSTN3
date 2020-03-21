@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // To Use in dialogue lines:
-// e.g. "Find the {keyword:item}broom{keyword:end} for {keyword:character}Lolo{keyword:end}."
-// - Opening Tag: {keyword:[value]}, where [value] is a keywordName defined in the Keywords object (e.g. location, item, character, hint)
-// - Closing Tag: {keyword:end}---Important! Each opening tag must be closed.
+// e.g. "Find the {kw:item}broom{kw:item:end} for {kw:character}Lolo{kw:character:end}."
+// - Opening Tag: {kw:[value]}, where [value] is a keywordName defined in the Keywords object (e.g. location, item, character, hint)
+// - Closing Tag: {kw:[value]:end}---Important! Each opening tag must be closed. [value] must match with opening tag's.
 
 public class Keywords : Singleton<Keywords>
 {
