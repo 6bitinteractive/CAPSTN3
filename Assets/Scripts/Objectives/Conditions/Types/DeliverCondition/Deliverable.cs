@@ -19,7 +19,9 @@ public class Deliverable : MonoBehaviour
 
     public void Activate()
     {
+        Init();
         biteable.enabled = true;
+        outlineable.enabled = true;
         sniffable.SetCurrentTarget();
     }
 
@@ -42,12 +44,13 @@ public class Deliverable : MonoBehaviour
 
     private void Init()
     {
-        biteable = GetComponent<Biteable>();
-        pickupable = GetComponent<Pickupable>();
-        outlineable = GetComponent<Outlineable>();
-        sniffable = GetComponent<Sniffable>();
-        rb = GetComponent<Rigidbody>();
+        biteable = biteable ?? GetComponent<Biteable>();
+        pickupable = pickupable ?? GetComponent<Pickupable>();
+        outlineable = outlineable ?? GetComponent<Outlineable>();
+        sniffable = sniffable ?? GetComponent<Sniffable>();
+        rb = rb ?? GetComponent<Rigidbody>();
 
         biteable.enabled = false;
+        outlineable.enabled = false;
     }
 }
