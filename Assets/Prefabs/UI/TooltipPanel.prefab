@@ -32,10 +32,10 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 231, y: -130}
+  m_SizeDelta: {x: 462, y: 260}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5007715355203258246
 CanvasRenderer:
@@ -314,6 +314,7 @@ GameObject:
   - component: {fileID: 5174952396177340228}
   - component: {fileID: 9203390688482340056}
   - component: {fileID: 4405091200088034032}
+  - component: {fileID: 326000917378990321}
   m_Layer: 5
   m_Name: TooltipBox
   m_TagString: Untagged
@@ -339,7 +340,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -660, y: 460}
+  m_AnchoredPosition: {x: -655, y: 460}
   m_SizeDelta: {x: 578, y: 141}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9203390688482340056
@@ -375,6 +376,25 @@ MonoBehaviour:
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!95 &326000917378990321
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7528358223850191396}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a1236d7bbdbc1f34e854c9d5d632597d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &9161879940874744784
 GameObject:
   m_ObjectHideFlags: 0
