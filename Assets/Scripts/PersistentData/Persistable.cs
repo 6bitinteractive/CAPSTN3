@@ -21,6 +21,7 @@ public class Persistable<T> : MonoBehaviour, IPersistable<T> where T : Persisten
     public virtual void InitializeData()
     {
         gameManager = gameManager ?? SingletonManager.GetInstance<GameManager>();
+        gameManager.OnNewGame.AddListener(ResetData);
         guidComponent = guidComponent ?? GetComponent<GuidComponent>();
 
         Data.guid = guidComponent.GetGuid();
@@ -49,7 +50,17 @@ public class Persistable<T> : MonoBehaviour, IPersistable<T> where T : Persisten
     public virtual void UpdatePersistentData()
     {
         if (Data == null)
+        {
             Data = new T { guid = guidComponent.GetGuid() };
+        }
+    }
+
+    public virtual void ResetData()
+    {
+        // TODO: Fix this mess...?
+        Data = new T { guid = guidComponent.GetGuid() }; // Create a new default data
+        gameManager.GameData.AddPersistentData(Data); // Add to the persistent data dictionary
+        SetFromPersistentData(); // Set back default to object
     }
 
     public virtual void Save(GameDataWriter writer)

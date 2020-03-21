@@ -35,6 +35,7 @@ public abstract class Condition : Persistable<ConditionData>
         {
             case Status.Inactive:
                 {
+                    initialized = false;
                     break;
                 }
 
@@ -84,8 +85,10 @@ public abstract class Condition : Persistable<ConditionData>
         // If the condition is still active, we make sure we call SwitchStatus to fully initialize the condition
         if (Data.status == Status.Active)
             SwitchStatus(Status.Active);
+        else if (Data.status == Status.Inactive) // When restarting the game within the same session
+            SwitchStatus(Status.Inactive);
         else
-            currentStatus = Data.status;
+            currentStatus = Data.status; // When done, we don't want to trigger the event again
 
         Satisfied = Data.satisfied;
     }

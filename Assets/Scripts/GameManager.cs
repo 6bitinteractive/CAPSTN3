@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Meowfia.WanderDog
 {
@@ -30,6 +31,8 @@ namespace Meowfia.WanderDog
         public GameData GameData => gameData;
         public bool StartNewGame { get; set; }
         public bool CanLoadSavedData => persistentStorage.HasSaveFile();
+
+        public UnityEvent OnNewGame = new UnityEvent();
 
         protected override void Awake()
         {
@@ -70,13 +73,17 @@ namespace Meowfia.WanderDog
             SceneData sceneToLoad;
             if (!StartNewGame && persistentStorage.HasSaveFile())
             {
+                Debug.Log("LOAD SAVED GAME");
                 LoadGameData();
                 sceneToLoad = gameData.SceneToLoad;
                 sceneController.playerStartingPoint = sceneToLoad;
             }
             else
             {
+                Debug.Log("START NEW GAME");
                 GameData.ResetData();
+                OnNewGame.Invoke();
+                SaveGameData(); // Overwrite any old data
                 sceneToLoad = newGameStartingPoint;
             }
 

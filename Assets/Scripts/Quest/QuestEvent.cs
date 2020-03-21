@@ -59,6 +59,9 @@ public class QuestEvent : Persistable<QuestEventData>
 
     public void SwitchStatus(Status status)
     {
+        if (status == currentStatus)
+            return;
+
         currentStatus = status;
 
         switch (status)

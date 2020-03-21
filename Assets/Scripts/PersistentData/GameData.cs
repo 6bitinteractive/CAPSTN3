@@ -20,11 +20,12 @@ public partial class GameData : Persistable<PersistentData>
     private string sceneDataFolder = "SceneData";
     private string currentScene, startingPoint;
 
-    public void ResetData()
+    public override void ResetData()
     {
         currentScene = startingPoint = string.Empty;
+        dayProgression.CurrentDayIndex = 0;
 
-        // Clear session data
+        // Clear lists of persistent data
         persistentDataDict.Clear();
         questEventDataDict.Clear();
         objectiveDataDict.Clear();
