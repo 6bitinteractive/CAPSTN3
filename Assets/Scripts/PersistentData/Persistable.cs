@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Let the object (with this component attached) save/load whatever it wants to save/load
 // In this case, by default the object simply saves values from the Transform component and if it is activeInHierarchy
@@ -17,6 +18,11 @@ public class Persistable<T> : MonoBehaviour, IPersistable<T> where T : Persisten
 
     protected static GameManager gameManager;
     protected GuidComponent guidComponent;
+
+    private void OnDestroy()
+    {
+        gameManager.OnNewGame.RemoveListener(ResetData);
+    }
 
     public virtual void InitializeData()
     {
