@@ -11,6 +11,7 @@ public class Deliverable : MonoBehaviour
     private Outlineable outlineable;
     private Sniffable sniffable;
     private Rigidbody rb;
+    private Collider collider;
 
     private void Awake()
     {
@@ -20,6 +21,7 @@ public class Deliverable : MonoBehaviour
     public void Activate()
     {
         Init();
+        collider.enabled = true;
         biteable.enabled = true;
         outlineable.enabled = true;
         sniffable.SetCurrentTarget();
@@ -34,7 +36,10 @@ public class Deliverable : MonoBehaviour
             pickupable.enabled = false;
 
         if (outlineable)
-            outlineable.enabled = false;
+        {
+           outlineable.HideInteractability();
+           outlineable.enabled = false;           
+        }
 
         if (rb)
             rb.isKinematic = true;
@@ -49,7 +54,9 @@ public class Deliverable : MonoBehaviour
         outlineable = outlineable ?? GetComponent<Outlineable>();
         sniffable = sniffable ?? GetComponent<Sniffable>();
         rb = rb ?? GetComponent<Rigidbody>();
+        collider = collider ?? GetComponent<Collider>();
 
+        collider.enabled = false;
         biteable.enabled = false;
         outlineable.enabled = false;
     }
