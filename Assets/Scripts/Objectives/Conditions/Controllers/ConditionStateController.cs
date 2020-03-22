@@ -18,6 +18,9 @@ public class ConditionStateController : MonoBehaviour
         yield return new WaitForEndOfFrame();
 
         condition = GetComponent<Condition>();
-        condition.SwitchStatus(Condition.Status.Active);
+        condition.InitializeData();
+
+        if (condition.CurrentStatus != Condition.Status.Done)
+            condition.SwitchStatus(Condition.Status.Active);
     }
 }
