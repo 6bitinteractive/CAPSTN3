@@ -51,7 +51,7 @@ public class BasicPersistableObject : Persistable<PersistentData>
         Data.position = thisTransform.position;
         Data.rotation = thisTransform.rotation;
         Data.scale = thisTransform.localScale;
-        Data.active = gameObject.activeInHierarchy;
+        Data.active = activeObject;
 
         //Debug.LogFormat("UPDATED: {0} - Pos ({1}) | Rot ({2}) | Scale {3} | Active {4}",
         //    gameObject.name, Data.position, Data.rotation, Data.scale, Data.active);

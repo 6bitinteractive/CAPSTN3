@@ -18,10 +18,27 @@ public class Persistable<T> : MonoBehaviour, IPersistable<T> where T : Persisten
 
     protected static GameManager gameManager;
     protected GuidComponent guidComponent;
+    protected bool activeObject = true; // Make sure to set this on subclasses that relies on knowing if its object should be active or not
 
     private void OnDestroy()
     {
         gameManager.OnNewGame.RemoveListener(ResetData);
+    }
+
+    // This is a "hack" since we can't differentiate an On[En/Dis]able called by game logic vs
+    // On[En/Dis]able called at start or when the object's about to be destroyed
+    public virtual void Enable()
+    {
+        activeObject = true;
+        gameObject.SetActive(true);
+        UpdatePersistentData();
+    }
+
+    public virtual void Disable()
+    {
+        activeObject = false;
+        UpdatePersistentData();
+        gameObject.SetActive(false);
     }
 
     public virtual void InitializeData()
