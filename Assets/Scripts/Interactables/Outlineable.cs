@@ -5,31 +5,67 @@ using UnityEngine;
 public class Outlineable : MonoBehaviour, IInteractable
 {
     [SerializeField] private List<MeshRenderer> meshRendersToOutline;
+    [SerializeField] private List<SkinnedMeshRenderer> skinnedMeshRendersToOutline;
     [SerializeField] private Shader outlineShader;
 
     private Shader defaultShader;
 
     private void Start()
     {
-        for (int i = 0; i < meshRendersToOutline.Count; i++)
+        if (meshRendersToOutline.Count > 0)
         {
-          defaultShader = meshRendersToOutline[i].materials[0].shader;
+            for (int i = 0; i < meshRendersToOutline.Count; i++)
+            {
+                defaultShader = meshRendersToOutline[i].materials[0].shader;
+            }
         }
+
+        else
+        {
+            for (int i = 0; i < skinnedMeshRendersToOutline.Count; i++)
+            {
+                defaultShader = skinnedMeshRendersToOutline[i].materials[0].shader;
+            }
+        }
+       
     }
 
     public void DisplayInteractability()
     {
-        for (int i = 0; i < meshRendersToOutline.Count; i++)
+        if (meshRendersToOutline.Count > 0)
         {
-            meshRendersToOutline[i].materials[1].shader = outlineShader;
+            for (int i = 0; i < meshRendersToOutline.Count; i++)
+            {
+                meshRendersToOutline[i].materials[1].shader = outlineShader;
+            }
         }
+
+        else
+        {
+            for (int i = 0; i < skinnedMeshRendersToOutline.Count; i++)
+            {
+                skinnedMeshRendersToOutline[i].materials[1].shader = outlineShader;
+            }
+        }
+    
     }
 
     public void HideInteractability()
     {
-        for (int i = 0; i < meshRendersToOutline.Count; i++)
+        if (meshRendersToOutline.Count > 0)
         {
-            meshRendersToOutline[i].materials[1].shader = defaultShader;
+            for (int i = 0; i < meshRendersToOutline.Count; i++)
+            {
+                meshRendersToOutline[i].materials[1].shader = defaultShader;
+            }
+        }
+
+        else
+        {
+            for (int i = 0; i < skinnedMeshRendersToOutline.Count; i++)
+            {
+                skinnedMeshRendersToOutline[i].materials[1].shader = defaultShader;
+            }
         }
     }
 
