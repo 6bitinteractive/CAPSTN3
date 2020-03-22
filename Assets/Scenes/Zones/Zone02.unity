@@ -1805,6 +1805,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshRendersToOutline:
   - {fileID: 114852662}
+  skinnedMeshRendersToOutline: []
   outlineShader: {fileID: -6465566751694194690, guid: 36b851668fd665943bf191c6bc63e477,
     type: 3}
 --- !u!195 &114852654
@@ -2190,7 +2191,7 @@ PrefabInstance:
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
       propertyPath: questEvent.cachedName
-      value: QuestEvent - Talk to the Bullied Kid
+      value: QuestEvent - 2.3 Talk to the Bullied Kid
       objectReference: {fileID: 0}
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
@@ -2296,7 +2297,7 @@ PrefabInstance:
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
       propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
@@ -2312,11 +2313,11 @@ PrefabInstance:
         type: 3}
       propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 288014330}
+      objectReference: {fileID: 288014332}
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
       propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: SetActive
+      value: Disable
       objectReference: {fileID: 0}
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
@@ -2459,7 +2460,7 @@ PrefabInstance:
     - target: {fileID: 2377149609765007952, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
       propertyPath: m_Name
-      value: QuestEventState-Reaction
+      value: RunAwayDone-Reaction
       objectReference: {fileID: 0}
     - target: {fileID: 2377149609765007953, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
@@ -3194,7 +3195,7 @@ PrefabInstance:
     - target: {fileID: 4849326744715648716, guid: b4b66223741bd6b48abccc4a3d025bf5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.03
+      value: 7.78
       objectReference: {fileID: 0}
     - target: {fileID: 4849326744715648716, guid: b4b66223741bd6b48abccc4a3d025bf5,
         type: 3}
@@ -3204,7 +3205,7 @@ PrefabInstance:
     - target: {fileID: 4849326744715648716, guid: b4b66223741bd6b48abccc4a3d025bf5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.22
+      value: 0.44
       objectReference: {fileID: 0}
     - target: {fileID: 4849326744715648716, guid: b4b66223741bd6b48abccc4a3d025bf5,
         type: 3}
@@ -3416,7 +3417,7 @@ PrefabInstance:
     - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
       propertyPath: OnConversationEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
@@ -3432,7 +3433,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnConversationEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 151761931}
+      objectReference: {fileID: 3553705363902429076}
     - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
       propertyPath: OnConversationBegin.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -3446,7 +3447,7 @@ PrefabInstance:
     - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
       propertyPath: OnConversationEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
+      value: Enable
       objectReference: {fileID: 0}
     - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
@@ -4201,6 +4202,18 @@ CapsuleCollider:
   m_Height: 0.75
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &288014332 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4280077504947629356, guid: 0e69faf094e140f4494d9ed4f0f16dfb,
+    type: 3}
+  m_PrefabInstance: {fileID: 288014329}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288014330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6cfe487be28c9429115917baf3ec94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &288014335 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 858786690155735837, guid: 0e69faf094e140f4494d9ed4f0f16dfb,
@@ -4752,7 +4765,7 @@ PrefabInstance:
     - target: {fileID: 2450247697165829235, guid: d880a1abe26c97143bcc1e45d152c083,
         type: 3}
       propertyPath: questEvent.cachedName
-      value: QuestEvent - Deliver toy to Bullied Kid
+      value: QuestEvent - 2.6 Deliver toy to Bullied Kid
       objectReference: {fileID: 0}
     - target: {fileID: 2450247697165829235, guid: d880a1abe26c97143bcc1e45d152c083,
         type: 3}
@@ -5745,6 +5758,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f4d2df330af9b48848e12f14078f84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnEnable:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDisable:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &338890984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5759,6 +5778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshRendersToOutline:
   - {fileID: 338890991}
+  skinnedMeshRendersToOutline: []
   outlineShader: {fileID: -6465566751694194690, guid: 36b851668fd665943bf191c6bc63e477,
     type: 3}
 --- !u!114 &338890985
@@ -7068,7 +7088,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &421736949
 Transform:
   m_ObjectHideFlags: 0
@@ -7734,6 +7754,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshRendersToOutline:
   - {fileID: 555088915}
+  skinnedMeshRendersToOutline: []
   outlineShader: {fileID: -6465566751694194690, guid: 36b851668fd665943bf191c6bc63e477,
     type: 3}
 --- !u!1001 &578419601
@@ -8085,7 +8106,7 @@ PrefabInstance:
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
       propertyPath: questEvent.cachedName
-      value: QuestEvent - Stand over diggable ground
+      value: QuestEvent - 2.4 Stand over diggable ground
       objectReference: {fileID: 0}
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
@@ -8914,7 +8935,7 @@ PrefabInstance:
     - target: {fileID: 2450247697165829235, guid: d880a1abe26c97143bcc1e45d152c083,
         type: 3}
       propertyPath: questEvent.cachedName
-      value: QuestEvent - Stand over diggable ground
+      value: QuestEvent - 2.4 Stand over diggable ground
       objectReference: {fileID: 0}
     - target: {fileID: 2450247697165829235, guid: d880a1abe26c97143bcc1e45d152c083,
         type: 3}
@@ -9835,7 +9856,7 @@ PrefabInstance:
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
       propertyPath: questEvent.cachedName
-      value: QuestEvent - Deliver food to Homeless Man
+      value: QuestEvent - 2.7 Deliver food to Homeless Man
       objectReference: {fileID: 0}
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
@@ -10600,7 +10621,7 @@ PrefabInstance:
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
       propertyPath: questEvent.cachedName
-      value: QuestEvent - Dig on diggable ground
+      value: QuestEvent - 2.5 Dig on diggable ground
       objectReference: {fileID: 0}
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
@@ -11024,7 +11045,7 @@ PrefabInstance:
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
       propertyPath: questEvent.cachedName
-      value: QuestEvent - Scare away the Bully
+      value: QuestEvent - 2.2 Scare away the Bully
       objectReference: {fileID: 0}
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
@@ -12104,6 +12125,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f4d2df330af9b48848e12f14078f84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnEnable:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDisable:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &957067061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12119,6 +12146,7 @@ MonoBehaviour:
   meshRendersToOutline:
   - {fileID: 957067068}
   - {fileID: 834492193}
+  skinnedMeshRendersToOutline: []
   outlineShader: {fileID: -6465566751694194690, guid: 36b851668fd665943bf191c6bc63e477,
     type: 3}
 --- !u!114 &957067062
@@ -16492,7 +16520,7 @@ PrefabInstance:
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
       propertyPath: questEvent.cachedName
-      value: QuestEvent - Scare away the Bully
+      value: QuestEvent - 2.2 Scare away the Bully
       objectReference: {fileID: 0}
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
@@ -17021,7 +17049,7 @@ PrefabInstance:
     - target: {fileID: 2450247697165829235, guid: d880a1abe26c97143bcc1e45d152c083,
         type: 3}
       propertyPath: questEvent.cachedName
-      value: QuestEvent - Talk to the Bullied Kid
+      value: QuestEvent - 2.3 Talk to the Bullied Kid
       objectReference: {fileID: 0}
     - target: {fileID: 2450247697165829235, guid: d880a1abe26c97143bcc1e45d152c083,
         type: 3}
@@ -17257,6 +17285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshRendersToOutline:
   - {fileID: 1380969458}
+  skinnedMeshRendersToOutline: []
   outlineShader: {fileID: -6465566751694194690, guid: 36b851668fd665943bf191c6bc63e477,
     type: 3}
 --- !u!195 &1380969450
@@ -17877,7 +17906,7 @@ PrefabInstance:
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
       propertyPath: questEvent.cachedName
-      value: QuestEvent - Go to Open Park
+      value: QuestEvent - 2.1 Go to Open Park
       objectReference: {fileID: 0}
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
@@ -18419,7 +18448,7 @@ PrefabInstance:
     - target: {fileID: 2450247697165829235, guid: d880a1abe26c97143bcc1e45d152c083,
         type: 3}
       propertyPath: questEvent.cachedName
-      value: QuestEvent - Dig on diggable ground
+      value: QuestEvent - 2.5 Dig on diggable ground
       objectReference: {fileID: 0}
     - target: {fileID: 2450247697165829235, guid: d880a1abe26c97143bcc1e45d152c083,
         type: 3}
@@ -19242,7 +19271,7 @@ PrefabInstance:
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
       propertyPath: questEvent.cachedName
-      value: QuestEvent - Stand over diggable ground
+      value: QuestEvent - 2.4 Stand over diggable ground
       objectReference: {fileID: 0}
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
@@ -21207,6 +21236,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f4d2df330af9b48848e12f14078f84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnEnable:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDisable:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1666422783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21231,6 +21266,7 @@ MonoBehaviour:
   - {fileID: 1558418403}
   - {fileID: 1558418402}
   - {fileID: 1558418401}
+  skinnedMeshRendersToOutline: []
   outlineShader: {fileID: -6465566751694194690, guid: 36b851668fd665943bf191c6bc63e477,
     type: 3}
 --- !u!114 &1666422784
@@ -23955,7 +23991,7 @@ PrefabInstance:
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
       propertyPath: questEvent.cachedName
-      value: QuestEvent - Dig on diggable ground
+      value: QuestEvent - 2.5 Dig on diggable ground
       objectReference: {fileID: 0}
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
@@ -24266,7 +24302,7 @@ PrefabInstance:
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
       propertyPath: questEvent.cachedName
-      value: QuestEvent - Deliver toy to Bullied Kid
+      value: QuestEvent - 2.6 Deliver toy to Bullied Kid
       objectReference: {fileID: 0}
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
@@ -24803,7 +24839,7 @@ PrefabInstance:
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
       propertyPath: questEvent.cachedName
-      value: QuestEvent - Talk to the Bullied Kid
+      value: QuestEvent - 2.3 Talk to the Bullied Kid
       objectReference: {fileID: 0}
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
@@ -25645,6 +25681,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d11fdf1fc77771349ac0b3dcd4d328ca, type: 3}
+--- !u!114 &3553705363902429076 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8038560211457452672, guid: d11fdf1fc77771349ac0b3dcd4d328ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 3553705363902429075}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77f4d2df330af9b48848e12f14078f84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3553705363902429077 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8959412233874147371, guid: d11fdf1fc77771349ac0b3dcd4d328ca,
@@ -25664,6 +25712,76 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2021233035345424055, guid: 59aa9efcfc333c742ad7afd9b1fa7bc0,
+        type: 3}
+      propertyPath: OnEnable.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021233035345424055, guid: 59aa9efcfc333c742ad7afd9b1fa7bc0,
+        type: 3}
+      propertyPath: OnDisable.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021233035345424055, guid: 59aa9efcfc333c742ad7afd9b1fa7bc0,
+        type: 3}
+      propertyPath: OnEnable.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021233035345424055, guid: 59aa9efcfc333c742ad7afd9b1fa7bc0,
+        type: 3}
+      propertyPath: OnEnable.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021233035345424055, guid: 59aa9efcfc333c742ad7afd9b1fa7bc0,
+        type: 3}
+      propertyPath: OnEnable.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4815231338800229816}
+    - target: {fileID: 2021233035345424055, guid: 59aa9efcfc333c742ad7afd9b1fa7bc0,
+        type: 3}
+      propertyPath: OnEnable.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021233035345424055, guid: 59aa9efcfc333c742ad7afd9b1fa7bc0,
+        type: 3}
+      propertyPath: OnEnable.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021233035345424055, guid: 59aa9efcfc333c742ad7afd9b1fa7bc0,
+        type: 3}
+      propertyPath: OnEnable.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021233035345424055, guid: 59aa9efcfc333c742ad7afd9b1fa7bc0,
+        type: 3}
+      propertyPath: OnDisable.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021233035345424055, guid: 59aa9efcfc333c742ad7afd9b1fa7bc0,
+        type: 3}
+      propertyPath: OnDisable.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021233035345424055, guid: 59aa9efcfc333c742ad7afd9b1fa7bc0,
+        type: 3}
+      propertyPath: OnDisable.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4815231338800229816}
+    - target: {fileID: 2021233035345424055, guid: 59aa9efcfc333c742ad7afd9b1fa7bc0,
+        type: 3}
+      propertyPath: OnDisable.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021233035345424055, guid: 59aa9efcfc333c742ad7afd9b1fa7bc0,
+        type: 3}
+      propertyPath: OnDisable.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021233035345424055, guid: 59aa9efcfc333c742ad7afd9b1fa7bc0,
+        type: 3}
+      propertyPath: OnDisable.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3025550068588128448, guid: 59aa9efcfc333c742ad7afd9b1fa7bc0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -25723,6 +25841,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Toy-Robot
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599166057457706849, guid: 59aa9efcfc333c742ad7afd9b1fa7bc0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5416802522293854361, guid: 59aa9efcfc333c742ad7afd9b1fa7bc0,
         type: 3}
@@ -25811,6 +25934,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59aa9efcfc333c742ad7afd9b1fa7bc0, type: 3}
+--- !u!1 &4815231338800229816 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3599166057457706849, guid: 59aa9efcfc333c742ad7afd9b1fa7bc0,
+    type: 3}
+  m_PrefabInstance: {fileID: 4815231338800229815}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6514841655965441256
 PrefabInstance:
   m_ObjectHideFlags: 0
