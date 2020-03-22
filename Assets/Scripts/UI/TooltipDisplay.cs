@@ -44,6 +44,11 @@ public class TooltipDisplay : MonoBehaviour
         //animator.SetBool("IsOpen", false);
     }
 
+    private void OnDestroy()
+    {
+        eventManager.Unsubscribe<GameQuestEvent, QuestEvent>(UpdateTooltipDisplay);
+    }
+
     private void UpdateTooltipDisplay(QuestEvent questEvent)
     {
         if (questCollection == null || questCollection.CurrentQuestEvent == null)
