@@ -21,6 +21,7 @@ namespace Meowfia.WanderDog
         [SerializeField] private EventManager eventManager;
         [SerializeField] private DayProgression dayProgression;
         [SerializeField] private QuestManager questManager;
+        [SerializeField] private PlayerStats playerStats;
 
         [Header("Scene")]
         [SerializeField] private SceneData titleScreen;
@@ -82,6 +83,7 @@ namespace Meowfia.WanderDog
             {
                 Debug.Log("START NEW GAME");
                 GameData.ResetData();
+                playerStats.Reset();
                 OnNewGame.Invoke();
                 SaveGameData(); // Overwrite any old data
                 sceneToLoad = newGameStartingPoint;
