@@ -146,9 +146,6 @@ public abstract class Condition : Persistable<ConditionData>
     // For cases when a GuidReference can lose its reference when player moves to another scene
     protected virtual void OnSceneLoad(Scene scene, LoadSceneMode loadSceneMode)
     {
-        if (Satisfied)
-            return;
-
         GetConditionRequirements();
     }
 
