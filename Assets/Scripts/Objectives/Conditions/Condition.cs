@@ -19,11 +19,6 @@ public abstract class Condition : Persistable<ConditionData>
     private Status currentStatus;
     private bool initialized;
 
-    private void Start()
-    {
-        InitializeData();
-    }
-
     public void SwitchStatus(Status status)
     {
         if (status == currentStatus)
