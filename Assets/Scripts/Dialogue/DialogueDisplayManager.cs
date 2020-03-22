@@ -321,7 +321,8 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
 
             // Force width of container to only be as big as the visible text
             Vector2 rendered = currentDisplay.displayText.GetRenderedValues();
-            currentDisplay.layoutElement.preferredWidth = rendered.x > 0f ? rendered.x + 100f : 0f;
+            if (currentDisplay.layoutElement != null)
+                currentDisplay.layoutElement.preferredWidth = rendered.x > 0f ? rendered.x + 100f : 0f;
 
             // Increment
             i++;
