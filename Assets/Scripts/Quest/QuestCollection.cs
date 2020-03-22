@@ -74,6 +74,7 @@ public class QuestCollection : Persistable<PersistentData> // Only a MonoBehavio
 
         // Set done as previous quest event
         PreviousQuestEvent = doneQuestEvent;
+        doneQuestEvent.OnDone.gameEvent.RemoveListener(EvaluateQuestState);
 
         // Note: For now, we assume that all quest events will be done
         // ... so once we finish the last quest event, we can then end the Quest.
@@ -93,9 +94,6 @@ public class QuestCollection : Persistable<PersistentData> // Only a MonoBehavio
 
     public void CompleteQuestCollection()
     {
-        foreach (var questEvent in QuestEvents)
-            questEvent.OnDone.gameEvent.RemoveListener(EvaluateQuestState);
-
         OnQuestCollectionComplete.Invoke();
     }
 
