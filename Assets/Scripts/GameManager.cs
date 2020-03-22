@@ -82,8 +82,7 @@ namespace Meowfia.WanderDog
             else
             {
                 Debug.Log("START NEW GAME");
-                GameData.ResetData();
-                playerStats.Reset();
+                ResetGame();
                 OnNewGame.Invoke();
                 SaveGameData(); // Overwrite any old data
                 sceneToLoad = newGameStartingPoint;
@@ -98,6 +97,13 @@ namespace Meowfia.WanderDog
 
             // Load the scene
             sceneController.LoadScene(sceneToLoad);
+        }
+
+        private void ResetGame()
+        {
+            GameData.ResetData();
+            playerStats.Reset();
+            eventManager.ResetEventManager();
         }
 
         public void SaveGameData()

@@ -79,6 +79,11 @@ public class EventManager : Singleton<EventManager> // This acts as the mediator
 
         Trigger<T, U>(argument);
     }
+
+    public void ResetEventManager()
+    {
+        subscribers.Clear();
+    }
 }
 
 // Reference

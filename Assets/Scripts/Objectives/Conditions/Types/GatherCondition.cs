@@ -29,8 +29,8 @@ public class GatherCondition : Condition
         // NOTE: For now, it's automatically flagged as Done the moment the object is picked up; it won't care if it was dropped soon after
 
         // Temporary fix for null reference when restarting a new game in current game session
-        if (objectToBePickedUp == null) return false;
-            return objectToBePickedUp == objectPickedUp;
+        //if (objectToBePickedUp == null) return false;
+        return objectToBePickedUp == objectPickedUp;
     }
 
     private void GetPickedUpItem(PickupData pickupData)
@@ -49,7 +49,7 @@ public class GatherCondition : Condition
     {
         if (objectToGather.gameObject != null) // If we have the scene where the target is located
         {
-           // Debug.Log("Getting references for GuidReference");
+            // Debug.Log("Getting references for GuidReference");
             objectToBePickedUp = objectToGather.gameObject.GetComponent<Pickupable>();
         }
     }

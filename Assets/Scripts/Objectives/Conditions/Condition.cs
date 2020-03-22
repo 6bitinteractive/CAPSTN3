@@ -21,7 +21,10 @@ public abstract class Condition : Persistable<ConditionData>
 
     public void SwitchStatus(Status status)
     {
-        if (status == currentStatus)
+        // FIX:
+        // We allow letting Inactive be called again to reset data when starting new game in same session
+        // This seems to be particular to Gather Condition type which is initialized even if it hasn't been switched to Active yet
+        if (status != Status.Inactive && status == currentStatus)
             return;
 
         currentStatus = status;
