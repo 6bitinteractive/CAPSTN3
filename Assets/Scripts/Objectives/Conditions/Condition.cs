@@ -21,19 +21,18 @@ public abstract class Condition : Persistable<ConditionData>
 
     public void SwitchStatus(Status status)
     {
-        // FIX:
-        // We allow letting Inactive be called again to reset data when starting new game in same session
-        // This seems to be particular to Gather Condition type which is initialized even if it hasn't been switched to Active yet
         if (status != Status.Inactive && status == currentStatus)
             return;
 
         currentStatus = status;
+        UpdatePersistentData();
 
         switch (status)
         {
             case Status.Inactive:
                 {
                     initialized = false;
+                    Satisfied = false;
                     break;
                 }
 
@@ -42,7 +41,6 @@ public abstract class Condition : Persistable<ConditionData>
                     if (!initialized)
                     {
                         InitializeCondition();
-                        UpdatePersistentData();
                     }
 
                     eventManager.Trigger<ConditionEvent, Condition>(OnActive, this);
@@ -58,11 +56,12 @@ public abstract class Condition : Persistable<ConditionData>
             case Status.Done:
                 {
                     FinalizeCondition();
-                    UpdatePersistentData();
                     eventManager.Trigger<ConditionEvent, Condition>(OnDone, this);
                     break;
                 }
         }
+
+        UpdatePersistentData();
     }
 
     // Overload for inspector use
