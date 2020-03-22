@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 5254719294988805292}
   - component: {fileID: -722237790737114390}
   - component: {fileID: 7004813418442873332}
+  - component: {fileID: -5203931093731711282}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -168,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bfd91acaeb795845a7786ba8a6a82a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  faceSource: 1
   OnTalk:
     m_PersistentCalls:
       m_Calls: []
@@ -214,6 +216,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultConversation: {fileID: 4550185367986162857}
   questRelatedConversations: []
+--- !u!114 &-5203931093731711282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8185486929655247185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6cfe487be28c9429115917baf3ec94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4186687248488138895
 PrefabInstance:
   m_ObjectHideFlags: 0
