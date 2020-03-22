@@ -126,13 +126,7 @@ public class PlayerController : MonoBehaviour
                     if (!controlScheme.PlayerBiting.enabled) SwitchToBitingControlScheme(); // Switch control scheme to reversed controls
                     bite.BiteEvent(interactor, biteable);
                     return;
-                }
-                else // Pullable component exists but is disabled
-                {
-                    interactor.CurrentTarget = null;
-                    interactor.CanInteract = true;
-                    return;
-                }
+                } 
             }
 
             // If player is not biting anything and the target is pickupable
@@ -143,13 +137,7 @@ public class PlayerController : MonoBehaviour
                 {
                     bite.BiteEvent(interactor, biteable);
                     return;
-                }
-                else // Pickupable component exists but is disabled
-                {
-                    interactor.CurrentTarget = null;
-                    interactor.CanInteract = true;
-                    return;
-                }
+                }  
             }
         }
 
