@@ -125,3 +125,9 @@ public class CutsceneData : PersistentData
         Enum.TryParse(reader.ReadString(), out state);
     }
 }
+
+[Serializable]
+public class DeliverableData : PersistentData
+{
+    public bool activeDeliverable;
+}

@@ -103,6 +103,8 @@ public class Digable : MonoBehaviour, IInteractable
             // Temporary
             ObjectToSpawn.transform.position = transform.position;
             ObjectToSpawn.SetActive(true);
+            Persistable<DeliverableData> deliverable = ObjectToSpawn.GetComponent<Persistable<DeliverableData>>();
+            if (deliverable) deliverable.Enable();
             ObjectToSpawn.GetComponent<Rigidbody>().AddForce(Vector3.up * ObjectToSpawnJumpSpeed);
 
             // Broadcast that an object has been found

@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 // Let the object (with this component attached) save/load whatever it wants to save/load
@@ -19,6 +20,11 @@ public class Persistable<T> : MonoBehaviour, IPersistable<T> where T : Persisten
     protected static GameManager gameManager;
     protected GuidComponent guidComponent;
     protected bool activeObject = true; // Make sure to set this on subclasses that relies on knowing if its object should be active or not
+    protected Model model;
+    protected List<Collider> colliders = new List<Collider>();
+
+    public UnityEvent OnEnable;
+    public UnityEvent OnDisable;
 
     private void OnDestroy()
     {
@@ -30,15 +36,29 @@ public class Persistable<T> : MonoBehaviour, IPersistable<T> where T : Persisten
     public virtual void Enable()
     {
         activeObject = true;
-        gameObject.SetActive(true);
+
+        model = model ?? GetComponentInChildren<Model>();
+        model?.gameObject.SetActive(true);
+        if (model) model.transform.GetChild(0).gameObject.SetActive(true); // Assumes the model is only one object
+
+        if (colliders.Count == 0)
+            colliders.AddRange(GetComponents<Collider>());
+
+        foreach (var collider in colliders)
+            collider.enabled = true;
+
         UpdatePersistentData();
+        OnEnable.Invoke();
     }
 
     public virtual void Disable()
     {
         activeObject = false;
+        model?.gameObject.SetActive(false);
+        foreach (var collider in colliders)
+            collider.enabled = false;
         UpdatePersistentData();
-        gameObject.SetActive(false);
+        OnDisable.Invoke();
     }
 
     public virtual void InitializeData()
@@ -46,6 +66,8 @@ public class Persistable<T> : MonoBehaviour, IPersistable<T> where T : Persisten
         gameManager = gameManager ?? SingletonManager.GetInstance<GameManager>();
         gameManager.OnNewGame.AddListener(ResetData);
         guidComponent = guidComponent ?? GetComponent<GuidComponent>();
+        model = GetComponentInChildren<Model>();
+        colliders.AddRange(GetComponents<Collider>());
 
         Data.guid = guidComponent.GetGuid();
 

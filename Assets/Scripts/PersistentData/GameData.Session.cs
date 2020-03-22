@@ -12,6 +12,7 @@ public partial class GameData
     private Dictionary<Guid, ObjectiveData> objectiveDataDict = new Dictionary<Guid, ObjectiveData>();
     private Dictionary<Guid, ConditionData> conditionDataDict = new Dictionary<Guid, ConditionData>();
     private Dictionary<Guid, CutsceneData> cutsceneDataDict = new Dictionary<Guid, CutsceneData>();
+    private Dictionary<Guid, DeliverableData> deliverableDataDict = new Dictionary<Guid, DeliverableData>();
 
     private void AddPersistentData<T>(Dictionary<Guid, T> dictionary, T persistentData) where T : PersistentData
     {
@@ -36,6 +37,7 @@ public partial class GameData
         return null;
     }
 
+    #region AddPersistentData
     public void AddPersistentData(PersistentData persistentData)
     {
         AddPersistentData(persistentDataDict, persistentData);
@@ -61,6 +63,13 @@ public partial class GameData
         AddPersistentData(cutsceneDataDict, cutsceneData);
     }
 
+    public void AddPersistentData(DeliverableData deliverableData)
+    {
+        AddPersistentData(deliverableDataDict, deliverableData);
+    }
+    #endregion
+
+    #region GetPersistentData
     public PersistentData GetPersistentData(PersistentData persistentData)
     {
         return GetPersistentData(persistentDataDict, persistentData);
@@ -85,4 +94,10 @@ public partial class GameData
     {
         return GetPersistentData(cutsceneDataDict, cutsceneData);
     }
+
+    public DeliverableData GetPersistentData(DeliverableData deliverableData)
+    {
+        return GetPersistentData(deliverableDataDict, deliverableData);
+    }
+    #endregion
 }

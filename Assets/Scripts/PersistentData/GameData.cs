@@ -31,6 +31,7 @@ public partial class GameData : Persistable<PersistentData>
         objectiveDataDict.Clear();
         conditionDataDict.Clear();
         cutsceneDataDict.Clear();
+        deliverableDataDict.Clear();
     }
 
     // NOTE: Make sure of parity between Save and Load
@@ -69,6 +70,10 @@ public partial class GameData : Persistable<PersistentData>
         writer.Write(cutsceneDataDict.Count);
         foreach (var item in cutsceneDataDict.Keys)
             cutsceneDataDict[item].Save(writer);
+
+        writer.Write(deliverableDataDict.Count);
+        foreach (var item in deliverableDataDict.Keys)
+            deliverableDataDict[item].Save(writer);
 
         // TODO: Zone-specific
 
@@ -140,7 +145,15 @@ public partial class GameData : Persistable<PersistentData>
             cutsceneDataDict.Add(c.guid, c);
         }
 
-        // TODO: Zone-specific
+        count = reader.ReadInt();
+        deliverableDataDict = new Dictionary<Guid, DeliverableData>(count);
+
+        for (int i = 0; i < count; i++)
+        {
+            DeliverableData d = new DeliverableData();
+            d.Load(reader);
+            deliverableDataDict.Add(d.guid, d);
+        }
 
         //Debug.Log("LOADING.......... DONE");
     }

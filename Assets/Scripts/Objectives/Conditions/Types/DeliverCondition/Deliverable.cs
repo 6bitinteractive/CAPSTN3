@@ -4,27 +4,46 @@ using UnityEngine;
 
 [RequireComponent(typeof(Sniffable))]
 
-public class Deliverable : MonoBehaviour
+public class Deliverable : Persistable<DeliverableData>
 {
     private Biteable biteable;
     private Pickupable pickupable;
     private Outlineable outlineable;
     private Sniffable sniffable;
     private Rigidbody rb;
-    private Collider collider;
+    private Collider thisCollider;
+    private Transform thisTransform;
 
-    private void Awake()
+    private bool activeDeliverable;
+
+    private void Start()
     {
         Init();
+        InitializeData();
+
+        if (activeDeliverable)
+            Activate();
+    }
+
+    private void Update()
+    {
+        if (thisTransform.hasChanged)
+        {
+            UpdatePersistentData();
+            thisTransform.hasChanged = false;
+        }
     }
 
     public void Activate()
     {
         Init();
-        collider.enabled = true;
+        thisCollider.enabled = true;
         biteable.enabled = true;
         outlineable.enabled = true;
         sniffable.SetCurrentTarget();
+
+        activeDeliverable = true;
+        UpdatePersistentData();
     }
 
     public void OnDeliver()
@@ -37,14 +56,50 @@ public class Deliverable : MonoBehaviour
 
         if (outlineable)
         {
-           outlineable.HideInteractability();
-           outlineable.enabled = false;           
+            outlineable.HideInteractability();
+            outlineable.enabled = false;
         }
 
         if (rb)
             rb.isKinematic = true;
 
         sniffable.RemoveCurrentTargetSniffable();
+
+        activeDeliverable = false;
+        UpdatePersistentData();
+    }
+
+    public override DeliverableData GetPersistentData()
+    {
+        return gameManager.GameData.GetPersistentData(Data);
+    }
+
+    public override void SetFromPersistentData()
+    {
+        base.SetFromPersistentData();
+
+        if (activeObject)
+            Enable();
+        else
+            Disable();
+
+        activeDeliverable = Data.activeDeliverable;
+        thisTransform.position = Data.position;
+        thisTransform.rotation = Data.rotation;
+        thisTransform.localScale = Data.scale;
+    }
+
+    public override void UpdatePersistentData()
+    {
+        base.UpdatePersistentData();
+
+        Data.activeDeliverable = activeDeliverable;
+        Data.position = thisTransform.position;
+        Data.rotation = thisTransform.rotation;
+        Data.scale = thisTransform.localScale;
+        Data.active = activeObject;
+
+        gameManager.GameData.AddPersistentData(Data);
     }
 
     private void Init()
@@ -54,9 +109,10 @@ public class Deliverable : MonoBehaviour
         outlineable = outlineable ?? GetComponent<Outlineable>();
         sniffable = sniffable ?? GetComponent<Sniffable>();
         rb = rb ?? GetComponent<Rigidbody>();
-        collider = collider ?? GetComponent<Collider>();
+        thisCollider = thisCollider ?? GetComponent<Collider>();
+        thisTransform = thisTransform ?? GetComponent<Transform>();
 
-        collider.enabled = false;
+        thisCollider.enabled = false;
         biteable.enabled = false;
         outlineable.enabled = false;
     }
