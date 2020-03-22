@@ -255,31 +255,23 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
 
     private IEnumerator DisplayLine(string text)
     {
+        // Format the text (change size, color, styling if there are any keywords)
         currentDisplay.displayText.text = specialCommandHandler.FormatText(text);
-        //currentDisplay.displayText.text = text;
         currentDisplay.displayText.ForceMeshUpdate();
 
+        // Build the command list
+        specialCommandHandler.BuildCommandList(currentDisplay.displayText.text);
         //specialCommands = BuildSpecialCommandList(text);
 
-        //Count how many characters we have in our new dialogue line.
+        // Count how many characters we have in our new dialogue line.
         TMP_TextInfo textInfo = currentDisplay.displayText.textInfo;
         totalCharacters = currentDisplay.displayText.textInfo.characterCount;
 
-        //Color of all characters' vertices.
+        // Color of all characters' vertices.
         Color32[] newVertexColors;
 
         //Base color for our text.
         Color32 c0 = currentDisplay.displayText.color;
-
-        // Display the line
-        currentDisplay?.Display();
-        currentState = State.DisplayingLine;
-
-        //Shake text if true.
-        //if (isTextShaking)
-        //{
-        //    StartCoroutine(ShakingText());
-        //}
 
         //We now hide text based on each character's alpha value
         HideText();
@@ -336,6 +328,10 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
 
             // Display i-number of characters
             currentDisplay.displayText.maxVisibleCharacters = i;
+
+            // Display the line
+            currentDisplay?.Display();
+            currentState = State.DisplayingLine;
 
             // Wait to give that typewriter effect
             yield return new WaitForSeconds(currentCharacterWaitTime);

@@ -58,12 +58,6 @@ public class PlayerController : MonoBehaviour
         controlScheme.Player.Disable();
         controlScheme.PlayerBiting.Disable();
 
-        // FIX-LowPriority?: While digging for the toy, PlayerController gets disabled which disables this which then becomes a blocker
-        // because you can't continue the conversation
-        // FIND the cause of what disables this (PlayerController) component during Dig interaction; it's is not among the SwitchX methods :(
-        // On the other hand, it may not be really necessary to disable the dialogue control scheme whenever the PlayerController is disabled---for now???
-        //controlScheme.DialogueInteraction.Disable();
-
         // Remove listeners
         eventManager.Unsubscribe<CutsceneEvent, Cutscene>(SwitchCutsceneControlScheme);
         dialogueDisplayManager.OnConversationBegin.RemoveListener(SwitchToDialogueInteractionControlScheme);
@@ -126,7 +120,7 @@ public class PlayerController : MonoBehaviour
                     if (!controlScheme.PlayerBiting.enabled) SwitchToBitingControlScheme(); // Switch control scheme to reversed controls
                     bite.BiteEvent(interactor, biteable);
                     return;
-                } 
+                }
             }
 
             // If player is not biting anything and the target is pickupable
@@ -137,7 +131,7 @@ public class PlayerController : MonoBehaviour
                 {
                     bite.BiteEvent(interactor, biteable);
                     return;
-                }  
+                }
             }
         }
 

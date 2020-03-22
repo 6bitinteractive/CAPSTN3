@@ -117,7 +117,7 @@ public class Objective : Persistable<ObjectiveData>
                     index++; // Move to next condition
                     if (index < conditions.Count)
                     {
-                        Debug.Log(conditions[index]);
+                        //Debug.Log(conditions[index]);
                         conditions[index].SwitchStatus(Condition.Status.Active);
                     }
 

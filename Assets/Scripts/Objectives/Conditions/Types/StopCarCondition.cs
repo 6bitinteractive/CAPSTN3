@@ -27,7 +27,7 @@ public class StopCarCondition : Condition
 
     private void VerifyAgent(State state)
     {
-        Debug.Log(state);
+        //Debug.Log(state);
         if (state is IdleState)
             objectName = state.gameObject.name;
         else

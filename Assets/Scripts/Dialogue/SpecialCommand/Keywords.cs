@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// To Use in dialogue lines:
+// To use in dialogue lines:
 // e.g. "Find the {kw:item}broom{kw:item:end} for {kw:character}Lolo{kw:character:end}."
 // - Opening Tag: {kw:[value]}, where [value] is a keywordName defined in the Keywords object (e.g. location, item, character, hint)
 // - Closing Tag: {kw:[value]:end}---Important! Each opening tag must be closed. [value] must match with opening tag's.
@@ -17,7 +17,7 @@ public class Keywords : Singleton<Keywords>
 [System.Serializable]
 public class Keyword
 {
-    [Tooltip("The value passed when using command {keyword:keywordName}.")]
+    [Tooltip("The value passed when using command {kw:keywordName}.")]
     [SerializeField] private string keywordName;
     public const string endKeyword = "end";
 
