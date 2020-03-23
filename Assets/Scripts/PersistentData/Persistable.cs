@@ -23,9 +23,6 @@ public class Persistable<T> : MonoBehaviour, IPersistable<T> where T : Persisten
     protected Model model;
     protected List<Collider> colliders = new List<Collider>();
 
-    public UnityEvent OnEnable;
-    public UnityEvent OnDisable;
-
     private void OnDestroy()
     {
         gameManager.OnNewGame.RemoveListener(ResetData);
@@ -50,8 +47,6 @@ public class Persistable<T> : MonoBehaviour, IPersistable<T> where T : Persisten
 
         if (updateData)
             UpdatePersistentData();
-
-        OnEnable.Invoke();
     }
 
     public virtual void Disable(bool updateData = true)
@@ -65,8 +60,6 @@ public class Persistable<T> : MonoBehaviour, IPersistable<T> where T : Persisten
 
         if (updateData)
             UpdatePersistentData();
-
-        OnDisable.Invoke();
     }
 
     public virtual void InitializeData()
