@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Please don't use this anymore; it's not necessary
+// Simply use a QuestEventState or ConditionState with a ConditionStateController
+
+// ==========
 // Manages the conditions, mostly listeners for quest event/condition state changes
 // This doesn't live in the Persistent scene
 
