@@ -17,13 +17,13 @@ public class ConversationSelector : MonoBehaviour
     private Conversation currentConversation;
     private DialogueHandler dialogueHandler;
     private static EventManager eventManager;
-    private static QuestCollection questCollection;
+    private QuestCollection questCollection;
 
     private void Start()
     {
         dialogueHandler = GetComponent<DialogueHandler>();
         eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
-        questCollection = questCollection ?? SingletonManager.GetInstance<QuestManager>().CurrentQuestCollection;
+        questCollection = SingletonManager.GetInstance<QuestManager>().CurrentQuestCollection;
 
         // Listen to quest event status update
         eventManager.Subscribe<GameQuestEvent, QuestEvent>(DetermineCurrentConversation);
