@@ -95,7 +95,7 @@ public class Requester : MonoBehaviour
             // Find an activeRequest that has not yet been satisfied and show feedback that the request isn't satisfied
             activeRequest = ActiveRequests.Find(x => !x.satisfied);
             activeRequest?.OnRequestUnsatisfied.Invoke();
-            OnAnyRequestSatisfied.Invoke();
+            OnAnyRequestUnsatisfied.Invoke();
         }
     }
 }
