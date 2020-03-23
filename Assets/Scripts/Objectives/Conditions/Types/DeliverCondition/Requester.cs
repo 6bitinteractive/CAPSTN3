@@ -12,17 +12,15 @@ public class Requester : MonoBehaviour
 {
     [SerializeField] private List<Request> requests = new List<Request>();
 
-    public UnityEvent OnRequestSatisfied = new UnityEvent();
     public List<Request> ActiveRequests { get; private set; } = new List<Request>();
+    public UnityEvent OnAnyRequestSatisfied;
+    public UnityEvent OnAnyRequestUnsatisfied;
 
     private Dictionary<Condition, Request> requestDict = new Dictionary<Condition, Request>();
     private DeliveryArea deliveryArea;
-    private DialogueHandler dialogueHandler;
 
     private void OnEnable()
     {
-        dialogueHandler = GetComponent<DialogueHandler>();
-
         // Listen when an item is dropped around requester
         deliveryArea = GetComponentInChildren<DeliveryArea>();
         deliveryArea.OnDeliverableReceived.AddListener(VerifyDeliverable);
@@ -89,18 +87,15 @@ public class Requester : MonoBehaviour
             activeRequest.active = false;
             activeRequest.satisfied = true;
 
-            if (activeRequest.conversationSatisfied != null)
-                dialogueHandler.StartConversation(activeRequest.conversationSatisfied);
-
-            OnRequestSatisfied.Invoke();
+            activeRequest.OnRequestSatisfied.Invoke();
+            OnAnyRequestSatisfied.Invoke();
         }
         else
         {
-            // Find an activeRequest that has not yet been satisfied and show dialogue feedback that the request isn't satisfied
-            // This just shows one dialogue among all possible feedback, not necessarily the particular request the player is trying to satisfy
+            // Find an activeRequest that has not yet been satisfied and show feedback that the request isn't satisfied
             activeRequest = ActiveRequests.Find(x => !x.satisfied);
-            if (activeRequest?.conversationUnsatisfied != null)
-                dialogueHandler.StartConversation(activeRequest.conversationUnsatisfied);
+            activeRequest?.OnRequestUnsatisfied.Invoke();
+            OnAnyRequestSatisfied.Invoke();
         }
     }
 }
@@ -110,29 +105,20 @@ public class Request
 {
     public GuidReference deliverCondition;
     public GuidReference requestedDeliverableObject;
-    public Conversation conversationSatisfied;
-    public Conversation conversationUnsatisfied;
+
+    public UnityEvent OnRequestSatisfied;
+    public UnityEvent OnRequestUnsatisfied;
+
     [HideInInspector] public bool active;
     [HideInInspector] public bool satisfied;
-    private Deliverable deliverable;
 
+    private Deliverable deliverable;
     public Deliverable Deliverable
     {
         get
         {
-
             deliverable = deliverable ?? requestedDeliverableObject.gameObject.GetComponent<Deliverable>();
             return deliverable;
         }
     }
 }
-
-/*
- * Player gathers an item
- * Player drops item to delivery area
- * Delivery area alerts requester that there was an item delivered
- * Requester checks if delivery is correct
- * Requester sets a new conversation depending on whether the item satisfies the request or not
- * Requester gets dialogueHandler to Start a conversation
- * Request is flagged satisfied
- */

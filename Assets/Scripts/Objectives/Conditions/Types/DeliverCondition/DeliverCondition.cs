@@ -15,7 +15,7 @@ public class DeliverCondition : Condition
     protected override void FinalizeCondition()
     {
         base.FinalizeCondition();
-        requester.OnRequestSatisfied.RemoveListener(Evaluate);
+        requester.OnAnyRequestSatisfied.RemoveListener(Evaluate);
     }
 
     protected override bool IsSatisfied()
@@ -35,7 +35,7 @@ public class DeliverCondition : Condition
         {
             //Debug.Log("Getting references for GuidReference");
             requester = requesterGuid.gameObject.GetComponent<Requester>();
-            requester.OnRequestSatisfied.AddListener(Evaluate);
+            requester.OnAnyRequestSatisfied.AddListener(Evaluate);
         }
     }
 }
