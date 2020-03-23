@@ -33,31 +33,39 @@ public class Persistable<T> : MonoBehaviour, IPersistable<T> where T : Persisten
 
     // This is a "hack" since we can't differentiate an On[En/Dis]able called by game logic vs
     // On[En/Dis]able called at start or when the object's about to be destroyed
-    public virtual void Enable()
+    public virtual void Enable(bool updateData = true)
     {
         activeObject = true;
 
+        // If there's a Model object, recursively set it and its children as active
         model = model ?? GetComponentInChildren<Model>();
-        model?.gameObject.SetActive(true);
-        if (model) model.transform.GetChild(0).gameObject.SetActive(true); // Assumes the model is only one object
+        if (model) TransformUtils.SetActiveRecursively(model.gameObject);
 
+        // Make sure we got the colliders
         if (colliders.Count == 0)
             colliders.AddRange(GetComponents<Collider>());
 
         foreach (var collider in colliders)
             collider.enabled = true;
 
-        UpdatePersistentData();
+        if (updateData)
+            UpdatePersistentData();
+
         OnEnable.Invoke();
     }
 
-    public virtual void Disable()
+    public virtual void Disable(bool updateData = true)
     {
         activeObject = false;
+
         model?.gameObject.SetActive(false);
+
         foreach (var collider in colliders)
             collider.enabled = false;
-        UpdatePersistentData();
+
+        if (updateData)
+            UpdatePersistentData();
+
         OnDisable.Invoke();
     }
 
@@ -65,6 +73,7 @@ public class Persistable<T> : MonoBehaviour, IPersistable<T> where T : Persisten
     {
         gameManager = gameManager ?? SingletonManager.GetInstance<GameManager>();
         gameManager.OnNewGame.AddListener(ResetData);
+
         guidComponent = guidComponent ?? GetComponent<GuidComponent>();
         model = GetComponentInChildren<Model>();
         colliders.AddRange(GetComponents<Collider>());

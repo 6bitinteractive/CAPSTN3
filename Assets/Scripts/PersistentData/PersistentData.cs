@@ -7,7 +7,7 @@ using UnityEngine;
 public class PersistentData
 {
     public Guid guid;
-    public bool active = true;
+    public bool active = true; // active can have various meaning (activeInHierarchy, activeSelf, visuallyCanBeSeen
     public Vector3 position = Vector3.zero;
     public Quaternion rotation = Quaternion.identity;
     public Vector3 scale = Vector3.one;

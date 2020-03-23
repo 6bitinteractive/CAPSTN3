@@ -78,15 +78,15 @@ public class Deliverable : Persistable<DeliverableData>
     {
         base.SetFromPersistentData();
 
-        if (activeObject)
-            Enable();
-        else
-            Disable();
-
         activeDeliverable = Data.activeDeliverable;
         thisTransform.position = Data.position;
         thisTransform.rotation = Data.rotation;
         thisTransform.localScale = Data.scale;
+
+        if (Data.active)
+            Enable(false); // Don't update the data
+        else
+            Disable(false);
     }
 
     public override void UpdatePersistentData()
@@ -97,7 +97,11 @@ public class Deliverable : Persistable<DeliverableData>
         Data.position = thisTransform.position;
         Data.rotation = thisTransform.rotation;
         Data.scale = thisTransform.localScale;
-        Data.active = activeObject;
+
+        model = model ?? GetComponentInChildren<Model>();
+        Data.active = activeObject = TransformUtils.IsModelActive(model);
+
+        Debug.Log(gameObject.name + " active state: " + activeObject);
 
         gameManager.GameData.AddPersistentData(Data);
     }
