@@ -57,7 +57,11 @@ public class Requester : MonoBehaviour
         {
             ActiveRequests.Add(request);
             request.active = true;
-            request.Deliverable?.Activate();
+
+            if (request.requestedDeliverableObject.gameObject != null) // If we have the object to deliver in the scene
+                request.Deliverable?.Activate();
+            else
+                Debug.LogErrorFormat("Request deliverable is not found in the same scene.");
         }
     }
 
@@ -116,6 +120,7 @@ public class Request
     {
         get
         {
+
             deliverable = deliverable ?? requestedDeliverableObject.gameObject.GetComponent<Deliverable>();
             return deliverable;
         }
