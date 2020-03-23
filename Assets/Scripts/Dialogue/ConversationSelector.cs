@@ -66,8 +66,9 @@ public class ConversationSelector : MonoBehaviour
 
                 //Debug.LogFormat("Dialogue updated by {0} - {1}", questEvent, questEvent.CurrentStatus);
                 //PrintConversation();
-                return;
             }
+
+            return; // Return at once as long as the dialogue was changed by a quest event update; i.e. dialogue changed by a quest event update takes precedence
         }
 
         // Check if theres a conversation related to current quest
