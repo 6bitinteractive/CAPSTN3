@@ -32,6 +32,7 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
     private string nextLine;
     private float currentCharacterWaitTime;
     private float minCharacterDisplayWaitTime;
+    private float widthPadding = 100f;
     private AudioSource audioSource;
     private SpecialCommandHandler specialCommandHandler;
 
@@ -204,7 +205,7 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
         currentDisplay.displayText.text = string.Empty;
         currentDisplay.displayText.maxVisibleCharacters = nextLine.Length;
         Vector2 preferred = currentDisplay.displayText.GetPreferredValues(nextLine); // Calculate the dimension of the text to be displayed
-        currentDisplay.layoutElement.preferredWidth = preferred.x + 100f; // Set the width
+        currentDisplay.layoutElement.preferredWidth = preferred.x + widthPadding; // Set the width
 
         // For simple typewriter effect
         textToDisplay.Clear();
@@ -319,16 +320,17 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
                 currentDisplay.displayText.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
             }
 
-            // Force width of container to only be as big as the visible text
-            Vector2 rendered = currentDisplay.displayText.GetRenderedValues();
-            if (currentDisplay.layoutElement != null)
-                currentDisplay.layoutElement.preferredWidth = rendered.x > 0f ? rendered.x + 100f : 0f;
-
             // Increment
             i++;
 
             // Display i-number of characters
             currentDisplay.displayText.maxVisibleCharacters = i;
+            currentDisplay.displayText.ForceMeshUpdate(); // Update to avoid flicker
+
+            // Force width of container to only be as big as the visible text
+            Vector2 rendered = currentDisplay.displayText.GetRenderedValues();
+            if (currentDisplay.layoutElement != null) // We check for null in cases where dialogue is in the middle of displaying while entering scene transition
+                currentDisplay.layoutElement.preferredWidth = rendered.x + widthPadding;
 
             // Display the line
             currentDisplay?.Display();
