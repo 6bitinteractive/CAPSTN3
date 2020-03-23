@@ -102,8 +102,9 @@ namespace Meowfia.WanderDog
         private void ResetGame()
         {
             GameData.ResetData();
-            playerStats.Reset();
             eventManager.ResetEventManager();
+            playerStats.Reset();
+            dayProgression.ResetDay();
         }
 
         public void SaveGameData()

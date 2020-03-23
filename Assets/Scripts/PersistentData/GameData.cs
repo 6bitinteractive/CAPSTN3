@@ -23,7 +23,6 @@ public partial class GameData : Persistable<PersistentData>
     public override void ResetData()
     {
         currentScene = startingPoint = string.Empty;
-        dayProgression.CurrentDayIndex = 0;
 
         // Clear lists of persistent data
         persistentDataDict.Clear();

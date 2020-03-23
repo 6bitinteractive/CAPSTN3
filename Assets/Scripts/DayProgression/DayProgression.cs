@@ -46,4 +46,9 @@ public class DayProgression : Persistable<PersistentData>
     {
         CurrentDayIndex = reader.ReadInt();
     }
+
+    public void ResetDay()
+    {
+        CurrentDayIndex = 0;
+    }
 }

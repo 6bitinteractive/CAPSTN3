@@ -101,8 +101,6 @@ public class Deliverable : Persistable<DeliverableData>
         model = model ?? GetComponentInChildren<Model>();
         Data.active = activeObject = TransformUtils.IsModelActive(model);
 
-        Debug.Log(gameObject.name + " active state: " + activeObject);
-
         gameManager.GameData.AddPersistentData(Data);
     }
 
