@@ -39,7 +39,6 @@ public class Digable : MonoBehaviour, IInteractable
     {
         collider = gameObject.GetComponent<Collider>();
         originalScale = transform.localScale;
-        Debug.Log(originalScale);
     }
 
     void OnEnable()
