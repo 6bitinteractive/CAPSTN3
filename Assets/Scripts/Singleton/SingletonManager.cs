@@ -14,6 +14,10 @@ public static class SingletonManager
 
     public static T GetInstance<T>() where T : MonoBehaviour
     {
+        // If the key is not in the dictionary
+        if (!singletonInstances.ContainsKey(typeof(T)))
+            return null;
+
         return singletonInstances[typeof(T)] as T;
     }
 
