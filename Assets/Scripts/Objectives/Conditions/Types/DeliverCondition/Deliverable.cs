@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,6 +21,15 @@ public class Deliverable : Persistable<DeliverableData>
     {
         Init();
         InitializeData();
+
+        if (Delivered)
+        {
+            // Make sure it's a root object
+            gameObject.transform.SetParent(null);
+
+            // Make it visible
+            Enable();
+        }
 
         if (activeDeliverable)
             Activate();
