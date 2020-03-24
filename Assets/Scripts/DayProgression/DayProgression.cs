@@ -14,6 +14,11 @@ public class DayProgression : Persistable<PersistentData>
     /// </summary>
     public int CurrentDayIndex { get; set; }
 
+    /// <summary>
+    /// This is used to be able to skip days for quest testing purposes
+    /// </summary>
+    public int CurrentDayModifier = 0;
+
     private QuestManager questManager;
 
     public void Initialize(QuestManager qm)
@@ -24,7 +29,7 @@ public class DayProgression : Persistable<PersistentData>
 
     public void BeginDay(int index = 0)
     {
-        CurrentDayIndex = index;
+        CurrentDayIndex = index + CurrentDayModifier;
         Debug.LogFormat("Beginning Day {0}", CurrentDayCount);
 
         // Start the quest to be tackled for the day; assumes that the day shares the same index number as the quest
