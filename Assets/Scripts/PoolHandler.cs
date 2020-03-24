@@ -7,6 +7,8 @@ public class PoolHandler : MonoBehaviour
     [SerializeField] int pooledObjectCount;
     [SerializeField] GameObject pooledObjectPrefab;
     [SerializeField] List<GameObject> pooledObjectList;
+    [SerializeField] Transform parent;
+    [SerializeField] Vector3 SpawnOffset;
 
     public List<GameObject> PooledObjectList { get => pooledObjectList; set => pooledObjectList = value; }
     public GameObject PooledObjectPrefab { get => pooledObjectPrefab; set => pooledObjectPrefab = value; }
@@ -17,7 +19,8 @@ public class PoolHandler : MonoBehaviour
         {
             GameObject newPooledObject = Instantiate(PooledObjectPrefab); // Create a pooled object prefab
             PooledObjectList.Add(newPooledObject); // Add pooled object to list
-            newPooledObject.transform.parent = gameObject.transform;
+            newPooledObject.transform.parent = parent;
+            newPooledObject.transform.localScale = PooledObjectPrefab.transform.localScale;
             newPooledObject.SetActive(false); // Disable pooled object incase its enabled by accident
         }
     }
@@ -30,7 +33,7 @@ public class PoolHandler : MonoBehaviour
             if (PooledObjectList[i].activeInHierarchy == false)
             {
                 PooledObjectList[i].SetActive(true);
-                PooledObjectList[i].transform.position = source.transform.position + source.transform.forward;
+                PooledObjectList[i].transform.position = source.transform.position + source.transform.forward + SpawnOffset;
                 PooledObjectList[i].transform.rotation = Quaternion.identity;
                 break;
             }
@@ -38,7 +41,8 @@ public class PoolHandler : MonoBehaviour
             else if (i == PooledObjectList.Count - 1)
             {
                 GameObject newPooledObject = Instantiate(PooledObjectPrefab);
-                newPooledObject.transform.parent = gameObject.transform;
+                newPooledObject.transform.parent = parent;
+                newPooledObject.transform.localScale = PooledObjectPrefab.transform.localScale;
                 newPooledObject.SetActive(false);
                 PooledObjectList.Add(newPooledObject);
             }
