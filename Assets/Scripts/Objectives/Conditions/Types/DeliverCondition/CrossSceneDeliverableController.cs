@@ -6,20 +6,43 @@ public class CrossSceneDeliverableController : MonoBehaviour
 {
     [SerializeField] private GuidReference deliverableObject;
 
-    private Deliverable deliverable;
+    private Deliverable Deliverable => deliverableObject.gameObject.GetComponent<Deliverable>();
 
     // We only get references when the method is called
-    public void Enable()
+
+    public void SetActive(bool value)
     {
         if (deliverableObject.gameObject == null) return;
-        deliverable = deliverableObject.gameObject.GetComponent<Deliverable>();
-        deliverable.Enable();
+        deliverableObject.gameObject.SetActive(value);
     }
 
-    public void Disable()
+    public void Enable(bool updateData)
     {
         if (deliverableObject.gameObject == null) return;
-        deliverable = deliverableObject.gameObject.GetComponent<Deliverable>();
-        deliverable.Disable();
+        Deliverable.Enable(updateData);
+    }
+
+    public void Disable(bool updateData)
+    {
+        if (deliverableObject.gameObject == null) return;
+        Deliverable.Disable();
+    }
+
+    public void SetParent(Transform transform)
+    {
+        if (deliverableObject.gameObject == null) return;
+        deliverableObject.gameObject.transform.SetParent(transform);
+    }
+
+    public void IsKinematic(bool value)
+    {
+        if (deliverableObject.gameObject == null) return;
+        deliverableObject.gameObject.GetComponent<Rigidbody>().isKinematic = value;
+    }
+
+    public void Activate()
+    {
+        if (deliverableObject.gameObject == null) return;
+        Deliverable.Activate();
     }
 }

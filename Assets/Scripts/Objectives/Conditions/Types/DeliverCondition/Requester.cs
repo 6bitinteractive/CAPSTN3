@@ -19,7 +19,7 @@ public class Requester : MonoBehaviour
     private Dictionary<Condition, Request> requestDict = new Dictionary<Condition, Request>();
     private DeliveryArea deliveryArea;
 
-    private void OnEnable()
+    private void Start()
     {
         // Listen when an item is dropped around requester
         deliveryArea = GetComponentInChildren<DeliveryArea>();

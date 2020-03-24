@@ -11,6 +11,8 @@ public class Deliverable : Persistable<DeliverableData>
     [Tooltip("Scene where crossScene deliverables are stored; by default it is the Persistent scene")]
     [SerializeField] private SceneData persistentDeliverable;
 
+    [SerializeField] private bool crossSceneDeliverable;
+
     private Biteable biteable;
     private Pickupable pickupable;
     private Outlineable outlineable;
@@ -26,9 +28,7 @@ public class Deliverable : Persistable<DeliverableData>
 
     private void Start()
     {
-        // Get the scene where this gameObject is part of
-        string scene = gameObject.scene.name;
-        IsCrossSceneDeliverable = scene == persistentDeliverable.SceneName;
+        IsCrossSceneDeliverable = crossSceneDeliverable;
 
         Init();
         InitializeData();
@@ -164,5 +164,10 @@ public class Deliverable : Persistable<DeliverableData>
     {
         gameObject.transform.SetParent(null);
         SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetSceneByName(persistentDeliverable.SceneName));
+    }
+
+    public void MoveToCurrentActive()
+    {
+        SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetSceneByName(SceneManager.GetActiveScene().name));
     }
 }
