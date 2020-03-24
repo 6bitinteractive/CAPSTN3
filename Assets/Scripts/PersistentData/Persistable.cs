@@ -35,16 +35,8 @@ public class Persistable<T> : MonoBehaviour, IPersistable<T> where T : Persisten
     {
         activeObject = true;
 
-        // If there's a Model object, recursively set it and its children as active
-        model = model ?? GetComponentInChildren<Model>();
-        if (model) TransformUtils.SetActiveRecursively(model.gameObject);
-
-        // Make sure we got the colliders
-        if (colliders.Count == 0)
-            colliders.AddRange(GetComponents<Collider>());
-
-        foreach (var collider in colliders)
-            collider.enabled = true;
+        MakeVisible();
+        MakeInteractable(false);
 
         if (updateData)
             UpdatePersistentData();
@@ -119,6 +111,23 @@ public class Persistable<T> : MonoBehaviour, IPersistable<T> where T : Persisten
     public virtual void Load(GameDataReader reader)
     {
         Data.Load(reader);
+    }
+
+    public virtual void MakeVisible()
+    {
+        // If there's a Model object, recursively set it and its children as active
+        model = model ?? GetComponentInChildren<Model>();
+        if (model) TransformUtils.SetActiveRecursively(model.gameObject);
+    }
+
+    public virtual void MakeInteractable(bool value = true)
+    {
+        // Make sure we got the colliders
+        if (colliders.Count == 0)
+            colliders.AddRange(GetComponents<Collider>());
+
+        foreach (var collider in colliders)
+            collider.enabled = value;
     }
 }
 

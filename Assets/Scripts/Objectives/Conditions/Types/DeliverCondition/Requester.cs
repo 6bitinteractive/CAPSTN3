@@ -14,6 +14,8 @@ public class Requester : MonoBehaviour
 
     public List<Request> ActiveRequests { get; private set; } = new List<Request>();
     public UnityEvent OnAnyRequestSatisfied;
+
+    [Header("THIS EVENT IS DISABLED")]
     public UnityEvent OnAnyRequestUnsatisfied;
 
     private Dictionary<Condition, Request> requestDict = new Dictionary<Condition, Request>();
@@ -78,7 +80,7 @@ public class Requester : MonoBehaviour
 
         if (activeRequest != null)
         {
-            //Debug.LogFormat("DELIVERED: {0}", requestedItem);
+            //Debug.LogFormat("DELIVERED: {0}", deliverable);
 
             // Let deliverable do what it wants when it's delivered
             deliverable.OnDeliver();
@@ -92,10 +94,14 @@ public class Requester : MonoBehaviour
         }
         else
         {
+            //Debug.LogFormat("NOT DELIVERED: {0}", deliverable);
+
             // Find an activeRequest that has not yet been satisfied and show feedback that the request isn't satisfied
-            activeRequest = ActiveRequests.Find(x => !x.satisfied);
-            activeRequest?.OnRequestUnsatisfied.Invoke();
-            OnAnyRequestUnsatisfied.Invoke();
+
+            // FIX: This is called when going back to a scene with an ActiveRequest
+            //activeRequest = ActiveRequests.Find(x => !x.satisfied);
+            //activeRequest?.OnRequestUnsatisfied.Invoke();
+            //OnAnyRequestUnsatisfied.Invoke();
         }
     }
 }
@@ -107,6 +113,8 @@ public class Request
     public GuidReference requestedDeliverableObject;
 
     public UnityEvent OnRequestSatisfied;
+
+    [Header("THIS EVENT IS DISABLED")]
     public UnityEvent OnRequestUnsatisfied;
 
     [HideInInspector] public bool active;

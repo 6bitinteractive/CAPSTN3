@@ -39,7 +39,8 @@ public class Deliverable : Persistable<DeliverableData>
             gameObject.transform.SetParent(null);
 
             // Make it visible
-            Enable();
+            MakeVisible();
+            MakeInteractable(false); // ...but not interactable
         }
 
         if (activeDeliverable)
