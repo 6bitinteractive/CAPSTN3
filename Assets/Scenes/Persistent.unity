@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3542,12 +3542,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89e3eddb71cedb94ea15e8b62d8cc196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnEnable:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDisable:
-    m_PersistentCalls:
-      m_Calls: []
   OnQuestCollectionComplete:
     m_PersistentCalls:
       m_Calls: []
@@ -4648,82 +4642,82 @@ PrefabInstance:
     - target: {fileID: 2705033000861485748, guid: 82054a798da8ada48b8d0591e1d2c0fc,
         type: 3}
       propertyPath: objectRequiredAtLocation.serializedGuid.Array.data[0]
-      value: 206
+      value: 113
       objectReference: {fileID: 0}
     - target: {fileID: 2705033000861485748, guid: 82054a798da8ada48b8d0591e1d2c0fc,
         type: 3}
       propertyPath: objectRequiredAtLocation.serializedGuid.Array.data[1]
-      value: 204
+      value: 106
       objectReference: {fileID: 0}
     - target: {fileID: 2705033000861485748, guid: 82054a798da8ada48b8d0591e1d2c0fc,
         type: 3}
       propertyPath: objectRequiredAtLocation.serializedGuid.Array.data[2]
-      value: 164
+      value: 201
       objectReference: {fileID: 0}
     - target: {fileID: 2705033000861485748, guid: 82054a798da8ada48b8d0591e1d2c0fc,
         type: 3}
       propertyPath: objectRequiredAtLocation.serializedGuid.Array.data[3]
-      value: 152
+      value: 162
       objectReference: {fileID: 0}
     - target: {fileID: 2705033000861485748, guid: 82054a798da8ada48b8d0591e1d2c0fc,
         type: 3}
       propertyPath: objectRequiredAtLocation.serializedGuid.Array.data[4]
-      value: 110
+      value: 113
       objectReference: {fileID: 0}
     - target: {fileID: 2705033000861485748, guid: 82054a798da8ada48b8d0591e1d2c0fc,
         type: 3}
       propertyPath: objectRequiredAtLocation.serializedGuid.Array.data[5]
-      value: 197
+      value: 156
       objectReference: {fileID: 0}
     - target: {fileID: 2705033000861485748, guid: 82054a798da8ada48b8d0591e1d2c0fc,
         type: 3}
       propertyPath: objectRequiredAtLocation.serializedGuid.Array.data[6]
-      value: 67
+      value: 214
       objectReference: {fileID: 0}
     - target: {fileID: 2705033000861485748, guid: 82054a798da8ada48b8d0591e1d2c0fc,
         type: 3}
       propertyPath: objectRequiredAtLocation.serializedGuid.Array.data[7]
-      value: 70
+      value: 77
       objectReference: {fileID: 0}
     - target: {fileID: 2705033000861485748, guid: 82054a798da8ada48b8d0591e1d2c0fc,
         type: 3}
       propertyPath: objectRequiredAtLocation.serializedGuid.Array.data[8]
-      value: 167
+      value: 173
       objectReference: {fileID: 0}
     - target: {fileID: 2705033000861485748, guid: 82054a798da8ada48b8d0591e1d2c0fc,
         type: 3}
       propertyPath: objectRequiredAtLocation.serializedGuid.Array.data[9]
-      value: 4
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2705033000861485748, guid: 82054a798da8ada48b8d0591e1d2c0fc,
         type: 3}
       propertyPath: objectRequiredAtLocation.serializedGuid.Array.data[10]
-      value: 11
+      value: 117
       objectReference: {fileID: 0}
     - target: {fileID: 2705033000861485748, guid: 82054a798da8ada48b8d0591e1d2c0fc,
         type: 3}
       propertyPath: objectRequiredAtLocation.serializedGuid.Array.data[11]
-      value: 143
+      value: 179
       objectReference: {fileID: 0}
     - target: {fileID: 2705033000861485748, guid: 82054a798da8ada48b8d0591e1d2c0fc,
         type: 3}
       propertyPath: objectRequiredAtLocation.serializedGuid.Array.data[12]
-      value: 211
+      value: 52
       objectReference: {fileID: 0}
     - target: {fileID: 2705033000861485748, guid: 82054a798da8ada48b8d0591e1d2c0fc,
         type: 3}
       propertyPath: objectRequiredAtLocation.serializedGuid.Array.data[13]
-      value: 244
+      value: 76
       objectReference: {fileID: 0}
     - target: {fileID: 2705033000861485748, guid: 82054a798da8ada48b8d0591e1d2c0fc,
         type: 3}
       propertyPath: objectRequiredAtLocation.serializedGuid.Array.data[14]
-      value: 47
+      value: 108
       objectReference: {fileID: 0}
     - target: {fileID: 2705033000861485748, guid: 82054a798da8ada48b8d0591e1d2c0fc,
         type: 3}
       propertyPath: objectRequiredAtLocation.serializedGuid.Array.data[15]
-      value: 92
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 2705033000861485748, guid: 82054a798da8ada48b8d0591e1d2c0fc,
         type: 3}
@@ -6725,8 +6719,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
         type: 3}
+      propertyPath: OnActive.gameEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
       propertyPath: displayName
       value: Solve the second equation
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
+      propertyPath: OnActive.gameEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
+      propertyPath: OnActive.gameEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3560431630348688589, guid: aa9b234a61bc4d44fbb3f6650c51146b,
         type: 3}
@@ -8713,12 +8722,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b24e2ac74f6e54fb15b2de45124969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnEnable:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDisable:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &1060668583
 Transform:
   m_ObjectHideFlags: 0
@@ -10165,12 +10168,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89e3eddb71cedb94ea15e8b62d8cc196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnEnable:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDisable:
-    m_PersistentCalls:
-      m_Calls: []
   OnQuestCollectionComplete:
     m_PersistentCalls:
       m_Calls: []
@@ -10918,12 +10915,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6d47669db792bc4db8fcf5c5de16e61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnEnable:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDisable:
-    m_PersistentCalls:
-      m_Calls: []
   sceneController: {fileID: 1539852845}
   dayProgression: {fileID: 1060668582}
   questManager: {fileID: 1900297895}
@@ -14233,12 +14224,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89e3eddb71cedb94ea15e8b62d8cc196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnEnable:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDisable:
-    m_PersistentCalls:
-      m_Calls: []
   OnQuestCollectionComplete:
     m_PersistentCalls:
       m_Calls: []
@@ -15233,82 +15218,82 @@ PrefabInstance:
     - target: {fileID: 8999785355598770872, guid: 009b2eaf96e9db240870949ebf126b07,
         type: 3}
       propertyPath: interactionSource.serializedGuid.Array.data[0]
-      value: 215
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 8999785355598770872, guid: 009b2eaf96e9db240870949ebf126b07,
         type: 3}
       propertyPath: interactionSource.serializedGuid.Array.data[1]
-      value: 21
+      value: 133
       objectReference: {fileID: 0}
     - target: {fileID: 8999785355598770872, guid: 009b2eaf96e9db240870949ebf126b07,
         type: 3}
       propertyPath: interactionSource.serializedGuid.Array.data[2]
-      value: 191
+      value: 142
       objectReference: {fileID: 0}
     - target: {fileID: 8999785355598770872, guid: 009b2eaf96e9db240870949ebf126b07,
         type: 3}
       propertyPath: interactionSource.serializedGuid.Array.data[3]
-      value: 55
+      value: 130
       objectReference: {fileID: 0}
     - target: {fileID: 8999785355598770872, guid: 009b2eaf96e9db240870949ebf126b07,
         type: 3}
       propertyPath: interactionSource.serializedGuid.Array.data[4]
-      value: 23
+      value: 68
       objectReference: {fileID: 0}
     - target: {fileID: 8999785355598770872, guid: 009b2eaf96e9db240870949ebf126b07,
         type: 3}
       propertyPath: interactionSource.serializedGuid.Array.data[5]
-      value: 202
+      value: 133
       objectReference: {fileID: 0}
     - target: {fileID: 8999785355598770872, guid: 009b2eaf96e9db240870949ebf126b07,
         type: 3}
       propertyPath: interactionSource.serializedGuid.Array.data[6]
-      value: 45
+      value: 249
       objectReference: {fileID: 0}
     - target: {fileID: 8999785355598770872, guid: 009b2eaf96e9db240870949ebf126b07,
         type: 3}
       propertyPath: interactionSource.serializedGuid.Array.data[7]
-      value: 70
+      value: 66
       objectReference: {fileID: 0}
     - target: {fileID: 8999785355598770872, guid: 009b2eaf96e9db240870949ebf126b07,
         type: 3}
       propertyPath: interactionSource.serializedGuid.Array.data[8]
-      value: 140
+      value: 157
       objectReference: {fileID: 0}
     - target: {fileID: 8999785355598770872, guid: 009b2eaf96e9db240870949ebf126b07,
         type: 3}
       propertyPath: interactionSource.serializedGuid.Array.data[9]
-      value: 43
+      value: 183
       objectReference: {fileID: 0}
     - target: {fileID: 8999785355598770872, guid: 009b2eaf96e9db240870949ebf126b07,
         type: 3}
       propertyPath: interactionSource.serializedGuid.Array.data[10]
-      value: 87
+      value: 221
       objectReference: {fileID: 0}
     - target: {fileID: 8999785355598770872, guid: 009b2eaf96e9db240870949ebf126b07,
         type: 3}
       propertyPath: interactionSource.serializedGuid.Array.data[11]
-      value: 173
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 8999785355598770872, guid: 009b2eaf96e9db240870949ebf126b07,
         type: 3}
       propertyPath: interactionSource.serializedGuid.Array.data[12]
-      value: 90
+      value: 157
       objectReference: {fileID: 0}
     - target: {fileID: 8999785355598770872, guid: 009b2eaf96e9db240870949ebf126b07,
         type: 3}
       propertyPath: interactionSource.serializedGuid.Array.data[13]
-      value: 6
+      value: 84
       objectReference: {fileID: 0}
     - target: {fileID: 8999785355598770872, guid: 009b2eaf96e9db240870949ebf126b07,
         type: 3}
       propertyPath: interactionSource.serializedGuid.Array.data[14]
-      value: 0
+      value: 102
       objectReference: {fileID: 0}
     - target: {fileID: 8999785355598770872, guid: 009b2eaf96e9db240870949ebf126b07,
         type: 3}
       propertyPath: interactionSource.serializedGuid.Array.data[15]
-      value: 213
+      value: 171
       objectReference: {fileID: 0}
     - target: {fileID: 8999785355598770872, guid: 009b2eaf96e9db240870949ebf126b07,
         type: 3}
@@ -15319,7 +15304,7 @@ PrefabInstance:
         type: 3}
       propertyPath: interactionSource.cachedScene
       value: 
-      objectReference: {fileID: 102900000, guid: 7cdb606e197b18f4c808f2cbfa85e9bc,
+      objectReference: {fileID: 102900000, guid: d2f38054dd322a24d8fd888c6649fd77,
         type: 3}
     - target: {fileID: 8999785355598770874, guid: 009b2eaf96e9db240870949ebf126b07,
         type: 3}
@@ -15504,12 +15489,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89e3eddb71cedb94ea15e8b62d8cc196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnEnable:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDisable:
-    m_PersistentCalls:
-      m_Calls: []
   OnQuestCollectionComplete:
     m_PersistentCalls:
       m_Calls: []
