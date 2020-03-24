@@ -130,4 +130,5 @@ public class CutsceneData : PersistentData
 public class DeliverableData : PersistentData
 {
     public bool activeDeliverable;
+    public bool delivered;
 }

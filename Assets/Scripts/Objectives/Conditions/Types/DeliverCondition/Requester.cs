@@ -117,8 +117,13 @@ public class Request
     {
         get
         {
-            deliverable = deliverable ?? requestedDeliverableObject.gameObject.GetComponent<Deliverable>();
-            return deliverable;
+            if (requestedDeliverableObject.gameObject != null)
+            {
+                deliverable = deliverable ?? requestedDeliverableObject.gameObject.GetComponent<Deliverable>();
+                return deliverable;
+            }
+
+            return null;
         }
     }
 }
