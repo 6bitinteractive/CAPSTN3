@@ -25,7 +25,8 @@ public class Persistable<T> : MonoBehaviour, IPersistable<T> where T : Persisten
 
     private void OnDestroy()
     {
-        gameManager.OnNewGame.RemoveListener(ResetData);
+        if (gameManager != null)
+            gameManager.OnNewGame.RemoveListener(ResetData);
     }
 
     // This is a "hack" since we can't differentiate an On[En/Dis]able called by game logic vs
