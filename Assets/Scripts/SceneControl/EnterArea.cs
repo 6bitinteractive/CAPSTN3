@@ -15,8 +15,11 @@ public class EnterArea : MonoBehaviour
     private BoxCollider boxCollider;
     private bool isLoading;
 
+    private static EventManager eventManager;
+
     private void Start()
     {
+        eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
         boxCollider = GetComponent<BoxCollider>();
         boxCollider.isTrigger = true;
     }
@@ -32,11 +35,11 @@ public class EnterArea : MonoBehaviour
         {
             int collisionLayerMask = 1 << positionHandler.gameObject.layer;
 
-            // If collides with player display text
             if (collisionLayerMask == playerLayerMask.value)
             {
                 isLoading = true;
                 OnEnterArea.Invoke();
+                eventManager.Trigger<EnterAreaEvent, EnterArea>(this);
             }
         }
     }

@@ -21,8 +21,10 @@ public class Bite : MonoBehaviour
     }
 
     public void BiteEvent(Interactor source, Biteable target)
-    {       
+    {
         target.Interact(source, target);
+
+        if (audioSource == null) return;
         audioSource.clip = biteSfx;
         audioSource.Play();
 
@@ -31,7 +33,7 @@ public class Bite : MonoBehaviour
     }
 
     public void Release(Interactor source, Biteable target)
-    {       
+    {
         target.Release(source);
         mouth.gameObject.transform.localPosition = originalMouthPos;
         if (animator == null) return;

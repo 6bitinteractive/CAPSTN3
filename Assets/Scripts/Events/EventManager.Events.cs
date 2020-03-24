@@ -138,4 +138,7 @@ public class GoodBoyPointsEvent : UnityEvent<GoodBoyPoints> { }
 
 [Serializable]
 public class GoodBoyPointsHandlerEvent : UnityEvent<GoodBoyPointsHandler> { }
+
+[Serializable]
+public class EnterAreaEvent : UnityEvent<EnterArea> { }
 #endregion

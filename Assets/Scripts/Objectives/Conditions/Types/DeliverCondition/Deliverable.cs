@@ -1,11 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Sniffable))]
 
 public class Deliverable : Persistable<DeliverableData>
 {
+    [Tooltip("Scene where crossScene deliverables are stored; by default it is the Persistent scene")]
+    [SerializeField] private SceneData persistentDeliverable;
+
     private Biteable biteable;
     private Pickupable pickupable;
     private Outlineable outlineable;
@@ -15,10 +20,16 @@ public class Deliverable : Persistable<DeliverableData>
     private Transform thisTransform;
     private bool activeDeliverable;
 
+    public bool IsCarried { get; set; }
+    public bool IsCrossSceneDeliverable { get; private set; }
     public bool Delivered { get; private set; }
 
     private void Start()
     {
+        // Get the scene where this gameObject is part of
+        string scene = gameObject.scene.name;
+        IsCrossSceneDeliverable = scene == persistentDeliverable.SceneName;
+
         Init();
         InitializeData();
 
@@ -127,8 +138,31 @@ public class Deliverable : Persistable<DeliverableData>
         thisCollider = thisCollider ?? GetComponent<Collider>();
         thisTransform = thisTransform ?? GetComponent<Transform>();
 
+        if (IsCrossSceneDeliverable)
+        {
+            biteable.OnBite.AddListener(OnCarried);
+            biteable.OnRelease.AddListener(OnReleased);
+        }
+
         thisCollider.enabled = false;
         biteable.enabled = false;
         outlineable.enabled = false;
+    }
+
+    private void OnCarried()
+    {
+        IsCarried = true;
+    }
+
+    private void OnReleased()
+    {
+        IsCarried = false;
+        MoveToPersistent();
+    }
+
+    public void MoveToPersistent()
+    {
+        gameObject.transform.SetParent(null);
+        SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetSceneByName(persistentDeliverable.SceneName));
     }
 }

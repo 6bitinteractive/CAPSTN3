@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TransformUtils
+public static class TransformUtils
 {
     /// <summary>
     /// Checks if model object is active---meaning the player will be able to see it
