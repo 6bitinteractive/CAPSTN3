@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,8 +13,9 @@ public class Deliverable : Persistable<DeliverableData>
     private Rigidbody rb;
     private Collider thisCollider;
     private Transform thisTransform;
-
     private bool activeDeliverable;
+
+    public bool Delivered { get; private set; }
 
     private void Start()
     {
@@ -66,6 +67,7 @@ public class Deliverable : Persistable<DeliverableData>
         sniffable.RemoveCurrentTargetSniffable();
 
         activeDeliverable = false;
+        Delivered = true;
         UpdatePersistentData();
     }
 
@@ -79,6 +81,7 @@ public class Deliverable : Persistable<DeliverableData>
         base.SetFromPersistentData();
 
         activeDeliverable = Data.activeDeliverable;
+        Delivered = Data.delivered;
         thisTransform.position = Data.position;
         thisTransform.rotation = Data.rotation;
         thisTransform.localScale = Data.scale;
@@ -94,6 +97,7 @@ public class Deliverable : Persistable<DeliverableData>
         base.UpdatePersistentData();
 
         Data.activeDeliverable = activeDeliverable;
+        Data.delivered = Delivered;
         Data.position = thisTransform.position;
         Data.rotation = thisTransform.rotation;
         Data.scale = thisTransform.localScale;

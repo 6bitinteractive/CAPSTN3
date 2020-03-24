@@ -101,10 +101,18 @@ public class Digable : MonoBehaviour, IInteractable
             //newObjectToSpawn.GetComponent<Rigidbody>().AddForce(Vector3.up * ObjectToSpawnJumpSpeed); // Make newly spawned object jump up
 
             // Temporary
+            // If it's a deliverable, show the model
+            Deliverable deliverable = ObjectToSpawn.GetComponent<Deliverable>();
+            if (!deliverable.Delivered)
+                deliverable.Enable();
+            else if (deliverable.Delivered) // If already delivered, don't respawn
+                return;
+
+            // Reposition and make sure gameObject is active
             ObjectToSpawn.transform.position = transform.position;
             ObjectToSpawn.SetActive(true);
-            Persistable<DeliverableData> deliverable = ObjectToSpawn.GetComponent<Persistable<DeliverableData>>();
-            if (deliverable) deliverable.Enable();
+
+            // Make newly spawned object jump up
             ObjectToSpawn.GetComponent<Rigidbody>().AddForce(Vector3.up * ObjectToSpawnJumpSpeed);
 
             // Broadcast that an object has been found
