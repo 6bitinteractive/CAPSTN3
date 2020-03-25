@@ -1178,7 +1178,7 @@ PrefabInstance:
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
       propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[6].m_MethodName
-      value: Enable
+      value: EnableDeliverable
       objectReference: {fileID: 0}
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
@@ -1341,7 +1341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 364f119deb57c0a42ba2c02ab8996bd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deliverableObject:
+  crossSceneObject:
     serializedGuid: 3c7165c5a1f8cb44861c93f66832d390
     cachedName: WaterBottle
     cachedScene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
@@ -3397,7 +3397,7 @@ PrefabInstance:
     - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
       propertyPath: OnConversationEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Enable
+      value: DeliverableEnable
       objectReference: {fileID: 0}
     - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
@@ -3412,7 +3412,7 @@ PrefabInstance:
     - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
       propertyPath: OnConversationEnd.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Activate
+      value: DeliverableActivate
       objectReference: {fileID: 0}
     - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
@@ -3471,7 +3471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 364f119deb57c0a42ba2c02ab8996bd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deliverableObject:
+  crossSceneObject:
     serializedGuid: f55a28a4f15a854cabc4ccde51bb0d1c
     cachedName: Food-PackedLunch
     cachedScene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
@@ -5059,8 +5059,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f4d2df330af9b48848e12f14078f84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  persistentDeliverable: {fileID: 0}
-  crossSceneDeliverable: 0
 --- !u!114 &338890984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8246,10 +8244,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 364f119deb57c0a42ba2c02ab8996bd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deliverableObject:
-    serializedGuid: 3c7165c5a1f8cb44861c93f66832d390
-    cachedName: WaterBottle
-    cachedScene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+  crossSceneObject:
+    serializedGuid: 00000000000000000000000000000000
+    cachedName: 
+    cachedScene: {fileID: 0}
 --- !u!114 &706147451 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1306937976964040262, guid: 63cc54b93023a1740a617c7bf7756820,
@@ -10390,8 +10388,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f4d2df330af9b48848e12f14078f84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  persistentDeliverable: {fileID: 0}
-  crossSceneDeliverable: 0
 --- !u!114 &957067061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18209,7 +18205,7 @@ PrefabInstance:
     - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
       propertyPath: OnConversationBegin.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: Activate
+      value: DeliverableActivate
       objectReference: {fileID: 0}
     - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
@@ -18259,7 +18255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 364f119deb57c0a42ba2c02ab8996bd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deliverableObject:
+  crossSceneObject:
     serializedGuid: 3c7165c5a1f8cb44861c93f66832d390
     cachedName: WaterBottle
     cachedScene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
@@ -18407,8 +18403,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f4d2df330af9b48848e12f14078f84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  persistentDeliverable: {fileID: 0}
-  crossSceneDeliverable: 0
 --- !u!114 &1666422783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21735,7 +21729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 364f119deb57c0a42ba2c02ab8996bd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deliverableObject:
+  crossSceneObject:
     serializedGuid: 00000000000000000000000000000000
     cachedName: 
     cachedScene: {fileID: 0}
