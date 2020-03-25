@@ -27,6 +27,8 @@ public class Movement : MonoBehaviour
     private bool isGrounded;
     private CharacterController controller;
 
+    public Vector3 CurrentDirection { get => currentDirection; set => currentDirection = value; }
+
     private void Start()
     {
         controller = GetComponent<CharacterController>();
