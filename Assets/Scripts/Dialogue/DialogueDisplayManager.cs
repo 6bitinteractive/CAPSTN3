@@ -325,7 +325,7 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
 
             // Display i-number of characters
             currentDisplay.displayText.maxVisibleCharacters = i;
-            currentDisplay.displayText.ForceMeshUpdate(); // Update to avoid flicker
+            currentDisplay.displayText?.ForceMeshUpdate(); // Update to avoid flicker
 
             // Force width of container to only be as big as the visible text
             Vector2 rendered = currentDisplay.displayText.GetRenderedValues();
