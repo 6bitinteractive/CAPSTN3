@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Meowfia.WanderDog;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,11 +10,15 @@ public class CrossSceneObjectHandler : Singleton<CrossSceneObjectHandler>
     public List<CrossSceneObject> CrossSceneObjects { get; set; } = new List<CrossSceneObject>();
     public GameObject CarriedObj { get; set; }
 
+    private static GameManager gameManager;
     private static SceneController sceneController;
 
     private void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoad;
+        gameManager = gameManager ?? SingletonManager.GetInstance<GameManager>();
+        gameManager.OnNewGame.AddListener(ResetCrossSceneHandler);
+
         sceneController = sceneController ?? SingletonManager.GetInstance<SceneController>();
         sceneController.BeforePreviousSceneUnload.AddListener(MoveAllToPersistentScene);
     }
@@ -51,5 +56,10 @@ public class CrossSceneObjectHandler : Singleton<CrossSceneObjectHandler>
             if (item.Rigidbody != null)
                 item.Rigidbody.isKinematic = true; // We make sure it doesn't fall
         }
+    }
+
+    private void ResetCrossSceneHandler()
+    {
+        CarriedObj = null;
     }
 }
