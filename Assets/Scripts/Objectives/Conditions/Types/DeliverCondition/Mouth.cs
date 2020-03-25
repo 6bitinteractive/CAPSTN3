@@ -41,7 +41,7 @@ public class Mouth : Singleton<Mouth>
         if (crossSceneObj == null) return;
 
         if (crossSceneObj.IsCarried)
-            crossSceneDeliverableHandler.carriedObj = carriedObject;
+            crossSceneDeliverableHandler.CarriedObj = carriedObject;
     }
 
     public void CarryObject(GameObject gameObject)

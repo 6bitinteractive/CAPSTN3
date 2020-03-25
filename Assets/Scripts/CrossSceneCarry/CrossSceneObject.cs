@@ -36,7 +36,7 @@ public class CrossSceneObject : MonoBehaviour
         gameManager.OnNewGame.AddListener(ResetObject);
 
         crossSceneObjectHandler = crossSceneObjectHandler ?? SingletonManager.GetInstance<CrossSceneObjectHandler>();
-        crossSceneObjectHandler.crossSceneObjects.Add(this);
+        crossSceneObjectHandler.CrossSceneObjects.Add(this);
 
         biteable.OnBite.AddListener(OnCarried);
         biteable.OnRelease.AddListener(OnReleased);
@@ -47,7 +47,7 @@ public class CrossSceneObject : MonoBehaviour
         if (gameManager != null)
             gameManager.OnNewGame.RemoveListener(ResetObject);
 
-        crossSceneObjectHandler.crossSceneObjects.Remove(this);
+        crossSceneObjectHandler.CrossSceneObjects.Remove(this);
 
         if (biteable == null) return;
         biteable.OnBite.RemoveListener(OnCarried);
