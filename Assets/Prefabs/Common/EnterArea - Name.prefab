@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7964757325653825642}
   - component: {fileID: 901769634007117910}
   - component: {fileID: 8799126536636718038}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: EnterArea - Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24ba124d477129d46a6946f9eb7bbd29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  associatedStartingPoint: {fileID: 0}
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 256
