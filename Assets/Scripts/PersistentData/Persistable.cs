@@ -36,7 +36,7 @@ public class Persistable<T> : MonoBehaviour, IPersistable<T> where T : Persisten
         activeObject = true;
 
         MakeVisible(true);
-        MakeInteractable(false);
+        MakeInteractable(true);
 
         if (updateData)
             UpdatePersistentData();
@@ -122,10 +122,7 @@ public class Persistable<T> : MonoBehaviour, IPersistable<T> where T : Persisten
     {
         // Make sure we got the colliders
         if (colliders.Count == 0)
-        {
             colliders.AddRange(GetComponents<Collider>());
-            colliders.AddRange(GetComponentsInChildren<Collider>());
-        }
 
         foreach (var collider in colliders)
             collider.enabled = value;
