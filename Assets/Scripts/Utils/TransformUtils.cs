@@ -34,13 +34,13 @@ public static class TransformUtils
     }
 
     /// <summary>
-    /// Sets the parentGameObject and all of its children as active
+    /// Sets the parentGameObject and all of its children as active/inactive
     /// </summary>
     /// <param name="parentGameObject">Parent gameObject - will be set as active as well</param>
-    public static void SetActiveRecursively(GameObject parentGameObject)
+    public static void SetActiveRecursively(GameObject parentGameObject, bool value)
     {
-        parentGameObject.SetActive(true);
+        parentGameObject.SetActive(value);
         for (int i = 0; i < parentGameObject.transform.childCount; i++)
-            parentGameObject.transform.GetChild(i).gameObject.SetActive(true);
+            parentGameObject.transform.GetChild(i).gameObject.SetActive(value);
     }
 }

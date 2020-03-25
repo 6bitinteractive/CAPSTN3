@@ -26,7 +26,7 @@ public class Deliverable : Persistable<DeliverableData>
         if (Delivered)
         {
             // Make it visible
-            MakeVisible();
+            MakeVisible(true);
             MakeInteractable(false); // ...but not interactable
         }
 
