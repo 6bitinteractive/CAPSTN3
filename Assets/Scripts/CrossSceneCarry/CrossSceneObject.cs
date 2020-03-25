@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using Meowfia.WanderDog;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,19 +16,40 @@ public class CrossSceneObject : MonoBehaviour
 
     private Biteable biteable;
 
+    private static GameManager gameManager;
+    private static CrossSceneObjectHandler crossSceneObjectHandler;
+    private StructTransform originalTransform;
+    private Transform thisTransform;
+
     private void Awake()
     {
         biteable = GetComponent<Biteable>();
+
+        // Store original Transform
+        thisTransform = gameObject.transform;
+        originalTransform = new StructTransform() { position = thisTransform.position, rotation = thisTransform.rotation, scale = thisTransform.lossyScale };
     }
 
-    private void OnEnable()
+    private void Start()
     {
+        gameManager = gameManager ?? SingletonManager.GetInstance<GameManager>();
+        gameManager.OnNewGame.AddListener(ResetObject);
+
+        crossSceneObjectHandler = crossSceneObjectHandler ?? SingletonManager.GetInstance<CrossSceneObjectHandler>();
+        crossSceneObjectHandler.crossSceneObjects.Add(this);
+
         biteable.OnBite.AddListener(OnCarried);
         biteable.OnRelease.AddListener(OnReleased);
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
+        if (gameManager != null)
+            gameManager.OnNewGame.RemoveListener(ResetObject);
+
+        crossSceneObjectHandler.crossSceneObjects.Remove(this);
+
+        if (biteable == null) return;
         biteable.OnBite.RemoveListener(OnCarried);
         biteable.OnRelease.RemoveListener(OnReleased);
     }
@@ -51,5 +74,26 @@ public class CrossSceneObject : MonoBehaviour
     public void MoveToCurrentActiveScene()
     {
         SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetSceneByName(SceneManager.GetActiveScene().name));
+    }
+
+    private void ResetObject()
+    {
+        thisTransform.position = originalTransform.position;
+        thisTransform.rotation = originalTransform.rotation;
+        thisTransform.localScale = originalTransform.scale;
+    }
+
+    private struct StructTransform
+    {
+        public Vector3 position;
+        public Quaternion rotation;
+        public Vector3 scale;
+
+        public StructTransform(Vector3 p, Quaternion q, Vector3 s)
+        {
+            position = p;
+            rotation = q;
+            scale = s;
+        }
     }
 }

@@ -9,21 +9,23 @@ public class CrossSceneObjectHandler : Singleton<CrossSceneObjectHandler>
     [Tooltip("Scene where crossScene deliverables are stored; by default it is the Persistent scene")]
     [SerializeField] private SceneData persistentDeliverable;
 
-    // List of cross-scene deliverables
-    // OnNewGame
-    // |__ loop to list and reset each; bring back to persistent, SetActive(false)
-
+    public List<CrossSceneObject> crossSceneObjects = new List<CrossSceneObject>();
     public GameObject carriedObj { get; set; }
+
+    private static SceneController sceneController;
 
     private void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoad;
+        sceneController = sceneController ?? SingletonManager.GetInstance<SceneController>();
+        sceneController.BeforePreviousSceneUnload.AddListener(MoveAllToPersistentScene);
     }
 
     protected override void OnDestroy()
     {
         base.OnDestroy();
         SceneManager.sceneLoaded -= OnSceneLoad;
+        sceneController.BeforePreviousSceneUnload.AddListener(MoveAllToPersistentScene);
     }
 
     private void OnSceneLoad(Scene scene, LoadSceneMode loadSceneMode)
@@ -41,5 +43,11 @@ public class CrossSceneObjectHandler : Singleton<CrossSceneObjectHandler>
         mouth.CarryObject(carriedObj);
         mouth.GetComponentInParent<Interactor>().CurrentTarget = carriedObj;
         mouth.GetComponentInParent<PlayerController>().Bite();
+    }
+
+    private void MoveAllToPersistentScene()
+    {
+        foreach (var item in crossSceneObjects)
+            item.MoveToPersistentScene();
     }
 }

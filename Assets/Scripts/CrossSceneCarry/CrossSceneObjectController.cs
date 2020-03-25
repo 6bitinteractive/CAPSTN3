@@ -4,30 +4,42 @@ using UnityEngine;
 
 public class CrossSceneObjectController : MonoBehaviour
 {
-    [SerializeField] private GuidReference crossSceneObject;
+    [SerializeField] private GuidReference crossSceneGuidObject;
 
-    private bool GuidReferenceAvailable => crossSceneObject.gameObject != null;
+    private bool GuidReferenceAvailable => crossSceneGuidObject.gameObject != null;
 
-    private CrossSceneObject crossScene;
-    private CrossSceneObject CrossSceneObject => crossScene ?? crossSceneObject.gameObject.GetComponent<CrossSceneObject>();
+    private CrossSceneObject crossSceneObject;
+    private CrossSceneObject CrossSceneObject
+    {
+        get
+        {
+            crossSceneObject = crossSceneObject ?? crossSceneGuidObject.gameObject.GetComponent<CrossSceneObject>();
+            return crossSceneObject;
+        }
+        set { crossSceneObject = value; }
+    }
 
     private Deliverable deliverable;
     private Deliverable Deliverable
     {
-        get { return deliverable ?? crossSceneObject.gameObject.GetComponent<Deliverable>(); }
+        get
+        {
+            deliverable = deliverable ?? crossSceneGuidObject.gameObject.GetComponent<Deliverable>();
+            return deliverable;
+        }
         set { deliverable = value; }
     }
 
     public void SetActive(bool value)
     {
         if (!GuidReferenceAvailable) return;
-        crossSceneObject.gameObject.SetActive(value);
+        crossSceneGuidObject.gameObject.SetActive(value);
     }
 
     public void SetParent(Transform transform)
     {
         if (!GuidReferenceAvailable) return;
-        crossSceneObject.gameObject.transform.SetParent(transform);
+        crossSceneGuidObject.gameObject.transform.SetParent(transform);
     }
 
     public void IsKinematic(bool value)
@@ -38,6 +50,26 @@ public class CrossSceneObjectController : MonoBehaviour
         if (rb == null) return;
 
         rb.isKinematic = value;
+    }
+
+    public void MoveToPersistentScene()
+    {
+        if (!GuidReferenceAvailable) return;
+
+        CrossSceneObject = GetComponentRequirement<CrossSceneObject>();
+        if (CrossSceneObject == null) return;
+
+        CrossSceneObject.MoveToPersistentScene();
+    }
+
+    public void MoveToCurrentActiveScene()
+    {
+        if (!GuidReferenceAvailable) return;
+
+        CrossSceneObject = GetComponentRequirement<CrossSceneObject>();
+        if (CrossSceneObject == null) return;
+
+        CrossSceneObject.MoveToCurrentActiveScene();
     }
 
     #region For Deliverables only
@@ -74,7 +106,7 @@ public class CrossSceneObjectController : MonoBehaviour
 
     private T GetComponentRequirement<T>()
     {
-        T component = crossSceneObject.gameObject.GetComponent<T>();
+        T component = crossSceneGuidObject.gameObject.GetComponent<T>();
 
         //if (component == null)
         //    Debug.LogErrorFormat("{0} does not have a {1} component", crossSceneObject.gameObject.name, typeof(T).ToString());

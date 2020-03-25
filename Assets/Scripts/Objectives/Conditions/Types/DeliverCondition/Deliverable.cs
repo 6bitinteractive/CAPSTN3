@@ -116,6 +116,14 @@ public class Deliverable : Persistable<DeliverableData>
         gameManager.GameData.AddPersistentData(Data);
     }
 
+    public override void ResetData()
+    {
+        // Implement differently for Deliverables
+        Data = new DeliverableData { guid = guidComponent.GetGuid() }; // Create a new default data
+        UpdatePersistentData();
+        SetFromPersistentData();
+    }
+
     private void Init()
     {
         biteable = biteable ?? GetComponent<Biteable>();
