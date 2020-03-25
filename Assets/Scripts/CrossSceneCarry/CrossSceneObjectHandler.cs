@@ -45,6 +45,11 @@ public class CrossSceneObjectHandler : Singleton<CrossSceneObjectHandler>
     private void MoveAllToPersistentScene()
     {
         foreach (var item in CrossSceneObjects)
+        {
             item.MoveToPersistentScene();
+
+            if (item.Rigidbody != null)
+                item.Rigidbody.isKinematic = true; // We make sure it doesn't fall
+        }
     }
 }
