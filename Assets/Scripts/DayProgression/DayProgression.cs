@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DayProgression : Persistable<PersistentData>
 {
@@ -19,6 +20,9 @@ public class DayProgression : Persistable<PersistentData>
     /// </summary>
     public int CurrentDayModifier = 0;
 
+    public UnityEvent OnDayBegin;
+    public UnityEvent OnDayEnd;
+
     private QuestManager questManager;
 
     public void Initialize(QuestManager qm)
@@ -34,12 +38,14 @@ public class DayProgression : Persistable<PersistentData>
 
         // Start the quest to be tackled for the day; assumes that the day shares the same index number as the quest
         questManager.ActivateQuestCollection(CurrentDayIndex);
+        OnDayBegin.Invoke();
     }
 
     public void EndDay()
     {
         Debug.LogFormat("Finished Day {0}", CurrentDayCount);
         CurrentDayIndex++;
+        OnDayEnd.Invoke();
     }
 
     public override void Save(GameDataWriter writer)
