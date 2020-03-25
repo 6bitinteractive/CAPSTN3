@@ -923,6 +923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   persistentDeliverable: {fileID: 11400000, guid: 469667e6b148e5c488de5190e9d6cc65,
     type: 2}
+  crossSceneObjects: []
 --- !u!4 &60506997
 Transform:
   m_ObjectHideFlags: 0
@@ -13104,7 +13105,7 @@ PrefabInstance:
     - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
         type: 3}
       propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
         type: 3}
@@ -13390,7 +13391,7 @@ PrefabInstance:
     - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
         type: 3}
       propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
         type: 3}
@@ -19376,6 +19377,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3843921689997764834, guid: d11fdf1fc77771349ac0b3dcd4d328ca,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4084261703423698094, guid: d11fdf1fc77771349ac0b3dcd4d328ca,
         type: 3}
       propertyPath: serializedGuid.Array.size
@@ -19470,11 +19476,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Food-PackedLunch
-      objectReference: {fileID: 0}
-    - target: {fileID: 6520797269650074868, guid: d11fdf1fc77771349ac0b3dcd4d328ca,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6520797269650074871, guid: d11fdf1fc77771349ac0b3dcd4d328ca,
         type: 3}
@@ -20324,11 +20325,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WaterBottle
-      objectReference: {fileID: 0}
-    - target: {fileID: 17474686315658500, guid: 42d350824fc7275478efe0ad6db43713,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 17474686315658503, guid: 42d350824fc7275478efe0ad6db43713,
         type: 3}
