@@ -4,14 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CrossSceneDeliverableHandler : Singleton<CrossSceneDeliverableHandler>
+public class CrossSceneObjectHandler : Singleton<CrossSceneObjectHandler>
 {
     [Tooltip("Scene where crossScene deliverables are stored; by default it is the Persistent scene")]
     [SerializeField] private SceneData persistentDeliverable;
 
-    private Mouth mouth;
+    // List of cross-scene deliverables
+    // OnNewGame
+    // |__ loop to list and reset each; bring back to persistent, SetActive(false)
 
-    public GameObject DeliverableObj { get; set; }
+    public GameObject carriedObj { get; set; }
 
     private void Start()
     {
@@ -26,16 +28,18 @@ public class CrossSceneDeliverableHandler : Singleton<CrossSceneDeliverableHandl
 
     private void OnSceneLoad(Scene scene, LoadSceneMode loadSceneMode)
     {
-        mouth = SingletonManager.GetInstance<Mouth>();
+        Mouth mouth = SingletonManager.GetInstance<Mouth>();
 
         if (mouth == null)
             return;
 
-        if (DeliverableObj == null)
+        if (carriedObj == null)
             return;
 
         // Mimic biting the object
-        mouth.GetComponentInParent<Interactor>().CurrentTarget = DeliverableObj;
+        carriedObj.GetComponent<CrossSceneObject>().IsCarried = true;
+        mouth.CarryObject(carriedObj);
+        mouth.GetComponentInParent<Interactor>().CurrentTarget = carriedObj;
         mouth.GetComponentInParent<PlayerController>().Bite();
     }
 }

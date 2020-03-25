@@ -10223,6 +10223,20 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3553705363902429075}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1129272967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129272966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c65a84e4032e6b4d94e9058245cf33b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  persistentDeliverable: {fileID: 11400000, guid: 469667e6b148e5c488de5190e9d6cc65,
+    type: 2}
 --- !u!1001 &1136438594
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12744,6 +12758,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2ba57c980b484f479011e389964b46b, type: 3}
+--- !u!1 &1448162992 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 17474686315658500, guid: 42d350824fc7275478efe0ad6db43713,
+    type: 3}
+  m_PrefabInstance: {fileID: 7715193377662691853}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1448162993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448162992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c65a84e4032e6b4d94e9058245cf33b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  persistentDeliverable: {fileID: 11400000, guid: 469667e6b148e5c488de5190e9d6cc65,
+    type: 2}
 --- !u!1001 &1452157281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13091,11 +13125,11 @@ PrefabInstance:
         type: 3}
       propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 7715193377662691854}
+      objectReference: {fileID: 1448162993}
     - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
         type: 3}
       propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: MoveToCurrentActive
+      value: MoveToCurrentActiveScene
       objectReference: {fileID: 0}
     - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
         type: 3}
@@ -13355,8 +13389,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
         type: 3}
+      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
       propertyPath: displayName
       value: Run away from the Dog Catcher
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
+      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
+      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
+      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1448162993}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
+      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: MoveToCurrentActiveScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
+      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3572185259269541302, guid: aa9b234a61bc4d44fbb3f6650c51146b,
         type: 3}
@@ -20438,18 +20502,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42d350824fc7275478efe0ad6db43713, type: 3}
---- !u!114 &7715193377662691854 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3877071921844665200, guid: 42d350824fc7275478efe0ad6db43713,
-    type: 3}
-  m_PrefabInstance: {fileID: 7715193377662691853}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77f4d2df330af9b48848e12f14078f84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8474518451293523190
 PrefabInstance:
   m_ObjectHideFlags: 0
