@@ -228,8 +228,7 @@ public class PlayerController : MonoBehaviour
 
     public void SwitchToDialogueInteractionControlScheme()
     {
-        movement.Move(Vector3.zero, 0);
-        movement.enabled = false;
+        movement.Stop();
 
         controlScheme.Player.Disable();
         controlScheme.PlayerBiting.Disable();

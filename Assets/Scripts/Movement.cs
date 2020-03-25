@@ -80,6 +80,12 @@ public class Movement : MonoBehaviour
         }
     }
 
+    public void Stop()
+    {
+        Move(Vector3.zero, 0);
+        enabled = false;
+    }
+
     private void GetDirection()
     {
         //Get Direction

@@ -8,8 +8,10 @@ using UnityEngine.Events;
 
 public class EnterArea : MonoBehaviour
 {
+    [SerializeField] Transform associatedStartingPoint;
     [SerializeField] private LayerMask playerLayerMask;
 
+    public Transform AssociatedStartingPoint => associatedStartingPoint;
     public UnityEvent OnEnterArea = new UnityEvent();
 
     private BoxCollider boxCollider;

@@ -28,9 +28,14 @@ public class Mouth : Singleton<Mouth>
     private void VerifyPickup(PickupData pickupData)
     {
         if (pickupData.type == PickupData.Type.Pickup)
+        {
             carriedObject = pickupData.pickupable.gameObject;
+        }
         else
+        {
             carriedObject = null;
+            crossSceneDeliverableHandler.CarriedObj = null;
+        }
     }
 
     private void OnEnterArea(EnterArea enterArea)
