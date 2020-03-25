@@ -658,8 +658,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ee25edff6d1e0543a149b015ab4868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneTransition: 1
   enterArea: 1
   cutscene: 1
+  dayEnd: 1
+  dayBegin: 0
   OnEventStart:
     m_PersistentCalls:
       m_Calls:
