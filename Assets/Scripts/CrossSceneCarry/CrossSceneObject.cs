@@ -18,8 +18,12 @@ public class CrossSceneObject : MonoBehaviour
 
     private static GameManager gameManager;
     private static CrossSceneObjectHandler crossSceneObjectHandler;
-    private StructTransform originalTransform;
     private Transform thisTransform;
+    private StructTransform originalTransform;
+    public Rigidbody Rigidbody { get; set; }
+    private bool originalIsKinematic;
+    private Model model;
+    private bool originalIsVisible;
 
     private void Awake()
     {
@@ -28,6 +32,14 @@ public class CrossSceneObject : MonoBehaviour
         // Store original Transform
         thisTransform = gameObject.transform;
         originalTransform = new StructTransform() { position = thisTransform.position, rotation = thisTransform.rotation, scale = thisTransform.lossyScale };
+
+        // Store originalValue of isKinematic
+        Rigidbody = GetComponent<Rigidbody>();
+        if (Rigidbody != null) originalIsKinematic = Rigidbody.isKinematic;
+
+        // If it has a model
+        model = GetComponentInChildren<Model>();
+        if (model != null) originalIsVisible = TransformUtils.IsModelActive(model);
     }
 
     private void Start()
@@ -81,6 +93,13 @@ public class CrossSceneObject : MonoBehaviour
         thisTransform.position = originalTransform.position;
         thisTransform.rotation = originalTransform.rotation;
         thisTransform.localScale = originalTransform.scale;
+        Rigidbody.isKinematic = originalIsKinematic;
+
+        if (model != null)
+        {
+            TransformUtils.SetActiveRecursively(model.gameObject, originalIsVisible);
+            model.gameObject.SetActive(true); // Always make the parent visible
+        }
     }
 
     private struct StructTransform

@@ -122,6 +122,7 @@ public class Deliverable : Persistable<DeliverableData>
         Data = new DeliverableData { guid = guidComponent.GetGuid() }; // Create a new default data
         UpdatePersistentData();
         SetFromPersistentData();
+        Init();
     }
 
     private void Init()
@@ -137,5 +138,6 @@ public class Deliverable : Persistable<DeliverableData>
         thisCollider.enabled = false;
         biteable.enabled = false;
         outlineable.enabled = false;
+        pickupable.enabled = true;
     }
 }
