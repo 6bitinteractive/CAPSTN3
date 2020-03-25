@@ -38,6 +38,7 @@ public class CrossSceneObjectHandler : Singleton<CrossSceneObjectHandler>
 
         // Mimic biting the object
         carriedObj.GetComponent<CrossSceneObject>().IsCarried = true;
+        mouth.CarryObject(carriedObj);
         mouth.GetComponentInParent<Interactor>().CurrentTarget = carriedObj;
         mouth.GetComponentInParent<PlayerController>().Bite();
     }
