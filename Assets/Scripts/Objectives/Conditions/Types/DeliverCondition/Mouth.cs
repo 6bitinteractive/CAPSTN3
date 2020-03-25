@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class Mouth : Singleton<Mouth>
 {
-    private CrossSceneDeliverableHandler crossSceneDeliverableHandler;
-    private GameObject deliverableCarried;
-    private Deliverable deliverable;
+    private CrossSceneObjectHandler crossSceneDeliverableHandler;
+    private GameObject crossSceneGameObjectCarried;
+    private CrossSceneObject crossSceneComponent;
     private EventManager eventManager;
 
     private void Start()
     {
-        crossSceneDeliverableHandler = SingletonManager.GetInstance<CrossSceneDeliverableHandler>();
+        crossSceneDeliverableHandler = SingletonManager.GetInstance<CrossSceneObjectHandler>();
         eventManager = SingletonManager.GetInstance<EventManager>();
         eventManager.Subscribe<PickupEvent, PickupData>(CheckDeliverable);
         eventManager.Subscribe<EnterAreaEvent, EnterArea>(OnEnterArea);
@@ -20,11 +20,11 @@ public class Mouth : Singleton<Mouth>
 
     private void OnEnterArea(EnterArea enterArea)
     {
-        if (deliverable == null)
+        if (crossSceneComponent == null)
             return;
 
-        if (deliverable.IsCarried)
-            deliverable.MoveToPersistent();
+        if (crossSceneComponent.IsCarried)
+            crossSceneComponent.MoveToPersistentScene();
     }
 
     protected override void OnDestroy()
@@ -36,16 +36,12 @@ public class Mouth : Singleton<Mouth>
 
     private void CheckDeliverable(PickupData pickupData)
     {
-        deliverable = pickupData.pickupable.GetComponent<Deliverable>();
+        crossSceneComponent = pickupData.pickupable.GetComponent<CrossSceneObject>();
 
-        if (deliverable == null)
+        if (crossSceneComponent == null)
             return;
 
-        // We only care about cross-scene deliverables for now
-        if (!deliverable.IsCrossSceneDeliverable)
-            return;
-
-        deliverableCarried = pickupData.pickupable.gameObject;
-        crossSceneDeliverableHandler.DeliverableObj = deliverableCarried;
+        crossSceneGameObjectCarried = pickupData.pickupable.gameObject;
+        crossSceneDeliverableHandler.carriedObj = crossSceneGameObjectCarried;
     }
 }
