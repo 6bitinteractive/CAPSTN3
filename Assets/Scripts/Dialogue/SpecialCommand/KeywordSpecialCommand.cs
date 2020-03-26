@@ -44,7 +44,6 @@ public class KeywordSpecialCommand : SpecialCommand
     // Yes... cringe architecture... @_@
     public override void Execute()
     {
-        base.Execute();
         Debug.LogWarning("Please use WriteOpening/ClosingTags()");
     }
 }

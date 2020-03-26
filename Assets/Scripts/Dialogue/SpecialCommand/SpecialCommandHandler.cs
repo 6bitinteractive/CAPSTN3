@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -22,6 +22,20 @@ public class SpecialCommandHandler
         //specialCommandsFactory["kw"] = x => new KeywordSpecialCommand(x);
         specialCommandsFactory["event"] = x => new EventSpecialCommand(x);
     }
+
+    // We use regex to strip all {commands} from our current dialogue line
+    // We have two strings: one with commands and the one printing on screen
+    // We keep track of both in order to know when there's a command to execute, if any
+    public string StripAllCommands(string text)
+    {
+        // Clean string to return
+        string cleanString;
+
+        // Remove all "{stuff:value}" from our dialogue line
+        string pattern = "\\{.[^}]+\\}";
+
+        cleanString = Regex.Replace(text, pattern, "");
+        return cleanString;
     }
 
     /// <summary>
