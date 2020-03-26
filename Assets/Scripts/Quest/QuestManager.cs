@@ -6,13 +6,14 @@ using UnityEngine;
 public class QuestManager : Singleton<QuestManager>
 {
     [HideInInspector]
-    public List<QuestCollection> questCollections = new List<QuestCollection>();
+    public List<QuestCollection> questCollections;
 
     public QuestCollection CurrentQuestCollection { get; private set; }
 
     public void Initialize()
     {
         // Get all the quests
+        questCollections = new List<QuestCollection>();
         questCollections.AddRange(GetComponentsInChildren<QuestCollection>());
 
         foreach (var questCollection in questCollections)

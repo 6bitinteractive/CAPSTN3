@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +9,7 @@ using UnityEngine.Events;
 // QuestCollection holds all the quests (QuestEvents) related to a specific day
 public class QuestCollection : Persistable<PersistentData> // Only a MonoBehaviour to make it available in the inspector
 {
-    public List<QuestEvent> QuestEvents { get; } = new List<QuestEvent>();
+    public List<QuestEvent> QuestEvents { get; private set; }
 
     // Assumes there's only one active quest event which is true for current implementation
     public QuestEvent CurrentQuestEvent { get; private set; }  // The current active
@@ -19,6 +19,7 @@ public class QuestCollection : Persistable<PersistentData> // Only a MonoBehavio
 
     public void Initialize()
     {
+        QuestEvents = new List<QuestEvent>();
         QuestEvents.AddRange(GetComponentsInChildren<QuestEvent>());
 
         foreach (var questEvent in QuestEvents)
