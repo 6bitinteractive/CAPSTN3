@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class TitleScreen : MonoBehaviour
 {
-    [SerializeField] private Button startNewGame, loadGame;
+    [SerializeField] private Button startNewGame, loadGame, quitButton;
 
     private GameManager gameManager;
     private SceneController sceneController;
@@ -49,11 +49,13 @@ public class TitleScreen : MonoBehaviour
     {
         startNewGame.gameObject.SetActive(true);
         //loadGame.gameObject.SetActive(true);
+        quitButton.gameObject.SetActive(true);
     }
 
     private void DisableButtons()
     {
         startNewGame.gameObject.SetActive(false);
         loadGame.gameObject.SetActive(false);
+        quitButton.gameObject.SetActive(false);
     }
 }
