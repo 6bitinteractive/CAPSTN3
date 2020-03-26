@@ -7826,6 +7826,12 @@ PrefabInstance:
       propertyPath: transitions.Array.data[1].aiCondition
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7157125830910967546, guid: 624612a181ac80349922f8abc0967068,
+        type: 3}
+      propertyPath: OnAttack.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 980bc8dd7764b4446bf43c343d240546,
+        type: 2}
     - target: {fileID: 7485173395206480564, guid: 624612a181ac80349922f8abc0967068,
         type: 3}
       propertyPath: m_BaseOffset
@@ -7945,7 +7951,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnAttack.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 11400000, guid: f3ce7180a9c1d134493e124fc21db6e6,
+      objectReference: {fileID: 11400000, guid: 980bc8dd7764b4446bf43c343d240546,
         type: 2}
     - target: {fileID: 5736627155253125470, guid: 6141632ecb3bb814a9069a00c8fc06d6,
         type: 3}
