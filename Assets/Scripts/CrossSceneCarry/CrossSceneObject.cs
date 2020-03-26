@@ -14,6 +14,11 @@ public class CrossSceneObject : MonoBehaviour
 
     public bool IsCarried { get; set; }
 
+    /// <summary>
+    /// The scene where this object "exists"
+    /// </summary>
+    public string LastActiveScene { get; private set; } = null;
+
     private Biteable biteable;
 
     private static GameManager gameManager;
@@ -74,6 +79,7 @@ public class CrossSceneObject : MonoBehaviour
     private void OnReleased()
     {
         IsCarried = false;
+        LastActiveScene = SceneManager.GetActiveScene().name;
         MoveToPersistentScene();
     }
 

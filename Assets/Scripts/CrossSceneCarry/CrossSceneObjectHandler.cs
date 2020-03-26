@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -32,6 +33,26 @@ public class CrossSceneObjectHandler : Singleton<CrossSceneObjectHandler>
 
     private void OnSceneLoad(Scene scene, LoadSceneMode loadSceneMode)
     {
+        // Carry any item that's being brought to another scene
+        CarryCrossSceneObject();
+
+        // Check which objects should be visible in current active scene
+        CheckVisibilty(scene.name);
+    }
+
+    private void MoveAllToPersistentScene()
+    {
+        foreach (var item in CrossSceneObjects)
+        {
+            item.MoveToPersistentScene();
+
+            if (item.Rigidbody != null)
+                item.Rigidbody.isKinematic = true; // We make sure it doesn't fall
+        }
+    }
+
+    private void CarryCrossSceneObject()
+    {
         Mouth mouth = SingletonManager.GetInstance<Mouth>();
 
         if (mouth == null)
@@ -47,15 +68,32 @@ public class CrossSceneObjectHandler : Singleton<CrossSceneObjectHandler>
         mouth.GetComponentInParent<PlayerController>().Bite();
     }
 
-    private void MoveAllToPersistentScene()
+    private void CheckVisibilty(string sceneName)
     {
-        foreach (var item in CrossSceneObjects)
-        {
-            item.MoveToPersistentScene();
+        // Enable relevant objects
+        List<CrossSceneObject> crossSceneObjects = new List<CrossSceneObject>();
 
-            if (item.Rigidbody != null)
-                item.Rigidbody.isKinematic = true; // We make sure it doesn't fall
+        crossSceneObjects = CrossSceneObjects.FindAll(x => x.LastActiveScene == sceneName);
+        if (crossSceneObjects.Count > 0)
+        {
+            foreach (var item in crossSceneObjects)
+            {
+                // NOTE: Assumes that only deliverables are cross-scene objects
+                Deliverable deliverable = item.GetComponent<Deliverable>();
+                if (deliverable == null) return;
+                deliverable.Enable();
+            }
         }
+
+        // Disable the rest
+        foreach (var item in CrossSceneObjects.Except(crossSceneObjects))
+        {
+            // NOTE: Assumes that only deliverables are cross-scene objects
+            Deliverable deliverable = item.GetComponent<Deliverable>();
+            if (deliverable == null || item.IsCarried) return;
+            deliverable.Disable();
+        }
+
     }
 
     private void ResetCrossSceneHandler()
