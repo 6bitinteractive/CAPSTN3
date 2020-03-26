@@ -7,7 +7,6 @@ using UnityEngine;
 public class StartingPositionHandler : MonoBehaviour
 {
     private SceneController sceneController;
-
     private Transform thisTransform;
 
     private void Start()
@@ -31,6 +30,7 @@ public class StartingPositionHandler : MonoBehaviour
         {
             thisTransform.position = startingPosition.position;
             thisTransform.rotation = startingPosition.rotation;
+            Physics.SyncTransforms();
         }
     }
 }
