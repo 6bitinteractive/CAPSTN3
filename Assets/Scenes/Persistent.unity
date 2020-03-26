@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -7328,9 +7328,104 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
         type: 3}
+      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
       propertyPath: displayName
       value: Clean the bag at the fountain
       objectReference: {fileID: 0}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
+      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
+      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
+      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1716032700}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
+      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_material
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
+      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Material, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
+      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 2100000, guid: 82a2db8c3f2b07f40ba15e4d6438edfa, type: 2}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
+      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
+      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
+      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
+      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
+      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1716032699}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
+      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: set_material
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
+      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Material, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
+      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 2100000, guid: d9023098b350bae46bb70a55bab273d8, type: 2}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
+      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1716032698}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
+      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: set_material
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
+      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Material, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743857982917745489, guid: aa9b234a61bc4d44fbb3f6650c51146b,
+        type: 3}
+      propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 2100000, guid: d9023098b350bae46bb70a55bab273d8, type: 2}
     - target: {fileID: 3560431630348688589, guid: aa9b234a61bc4d44fbb3f6650c51146b,
         type: 3}
       propertyPath: m_RootOrder
@@ -7339,8 +7434,7 @@ PrefabInstance:
     - target: {fileID: 3572185259269541302, guid: aa9b234a61bc4d44fbb3f6650c51146b,
         type: 3}
       propertyPath: m_Name
-      value: QuestEvent - 3.4 Clean the Bag (reminder for me to set the location to
-        fountain in zone 2)
+      value: QuestEvent - 3.4 Clean the Bag
       objectReference: {fileID: 0}
     - target: {fileID: 3572185259269541302, guid: aa9b234a61bc4d44fbb3f6650c51146b,
         type: 3}
@@ -17525,6 +17619,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   persistentDeliverable: {fileID: 11400000, guid: 469667e6b148e5c488de5190e9d6cc65,
     type: 2}
+--- !u!23 &1716032698 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4322588404001492652, guid: 1e839afe391a38d4f99779d1f8d715fa,
+    type: 3}
+  m_PrefabInstance: {fileID: 1716032695}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1716032699 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1284679087697851658, guid: 1e839afe391a38d4f99779d1f8d715fa,
+    type: 3}
+  m_PrefabInstance: {fileID: 1716032695}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1716032700 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5730882864244899065, guid: 1e839afe391a38d4f99779d1f8d715fa,
+    type: 3}
+  m_PrefabInstance: {fileID: 1716032695}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1717826366
 GameObject:
   m_ObjectHideFlags: 0

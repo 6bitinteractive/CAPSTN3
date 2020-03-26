@@ -3190,7 +3190,7 @@ PrefabInstance:
     - target: {fileID: 2377149609765007952, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
       propertyPath: m_Name
-      value: CleanTheBagDone-Reaction (Change the School Bag's materials to clean)
+      value: CleanTheBagDone-Reaction
       objectReference: {fileID: 0}
     - target: {fileID: 2377149609765007953, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
@@ -3250,7 +3250,7 @@ PrefabInstance:
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
       propertyPath: OnDone.gameEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
@@ -3335,8 +3335,7 @@ PrefabInstance:
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
       propertyPath: questEvent.cachedName
-      value: QuestEvent - 3.4 Clean the Bag (reminder for me to set the location to
-        fountain in zone 2)
+      value: QuestEvent - 3.4 Clean the Bag
       objectReference: {fileID: 0}
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
@@ -12167,37 +12166,37 @@ PrefabInstance:
     - target: {fileID: 2038800475605097683, guid: 63cc54b93023a1740a617c7bf7756820,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0000011622905
+      value: 0.05358758
       objectReference: {fileID: 0}
     - target: {fileID: 2038800475605097683, guid: 63cc54b93023a1740a617c7bf7756820,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000003010034
+      value: 0.57026863
       objectReference: {fileID: 0}
     - target: {fileID: 2038800475605097683, guid: 63cc54b93023a1740a617c7bf7756820,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000015869734
+      value: -0.39618397
       objectReference: {fileID: 0}
     - target: {fileID: 2038800475605097683, guid: 63cc54b93023a1740a617c7bf7756820,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.71760744
       objectReference: {fileID: 0}
     - target: {fileID: 2038800475605097683, guid: 63cc54b93023a1740a617c7bf7756820,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.7196884
+      value: -36.31083
       objectReference: {fileID: 0}
     - target: {fileID: 2038800475605097683, guid: 63cc54b93023a1740a617c7bf7756820,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -17.109478
+      value: 11.434492
       objectReference: {fileID: 0}
     - target: {fileID: 2038800475605097683, guid: 63cc54b93023a1740a617c7bf7756820,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -42.146683
+      value: -5.982109
       objectReference: {fileID: 0}
     - target: {fileID: 2038800475605097685, guid: 63cc54b93023a1740a617c7bf7756820,
         type: 3}
