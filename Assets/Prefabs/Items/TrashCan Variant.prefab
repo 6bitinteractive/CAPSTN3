@@ -331,6 +331,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3796389511902637529, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4532191095603491822, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: m_Size.y
@@ -400,6 +405,11 @@ PrefabInstance:
     - target: {fileID: 6012314165894563071, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: faceSource
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6012314165894563071, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7164248706962266050, guid: 505a91d4177b1e44181cef9fc088309f,
@@ -1566,10 +1576,14 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 7691275076173969540, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
+      propertyPath: dialogue.Array.data[0].dialogueLines.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7691275076173969540, guid: 505a91d4177b1e44181cef9fc088309f,
+        type: 3}
       propertyPath: dialogue.Array.data[0].speaker
       value: 
-      objectReference: {fileID: 11400000, guid: c14f3cd7f5d7aef40aa33efdfbed2269,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 7691275076173969540, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[0]
