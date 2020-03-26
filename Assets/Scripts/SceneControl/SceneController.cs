@@ -17,6 +17,8 @@ public class SceneController : Singleton<SceneController>
     [Header("Transition Effect")]
     [SerializeField] private SceneTransitionEffect transitionEffect;
 
+    public bool IsInTransition { get; private set; }
+
     [Header("Events")]
     public UnityEvent BeforePreviousSceneUnload = new UnityEvent();
     public UnityEvent AfterPreviousSceneUnload = new UnityEvent();
@@ -57,6 +59,8 @@ public class SceneController : Singleton<SceneController>
         // Start loading screen/effect here
         yield return StartCoroutine(transitionEffect.StartTransitionEffect(1f));
 
+        IsInTransition = true;
+
         // Let any listener to this event do their thing
         BeforePreviousSceneUnload.Invoke();
 
@@ -84,6 +88,8 @@ public class SceneController : Singleton<SceneController>
         AfterCurrentSceneLoad.Invoke();
 
         yield return StartCoroutine(transitionEffect.StartTransitionEffect(0f));
+
+        IsInTransition = false;
 
         // Debug. Print which scenes are active in hierarchy
         //for (int i = 0; i < SceneManager.sceneCount; i++)

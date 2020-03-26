@@ -18,16 +18,22 @@ public class EnterArea : MonoBehaviour
     private bool isLoading;
 
     private static EventManager eventManager;
+    private static SceneController sceneController;
 
     private void Start()
     {
         eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
+        sceneController = sceneController ?? SingletonManager.GetInstance<SceneController>();
+
         boxCollider = GetComponent<BoxCollider>();
         boxCollider.isTrigger = true;
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (sceneController.IsInTransition)
+            return;
+
         if (isLoading)
             return;
 
