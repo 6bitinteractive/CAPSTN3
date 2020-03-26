@@ -1,39 +1,17 @@
 fileFormatVersion: 2
-guid: bba3c52d3e0a6b24b9b30ffee7d48c7a
+guid: 0c33f641b780c56438f7b9115ef73b20
 ModelImporter:
   serializedVersion: 26
-  internalIDToNameTable: []
-  externalObjects:
+  internalIDToNameTable:
   - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert3
-    second: {fileID: 2100000, guid: b347381d25498ed4a937dd1698296234, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert4
-    second: {fileID: 2100000, guid: 0346ed405ca83dd408fbff2ddfe7b5d4, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: main_dog1_lambert3SG1
-    second: {fileID: 2100000, guid: 696304f5315ce6b43bd61efba8e1bd53, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: main_dog1_lambert5SG1
-    second: {fileID: 2100000, guid: c60612e57d434b24a8e214af38cfb5d3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: main_dog1_lambert7SG1
-    second: {fileID: 2100000, guid: 87d264955cd9c974ebfc5d6a87532af1, type: 2}
+      74: 1827226128182048838
+    second: Take 001
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -92,10 +70,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips:
-  - 0c33f641b780c56438f7b9115ef73b20
-  - 64a688ba1dfc69e48a30d17657664b42
-  - 0a36b55c14ba1ac4eae1579e0dc5c8fd
+  referencedClips: []
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
