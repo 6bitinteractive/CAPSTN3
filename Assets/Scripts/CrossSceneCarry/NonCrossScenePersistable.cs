@@ -33,37 +33,37 @@ public class NonCrossScenePersistable : MonoBehaviour
 
         if (collisionLayerMask != enterAreaLayerMask.value) return;
 
+        Vector3 newPosition = thisTransform.position;
         switch (resetType)
         {
             case ResetType.OriginalTransform:
                 {
-                    thisTransform.position = originalPosition;
+                    newPosition = originalPosition;
                     break;
                 }
 
             case ResetType.EnterAreaStartingPoint:
                 {
-
-                    StartCoroutine(Reposition(other));
+                    EnterArea enterArea = other.GetComponent<EnterArea>();
+                    newPosition = enterArea.AssociatedStartingPoint.position;
 
                     break;
                 }
         }
+
+        StartCoroutine(Reposition(newPosition));
     }
 
-    private IEnumerator Reposition(Collider other)
+    private IEnumerator Reposition(Vector3 position)
     {
         thisCollider.enabled = false; // Disable collision so that it doesn't get moved by another object
 
-        EnterArea enterArea = other.GetComponent<EnterArea>();
-        Vector3 posStartingPoint = enterArea.AssociatedStartingPoint.position;
-
         if (rb != null)
-            rb.isKinematic = true; // Let if fall on the ground
+            rb.isKinematic = false; // Let if fall on the ground
 
         while (thisTransform.hasChanged) // Force the position to stick in case it gets repositioned by something else
         {
-            thisTransform.position = new Vector3(posStartingPoint.x, thisTransform.position.y, posStartingPoint.z);
+            thisTransform.position = new Vector3(position.x, thisTransform.position.y, position.z);
             yield return null;
         }
 
