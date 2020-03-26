@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(GuidComponent))]
-[RequireComponent(typeof(BoxCollider))]
+[RequireComponent(typeof(Collider))]
 
 public class Location : MonoBehaviour
 {
     public Dictionary<GuidComponent, GameObject> objects = new Dictionary<GuidComponent, GameObject>();
 
     private static EventManager eventManager;
-    private BoxCollider boxCollider;
+    private Collider locationCollider;
 
     private void Awake()
     {
-        boxCollider = GetComponent<BoxCollider>();
-        boxCollider.isTrigger = true;
+        locationCollider = GetComponent<Collider>();
+        locationCollider.isTrigger = true;
     }
 
     private void OnEnable()
