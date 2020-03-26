@@ -262,7 +262,9 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
 
         // Build the command list
         specialCommandHandler.BuildCommandList(currentDisplay.displayText.text);
-        //specialCommands = BuildSpecialCommandList(text);
+
+        // Clean up the text of special commands
+        currentDisplay.displayText.text = specialCommandHandler.StripAllCommands(currentDisplay.displayText.text);
 
         // Count how many characters we have in our new dialogue line.
         TMP_TextInfo textInfo = currentDisplay.displayText.textInfo;
@@ -287,15 +289,9 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
                 hasTextChanged = false;
             }
 
-            /*  Note: implementing a color command is easy now! All you need to do is
-             *  extract the value, create a bool isColorizing = true, and use this color instead
-             *  of the base c0 color. A second command can put isColorizing to false.
-             *  I leave it up to you to figure this out.
-            */
-            //if (specialCommands.Count > 0)
-            //{
-            //    CheckForCommands(i);
-            //}
+            // Execute special commands if there are any
+            if (specialCommandHandler.SpecialCommands.Count > 0)
+                specialCommandHandler.ExecuteCommand(i);
 
             // Get the index of the material used by the current character.
             int materialIndex = textInfo.characterInfo[i].materialReferenceIndex;

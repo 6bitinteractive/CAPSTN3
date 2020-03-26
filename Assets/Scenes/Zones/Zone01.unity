@@ -10560,6 +10560,12 @@ MonoBehaviour:
   skinnedMeshRendersToOutline: []
   outlineShader: {fileID: -6465566751694194690, guid: 36b851668fd665943bf191c6bc63e477,
     type: 3}
+--- !u!1 &416111660 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5513578162609955010, guid: be99fd8cb7371554b85a654ea555a164,
+    type: 3}
+  m_PrefabInstance: {fileID: 416111652}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &416111661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23261,7 +23267,7 @@ PrefabInstance:
     - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
       propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[0]
-      value: Good morning, pooch.
+      value: Good {event:bark}morning, {event:bark}{kw:character}pooch{kw:character:end}.
       objectReference: {fileID: 0}
     - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
@@ -23282,12 +23288,12 @@ PrefabInstance:
     - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
       propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[1]
-      value: Are you hungry?
+      value: Are you hungry{event:bark}?
       objectReference: {fileID: 0}
     - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
       propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[2]
-      value: Sorry, I haven't bought any food yet...
+      value: 'Sorry, I haven''t bought any food yet...{event:bark} '
       objectReference: {fileID: 0}
     - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
@@ -23376,18 +23382,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcdffdb8bb04e634a979dedc2215acdf, type: 3}
+--- !u!1 &6012183879817420231 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5727208611821072848, guid: fcdffdb8bb04e634a979dedc2215acdf,
+    type: 3}
+  m_PrefabInstance: {fileID: 6012183879817420230}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6012183879817420232 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
     type: 3}
   m_PrefabInstance: {fileID: 6012183879817420230}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 6012183879817420231}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f30671f44d05b14a8bc1af6a0495cbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6012183879817420233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6012183879817420231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ba6dc3aa901b64cb854535b8583148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: bark
+  EventExecuted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 416111660}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &6627068337835086540
 PrefabInstance:
   m_ObjectHideFlags: 0

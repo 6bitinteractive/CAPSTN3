@@ -6,7 +6,6 @@ public abstract class SpecialCommand
 {
     public int Index { get; set; }
 
-    public virtual void Execute()
-    { }
+    public abstract void Execute();
 }
 
