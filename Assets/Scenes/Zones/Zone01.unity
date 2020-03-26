@@ -13645,6 +13645,102 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.48, y: 1, z: 0.2}
   m_Center: {x: 0, y: 0, z: -0.1}
+--- !u!1001 &935540745
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1050495170}
+    m_Modifications:
+    - target: {fileID: 4849326744715648716, guid: b4b66223741bd6b48abccc4a3d025bf5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849326744715648716, guid: b4b66223741bd6b48abccc4a3d025bf5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849326744715648716, guid: b4b66223741bd6b48abccc4a3d025bf5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849326744715648716, guid: b4b66223741bd6b48abccc4a3d025bf5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849326744715648716, guid: b4b66223741bd6b48abccc4a3d025bf5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.026176924
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849326744715648716, guid: b4b66223741bd6b48abccc4a3d025bf5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849326744715648716, guid: b4b66223741bd6b48abccc4a3d025bf5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99965733
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849326744715648716, guid: b4b66223741bd6b48abccc4a3d025bf5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849326744715648716, guid: b4b66223741bd6b48abccc4a3d025bf5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849326744715648716, guid: b4b66223741bd6b48abccc4a3d025bf5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849326744715648716, guid: b4b66223741bd6b48abccc4a3d025bf5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636039989347588074, guid: b4b66223741bd6b48abccc4a3d025bf5,
+        type: 3}
+      propertyPath: m_Name
+      value: EnterArea - To-Zone02-WestEntrance
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964757325653825642, guid: b4b66223741bd6b48abccc4a3d025bf5,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964757325653825642, guid: b4b66223741bd6b48abccc4a3d025bf5,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 11.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799126536636718038, guid: b4b66223741bd6b48abccc4a3d025bf5,
+        type: 3}
+      propertyPath: OnEnterArea.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 07cae12b5a2a7df4082150230b8e7ef3,
+        type: 2}
+    - target: {fileID: 8799126536636718038, guid: b4b66223741bd6b48abccc4a3d025bf5,
+        type: 3}
+      propertyPath: associatedStartingPoint
+      value: 
+      objectReference: {fileID: 578419602}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b4b66223741bd6b48abccc4a3d025bf5, type: 3}
+--- !u!4 &935540746 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4849326744715648716, guid: b4b66223741bd6b48abccc4a3d025bf5,
+    type: 3}
+  m_PrefabInstance: {fileID: 935540745}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &966325888
 GameObject:
   m_ObjectHideFlags: 0
@@ -14698,6 +14794,7 @@ Transform:
   - {fileID: 578419602}
   - {fileID: 710390847}
   - {fileID: 7077224512998361665}
+  - {fileID: 935540746}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -23830,7 +23927,7 @@ PrefabInstance:
     - target: {fileID: 7636039989347588074, guid: b4b66223741bd6b48abccc4a3d025bf5,
         type: 3}
       propertyPath: m_Name
-      value: EnterArea - To-Zone02-WestEntrance
+      value: EnterArea - To-Zone04-JunkyardGate
       objectReference: {fileID: 0}
     - target: {fileID: 7964757325653825642, guid: b4b66223741bd6b48abccc4a3d025bf5,
         type: 3}
@@ -23846,8 +23943,13 @@ PrefabInstance:
         type: 3}
       propertyPath: OnEnterArea.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 11400000, guid: 07cae12b5a2a7df4082150230b8e7ef3,
+      objectReference: {fileID: 11400000, guid: e731dc207df59e04b909f3d4c1b86d50,
         type: 2}
+    - target: {fileID: 8799126536636718038, guid: b4b66223741bd6b48abccc4a3d025bf5,
+        type: 3}
+      propertyPath: associatedStartingPoint
+      value: 
+      objectReference: {fileID: 710390847}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4b66223741bd6b48abccc4a3d025bf5, type: 3}
 --- !u!1 &7077224512998361664 stripped
