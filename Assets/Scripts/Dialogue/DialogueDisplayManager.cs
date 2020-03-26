@@ -108,6 +108,9 @@ public class DialogueDisplayManager : Singleton<DialogueDisplayManager>
         // Make sure no coroutines are running
         StopAllCoroutines();
 
+        // Make sure no sound is playing
+        audioSource.Stop();
+
         // Close the display
         currentDisplay?.Display(false);
 
