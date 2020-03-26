@@ -9,12 +9,24 @@ public class TitleScreen : MonoBehaviour
     [SerializeField] private Button startNewGame, loadGame;
 
     private GameManager gameManager;
+    private SceneController sceneController;
 
-    private void Start()
+    private IEnumerator Start()
     {
         gameManager = SingletonManager.GetInstance<GameManager>();
         if (!gameManager.CanLoadSavedData)
             loadGame.interactable = false;
+
+        sceneController = SingletonManager.GetInstance<SceneController>();
+
+        // Disable at start
+        DisableButtons();
+
+        // Wait until SceneController is ready to load a scene again
+        yield return new WaitUntil(() => !sceneController.IsInTransition);
+
+        // Enable when ready
+        EnableButtons();
     }
 
     public void StartNewGame()
@@ -31,5 +43,17 @@ public class TitleScreen : MonoBehaviour
         gameManager.StartGame();
 
         startNewGame.interactable = loadGame.interactable = false;
+    }
+
+    private void EnableButtons()
+    {
+        startNewGame.gameObject.SetActive(true);
+        //loadGame.gameObject.SetActive(true);
+    }
+
+    private void DisableButtons()
+    {
+        startNewGame.gameObject.SetActive(false);
+        loadGame.gameObject.SetActive(false);
     }
 }
