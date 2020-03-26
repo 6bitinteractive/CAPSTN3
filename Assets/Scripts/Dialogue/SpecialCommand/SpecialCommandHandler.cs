@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -20,8 +20,8 @@ public class SpecialCommandHandler
     public void Init()
     {
         //specialCommandsFactory["kw"] = x => new KeywordSpecialCommand(x);
-        specialCommandsFactory["sfx"] = x => new SfxSpecialCommand();
-        specialCommandsFactory["emote"] = x => new EmoticonSpecialCommand();
+        specialCommandsFactory["event"] = x => new EventSpecialCommand(x);
+    }
     }
 
     /// <summary>
