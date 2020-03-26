@@ -45,6 +45,7 @@ public class SceneController : Singleton<SceneController>
     // This assumes there's only one additively loaded scene
     private IEnumerator LoadAndSetActive(string sceneName)
     {
+        /*
 #if UNITY_EDITOR // Avoid loading the same scene twice in the Unity Editor
         Scene scene = SceneManager.GetSceneByName(sceneName);
         if (scene.isLoaded)
@@ -54,8 +55,9 @@ public class SceneController : Singleton<SceneController>
             yield return StartCoroutine(transitionEffect.StartTransitionEffect(0f));
             yield break;
         }
+        
 #endif
-
+        */
         // Start loading screen/effect here
         yield return StartCoroutine(transitionEffect.StartTransitionEffect(1f));
 
