@@ -96,6 +96,7 @@ public class CrossSceneObject : MonoBehaviour
 
     private void ResetObject()
     {
+        LastActiveScene = null;
         IsCarried = false;
         thisTransform.position = originalTransform.position;
         thisTransform.rotation = originalTransform.rotation;
