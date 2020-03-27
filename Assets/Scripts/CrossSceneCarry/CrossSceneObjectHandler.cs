@@ -71,26 +71,26 @@ public class CrossSceneObjectHandler : Singleton<CrossSceneObjectHandler>
     private void CheckVisibilty(string sceneName)
     {
         // Enable relevant objects
-        List<CrossSceneObject> crossSceneObjects = new List<CrossSceneObject>();
+        List<CrossSceneObject> relevantCrossSceneObjects = new List<CrossSceneObject>();
+        relevantCrossSceneObjects = CrossSceneObjects.FindAll(x => x.LastActiveScene == sceneName);
 
-        crossSceneObjects = CrossSceneObjects.FindAll(x => x.LastActiveScene == sceneName);
-        if (crossSceneObjects.Count > 0)
+        if (relevantCrossSceneObjects.Count > 0)
         {
-            foreach (var item in crossSceneObjects)
+            foreach (var item in relevantCrossSceneObjects)
             {
                 // NOTE: Assumes that only deliverables are cross-scene objects
                 Deliverable deliverable = item.GetComponent<Deliverable>();
-                if (deliverable == null) return;
+                if (deliverable == null) continue;
                 deliverable.Enable();
             }
         }
 
         // Disable the rest
-        foreach (var item in CrossSceneObjects.Except(crossSceneObjects))
+        foreach (var item in CrossSceneObjects.Except(relevantCrossSceneObjects))
         {
             // NOTE: Assumes that only deliverables are cross-scene objects
             Deliverable deliverable = item.GetComponent<Deliverable>();
-            if (deliverable == null || item.IsCarried) return;
+            if (deliverable == null || item.IsCarried) continue;
             deliverable.Disable();
         }
 
