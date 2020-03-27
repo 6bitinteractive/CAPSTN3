@@ -28,6 +28,7 @@ public class Movement : MonoBehaviour
     private CharacterController controller;
 
     public Vector3 CurrentDirection { get => currentDirection; set => currentDirection = value; }
+    public float Speed { get => speed; set => speed = value; }
 
     private void Start()
     {
