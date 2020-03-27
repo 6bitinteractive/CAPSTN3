@@ -12,5 +12,16 @@ public class AlertState : State
         base.OnEnable();
         agent.Target = currentTarget;
         navMeshAgent.ResetPath(); // Stop moving
+
+        if (animator == null) return;
+        animator.SetBool("IsMoving", true);
+    }
+
+    public override void OnDisable()
+    {
+        base.OnDisable();
+
+        if (animator == null) return;
+        animator.SetBool("IsMoving", false);
     }
 }
