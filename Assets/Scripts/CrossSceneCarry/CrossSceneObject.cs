@@ -89,9 +89,11 @@ public class CrossSceneObject : MonoBehaviour
         SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetSceneByName(persistentDeliverable.SceneName));
     }
 
-    public void MoveToCurrentActiveScene()
+    public void MoveToCurrentActiveScene(Transform parent = null)
     {
+        gameObject.transform.SetParent(null); // Make sure the object is root
         SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetSceneByName(SceneManager.GetActiveScene().name));
+        gameObject.transform.SetParent(parent); // Set parent after moving to new scene
     }
 
     private void ResetObject()

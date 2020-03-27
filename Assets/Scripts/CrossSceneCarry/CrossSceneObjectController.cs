@@ -62,14 +62,14 @@ public class CrossSceneObjectController : MonoBehaviour
         CrossSceneObject.MoveToPersistentScene();
     }
 
-    public void MoveToCurrentActiveScene()
+    public void MoveToCurrentActiveScene(Transform parent = null)
     {
         if (!GuidReferenceAvailable) return;
 
         CrossSceneObject = GetComponentRequirement<CrossSceneObject>();
         if (CrossSceneObject == null) return;
 
-        CrossSceneObject.MoveToCurrentActiveScene();
+        CrossSceneObject.MoveToCurrentActiveScene(parent);
     }
 
     #region For Deliverables only
