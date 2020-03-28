@@ -16185,8 +16185,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crossSceneGuidObject:
-    serializedGuid: fe70ab4201ee0c46952f3d973ef07c1f
-    cachedName: Cardboard-Box (From Lolo)
+    serializedGuid: 97ac0bd884c44d46b4247d930945b0bf
+    cachedName: Cardboard-Box
     cachedScene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
 --- !u!23 &976927538 stripped
 MeshRenderer:
@@ -22309,8 +22309,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crossSceneGuidObject:
-    serializedGuid: fe70ab4201ee0c46952f3d973ef07c1f
-    cachedName: Cardboard-Box (From Lolo)
+    serializedGuid: 97ac0bd884c44d46b4247d930945b0bf
+    cachedName: Cardboard-Box
     cachedScene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
 --- !u!1 &1708283502
 GameObject:
@@ -25598,6 +25598,41 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4098462314750450906, guid: 3b7f115b29833394f8c59f646bfd2b73,
+        type: 3}
+      propertyPath: OnConversationEnd.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098462314750450906, guid: 3b7f115b29833394f8c59f646bfd2b73,
+        type: 3}
+      propertyPath: OnConversationEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098462314750450906, guid: 3b7f115b29833394f8c59f646bfd2b73,
+        type: 3}
+      propertyPath: OnConversationEnd.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098462314750450906, guid: 3b7f115b29833394f8c59f646bfd2b73,
+        type: 3}
+      propertyPath: OnConversationEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2038800476586497517}
+    - target: {fileID: 4098462314750450906, guid: 3b7f115b29833394f8c59f646bfd2b73,
+        type: 3}
+      propertyPath: OnConversationEnd.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Satiate
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098462314750450906, guid: 3b7f115b29833394f8c59f646bfd2b73,
+        type: 3}
+      propertyPath: OnConversationEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098462314750450906, guid: 3b7f115b29833394f8c59f646bfd2b73,
+        type: 3}
+      propertyPath: OnConversationEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_FloatArgument
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4397858873504133834, guid: 3b7f115b29833394f8c59f646bfd2b73,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -27640,6 +27675,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2038800476586497512}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2038800476586497517 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4170612845523737637, guid: 63cc54b93023a1740a617c7bf7756820,
+    type: 3}
+  m_PrefabInstance: {fileID: 2038800476586497512}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038800476586497516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b969f937489708449b039aa20b841f35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &2038800476586497518
 Animator:
   serializedVersion: 3
@@ -29130,37 +29177,37 @@ PrefabInstance:
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedDeliverableObject.serializedGuid.Array.data[0]
-      value: 254
+      value: 151
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedDeliverableObject.serializedGuid.Array.data[1]
-      value: 112
+      value: 172
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedDeliverableObject.serializedGuid.Array.data[2]
-      value: 171
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedDeliverableObject.serializedGuid.Array.data[3]
-      value: 66
+      value: 216
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedDeliverableObject.serializedGuid.Array.data[4]
-      value: 1
+      value: 132
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedDeliverableObject.serializedGuid.Array.data[5]
-      value: 238
+      value: 196
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedDeliverableObject.serializedGuid.Array.data[6]
-      value: 12
+      value: 77
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
@@ -29170,47 +29217,47 @@ PrefabInstance:
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedDeliverableObject.serializedGuid.Array.data[8]
-      value: 149
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedDeliverableObject.serializedGuid.Array.data[9]
-      value: 47
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedDeliverableObject.serializedGuid.Array.data[10]
-      value: 61
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedDeliverableObject.serializedGuid.Array.data[11]
-      value: 151
+      value: 147
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedDeliverableObject.serializedGuid.Array.data[12]
-      value: 62
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedDeliverableObject.serializedGuid.Array.data[13]
-      value: 240
+      value: 69
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedDeliverableObject.serializedGuid.Array.data[14]
-      value: 124
+      value: 176
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedDeliverableObject.serializedGuid.Array.data[15]
-      value: 31
+      value: 191
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
       propertyPath: requests.Array.data[0].requestedDeliverableObject.cachedName
-      value: Cardboard-Box (From Lolo)
+      value: Cardboard-Box
       objectReference: {fileID: 0}
     - target: {fileID: 7164864130246266700, guid: 505a91d4177b1e44181cef9fc088309f,
         type: 3}
