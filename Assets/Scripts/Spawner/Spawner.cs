@@ -6,9 +6,11 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] protected float spawnInterval = 3.5f;
     [SerializeField] protected bool isSpawning = true;
+    [SerializeField] protected bool unlimitedSpawning = false;
     [SerializeField] protected List<GameObject> pooledObjectList;
     [SerializeField] protected List<SpawnPoint> spawnPoints;
     [SerializeField] protected List<SpawnPoint> availableSpawnPoints = new List<SpawnPoint>();
+
     private float timer;
     private int randomSpawnPoint;
 
@@ -55,14 +57,21 @@ public class Spawner : MonoBehaviour
             // If the demand of pooled object is getting too high start adding more to the list
             else if (i == pooledObjectList.Count - 1)
             {
-                int randomSpawnablePooledObject = Random.Range(0, pooledObjectList.Count);
-                GameObject newPooledObject = Instantiate(pooledObjectList[randomSpawnablePooledObject], availableSpawnPoints[randomSpawnPoint].transform.position, Quaternion.identity);
-                newPooledObject.transform.parent = gameObject.transform;
-                newPooledObject.SetActive(false);
-                pooledObjectList.Add(newPooledObject);                  
+                if (unlimitedSpawning)
+                {
+                    int randomSpawnablePooledObject = Random.Range(0, pooledObjectList.Count);
+                    GameObject newPooledObject = Instantiate(pooledObjectList[randomSpawnablePooledObject], availableSpawnPoints[randomSpawnPoint].transform.position, Quaternion.identity);
+                    newPooledObject.transform.parent = gameObject.transform;
+                    newPooledObject.SetActive(false);
+                    pooledObjectList.Add(newPooledObject);
+                    return;
+                }
+                else
+                {
+                    return;
+                }            
             }
-        }
-            
+        }          
     }
 
     private void CheckSpawnPoints()
