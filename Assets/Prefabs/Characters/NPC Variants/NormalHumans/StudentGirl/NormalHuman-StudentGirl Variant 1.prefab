@@ -1334,7 +1334,12 @@ PrefabInstance:
     - target: {fileID: 8458616320799792493, guid: a764c4769bd9f6f4bbf8da3516125b7b,
         type: 3}
       propertyPath: m_Name
-      value: NormalHuman-SchoolGirl Variant 1
+      value: NormalHuman-StudentGirl Variant 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8458616320799792493, guid: a764c4769bd9f6f4bbf8da3516125b7b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a764c4769bd9f6f4bbf8da3516125b7b, type: 3}

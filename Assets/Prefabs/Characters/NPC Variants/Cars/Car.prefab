@@ -60,6 +60,66 @@ MonoBehaviour:
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 256
+--- !u!1 &6147108077910060758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3210427263807520629}
+  - component: {fileID: 2217140986244080938}
+  - component: {fileID: 2851317839495707559}
+  m_Layer: 12
+  m_Name: Eyes (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3210427263807520629
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6147108077910060758}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.056, y: 0.415, z: 1.145}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1984300830525499187}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2217140986244080938
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6147108077910060758}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.63279164, y: 1, z: 0.594538}
+  m_Center: {x: -0.056168243, y: 0, z: -0.592731}
+--- !u!114 &2851317839495707559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6147108077910060758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbde6a42b44063b4fafb7cd5eb2e40a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 65536
 --- !u!1 &8855047427927596837
 GameObject:
   m_ObjectHideFlags: 0
@@ -77,7 +137,7 @@ GameObject:
   - component: {fileID: 1414731928464641978}
   - component: {fileID: 4075693504193918280}
   - component: {fileID: 2630169680782562734}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,6 +156,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7737566591272771332}
+  - {fileID: 3210427263807520629}
   - {fileID: 3309950584503404101}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -285,7 +346,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: aea6ef3dc9a39924cb49b05aee53674b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: aea6ef3dc9a39924cb49b05aee53674b,
         type: 3}

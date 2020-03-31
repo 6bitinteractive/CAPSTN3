@@ -16,6 +16,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &105645066452395430
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122613510620525894}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &4608799822618230193
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -105,21 +118,9 @@ MonoBehaviour:
   - {fileID: 2550798366667786879}
   - {fileID: 6128533779536400660}
   - {fileID: 1246275425377623070}
+  skinnedMeshRendersToOutline: []
   outlineShader: {fileID: -6465566751694194690, guid: 36b851668fd665943bf191c6bc63e477,
     type: 3}
---- !u!135 &105645066452395430
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2122613510620525894}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.15
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2169373149003381269
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,6 +182,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.05
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &8968010341382261453
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4961492921094880441}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1896465884175110683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,6 +211,7 @@ MonoBehaviour:
   - {fileID: 8847756471390421888}
   - {fileID: 910614684581583083}
   - {fileID: 5252431774791505377}
+  skinnedMeshRendersToOutline: []
   outlineShader: {fileID: -6465566751694194690, guid: 36b851668fd665943bf191c6bc63e477,
     type: 3}
 --- !u!114 &2164591569372123648
@@ -259,19 +274,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   offset: {x: 0, y: 0, z: 0}
---- !u!135 &8968010341382261453
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4961492921094880441}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.15
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5531148722418354170
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,7 +295,7 @@ GameObject:
   - component: {fileID: 2345392759055514920}
   - component: {fileID: 7060545894206651822}
   - component: {fileID: 6475228663094258523}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: FoodHuman
   m_TagString: Untagged
   m_Icon: {fileID: 0}

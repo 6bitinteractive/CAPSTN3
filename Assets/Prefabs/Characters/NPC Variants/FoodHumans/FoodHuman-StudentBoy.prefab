@@ -664,6 +664,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.055652823
   m_Center: {x: -3.6588985e-10, y: -0.0056528253, z: 5.080341e-10}
+--- !u!135 &9127595099471349429
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4151463989424399251}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: -3.6588985e-10, y: -0.0056528253, z: 5.080341e-10}
 --- !u!114 &397738549417642065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -713,6 +726,7 @@ MonoBehaviour:
   - {fileID: 544863694445468842}
   - {fileID: 8206985952102664129}
   - {fileID: 3864748016827239115}
+  skinnedMeshRendersToOutline: []
   outlineShader: {fileID: -6465566751694194690, guid: 36b851668fd665943bf191c6bc63e477,
     type: 3}
 --- !u!114 &3237917378519515803
@@ -742,19 +756,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: -25
---- !u!135 &9127595099471349429
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4151463989424399251}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.15
-  m_Center: {x: -3.6588985e-10, y: -0.0056528253, z: 5.080341e-10}
 --- !u!1 &4194166638468846377
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,6 +1065,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.055652823
   m_Center: {x: -3.6588985e-10, y: -0.0056528253, z: 5.080341e-10}
+--- !u!135 &8467058711454544389
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5221006699815681757}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: -3.6588985e-10, y: -0.0056528253, z: 5.080341e-10}
 --- !u!114 &5240891087042631743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1140,21 +1154,9 @@ MonoBehaviour:
   - {fileID: 8532058267502297572}
   - {fileID: 3757388196108943}
   - {fileID: 4920777114663720837}
+  skinnedMeshRendersToOutline: []
   outlineShader: {fileID: -6465566751694194690, guid: 36b851668fd665943bf191c6bc63e477,
     type: 3}
---- !u!135 &8467058711454544389
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5221006699815681757}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.15
-  m_Center: {x: -3.6588985e-10, y: -0.0056528253, z: 5.080341e-10}
 --- !u!1 &5452688544628836964
 GameObject:
   m_ObjectHideFlags: 0
@@ -1598,7 +1600,7 @@ GameObject:
   - component: {fileID: 316797288431905789}
   - component: {fileID: 4978138023608396667}
   - component: {fileID: 9022219770256539022}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: FoodHuman-StudentBoy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
