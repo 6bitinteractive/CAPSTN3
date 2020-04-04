@@ -9,4 +9,10 @@ public class Agent : MonoBehaviour
 
     public GameObject Target { get => target; set => target = value; }
     public GameObject TargetWithinRange { get => targetWithinRange; set => targetWithinRange = value; }
+
+    public void ResetTargets()
+    {
+        target = null;
+        TargetWithinRange = null;
+    }
 }
