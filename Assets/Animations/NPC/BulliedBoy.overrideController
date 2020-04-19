@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BulliedBoy
+  m_Controller: {fileID: 9100000, guid: 4e67de229338fb244b30eea87512d0dc, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 62323131a15ce9e4e846f51c9ca32a27, type: 2}
+    m_OverrideClip: {fileID: -203655887218126122, guid: f45b1ff4f4a425c4aaa750b2e1548c17,
+      type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 55e5a6073e723954a89569bd5533742f, type: 2}
+    m_OverrideClip: {fileID: -203655887218126122, guid: 514c36b471eb7aa4283fe9432a21849a,
+      type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 00b1dc3a2efdaf74daa5387ff290629c, type: 2}
+    m_OverrideClip: {fileID: -203655887218126122, guid: f7dd01df6a8cf334dbc83ac7b41a68b6,
+      type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 9d102177c8390184a910bea0c82de71a, type: 2}
+    m_OverrideClip: {fileID: -203655887218126122, guid: c10af8dc211f926468ed5aa0f6b9a6df,
+      type: 3}
