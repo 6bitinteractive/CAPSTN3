@@ -24679,7 +24679,7 @@ Animator:
   m_GameObject: {fileID: 288014330}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 7ee0404e60192104d94bb613002db5ec, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -26838,6 +26838,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3733204748973251354, guid: 1bb04624a62029d40be31848e45948ad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3965832081957979620, guid: 1bb04624a62029d40be31848e45948ad,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -27247,6 +27252,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Day 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076308689073826512, guid: 1bb04624a62029d40be31848e45948ad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7813338210256695078, guid: 1bb04624a62029d40be31848e45948ad,
         type: 3}
