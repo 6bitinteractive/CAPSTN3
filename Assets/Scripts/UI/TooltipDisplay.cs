@@ -22,25 +22,12 @@ public class TooltipDisplay : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
 
-        tooltipText.text = string.Empty;
-        //animator.SetBool("IsOpen", false);
-    }
-
-    private void Start()
-    {
         eventManager = eventManager ?? SingletonManager.GetInstance<EventManager>();
         questCollection = questCollection ?? SingletonManager.GetInstance<QuestManager>().CurrentQuestCollection;
 
         eventManager.Subscribe<GameQuestEvent, QuestEvent>(UpdateTooltipDisplay);
-    }
 
-    private void OnEnable()
-    {
-
-    }
-
-    private void OnDisable()
-    {
+        tooltipText.text = questCollection.CurrentQuestEvent.DisplayName.ToString();
         //animator.SetBool("IsOpen", false);
     }
 
