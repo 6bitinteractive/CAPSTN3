@@ -1598,6 +1598,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 197827736}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &197827738 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
+    type: 3}
+  m_PrefabInstance: {fileID: 197827736}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f30671f44d05b14a8bc1af6a0495cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &199137001
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5697,13 +5709,33 @@ PrefabInstance:
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
       propertyPath: OnActive.gameEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
       propertyPath: OnActive.gameEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
+        type: 3}
+      propertyPath: OnActive.gameEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 400618617}
+    - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
+        type: 3}
+      propertyPath: OnActive.gameEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartConversation
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
+        type: 3}
+      propertyPath: OnActive.gameEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Conversation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377149609765007954, guid: dbe4104696d976f48bad0c5c2dc1465a,
+        type: 3}
+      propertyPath: OnActive.gameEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 635916594}
     - target: {fileID: 7601943497963951012, guid: dbe4104696d976f48bad0c5c2dc1465a,
         type: 3}
       propertyPath: serializedGuid.Array.size
@@ -14422,7 +14454,7 @@ PrefabInstance:
     - target: {fileID: 5727208611821072848, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
       propertyPath: m_Name
-      value: Conversation
+      value: CheckUpOnHomelessMan Conversation
       objectReference: {fileID: 0}
     - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
@@ -14461,6 +14493,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcdffdb8bb04e634a979dedc2215acdf, type: 3}
+--- !u!114 &635916594 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
+    type: 3}
+  m_PrefabInstance: {fileID: 635916593}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f30671f44d05b14a8bc1af6a0495cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &659463029 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4035854398822951127, guid: be99fd8cb7371554b85a654ea555a164,
@@ -14929,6 +14973,7 @@ GameObject:
   - component: {fileID: 718288668}
   - component: {fileID: 718288667}
   - component: {fileID: 718288666}
+  - component: {fileID: 718288671}
   m_Layer: 0
   m_Name: 'Day 4: Start Day'
   m_TagString: Untagged
@@ -15030,9 +15075,60 @@ PlayableDirector:
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
-  m_SceneBindings: []
+  m_SceneBindings:
+  - key: {fileID: -4104075536384245700, guid: e87a4a76eea86dc4793f7be08e573ca1, type: 2}
+    value: {fileID: 2038800476586497515}
+  - key: {fileID: -6978784608931416171, guid: e87a4a76eea86dc4793f7be08e573ca1, type: 2}
+    value: {fileID: 2038800476586497518}
+  - key: {fileID: 5221928958977707177, guid: e87a4a76eea86dc4793f7be08e573ca1, type: 2}
+    value: {fileID: 718288664}
   m_ExposedReferences:
-    m_References: []
+    m_References:
+    - 9370f851261c8fb48a4ed4f9695918f3: {fileID: 1934878451}
+    - 318b38a74e4b38643a56baf61cec7cb5: {fileID: 1821000318}
+--- !u!114 &718288671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718288664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 5294b2829a51c844c978bdfd21bde120, type: 2}
+    - {fileID: 11400000, guid: 0e6fc50709a2a6e49bcfe9b72b630cfc, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 718288669}
+          m_MethodName: StartConversation
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 807602330}
+            m_ObjectArgumentAssemblyTypeName: Conversation, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 718288669}
+          m_MethodName: StartConversation
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 197827738}
+            m_ObjectArgumentAssemblyTypeName: Conversation, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &737797649
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15826,6 +15922,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 807602328}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &807602330 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
+    type: 3}
+  m_PrefabInstance: {fileID: 807602328}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f30671f44d05b14a8bc1af6a0495cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &810682095
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21030,6 +21138,7 @@ GameObject:
   - component: {fileID: 1402150904}
   - component: {fileID: 1402150903}
   - component: {fileID: 1402150902}
+  - component: {fileID: 1402150907}
   m_Layer: 0
   m_Name: 'Day 5: Start Day'
   m_TagString: Untagged
@@ -21064,7 +21173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a933beaa0087d4641b3cd4fcb742575b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  day: 0
+  day: 5
 --- !u!114 &1402150903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21130,9 +21239,43 @@ PlayableDirector:
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
-  m_SceneBindings: []
+  m_SceneBindings:
+  - key: {fileID: -8987399037330586567, guid: 05a8d32334f472149930ed541ce82933, type: 2}
+    value: {fileID: 2038800476586497515}
+  - key: {fileID: 1436839988891468795, guid: 05a8d32334f472149930ed541ce82933, type: 2}
+    value: {fileID: 1402150900}
   m_ExposedReferences:
-    m_References: []
+    m_References:
+    - 84c0d76295b7a90439eeafa174858a14: {fileID: 1934878451}
+--- !u!114 &1402150907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402150900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 5294b2829a51c844c978bdfd21bde120, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1402150905}
+          m_MethodName: StartConversation
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1621161619}
+            m_ObjectArgumentAssemblyTypeName: Conversation, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1402324700
 GameObject:
   m_ObjectHideFlags: 0
@@ -22907,6 +23050,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1621161617}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1621161619 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
+    type: 3}
+  m_PrefabInstance: {fileID: 1621161617}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f30671f44d05b14a8bc1af6a0495cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1622050549
 PrefabInstance:
   m_ObjectHideFlags: 0
