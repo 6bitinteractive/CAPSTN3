@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3527872168754972532
+--- !u!114 &-7474356212607932282
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12,7 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: Signal Emitter
   m_EditorClassIdentifier: 
-  m_Time: 0.43333333333333335
+  m_Time: 1
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: 0e6fc50709a2a6e49bcfe9b72b630cfc, type: 2}
+--- !u!114 &-7424787309743223576
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
+  m_Name: Signal Emitter
+  m_EditorClassIdentifier: 
+  m_Time: 0.5166666666666667
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: 5294b2829a51c844c978bdfd21bde120, type: 2}
@@ -26,17 +42,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bfda56da833e2384a9677cd3c976a436, type: 3}
-  m_Name: Timeline03_ScareAwayBully
+  m_Name: Day02_ListenToBulliedKid
   m_EditorClassIdentifier: 
   m_Version: 0
   m_Tracks:
-  - {fileID: 5686353463047066226}
+  - {fileID: 7320861704852248943}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
   m_DurationMode: 0
-  m_MarkerTrack: {fileID: 3930049769164536974}
---- !u!114 &538071834540801609
+  m_MarkerTrack: {fileID: 3152801514990028748}
+--- !u!114 &2287349075919011222
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -50,9 +66,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: 
   VirtualCamera:
-    exposedName: e910dca7f83c0a94384e6b11102a2c51
+    exposedName: 5698cd110a34e6c41a3e10155b136b4b
     defaultValue: {fileID: 0}
---- !u!114 &3930049769164536974
+--- !u!114 &3152801514990028748
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,8 +91,9 @@ MonoBehaviour:
   m_Clips: []
   m_Markers:
     m_Objects:
-    - {fileID: -3527872168754972532}
---- !u!114 &5686353463047066226
+    - {fileID: -7424787309743223576}
+    - {fileID: -7474356212607932282}
+--- !u!114 &7320861704852248943
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,14 +117,14 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: 8076722529416432279}
+    m_Asset: {fileID: 2287349075919011222}
     m_Duration: 1
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 5686353463047066226}
+    m_ParentTrack: {fileID: 7320861704852248943}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
-    m_BlendOutDuration: 0.5666666666666667
+    m_BlendOutDuration: 0.4833333333333333
     m_MixInCurve:
       serializedVersion: 2
       m_Curve:
@@ -134,25 +151,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -165,17 +164,17 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: CM vcam2
+    m_DisplayName: CM vcam3
   - m_Version: 1
-    m_Start: 0.43333333333333335
+    m_Start: 0.5166666666666667
     m_ClipIn: 0
-    m_Asset: {fileID: 538071834540801609}
-    m_Duration: 1.0666666666666667
+    m_Asset: {fileID: 9201346191801678286}
+    m_Duration: 0.9166666666666666
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 5686353463047066226}
+    m_ParentTrack: {fileID: 7320861704852248943}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: 0.5666666666666667
+    m_BlendInDuration: 0.4833333333333333
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
@@ -216,10 +215,10 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: CM vcam1
+    m_DisplayName: CinemachineShot
   m_Markers:
     m_Objects: []
---- !u!114 &8076722529416432279
+--- !u!114 &9201346191801678286
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,5 +232,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: 
   VirtualCamera:
-    exposedName: e2dbbbdc1bdeb244fb23d8fcfff44b99
+    exposedName: 
     defaultValue: {fileID: 0}
