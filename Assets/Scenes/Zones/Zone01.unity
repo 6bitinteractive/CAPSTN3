@@ -33392,7 +33392,7 @@ PrefabInstance:
     - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
       propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[0]
-      value: Good {event:bark}morning, {event:bark}{kw:character}pooch{kw:character:end}.
+      value: Good morning, pooch.
       objectReference: {fileID: 0}
     - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
@@ -33413,12 +33413,12 @@ PrefabInstance:
     - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
       propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[1]
-      value: Are you hungry{event:bark}?
+      value: Are you hungry?
       objectReference: {fileID: 0}
     - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
       propertyPath: dialogue.Array.data[0].dialogueLines.Array.data[2]
-      value: 'Sorry, I haven''t bought any food yet...{event:bark} '
+      value: Sorry, I haven't bought any food yet...
       objectReference: {fileID: 0}
     - target: {fileID: 8999177048976881701, guid: fcdffdb8bb04e634a979dedc2215acdf,
         type: 3}
