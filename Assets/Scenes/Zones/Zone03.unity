@@ -776,6 +776,7 @@ GameObject:
   - component: {fileID: 35783048}
   - component: {fileID: 35783047}
   - component: {fileID: 35783046}
+  - component: {fileID: 35783044}
   m_Layer: 0
   m_Name: Zone 3 Enter Area Timeline
   m_TagString: Untagged
@@ -798,6 +799,19 @@ Transform:
   m_Father: {fileID: 761958149}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &35783044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35783042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a933beaa0087d4641b3cd4fcb742575b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  day: 3
 --- !u!320 &35783045
 PlayableDirector:
   m_ObjectHideFlags: 0
